@@ -1,10 +1,14 @@
 /*
  * GADGET STYLE — Product Card Component
- * Matches Gadget Flow dimensions: ~222px wide in 5-col grid, natural aspect ratio images
- * Enhanced wishlist: larger button, tooltip, toast notification, animated heart
+ * Pixel-perfect match to Gadget Flow card design:
+ * - Image fills card, rounded corners, NO text overlay
+ * - Amazon "a" badge: black rounded square, top-left
+ * - Bell (reminder) + Heart (collection) icons: bottom-right overlay, always visible
+ * - Below image: green price + colored tag pills
+ * - Product title below tags
  */
 import { Link } from "wouter";
-import { Heart, ShoppingCart } from "lucide-react";
+import { Heart, Bell } from "lucide-react";
 import { useWishlist } from "@/contexts/WishlistContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -15,6 +19,28 @@ interface ProductCardProps {
   product: Product;
   index?: number;
   variant?: "default" | "featured" | "compact";
+}
+
+/* Amazon "a" logo as inline SVG — matches GF's black rounded square badge */
+function AmazonBadge() {
+  return (
+    <div className="absolute top-2.5 left-2.5 w-7 h-7 bg-black rounded-lg flex items-center justify-center shadow-md z-10">
+      <svg viewBox="0 0 24 24" className="w-4.5 h-4.5" fill="none">
+        <path
+          d="M15.93 17.09c-.18.16-.44.17-.64.06C13.56 15.85 13 14.47 13 12.94c0-2.02 1.09-3.41 2.65-3.41.51 0 .98.18 1.35.52V7.5c0-.28.22-.5.5-.5h.01c.27 0 .49.22.49.5v8.46c0 .23-.1.45-.28.6-.93.78-2.17 1.18-3.43 1.18-2.12 0-4.01-.79-5.59-2.36-.12-.12-.13-.32-.01-.45.12-.13.32-.14.45-.02 1.44 1.44 3.14 2.13 5.05 2.13.89 0 1.73-.2 2.5-.58"
+          fill="#FF9900"
+        />
+        <path
+          d="M13.5 9.65C13.5 11.16 13.5 12.44 12.72 13.81c-.63 1.11-1.63 1.79-2.74 1.79-1.52 0-2.41-1.16-2.41-2.87 0-3.38 3.03-3.99 5.93-3.99v.91z"
+          fill="#FF9900"
+        />
+        <path
+          d="M13.5 9.65V8.74c0-1.31.09-2.51-.63-3.41-.58-.73-1.5-1.03-2.37-1.03-1.41 0-2.67.86-2.97 2.41-.06.33-.03.64.27.7l1.77.19c.18-.02.32-.19.35-.37.17-.83.86-1.23 1.63-1.23.42 0 .89.15 1.14.53.28.43.28 1.01.28 1.52v.27c-1.43.02-3.29.06-4.63.64-1.54.67-2.62 2.03-2.62 4.04 0 2.57 1.62 3.85 3.71 3.85 1.76 0 2.72-.42 4.08-1.81.45.65.6.96 1.42 1.64.19.09.42.08.58-.06v.01c.49-.44 1.38-1.22 1.88-1.64.2-.16.16-.42.01-.64-.45-.59-.92-1.07-.92-2.17V9.65h-2.97z"
+          fill="white"
+        />
+      </svg>
+    </div>
+  );
 }
 
 export default function ProductCard({ product, index = 0, variant = "default" }: ProductCardProps) {
@@ -44,106 +70,25 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
     }
   };
 
-  const WishlistButton = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
-    const sizeClasses = {
-      sm: "p-1.5",
-      md: "p-2.5",
-      lg: "p-3",
-    };
-    const iconSizes = {
-      sm: "w-4 h-4",
-      md: "w-5 h-5",
-      lg: "w-6 h-6",
-    };
-
-    return (
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <button
-            onClick={handleWishlistToggle}
-            className={`${sizeClasses[size]} rounded-full backdrop-blur-md transition-all duration-300 ${
-              saved
-                ? "bg-red-500/20 text-red-500 shadow-lg shadow-red-500/10 ring-1 ring-red-500/30"
-                : "bg-black/50 text-white/80 hover:text-red-400 hover:bg-black/60 hover:shadow-lg"
-            }`}
-            aria-label={saved ? "Remove from wishlist" : "Add to wishlist"}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={saved ? "saved" : "unsaved"}
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.5, opacity: 0 }}
-                transition={{ type: "spring", stiffness: 500, damping: 15 }}
-              >
-                <Heart className={`${iconSizes[size]} ${saved ? "fill-current" : ""}`} />
-              </motion.div>
-            </AnimatePresence>
-          </button>
-        </TooltipTrigger>
-        <TooltipContent side="top" className="text-xs font-medium">
-          {saved ? "Remove from Wishlist" : "Save to Wishlist"}
-        </TooltipContent>
-      </Tooltip>
-    );
+  const handleReminder = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toast("Reminder Set", {
+      description: `We'll notify you about ${product.title}`,
+      icon: <Bell className="w-4 h-4 text-blue-400" />,
+    });
   };
 
-  if (variant === "featured") {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="group glass-card overflow-hidden"
-      >
-        <div className="grid md:grid-cols-2 gap-0">
-          <Link href={`/product/${product.slug}`} className="relative aspect-[4/3] md:aspect-auto overflow-hidden bg-white block">
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-105"
-            />
-            {isAmazon && (
-              <span className="absolute top-3 left-3 w-7 h-7 bg-black rounded-md flex items-center justify-center text-white font-bold text-sm shadow-lg">
-                a
-              </span>
-            )}
-          </Link>
-          <div className="p-6 lg:p-8 flex flex-col justify-center">
-            <Link href={`/product/${product.slug}`}>
-              <h3 className="text-xl lg:text-2xl font-bold font-display mb-3 hover:text-primary transition-colors">
-                {product.title}
-              </h3>
-            </Link>
-            <div className="flex items-center flex-wrap gap-2 mb-4">
-              <span className="text-lg font-bold font-mono text-green-400">${product.price.toFixed(2)}</span>
-              {product.tags.slice(0, 2).map((tag: string) => (
-                <span key={tag} className="px-2 py-0.5 text-[10px] font-semibold rounded-full border border-yellow-500/50 text-yellow-400">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <div className="flex items-center gap-3">
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button
-                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
-                    className="p-2.5 rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-foreground/20 transition-colors"
-                    aria-label="Shopping cart"
-                  >
-                    <ShoppingCart className="w-5 h-5" />
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent side="top" className="text-xs font-medium">View on Amazon</TooltipContent>
-              </Tooltip>
-              <WishlistButton size="lg" />
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    );
-  }
+  // Tag color mapping — GF uses colored pills
+  const getTagColor = (tag: string) => {
+    const t = tag.toLowerCase();
+    if (t === "discount" || t === "sale") return "bg-red-500/80 text-white";
+    if (t === "ces") return "bg-yellow-500/80 text-black";
+    if (t === "luxury") return "bg-purple-500/80 text-white";
+    if (t === "new") return "bg-emerald-500/80 text-white";
+    // Default: outlined yellow like GF
+    return "border border-yellow-500/50 text-yellow-400 bg-transparent";
+  };
 
   if (variant === "compact") {
     return (
@@ -155,8 +100,8 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
         className="group"
       >
         <div className="flex items-center gap-4 glass-card p-3">
-          <Link href={`/product/${product.slug}`} className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-white block">
-            <img src={product.image} alt={product.title} className="w-full h-full object-contain p-1" />
+          <Link href={`/product/${product.slug}`} className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-[#1e1e2a] block">
+            <img src={product.image} alt={product.title} className="w-full h-full object-cover" />
           </Link>
           <div className="flex-1 min-w-0">
             <Link href={`/product/${product.slug}`}>
@@ -164,67 +109,97 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
             </Link>
             <span className="text-sm font-bold font-mono text-green-400">${product.price.toFixed(2)}</span>
           </div>
-          <WishlistButton size="sm" />
         </div>
       </motion.div>
     );
   }
 
-  // Default card — Gadget Flow size: large image, generous padding
+  // Default card — Gadget Flow pixel-perfect match
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.08 }}
+      transition={{ duration: 0.4, delay: index * 0.06 }}
       className="group"
     >
-      {/* Clickable image area — GF uses ~1.2 aspect ratio (slightly taller than wide) */}
-      <Link href={`/product/${product.slug}`} className="block relative aspect-[1.15/1] rounded-2xl overflow-hidden bg-[#1e1e2a] mb-3">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+      {/* Clickable image area — GF style: image fills card, rounded corners */}
+      <Link href={`/product/${product.slug}`} className="block relative rounded-2xl overflow-hidden bg-[#1a1a2e] mb-2.5">
+        <div className="aspect-[1.15/1]">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
 
-        {/* Amazon badge — top left */}
-        {isAmazon && (
-          <span className="absolute top-3 left-3 w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-lg">
-            a
-          </span>
-        )}
+        {/* Amazon "a" badge — top left, GF exact style */}
+        {isAmazon && <AmazonBadge />}
 
-        {/* Bottom overlay: cart + wishlist */}
-        <div className="absolute bottom-3 right-3 flex items-center gap-2.5">
+        {/* Bottom-right overlay icons — GF style: bell + heart, always visible */}
+        <div className="absolute bottom-2.5 right-2.5 flex items-center gap-2 z-10">
+          {/* Bell / Reminder icon */}
           <Tooltip>
             <TooltipTrigger asChild>
               <button
-                onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
-                className="p-2.5 rounded-full bg-black/50 backdrop-blur-md text-white/70 hover:text-white hover:bg-black/60 transition-all"
-                aria-label="View on Amazon"
+                onClick={handleReminder}
+                className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-blue-400/80 hover:text-blue-300 hover:bg-black/60 transition-all"
+                aria-label="Add reminder"
               >
-                <ShoppingCart className="w-5 h-5" />
+                <Bell className="w-4 h-4" />
               </button>
             </TooltipTrigger>
-            <TooltipContent side="top" className="text-xs font-medium">View on Amazon</TooltipContent>
+            <TooltipContent side="top" className="text-xs font-medium">Add Reminder</TooltipContent>
           </Tooltip>
-          <WishlistButton size="md" />
+
+          {/* Heart / Wishlist icon */}
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button
+                onClick={handleWishlistToggle}
+                className={`w-8 h-8 rounded-full backdrop-blur-sm flex items-center justify-center transition-all ${
+                  saved
+                    ? "bg-red-500/30 text-red-400 ring-1 ring-red-500/40"
+                    : "bg-black/40 text-pink-400/80 hover:text-pink-300 hover:bg-black/60"
+                }`}
+                aria-label={saved ? "Remove from wishlist" : "Add to wishlist"}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={saved ? "saved" : "unsaved"}
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.5, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 15 }}
+                  >
+                    <Heart className={`w-4 h-4 ${saved ? "fill-current" : ""}`} />
+                  </motion.div>
+                </AnimatePresence>
+              </button>
+            </TooltipTrigger>
+            <TooltipContent side="top" className="text-xs font-medium">
+              {saved ? "Remove from Wishlist" : "Add to Collection"}
+            </TooltipContent>
+          </Tooltip>
         </div>
       </Link>
 
-      {/* Below image: Price + Tags row */}
-      <div className="flex items-center flex-wrap gap-2 mb-1.5">
-        <span className="text-base font-bold font-mono text-green-400">${product.price.toFixed(2)}</span>
-        {product.tags.slice(0, 2).map((tag: string) => (
-          <span key={tag} className="px-2 py-0.5 text-[10px] font-semibold rounded-full border border-yellow-500/40 text-yellow-400">
+      {/* Below image: Price + Tags row — GF exact style */}
+      <div className="flex items-center flex-wrap gap-1.5 mb-1">
+        <span className="text-[15px] font-bold font-mono text-green-400">${product.price.toFixed(2)}</span>
+        {product.tags.slice(0, 3).map((tag: string) => (
+          <span
+            key={tag}
+            className={`px-2 py-0.5 text-[10px] font-semibold rounded-full ${getTagColor(tag)}`}
+          >
             {tag}
           </span>
         ))}
       </div>
 
-      {/* Product title — larger text */}
+      {/* Product title — GF style: regular weight, no description */}
       <Link href={`/product/${product.slug}`}>
-        <h3 className="font-semibold text-[15px] line-clamp-2 group-hover:text-primary transition-colors leading-snug">
+        <h3 className="font-medium text-[14px] line-clamp-2 group-hover:text-primary transition-colors leading-snug text-foreground/90">
           {product.title}
         </h3>
       </Link>
