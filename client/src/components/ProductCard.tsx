@@ -1,12 +1,14 @@
 /*
  * GADGET STYLE — Product Card Component
  * Gadget Flow-inspired: Clickable image, price + tags below, wishlist overlay
- * No description text, no "View Deal" button — clean and minimal
+ * Enhanced wishlist: larger button, tooltip, toast notification, animated heart
  */
 import { Link } from "wouter";
 import { Heart, ShoppingCart } from "lucide-react";
 import { useWishlist } from "@/contexts/WishlistContext";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { toast } from "sonner";
 import type { Product } from "@/lib/data";
 
 interface ProductCardProps {
@@ -19,8 +21,72 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
   const { toggleWishlist, isInWishlist } = useWishlist();
   const saved = isInWishlist(product.id);
 
-  // Determine if it's an Amazon product (show 'a' icon)
   const isAmazon = product.affiliateUrl?.includes("amazon");
+
+  const handleWishlistToggle = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleWishlist(product.id);
+    if (!saved) {
+      toast.success("Added to Wishlist", {
+        description: product.title,
+        icon: <Heart className="w-4 h-4 fill-red-500 text-red-500" />,
+        action: {
+          label: "View Wishlist",
+          onClick: () => { window.location.href = "/wishlist"; },
+        },
+      });
+    } else {
+      toast("Removed from Wishlist", {
+        description: product.title,
+        icon: <Heart className="w-4 h-4 text-muted-foreground" />,
+      });
+    }
+  };
+
+  const WishlistButton = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
+    const sizeClasses = {
+      sm: "p-1.5",
+      md: "p-2.5",
+      lg: "p-3",
+    };
+    const iconSizes = {
+      sm: "w-4 h-4",
+      md: "w-5 h-5",
+      lg: "w-6 h-6",
+    };
+
+    return (
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button
+            onClick={handleWishlistToggle}
+            className={`${sizeClasses[size]} rounded-full backdrop-blur-md transition-all duration-300 ${
+              saved
+                ? "bg-red-500/20 text-red-500 shadow-lg shadow-red-500/10 ring-1 ring-red-500/30"
+                : "bg-black/50 text-white/80 hover:text-red-400 hover:bg-black/60 hover:shadow-lg"
+            }`}
+            aria-label={saved ? "Remove from wishlist" : "Add to wishlist"}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={saved ? "saved" : "unsaved"}
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.5, opacity: 0 }}
+                transition={{ type: "spring", stiffness: 500, damping: 15 }}
+              >
+                <Heart className={`${iconSizes[size]} ${saved ? "fill-current" : ""}`} />
+              </motion.div>
+            </AnimatePresence>
+          </button>
+        </TooltipTrigger>
+        <TooltipContent side="top" className="text-xs font-medium">
+          {saved ? "Remove from Wishlist" : "Save to Wishlist"}
+        </TooltipContent>
+      </Tooltip>
+    );
+  };
 
   if (variant === "featured") {
     return (
@@ -32,14 +98,12 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
         className="group glass-card overflow-hidden"
       >
         <div className="grid md:grid-cols-2 gap-0">
-          {/* Clickable image */}
           <Link href={`/product/${product.slug}`} className="relative aspect-[4/3] md:aspect-auto overflow-hidden bg-white block">
             <img
               src={product.image}
               alt={product.title}
               className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-105"
             />
-            {/* Amazon badge */}
             {isAmazon && (
               <span className="absolute top-3 left-3 w-7 h-7 bg-black rounded-md flex items-center justify-center text-white font-bold text-sm shadow-lg">
                 a
@@ -52,7 +116,6 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
                 {product.title}
               </h3>
             </Link>
-            {/* Price + Tags row */}
             <div className="flex items-center flex-wrap gap-2 mb-4">
               <span className="text-lg font-bold font-mono text-green-400">${product.price.toFixed(2)}</span>
               {product.tags.slice(0, 2).map((tag: string) => (
@@ -61,33 +124,20 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
                 </span>
               ))}
             </div>
-            {/* Action buttons */}
             <div className="flex items-center gap-3">
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                }}
-                className="p-2 rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-foreground/20 transition-colors"
-                aria-label="Shopping cart"
-              >
-                <ShoppingCart className="w-4 h-4" />
-              </button>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  toggleWishlist(product.id);
-                }}
-                className={`p-2 rounded-lg border transition-colors ${
-                  saved
-                    ? "bg-red-500/10 border-red-500/30 text-red-500"
-                    : "border-border text-muted-foreground hover:text-red-400 hover:border-red-400/30"
-                }`}
-                aria-label={saved ? "Remove from wishlist" : "Add to wishlist"}
-              >
-                <Heart className={`w-4 h-4 ${saved ? "fill-current" : ""}`} />
-              </button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+                    className="p-2.5 rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-foreground/20 transition-colors"
+                    aria-label="Shopping cart"
+                  >
+                    <ShoppingCart className="w-5 h-5" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent side="top" className="text-xs font-medium">View on Amazon</TooltipContent>
+              </Tooltip>
+              <WishlistButton size="lg" />
             </div>
           </div>
         </div>
@@ -104,20 +154,23 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
         transition={{ duration: 0.4, delay: index * 0.05 }}
         className="group"
       >
-        <Link href={`/product/${product.slug}`} className="flex items-center gap-4 glass-card p-3">
-          <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-white">
+        <div className="flex items-center gap-4 glass-card p-3">
+          <Link href={`/product/${product.slug}`} className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-white block">
             <img src={product.image} alt={product.title} className="w-full h-full object-contain p-1" />
-          </div>
+          </Link>
           <div className="flex-1 min-w-0">
-            <h4 className="text-sm font-semibold truncate group-hover:text-primary transition-colors">{product.title}</h4>
+            <Link href={`/product/${product.slug}`}>
+              <h4 className="text-sm font-semibold truncate group-hover:text-primary transition-colors">{product.title}</h4>
+            </Link>
             <span className="text-sm font-bold font-mono text-green-400">${product.price.toFixed(2)}</span>
           </div>
-        </Link>
+          <WishlistButton size="sm" />
+        </div>
       </motion.div>
     );
   }
 
-  // Default card — Gadget Flow style
+  // Default card — Gadget Flow style with enhanced wishlist
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -134,40 +187,28 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
           className="w-full h-full object-contain p-3 transition-transform duration-500 group-hover:scale-105"
         />
 
-        {/* Amazon badge — top left like Gadget Flow */}
+        {/* Amazon badge — top left */}
         {isAmazon && (
           <span className="absolute top-2.5 left-2.5 w-6 h-6 bg-black rounded-md flex items-center justify-center text-white font-bold text-xs shadow-lg">
             a
           </span>
         )}
 
-        {/* Bottom overlay icons — cart + wishlist like Gadget Flow */}
-        <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1.5">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-            }}
-            className="p-1.5 rounded-full bg-black/40 backdrop-blur-sm text-white/70 hover:text-white transition-colors"
-            aria-label="Add to cart"
-          >
-            <ShoppingCart className="w-3.5 h-3.5" />
-          </button>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              toggleWishlist(product.id);
-            }}
-            className={`p-1.5 rounded-full backdrop-blur-sm transition-colors ${
-              saved
-                ? "bg-red-500/30 text-red-400"
-                : "bg-black/40 text-white/70 hover:text-red-400"
-            }`}
-            aria-label={saved ? "Remove from wishlist" : "Add to wishlist"}
-          >
-            <Heart className={`w-3.5 h-3.5 ${saved ? "fill-current" : ""}`} />
-          </button>
+        {/* Bottom overlay: cart + wishlist — LARGER and more prominent */}
+        <div className="absolute bottom-3 right-3 flex items-center gap-2">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+                className="p-2 rounded-full bg-black/50 backdrop-blur-md text-white/70 hover:text-white hover:bg-black/60 transition-all"
+                aria-label="View on Amazon"
+              >
+                <ShoppingCart className="w-4 h-4" />
+              </button>
+            </TooltipTrigger>
+            <TooltipContent side="top" className="text-xs font-medium">View on Amazon</TooltipContent>
+          </Tooltip>
+          <WishlistButton size="md" />
         </div>
       </Link>
 
