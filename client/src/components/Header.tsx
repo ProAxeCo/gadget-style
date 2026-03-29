@@ -74,13 +74,13 @@ export default function Header() {
         }`}
       >
         <div className="container">
-          <div className="flex items-center justify-between h-18 lg:h-22">
+          <div className="flex items-center justify-between h-20 lg:h-24">
             {/* Logo */}
             <Link href="/" className="shrink-0">
               <img
                 src={theme === "dark" ? LOGO_DARK : LOGO_LIGHT}
                 alt="Gadget Style"
-                className="h-10 sm:h-12 lg:h-14 w-auto object-contain"
+                className="h-12 sm:h-16 lg:h-20 w-auto object-contain"
               />
             </Link>
 
