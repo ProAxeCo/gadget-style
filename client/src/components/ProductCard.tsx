@@ -6,9 +6,11 @@
  * - Bell (reminder) + Heart (collection) icons: bottom-right overlay, always visible
  * - Below image: green price + colored tag pills
  * - Product title below tags
+ * - Broken images show a clean placeholder icon (no alt text leaking)
  */
+import { useState } from "react";
 import { Link } from "wouter";
-import { Heart, Bell } from "lucide-react";
+import { Heart, Bell, ImageOff } from "lucide-react";
 import { useWishlist } from "@/contexts/WishlistContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -43,9 +45,20 @@ function AmazonBadge() {
   );
 }
 
+/* Fallback placeholder when image fails to load */
+function ImagePlaceholder() {
+  return (
+    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#1a1a2e]">
+      <ImageOff className="w-10 h-10 text-muted-foreground/30 mb-2" />
+      <span className="text-[10px] text-muted-foreground/30 font-medium">Image unavailable</span>
+    </div>
+  );
+}
+
 export default function ProductCard({ product, index = 0, variant = "default" }: ProductCardProps) {
   const { toggleWishlist, isInWishlist } = useWishlist();
   const saved = isInWishlist(product.id);
+  const [imgError, setImgError] = useState(false);
 
   const isAmazon = product.affiliateUrl?.includes("amazon");
 
@@ -86,7 +99,6 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
     if (t === "ces") return "bg-yellow-500/80 text-black";
     if (t === "luxury") return "bg-purple-500/80 text-white";
     if (t === "new") return "bg-emerald-500/80 text-white";
-    // Default: outlined yellow like GF
     return "border border-yellow-500/50 text-yellow-400 bg-transparent";
   };
 
@@ -101,7 +113,18 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
       >
         <div className="flex items-center gap-4 glass-card p-3">
           <Link href={`/product/${product.slug}`} className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-[#1e1e2a] block">
-            <img src={product.image} alt={product.title} className="w-full h-full object-cover" />
+            {imgError ? (
+              <div className="w-full h-full flex items-center justify-center">
+                <ImageOff className="w-6 h-6 text-muted-foreground/30" />
+              </div>
+            ) : (
+              <img
+                src={product.image}
+                alt=""
+                className="w-full h-full object-cover"
+                onError={() => setImgError(true)}
+              />
+            )}
           </Link>
           <div className="flex-1 min-w-0">
             <Link href={`/product/${product.slug}`}>
@@ -123,14 +146,20 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
       transition={{ duration: 0.4, delay: index * 0.06 }}
       className="group"
     >
-      {/* Clickable image area — GF style: image fills card, rounded corners */}
+      {/* Clickable image area — GF style: image fills card, rounded corners, NO TEXT */}
       <Link href={`/product/${product.slug}`} className="block relative rounded-2xl overflow-hidden bg-[#1a1a2e] mb-2.5">
-        <div className="aspect-[1.15/1]">
-          <img
-            src={product.image}
-            alt={product.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+        <div className="aspect-[1.15/1] relative">
+          {imgError ? (
+            <ImagePlaceholder />
+          ) : (
+            <img
+              src={product.image}
+              alt=""
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              onError={() => setImgError(true)}
+              loading="lazy"
+            />
+          )}
         </div>
 
         {/* Amazon "a" badge — top left, GF exact style */}
