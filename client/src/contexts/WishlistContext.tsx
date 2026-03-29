@@ -1,18 +1,18 @@
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
 
 interface WishlistContextType {
-  wishlist: string[];
-  addToWishlist: (productId: string) => void;
-  removeFromWishlist: (productId: string) => void;
-  toggleWishlist: (productId: string) => void;
-  isInWishlist: (productId: string) => boolean;
+  wishlist: number[];
+  addToWishlist: (productId: number) => void;
+  removeFromWishlist: (productId: number) => void;
+  toggleWishlist: (productId: number) => void;
+  isInWishlist: (productId: number) => boolean;
   wishlistCount: number;
 }
 
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
 
 export function WishlistProvider({ children }: { children: ReactNode }) {
-  const [wishlist, setWishlist] = useState<string[]>(() => {
+  const [wishlist, setWishlist] = useState<number[]>(() => {
     try {
       const saved = localStorage.getItem("gadget-style-wishlist");
       return saved ? JSON.parse(saved) : [];
@@ -25,22 +25,22 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("gadget-style-wishlist", JSON.stringify(wishlist));
   }, [wishlist]);
 
-  const addToWishlist = useCallback((productId: string) => {
+  const addToWishlist = useCallback((productId: number) => {
     setWishlist((prev) => (prev.includes(productId) ? prev : [...prev, productId]));
   }, []);
 
-  const removeFromWishlist = useCallback((productId: string) => {
+  const removeFromWishlist = useCallback((productId: number) => {
     setWishlist((prev) => prev.filter((id) => id !== productId));
   }, []);
 
-  const toggleWishlist = useCallback((productId: string) => {
+  const toggleWishlist = useCallback((productId: number) => {
     setWishlist((prev) =>
       prev.includes(productId) ? prev.filter((id) => id !== productId) : [...prev, productId]
     );
   }, []);
 
   const isInWishlist = useCallback(
-    (productId: string) => wishlist.includes(productId),
+    (productId: number) => wishlist.includes(productId),
     [wishlist]
   );
 

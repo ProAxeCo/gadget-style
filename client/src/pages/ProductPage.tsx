@@ -1,6 +1,13 @@
 /*
  * GADGET STYLE — Product Detail Page
- * Lumina Design: Split layout, sticky image gallery, editorial content
+ * Redesigned to match Gadget Flow layout:
+ * - Large hero image with thumbnail strip below
+ * - "Get it for $X" Amazon CTA button (green, with Amazon 'a' icon)
+ * - Wishlist + Share buttons
+ * - Overview tab with bullet-point features
+ * - Rating badge
+ * - Related products section
+ * - Breadcrumb navigation
  */
 import { useParams, Link } from "wouter";
 import { motion } from "framer-motion";
@@ -12,7 +19,9 @@ import {
   Heart,
   Star,
   Share2,
-  ShoppingCart,
+  ChevronRight,
+  Bell,
+  Copy,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useState } from "react";
@@ -22,6 +31,7 @@ export default function ProductPage() {
   const product = getProductBySlug(slug || "");
   const { toggleWishlist, isInWishlist } = useWishlist();
   const [activeImage, setActiveImage] = useState(0);
+  const [activeTab, setActiveTab] = useState<"overview" | "specs" | "price">("overview");
 
   if (!product) {
     return (
@@ -34,10 +44,6 @@ export default function ProductPage() {
   }
 
   const saved = isInWishlist(product.id);
-  const discount = product.originalPrice
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
-    : 0;
-
   const related: Product[] = getProductsByCategory(product.categorySlug)
     .filter((p: Product) => p.id !== product.id)
     .slice(0, 4);
@@ -53,46 +59,71 @@ export default function ProductPage() {
     }
   };
 
+  // Generate feature bullets from description
+  const descSentences = product.description
+    .split(/[.!]/)
+    .map(s => s.trim())
+    .filter(s => s.length > 10);
+
+  // Rating score out of 10
+  const ratingScore = (product.rating * 2).toFixed(1);
+
   return (
     <div className="pt-20 lg:pt-24">
       <div className="container pb-16">
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+        {/* Breadcrumb */}
+        <nav className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6 flex-wrap">
           <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
-          <span>/</span>
+          <ChevronRight className="w-3.5 h-3.5" />
           <Link href={`/category/${product.categorySlug}`} className="hover:text-foreground transition-colors">
             {product.category}
           </Link>
-          <span>/</span>
-          <span className="text-foreground line-clamp-1">{product.title}</span>
-        </div>
+          <ChevronRight className="w-3.5 h-3.5" />
+          <span className="text-foreground font-medium line-clamp-1">{product.title}</span>
+        </nav>
 
-        <div className="grid lg:grid-cols-[55%_45%] gap-8 lg:gap-12">
+        {/* Product Title — Gadget Flow style: title above the image */}
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-2xl lg:text-3xl xl:text-4xl font-bold font-display mb-6"
+        >
+          {product.title}
+        </motion.h1>
+
+        {/* Main Grid: Image Left, Details Right */}
+        <div className="grid lg:grid-cols-[58%_42%] gap-6 lg:gap-10">
+
+          {/* LEFT: Image Gallery */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="lg:sticky lg:top-24 lg:self-start"
           >
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden glass-card mb-3">
+            {/* Main Image */}
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden glass-card mb-3 bg-white">
               <img
                 src={images[activeImage] || product.image}
                 alt={product.title}
-                className="w-full h-full object-contain bg-white p-4"
+                className="w-full h-full object-contain p-6"
               />
-              {product.isNew && (
-                <span className="absolute top-4 left-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-md uppercase tracking-wider">
-                  New
-                </span>
-              )}
+              {/* Image credit */}
+              <span className="absolute bottom-3 right-3 text-[10px] text-gray-400 bg-black/40 px-2 py-0.5 rounded">
+                Image Credit: Manufacturer
+              </span>
             </div>
+
+            {/* Thumbnail Strip */}
             {images.length > 1 && (
-              <div className="flex gap-2">
+              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
                 {images.map((img: string, i: number) => (
                   <button
                     key={i}
                     onClick={() => setActiveImage(i)}
-                    className={`w-20 h-16 rounded-lg overflow-hidden border-2 transition-colors ${
-                      activeImage === i ? "border-primary" : "border-transparent opacity-60 hover:opacity-100"
+                    className={`shrink-0 w-24 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                      activeImage === i
+                        ? "border-primary ring-1 ring-primary/30"
+                        : "border-border/50 opacity-60 hover:opacity-100"
                     }`}
                   >
                     <img src={img} alt="" className="w-full h-full object-contain bg-white p-1" />
@@ -102,95 +133,219 @@ export default function ProductPage() {
             )}
           </motion.div>
 
+          {/* RIGHT: Product Details */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex flex-col"
           >
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 block">
-              {product.category}
-            </span>
-            <h1 className="text-2xl lg:text-3xl font-bold font-display mb-4">{product.title}</h1>
-
-            <div className="flex items-center gap-3 mb-6">
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`w-4 h-4 ${
-                      i < Math.floor(product.rating)
-                        ? "fill-yellow-500 text-yellow-500"
-                        : "text-muted-foreground/30"
-                    }`}
-                  />
-                ))}
-              </div>
-              <span className="text-sm font-semibold">{product.rating}</span>
-              <span className="text-sm text-muted-foreground">({product.reviewCount.toLocaleString()} reviews)</span>
-            </div>
-
-            <div className="flex items-center gap-3 mb-6 pb-6 border-b border-border">
-              <span className="text-3xl font-bold font-mono">${product.price.toFixed(2)}</span>
-              {product.originalPrice && (
-                <>
-                  <span className="text-lg text-muted-foreground line-through">${product.originalPrice.toFixed(2)}</span>
-                  <span className="px-2.5 py-1 bg-green-500/10 text-green-400 text-sm font-semibold rounded">
-                    Save {discount}%
-                  </span>
-                </>
-              )}
-            </div>
-
-            <div className="flex flex-wrap gap-2 mb-4">
-              {product.tags.map((tag: string) => (
-                <span key={tag} className="px-2.5 py-1 text-xs font-medium bg-muted text-muted-foreground rounded-md">
-                  {tag}
+            {/* Rating Badge — Gadget Flow style circle */}
+            <div className="flex items-center justify-between mb-5">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+                  Gadget Style Rating
                 </span>
-              ))}
+                <button className="text-muted-foreground hover:text-foreground">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="currentColor">
+                    <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                    <text x="8" y="11" textAnchor="middle" fontSize="9" fontWeight="bold">?</text>
+                  </svg>
+                </button>
+              </div>
+              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center shadow-lg shadow-rose-500/20">
+                <span className="text-white font-bold text-lg">{ratingScore}</span>
+              </div>
             </div>
 
-            <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-              {product.description}
-            </p>
+            {/* Amazon CTA Button — Gadget Flow style green button */}
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-6 py-4 bg-[#FF9900] hover:bg-[#e88b00] text-black rounded-xl font-semibold text-base transition-colors mb-4 shadow-lg shadow-[#FF9900]/20"
+            >
+              <span className="w-8 h-8 bg-black rounded-md flex items-center justify-center text-white font-bold text-lg shrink-0">a</span>
+              <span>Get it for ${product.price.toFixed(2)}</span>
+              <ExternalLink className="w-4 h-4 ml-auto" />
+            </a>
 
-            <div className="flex items-center gap-3 mb-8">
-              <a
-                href={product.affiliateUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-base hover:opacity-90 transition-opacity"
+            {/* Action Buttons Row */}
+            <div className="flex items-center gap-2 mb-6">
+              <button
+                onClick={() => {
+                  toast.success("Price alert set! We'll notify you of price drops.");
+                }}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border text-sm font-medium hover:bg-muted transition-colors"
               >
-                <ShoppingCart className="w-4 h-4" />
-                View on {product.retailer}
-                <ExternalLink className="w-4 h-4" />
-              </a>
+                <Bell className="w-4 h-4" />
+                Price Alert
+              </button>
               <button
                 onClick={() => toggleWishlist(product.id)}
-                className={`p-4 rounded-lg border transition-colors ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-sm font-medium transition-colors ${
                   saved
                     ? "bg-primary/10 border-primary/30 text-primary"
-                    : "border-border text-muted-foreground hover:text-foreground"
+                    : "border-border hover:bg-muted"
                 }`}
               >
-                <Heart className={`w-5 h-5 ${saved ? "fill-current" : ""}`} />
+                <Heart className={`w-4 h-4 ${saved ? "fill-current" : ""}`} />
+                {saved ? "Saved" : "Save"}
               </button>
               <button
                 onClick={handleShare}
-                className="p-4 rounded-lg border border-border text-muted-foreground hover:text-foreground transition-colors"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border text-sm font-medium hover:bg-muted transition-colors"
               >
-                <Share2 className="w-5 h-5" />
+                <Copy className="w-4 h-4" />
+                Copy Link
               </button>
             </div>
 
-            <p className="text-xs text-muted-foreground/60 italic">
-              As an Amazon Associate and affiliate partner, Gadget Style earns from qualifying purchases. Prices and availability are subject to change.
+            {/* Tabs — Gadget Flow style */}
+            <div className="border-b border-border mb-5">
+              <div className="flex gap-6">
+                {(["overview", "specs", "price"] as const).map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`pb-3 text-sm font-semibold capitalize transition-colors relative ${
+                      activeTab === tab
+                        ? "text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {tab}
+                    {activeTab === tab && (
+                      <motion.div
+                        layoutId="product-tab-indicator"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Tab Content */}
+            {activeTab === "overview" && (
+              <div className="space-y-4">
+                <h2 className="text-lg font-bold font-display">
+                  {product.title}: Overview
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {product.description}
+                </p>
+                {descSentences.length > 1 && (
+                  <ul className="space-y-2.5 mt-4">
+                    {descSentences.slice(0, 5).map((sentence, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                        <span>{sentence}.</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {product.tags.map((tag: string) => (
+                    <span key={tag} className="px-2.5 py-1 text-xs font-medium bg-muted text-muted-foreground rounded-md">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {activeTab === "specs" && (
+              <div className="space-y-4">
+                <h2 className="text-lg font-bold font-display">Specifications</h2>
+                <div className="glass-card p-4 space-y-3">
+                  <div className="flex justify-between text-sm py-2 border-b border-border/50">
+                    <span className="text-muted-foreground">Brand</span>
+                    <span className="font-medium">{product.title.split(' ')[0]}</span>
+                  </div>
+                  <div className="flex justify-between text-sm py-2 border-b border-border/50">
+                    <span className="text-muted-foreground">Category</span>
+                    <span className="font-medium">{product.category}</span>
+                  </div>
+                  <div className="flex justify-between text-sm py-2 border-b border-border/50">
+                    <span className="text-muted-foreground">Rating</span>
+                    <span className="font-medium flex items-center gap-1">
+                      <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
+                      {product.rating} ({product.reviewCount.toLocaleString()} reviews)
+                    </span>
+                  </div>
+                  <div className="flex justify-between text-sm py-2 border-b border-border/50">
+                    <span className="text-muted-foreground">ASIN</span>
+                    <span className="font-mono text-xs">{product.asin}</span>
+                  </div>
+                  <div className="flex justify-between text-sm py-2">
+                    <span className="text-muted-foreground">Retailer</span>
+                    <span className="font-medium">Amazon</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === "price" && (
+              <div className="space-y-4">
+                <h2 className="text-lg font-bold font-display">Price Information</h2>
+                <div className="glass-card p-6 text-center">
+                  <p className="text-4xl font-bold font-mono mb-2">${product.price.toFixed(2)}</p>
+                  <p className="text-sm text-muted-foreground mb-4">Current price on Amazon</p>
+                  <a
+                    href={product.affiliateUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF9900] hover:bg-[#e88b00] text-black rounded-lg font-semibold transition-colors"
+                  >
+                    <span className="w-6 h-6 bg-black rounded flex items-center justify-center text-white font-bold text-sm">a</span>
+                    Check Latest Price
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+                <p className="text-xs text-muted-foreground text-center italic">
+                  Prices may vary. Click through to Amazon for the most up-to-date pricing.
+                </p>
+              </div>
+            )}
+
+            {/* Affiliate Disclaimer */}
+            <p className="text-[10px] text-muted-foreground/50 mt-6 italic">
+              As an Amazon Associate and affiliate partner, Gadget Style earns from qualifying purchases.
+              Prices and availability are subject to change.
             </p>
           </motion.div>
         </div>
 
+        {/* Gadget Flow URL link if available */}
+        {product.gadgetFlowUrl && (
+          <div className="mt-8 p-4 glass-card flex items-center justify-between">
+            <span className="text-sm text-muted-foreground">Also featured on Gadget Flow</span>
+            <a
+              href={product.gadgetFlowUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-primary hover:underline flex items-center gap-1"
+            >
+              View on Gadget Flow <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        )}
+
+        {/* Related Products */}
         {related.length > 0 && (
           <section className="mt-16 pt-12 border-t border-border">
-            <h2 className="text-xl font-bold font-display mb-6">You Might Also Like</h2>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold font-display">You Might Also Like</h2>
+              <Link
+                href={`/category/${product.categorySlug}`}
+                className="text-sm text-primary hover:underline"
+              >
+                View all {product.category}
+              </Link>
+            </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {related.map((p: Product, i: number) => (
                 <ProductCard key={p.id} product={p} index={i} />

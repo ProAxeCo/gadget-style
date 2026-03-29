@@ -18,10 +18,6 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
   const { toggleWishlist, isInWishlist } = useWishlist();
   const saved = isInWishlist(product.id);
 
-  const discount = product.originalPrice
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
-    : 0;
-
   if (variant === "featured") {
     return (
       <motion.div
@@ -32,18 +28,13 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
         className="group glass-card overflow-hidden"
       >
         <div className="grid md:grid-cols-2 gap-0">
-          <div className="relative aspect-[4/3] md:aspect-auto overflow-hidden">
+          <div className="relative aspect-[4/3] md:aspect-auto overflow-hidden bg-white">
             <img
               src={product.image}
               alt={product.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-            {product.isNew && (
-              <span className="absolute top-4 left-4 px-2.5 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-md uppercase tracking-wider">
-                New
-              </span>
-            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
             {product.isTrending && (
               <span className="absolute top-4 right-4 flex items-center gap-1 px-2.5 py-1 bg-orange-500/90 text-white text-xs font-bold rounded-md">
                 <TrendingUp className="w-3 h-3" /> Trending
@@ -70,15 +61,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
               <span className="text-xs text-muted-foreground">({product.reviewCount.toLocaleString()} reviews)</span>
             </div>
             <div className="flex items-center gap-3 mb-5">
-              <span className="text-2xl font-bold font-mono text-foreground">${product.price}</span>
-              {product.originalPrice && (
-                <span className="text-sm text-muted-foreground line-through">${product.originalPrice}</span>
-              )}
-              {discount > 0 && (
-                <span className="px-2 py-0.5 bg-green-500/10 text-green-400 text-xs font-semibold rounded">
-                  -{discount}%
-                </span>
-              )}
+              <span className="text-2xl font-bold font-mono text-foreground">${product.price.toFixed(2)}</span>
             </div>
             <div className="flex items-center gap-2">
               <a
@@ -87,7 +70,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-primary text-primary-foreground rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity"
               >
-                View on {product.retailer}
+                <span className="font-bold">a</span> Get it for ${product.price.toFixed(2)}
                 <ExternalLink className="w-4 h-4" />
               </a>
               <button
@@ -117,15 +100,15 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
         transition={{ duration: 0.4, delay: index * 0.05 }}
         className="group flex items-center gap-4 glass-card p-3"
       >
-        <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
-          <img src={product.image} alt={product.title} className="w-full h-full object-cover" />
+        <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-white">
+          <img src={product.image} alt={product.title} className="w-full h-full object-contain p-1" />
         </div>
         <div className="flex-1 min-w-0">
           <Link href={`/product/${product.slug}`}>
             <h4 className="text-sm font-semibold truncate hover:text-primary transition-colors">{product.title}</h4>
           </Link>
           <p className="text-xs text-muted-foreground">{product.category}</p>
-          <span className="text-sm font-bold font-mono">${product.price}</span>
+          <span className="text-sm font-bold font-mono">${product.price.toFixed(2)}</span>
         </div>
       </motion.div>
     );
@@ -140,24 +123,18 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
       transition={{ duration: 0.4, delay: index * 0.08 }}
       className="group glass-card overflow-hidden"
     >
-      <div className="relative aspect-[4/3] overflow-hidden">
+      <div className="relative aspect-[4/3] overflow-hidden bg-white">
         <img
           src={product.image}
           alt={product.title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
         {/* Badges */}
         <div className="absolute top-3 left-3 flex items-center gap-2">
-          {product.isNew && (
+          {product.isFeatured && (
             <span className="px-2 py-0.5 bg-primary text-primary-foreground text-[10px] font-bold rounded uppercase tracking-wider">
-              New
-            </span>
-          )}
-          {discount > 0 && (
-            <span className="px-2 py-0.5 bg-green-500/90 text-white text-[10px] font-bold rounded">
-              -{discount}%
+              Featured
             </span>
           )}
         </div>
@@ -207,12 +184,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
         </p>
 
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-base font-bold font-mono">${product.price}</span>
-            {product.originalPrice && (
-              <span className="text-xs text-muted-foreground line-through">${product.originalPrice}</span>
-            )}
-          </div>
+          <span className="text-base font-bold font-mono">${product.price.toFixed(2)}</span>
           <a
             href={product.affiliateUrl}
             target="_blank"
