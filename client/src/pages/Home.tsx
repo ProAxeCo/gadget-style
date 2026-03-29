@@ -127,9 +127,9 @@ export default function Home() {
               View All <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-          <div className="space-y-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
             {featured.map((product, i) => (
-              <ProductCard key={product.id} product={product} index={i} variant="featured" />
+              <ProductCard key={product.id} product={product} index={i} />
             ))}
           </div>
         </div>
@@ -147,7 +147,7 @@ export default function Home() {
               <h2 className="text-2xl lg:text-3xl font-bold font-display">Trending Gadgets</h2>
             </div>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
             {trending.map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
             ))}
@@ -167,8 +167,8 @@ export default function Home() {
               <h2 className="text-2xl lg:text-3xl font-bold font-display">New Arrivals</h2>
             </div>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {newArrivals.slice(0, 8).map((product, i) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            {newArrivals.slice(0, 12).map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
             ))}
           </div>
