@@ -39,7 +39,7 @@ export default function CategoryPage() {
         break;
       case "newest":
       default:
-        sorted.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+        sorted.sort((a, b) => new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime());
         break;
     }
     return sorted;

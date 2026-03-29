@@ -63,7 +63,7 @@ export default function BlogPostPage() {
               <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">{post.author.charAt(0)}</div>
               <div>
                 <p className="text-sm font-medium">{post.author}</p>
-                <p className="text-xs text-muted-foreground">{new Date(post.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</p>
+                <p className="text-xs text-muted-foreground">{new Date(post.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</p>
               </div>
             </div>
             <div className="flex items-center gap-1 text-sm text-muted-foreground ml-auto">
