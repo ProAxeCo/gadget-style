@@ -60,7 +60,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
               </h3>
             </Link>
             <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-              {product.subtitle}
+              {product.description}
             </p>
             <div className="flex items-center gap-2 mb-4">
               <div className="flex items-center gap-1">
@@ -203,7 +203,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
           </h3>
         </Link>
         <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
-          {product.subtitle}
+          {product.description}
         </p>
 
         <div className="flex items-center justify-between">

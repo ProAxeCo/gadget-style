@@ -52,7 +52,7 @@ export default function BlogPostPage() {
           </Link>
 
           <span className="text-xs font-semibold uppercase tracking-wider text-primary block mb-3">
-            {post.category}
+            {post.tags[0] || "Tech"}
           </span>
           <h1 className="text-3xl lg:text-4xl font-bold font-display mb-4 leading-tight">
             {post.title}
@@ -60,7 +60,7 @@ export default function BlogPostPage() {
 
           <div className="flex items-center gap-4 mb-8 pb-8 border-b border-border">
             <div className="flex items-center gap-2">
-              <img src={post.authorAvatar} alt={post.author} className="w-10 h-10 rounded-full object-cover" />
+              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">{post.author.charAt(0)}</div>
               <div>
                 <p className="text-sm font-medium">{post.author}</p>
                 <p className="text-xs text-muted-foreground">{new Date(post.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</p>

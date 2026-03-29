@@ -41,7 +41,7 @@ export default function BlogPage() {
                 </div>
                 <div className="p-6 lg:p-10 flex flex-col justify-center">
                   <span className="text-xs font-semibold uppercase tracking-wider text-primary mb-3">
-                    {hero.category}
+                    {hero.tags[0] || "Tech"}
                   </span>
                   <h2 className="text-xl lg:text-2xl font-bold font-display mb-3 group-hover:text-primary transition-colors">
                     {hero.title}
@@ -49,7 +49,7 @@ export default function BlogPage() {
                   <p className="text-sm text-muted-foreground mb-4 line-clamp-3">{hero.excerpt}</p>
                   <div className="flex items-center gap-4 text-xs text-muted-foreground">
                     <div className="flex items-center gap-2">
-                      <img src={hero.authorAvatar} alt={hero.author} className="w-6 h-6 rounded-full object-cover" />
+                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-[8px]">{hero.author.charAt(0)}</div>
                       <span>{hero.author}</span>
                     </div>
                     <div className="flex items-center gap-1">
@@ -82,7 +82,7 @@ export default function BlogPage() {
                   />
                   <div className="absolute top-3 left-3">
                     <span className="px-2 py-0.5 bg-primary/90 text-primary-foreground text-[10px] font-bold rounded uppercase">
-                      {post.category}
+                      {post.tags[0] || "Tech"}
                     </span>
                   </div>
                 </div>

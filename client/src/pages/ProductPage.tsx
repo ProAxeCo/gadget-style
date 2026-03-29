@@ -4,7 +4,7 @@
  */
 import { useParams, Link } from "wouter";
 import { motion } from "framer-motion";
-import { getProductBySlug, products } from "@/lib/data";
+import { getProductBySlug, getRelatedProducts } from "@/lib/data";
 import { useWishlist } from "@/contexts/WishlistContext";
 import ProductCard from "@/components/ProductCard";
 import {
@@ -15,6 +15,7 @@ import {
   Check,
   X as XIcon,
   Share2,
+  ShoppingCart,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useState } from "react";
@@ -40,9 +41,11 @@ export default function ProductPage() {
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
     : 0;
 
-  const related = products.filter(
-    (p) => p.categorySlug === product.categorySlug && p.id !== product.id
-  ).slice(0, 4);
+  const related = getRelatedProducts(product, 4);
+  const images = product.images && product.images.length > 0 ? product.images : [product.image];
+  const specs = product.specs || {};
+  const pros = product.pros || [];
+  const cons = product.cons || [];
 
   const handleShare = async () => {
     try {
@@ -64,7 +67,7 @@ export default function ProductPage() {
             {product.category}
           </Link>
           <span>/</span>
-          <span className="text-foreground">{product.title}</span>
+          <span className="text-foreground line-clamp-1">{product.title}</span>
         </div>
 
         {/* Product layout */}
@@ -78,7 +81,7 @@ export default function ProductPage() {
           >
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden glass-card mb-3">
               <img
-                src={product.images[activeImage] || product.image}
+                src={images[activeImage] || product.image}
                 alt={product.title}
                 className="w-full h-full object-cover"
               />
@@ -88,9 +91,9 @@ export default function ProductPage() {
                 </span>
               )}
             </div>
-            {product.images.length > 1 && (
+            {images.length > 1 && (
               <div className="flex gap-2">
-                {product.images.map((img, i) => (
+                {images.map((img, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveImage(i)}
@@ -114,8 +117,7 @@ export default function ProductPage() {
             <span className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 block">
               {product.category}
             </span>
-            <h1 className="text-2xl lg:text-3xl font-bold font-display mb-2">{product.title}</h1>
-            <p className="text-lg text-muted-foreground mb-4">{product.subtitle}</p>
+            <h1 className="text-2xl lg:text-3xl font-bold font-display mb-4">{product.title}</h1>
 
             {/* Rating */}
             <div className="flex items-center gap-3 mb-6">
@@ -137,15 +139,24 @@ export default function ProductPage() {
 
             {/* Price */}
             <div className="flex items-center gap-3 mb-6 pb-6 border-b border-border">
-              <span className="text-3xl font-bold font-mono">${product.price}</span>
+              <span className="text-3xl font-bold font-mono">${product.price.toFixed(2)}</span>
               {product.originalPrice && (
                 <>
-                  <span className="text-lg text-muted-foreground line-through">${product.originalPrice}</span>
+                  <span className="text-lg text-muted-foreground line-through">${product.originalPrice.toFixed(2)}</span>
                   <span className="px-2.5 py-1 bg-green-500/10 text-green-400 text-sm font-semibold rounded">
                     Save {discount}%
                   </span>
                 </>
               )}
+            </div>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              {product.tags.map((tag) => (
+                <span key={tag} className="px-2.5 py-1 text-xs font-medium bg-muted text-muted-foreground rounded-md">
+                  {tag}
+                </span>
+              ))}
             </div>
 
             {/* Description */}
@@ -161,6 +172,7 @@ export default function ProductPage() {
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-base hover:opacity-90 transition-opacity"
               >
+                <ShoppingCart className="w-4 h-4" />
                 View on {product.retailer}
                 <ExternalLink className="w-4 h-4" />
               </a>
@@ -182,48 +194,56 @@ export default function ProductPage() {
               </button>
             </div>
 
-            {/* Specs table */}
-            <div className="mb-8">
-              <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Specifications</h3>
-              <div className="glass-card divide-y divide-border">
-                {Object.entries(product.specs).map(([key, value]) => (
-                  <div key={key} className="flex items-center justify-between px-4 py-3">
-                    <span className="text-sm text-muted-foreground">{key}</span>
-                    <span className="text-sm font-medium font-mono">{value}</span>
-                  </div>
-                ))}
+            {/* Specs table — only show if specs exist */}
+            {Object.keys(specs).length > 0 && (
+              <div className="mb-8">
+                <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Specifications</h3>
+                <div className="glass-card divide-y divide-border">
+                  {Object.entries(specs).map(([key, value]) => (
+                    <div key={key} className="flex items-center justify-between px-4 py-3">
+                      <span className="text-sm text-muted-foreground">{key}</span>
+                      <span className="text-sm font-medium font-mono">{value}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
-            {/* Pros & Cons */}
-            <div className="grid sm:grid-cols-2 gap-4 mb-8">
-              <div className="glass-card p-4">
-                <h4 className="text-sm font-semibold text-green-400 mb-3 flex items-center gap-2">
-                  <Check className="w-4 h-4" /> Pros
-                </h4>
-                <ul className="space-y-2">
-                  {product.pros.map((pro, i) => (
-                    <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                      <Check className="w-3.5 h-3.5 text-green-400 mt-0.5 shrink-0" />
-                      {pro}
-                    </li>
-                  ))}
-                </ul>
+            {/* Pros & Cons — only show if they exist */}
+            {(pros.length > 0 || cons.length > 0) && (
+              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                {pros.length > 0 && (
+                  <div className="glass-card p-4">
+                    <h4 className="text-sm font-semibold text-green-400 mb-3 flex items-center gap-2">
+                      <Check className="w-4 h-4" /> Pros
+                    </h4>
+                    <ul className="space-y-2">
+                      {pros.map((pro, i) => (
+                        <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                          <Check className="w-3.5 h-3.5 text-green-400 mt-0.5 shrink-0" />
+                          {pro}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {cons.length > 0 && (
+                  <div className="glass-card p-4">
+                    <h4 className="text-sm font-semibold text-red-400 mb-3 flex items-center gap-2">
+                      <XIcon className="w-4 h-4" /> Cons
+                    </h4>
+                    <ul className="space-y-2">
+                      {cons.map((con, i) => (
+                        <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                          <XIcon className="w-3.5 h-3.5 text-red-400 mt-0.5 shrink-0" />
+                          {con}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
-              <div className="glass-card p-4">
-                <h4 className="text-sm font-semibold text-red-400 mb-3 flex items-center gap-2">
-                  <XIcon className="w-4 h-4" /> Cons
-                </h4>
-                <ul className="space-y-2">
-                  {product.cons.map((con, i) => (
-                    <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                      <XIcon className="w-3.5 h-3.5 text-red-400 mt-0.5 shrink-0" />
-                      {con}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            )}
 
             {/* Affiliate disclosure */}
             <p className="text-xs text-muted-foreground/60 italic">

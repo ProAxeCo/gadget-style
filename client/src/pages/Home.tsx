@@ -6,13 +6,14 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, TrendingUp, Sparkles, ChevronRight } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
-import { categories, getFeaturedProducts, getTrendingProducts, blogPosts } from "@/lib/data";
+import { categories, getFeaturedProducts, getTrendingProducts, getNewProducts, blogPosts } from "@/lib/data";
 
 const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/hero_main-FV825JvAj48TkMdFxzzR6Y.webp";
 
 export default function Home() {
   const featured = getFeaturedProducts();
   const trending = getTrendingProducts();
+  const newArrivals = getNewProducts();
 
   return (
     <div>
@@ -154,8 +155,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== BLOG / EDITORIAL ===== */}
+      {/* ===== NEW ARRIVALS ===== */}
       <section className="py-16 lg:py-20 bg-card/30">
+        <div className="container">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold tracking-wider uppercase mb-3">
+                <Sparkles className="w-3 h-3" />
+                Just Added
+              </div>
+              <h2 className="text-2xl lg:text-3xl font-bold font-display">New Arrivals</h2>
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {newArrivals.slice(0, 8).map((product, i) => (
+              <ProductCard key={product.id} product={product} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== BLOG / EDITORIAL ===== */}
+      <section className="py-16 lg:py-20">
         <div className="container">
           <div className="flex items-center justify-between mb-8">
             <div>
@@ -190,7 +211,7 @@ export default function Home() {
                     />
                     <div className="absolute top-3 left-3">
                       <span className="px-2 py-0.5 bg-primary/90 text-primary-foreground text-[10px] font-bold rounded uppercase">
-                        {post.category}
+                        {post.tags[0] || "Tech"}
                       </span>
                     </div>
                   </div>
