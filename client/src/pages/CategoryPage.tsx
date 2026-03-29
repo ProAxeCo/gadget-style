@@ -9,7 +9,7 @@ import ProductCard from "@/components/ProductCard";
 import { getCategoryBySlug, getProductsByCategory } from "@/lib/data";
 import { ArrowLeft, SlidersHorizontal, ChevronDown, Grid3X3, LayoutList } from "lucide-react";
 
-const PRODUCTS_PER_PAGE = 12;
+const PRODUCTS_PER_PAGE = 15;
 
 type SortOption = "newest" | "price-low" | "price-high" | "rating" | "popular";
 
@@ -83,7 +83,7 @@ export default function CategoryPage() {
 
       {/* Products Grid */}
       <section className="py-12 lg:py-16">
-        <div className="container">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Toolbar */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-border">
             <p className="text-sm text-muted-foreground">
@@ -137,7 +137,7 @@ export default function CategoryPage() {
           <div
             className={
               viewMode === "grid"
-                ? "grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+                ? "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 lg:gap-6"
                 : "space-y-4"
             }
           >

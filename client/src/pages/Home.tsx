@@ -1,6 +1,6 @@
 /*
  * GADGET STYLE — Home Page
- * Lumina Design: Cinematic hero, editorial grid, magazine-style sections
+ * Gadget Flow-matched layout: 5-column grid on desktop, larger product cards
  */
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -109,10 +109,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== FEATURED PRODUCT ===== */}
+      {/* ===== FEATURED PRODUCTS — GF 5-column grid ===== */}
       <section className="py-16 lg:py-20 bg-card/30">
-        <div className="container">
-          <div className="flex items-center justify-between mb-8">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-10">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wider uppercase mb-3">
                 <Sparkles className="w-3 h-3" />
@@ -127,18 +127,18 @@ export default function Home() {
               View All <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-            {featured.map((product, i) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 lg:gap-6">
+            {featured.slice(0, 10).map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===== TRENDING PRODUCTS ===== */}
+      {/* ===== TRENDING PRODUCTS — GF 5-column grid ===== */}
       <section className="py-16 lg:py-20">
-        <div className="container">
-          <div className="flex items-center justify-between mb-8">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-10">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-orange-400 text-xs font-semibold tracking-wider uppercase mb-3">
                 <TrendingUp className="w-3 h-3" />
@@ -147,18 +147,18 @@ export default function Home() {
               <h2 className="text-2xl lg:text-3xl font-bold font-display">Trending Gadgets</h2>
             </div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-            {trending.map((product, i) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 lg:gap-6">
+            {trending.slice(0, 10).map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===== NEW ARRIVALS ===== */}
+      {/* ===== NEW ARRIVALS — GF 5-column grid ===== */}
       <section className="py-16 lg:py-20 bg-card/30">
-        <div className="container">
-          <div className="flex items-center justify-between mb-8">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-10">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold tracking-wider uppercase mb-3">
                 <Sparkles className="w-3 h-3" />
@@ -167,8 +167,8 @@ export default function Home() {
               <h2 className="text-2xl lg:text-3xl font-bold font-display">New Arrivals</h2>
             </div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-            {newArrivals.slice(0, 12).map((product, i) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 lg:gap-6">
+            {newArrivals.slice(0, 10).map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
             ))}
           </div>

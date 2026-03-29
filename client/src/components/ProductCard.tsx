@@ -1,6 +1,6 @@
 /*
  * GADGET STYLE — Product Card Component
- * Gadget Flow-inspired: Clickable image, price + tags below, wishlist overlay
+ * Matches Gadget Flow dimensions: ~222px wide in 5-col grid, natural aspect ratio images
  * Enhanced wishlist: larger button, tooltip, toast notification, animated heart
  */
 import { Link } from "wouter";
@@ -170,7 +170,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
     );
   }
 
-  // Default card — Gadget Flow style with enhanced wishlist
+  // Default card — Gadget Flow size: large image, generous padding
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -179,31 +179,31 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
       transition={{ duration: 0.4, delay: index * 0.08 }}
       className="group"
     >
-      {/* Clickable image area */}
-      <Link href={`/product/${product.slug}`} className="block relative aspect-[4/3] rounded-xl overflow-hidden bg-white/5 mb-2">
+      {/* Clickable image area — GF uses ~1.2 aspect ratio (slightly taller than wide) */}
+      <Link href={`/product/${product.slug}`} className="block relative aspect-[1.15/1] rounded-2xl overflow-hidden bg-[#1e1e2a] mb-3">
         <img
           src={product.image}
           alt={product.title}
-          className="w-full h-full object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
 
         {/* Amazon badge — top left */}
         {isAmazon && (
-          <span className="absolute top-2.5 left-2.5 w-6 h-6 bg-black rounded-md flex items-center justify-center text-white font-bold text-xs shadow-lg">
+          <span className="absolute top-3 left-3 w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-lg">
             a
           </span>
         )}
 
-        {/* Bottom overlay: cart + wishlist — LARGER and more prominent */}
-        <div className="absolute bottom-3 right-3 flex items-center gap-2">
+        {/* Bottom overlay: cart + wishlist */}
+        <div className="absolute bottom-3 right-3 flex items-center gap-2.5">
           <Tooltip>
             <TooltipTrigger asChild>
               <button
                 onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
-                className="p-2 rounded-full bg-black/50 backdrop-blur-md text-white/70 hover:text-white hover:bg-black/60 transition-all"
+                className="p-2.5 rounded-full bg-black/50 backdrop-blur-md text-white/70 hover:text-white hover:bg-black/60 transition-all"
                 aria-label="View on Amazon"
               >
-                <ShoppingCart className="w-4 h-4" />
+                <ShoppingCart className="w-5 h-5" />
               </button>
             </TooltipTrigger>
             <TooltipContent side="top" className="text-xs font-medium">View on Amazon</TooltipContent>
@@ -213,18 +213,18 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
       </Link>
 
       {/* Below image: Price + Tags row */}
-      <div className="flex items-center flex-wrap gap-1.5 mb-1">
-        <span className="text-sm font-bold font-mono text-green-400">${product.price.toFixed(2)}</span>
+      <div className="flex items-center flex-wrap gap-2 mb-1.5">
+        <span className="text-base font-bold font-mono text-green-400">${product.price.toFixed(2)}</span>
         {product.tags.slice(0, 2).map((tag: string) => (
-          <span key={tag} className="px-1.5 py-0.5 text-[9px] font-semibold rounded-full border border-yellow-500/40 text-yellow-400">
+          <span key={tag} className="px-2 py-0.5 text-[10px] font-semibold rounded-full border border-yellow-500/40 text-yellow-400">
             {tag}
           </span>
         ))}
       </div>
 
-      {/* Product title */}
+      {/* Product title — larger text */}
       <Link href={`/product/${product.slug}`}>
-        <h3 className="font-semibold text-sm line-clamp-2 group-hover:text-primary transition-colors leading-snug">
+        <h3 className="font-semibold text-[15px] line-clamp-2 group-hover:text-primary transition-colors leading-snug">
           {product.title}
         </h3>
       </Link>
