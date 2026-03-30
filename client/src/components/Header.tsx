@@ -74,13 +74,13 @@ export default function Header() {
         }`}
       >
         <div className="container">
-          <div className="flex items-center justify-between h-20 lg:h-24">
-            {/* Logo */}
+          <div className="flex items-center justify-between h-20 lg:h-28">
+            {/* Logo — large like GadgetFlow */}
             <Link href="/" className="shrink-0">
               <img
                 src={theme === "dark" ? LOGO_DARK : LOGO_LIGHT}
                 alt="Gadget Style"
-                className="h-12 sm:h-16 lg:h-20 w-auto object-contain"
+                className="h-14 sm:h-20 lg:h-28 w-auto object-contain"
               />
             </Link>
 
@@ -95,14 +95,14 @@ export default function Header() {
                     onMouseLeave={() => setCategoriesOpen(false)}
                   >
                     <button
-                      className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/5 ${
+                      className={`flex items-center gap-1 px-4 py-2 text-base font-bold tracking-wide transition-colors rounded-lg hover:bg-white/5 ${
                         location.startsWith("/category")
                           ? "text-primary"
-                          : "text-muted-foreground hover:text-foreground"
+                          : "text-foreground hover:text-primary"
                       }`}
                     >
                       {link.label}
-                      <ChevronDown className={`w-3.5 h-3.5 transition-transform ${categoriesOpen ? "rotate-180" : ""}`} />
+                      <ChevronDown className={`w-4 h-4 transition-transform ${categoriesOpen ? "rotate-180" : ""}`} />
                     </button>
                     <AnimatePresence>
                       {categoriesOpen && (
@@ -131,10 +131,10 @@ export default function Header() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/5 ${
+                    className={`px-4 py-2 text-base font-bold tracking-wide transition-colors rounded-lg hover:bg-white/5 ${
                       location === link.href
                         ? "text-primary"
-                        : "text-muted-foreground hover:text-foreground"
+                        : "text-foreground hover:text-primary"
                     }`}
                   >
                     {link.label}
@@ -232,7 +232,7 @@ export default function Header() {
                     <div key={link.label}>
                       <button
                         onClick={() => setCategoriesOpen(!categoriesOpen)}
-                        className="flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium text-muted-foreground rounded-lg hover:bg-white/5"
+                        className="flex items-center justify-between w-full px-3 py-2.5 text-base font-bold text-foreground rounded-lg hover:bg-white/5"
                       >
                         {link.label}
                         <ChevronDown className={`w-4 h-4 transition-transform ${categoriesOpen ? "rotate-180" : ""}`} />
@@ -262,8 +262,8 @@ export default function Header() {
                     <Link
                       key={link.label}
                       href={link.href}
-                      className={`block px-3 py-2.5 text-sm font-medium rounded-lg hover:bg-white/5 ${
-                        location === link.href ? "text-primary" : "text-muted-foreground"
+                      className={`block px-3 py-2.5 text-base font-bold rounded-lg hover:bg-white/5 ${
+                        location === link.href ? "text-primary" : "text-foreground"
                       }`}
                     >
                       {link.label}
