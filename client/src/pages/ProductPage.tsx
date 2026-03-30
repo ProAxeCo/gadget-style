@@ -28,28 +28,29 @@ import {
 import { toast } from "sonner";
 import { useState, useEffect } from "react";
 
-/* Amazon smile arrow SVG — clean, recognizable icon for the CTA button */
-function AmazonSmileIcon({ className = "w-5 h-5" }: { className?: string }) {
+/* Amazon round logo — matches GadgetFlow's orange circle with white "a" */
+function AmazonRoundLogo({ size = 32 }: { size?: number }) {
   return (
-    <svg viewBox="0 0 24 24" className={className} fill="none">
-      {/* The "a" letter */}
+    <svg width={size} height={size} viewBox="0 0 40 40" className="shrink-0">
+      {/* Orange circle background */}
+      <circle cx="20" cy="20" r="20" fill="#FF9900" />
+      {/* White Amazon "a" letter */}
       <path
-        d="M12.5 9.62c0 1.11 0.03 2.04-0.53 3.03-0.46 0.8-1.18 1.29-1.99 1.29-1.1 0-1.75-0.84-1.75-2.08 0-2.44 2.19-2.89 4.27-2.89v0.65z"
-        fill="currentColor"
+        d="M22.5 18.5c0 0.8 0.02 1.47-0.38 2.18-0.33 0.58-0.85 0.93-1.43 0.93-0.79 0-1.26-0.6-1.26-1.5 0-1.76 1.58-2.08 3.07-2.08v0.47z"
+        fill="white"
       />
       <path
-        d="M16.18 16.12c-0.24 0.21-0.59 0.23-0.87 0.08-1.22-1.01-1.43-1.48-2.1-2.44-2.01 2.05-3.43 2.66-6.03 2.66-3.08 0-5.48-1.9-5.48-5.7 0-2.97 1.61-4.99 3.9-5.98 1.99-0.87 4.76-1.03 6.88-1.27v-0.47c0-0.87 0.07-1.9-0.44-2.65-0.45-0.67-1.3-0.95-2.05-0.95-1.4 0-2.64 0.72-2.95 2.2-0.06 0.33-0.3 0.66-0.63 0.68l-3.54-0.38c-0.3-0.07-0.63-0.3-0.54-0.75C3.07 0.63 5.97-0.38 8.56-0.38c1.32 0 3.05 0.35 4.09 1.35 1.32 1.23 1.19 2.87 1.19 4.66v4.22c0 1.27 0.53 1.83 1.02 2.51 0.17 0.25 0.21 0.54-0.01 0.72-0.55 0.46-1.53 1.32-2.07 1.8l-0.01-0.01"
-        fill="currentColor"
-        transform="translate(4 4) scale(0.67)"
+        d="M25.15 24.6c-0.17 0.15-0.42 0.16-0.63 0.06-0.88-0.73-1.03-1.07-1.51-1.76-1.45 1.48-2.47 1.92-4.34 1.92-2.22 0-3.95-1.37-3.95-4.11 0-2.14 1.16-3.6 2.81-4.31 1.43-0.63 3.43-0.74 4.96-0.92v-0.34c0-0.63 0.05-1.37-0.32-1.91-0.32-0.48-0.94-0.68-1.48-0.68-1.01 0-1.9 0.52-2.12 1.59-0.04 0.24-0.22 0.47-0.45 0.49l-2.55-0.27c-0.22-0.05-0.45-0.22-0.39-0.54 0.58-3.04 3.33-3.95 5.79-3.95 0.95 0 2.2 0.25 2.95 0.97 0.95 0.89 0.86 2.07 0.86 3.36v3.04c0 0.92 0.38 1.32 0.74 1.81 0.12 0.18 0.15 0.39-0.01 0.52-0.4 0.33-1.1 0.95-1.49 1.3l-0.01-0.01"
+        fill="white"
       />
-      {/* The smile arrow */}
+      {/* Smile arrow */}
       <path
-        d="M4.5 17.5c2.5 1.8 6 2.8 9 2.8 3.5 0 7-1.3 9.5-3.5 0.3-0.25 0.02-0.6-0.3-0.4-2.7 1.6-6 2.5-9.5 2.5-3 0-6.2-0.8-8.7-2.2-0.3-0.15-0.5 0.2-0.2 0.4"
-        fill="#FF9900"
+        d="M13.5 27.5c1.8 1.3 4.3 2 6.5 2 2.5 0 5-0.94 6.84-2.52 0.22-0.18 0.01-0.43-0.22-0.29-1.94 1.15-4.32 1.8-6.84 1.8-2.16 0-4.47-0.58-6.27-1.59-0.22-0.11-0.36 0.14-0.14 0.29"
+        fill="white"
       />
       <path
-        d="M20.5 16c-0.4-0.5-2.5-0.25-3.5-0.12-0.3 0.03-0.35-0.22-0.08-0.4 1.7-1.2 4.5-0.85 4.8-0.45 0.3 0.4-0.08 3.2-1.7 4.5-0.25 0.2-0.48 0.1-0.37-0.17 0.35-0.9 1.15-2.9 0.75-3.35"
-        fill="#FF9900"
+        d="M25 26c-0.29-0.36-1.8-0.18-2.52-0.09-0.22 0.02-0.25-0.16-0.06-0.29 1.22-0.86 3.24-0.61 3.46-0.32 0.22 0.29-0.06 2.3-1.22 3.24-0.18 0.14-0.35 0.07-0.27-0.12 0.25-0.65 0.83-2.09 0.54-2.41"
+        fill="white"
       />
     </svg>
   );
@@ -139,20 +140,20 @@ export default function ProductPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {/* Main Image — clean, no Amazon logo overlay */}
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden glass-card mb-3 bg-white">
+            {/* Main Image — edge-to-edge like GadgetFlow, no padding */}
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white">
               {images.length > 1 && (
                 <>
                   <button
                     onClick={() => setActiveImage(prev => prev > 0 ? prev - 1 : images.length - 1)}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/50 transition-colors"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
                     aria-label="Previous image"
                   >
                     <ChevronLeft className="w-5 h-5" />
                   </button>
                   <button
                     onClick={() => setActiveImage(prev => prev < images.length - 1 ? prev + 1 : 0)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/50 transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
                     aria-label="Next image"
                   >
                     <ChevronRight className="w-5 h-5" />
@@ -162,7 +163,7 @@ export default function ProductPage() {
               <img
                 src={images[activeImage] || product.image}
                 alt={product.title}
-                className="w-full h-full object-contain p-6"
+                className="w-full h-full object-cover"
               />
               {/* Image counter */}
               {images.length > 1 && (
@@ -185,7 +186,7 @@ export default function ProductPage() {
                         : "border-border/50 opacity-60 hover:opacity-100"
                     }`}
                   >
-                    <img src={img} alt="" className="w-full h-full object-contain bg-white p-1" />
+                    <img src={img} alt="" className="w-full h-full object-cover bg-white" />
                   </button>
                 ))}
               </div>
@@ -229,9 +230,7 @@ export default function ProductPage() {
               className="flex items-center gap-3 px-6 py-4 bg-[#1a8a4a] hover:bg-[#157a3f] text-white rounded-xl font-semibold text-base transition-colors mb-4 shadow-lg shadow-green-900/20"
             >
               {isAmazon ? (
-                <span className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shrink-0">
-                  <AmazonSmileIcon className="w-5 h-5 text-[#232F3E]" />
-                </span>
+                <AmazonRoundLogo size={28} />
               ) : (
                 <ExternalLink className="w-5 h-5 shrink-0" />
               )}
@@ -277,10 +276,10 @@ export default function ProductPage() {
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`pb-3 text-sm font-semibold capitalize transition-colors relative ${
+                    className={`pb-3 text-base font-bold capitalize transition-colors relative ${
                       activeTab === tab
                         ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
+                        : "text-muted-foreground/70 hover:text-foreground"
                     }`}
                   >
                     {tab}
@@ -301,18 +300,33 @@ export default function ProductPage() {
                 <h2 className="text-lg font-bold font-display">
                   {product.title}: Overview
                 </h2>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-foreground/80 leading-relaxed">
                   {product.description}
                 </p>
-                {descSentences.length > 1 && (
-                  <ul className="space-y-2.5 mt-4">
-                    {descSentences.slice(0, 5).map((sentence, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                {descSentences.length >= 1 && (
+                  <ul className="space-y-3 mt-4">
+                    {descSentences.map((sentence, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-foreground/80">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
                         <span>{sentence}.</span>
                       </li>
                     ))}
                   </ul>
+                )}
+
+                {/* Additional product highlights from specs */}
+                {product.specs && (
+                  <div className="mt-5 pt-5 border-t border-border/50">
+                    <h3 className="text-sm font-bold text-foreground mb-3">Key Specifications</h3>
+                    <ul className="space-y-2.5">
+                      {Object.entries(product.specs).slice(0, 4).map(([key, value]) => (
+                        <li key={key} className="flex items-start gap-2.5 text-sm text-foreground/80">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 shrink-0" />
+                          <span><strong className="text-foreground">{key}:</strong> {value}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
 
                 {/* Tags */}
@@ -357,7 +371,7 @@ export default function ProductPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-[#1a8a4a] hover:bg-[#157a3f] text-white rounded-lg font-semibold transition-colors"
                   >
-                    {isAmazon && <AmazonSmileIcon className="w-5 h-5" />}
+                    {isAmazon && <AmazonRoundLogo size={22} />}
                     Check Latest Price
                     <ExternalLink className="w-4 h-4" />
                   </a>
