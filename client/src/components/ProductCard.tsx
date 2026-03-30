@@ -162,8 +162,6 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
           )}
         </div>
 
-        {/* Amazon "a" badge — top left, GF exact style */}
-        {isAmazon && <AmazonBadge />}
 
         {/* Bottom-right overlay icons — GF style: bell + heart, always visible */}
         <div className="absolute bottom-2.5 right-2.5 flex items-center gap-2 z-10">

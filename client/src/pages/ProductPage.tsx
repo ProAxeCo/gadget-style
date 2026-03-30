@@ -1,10 +1,11 @@
 /*
  * GADGET STYLE — Product Detail Page
- * Redesigned to match Gadget Flow layout:
+ * Matches GadgetFlow layout:
  * - Large hero image with thumbnail strip below
- * - "Get it for $X" Amazon CTA button (green, with Amazon 'a' icon)
+ * - "Get it for $X" CTA button with Amazon smile icon (no Amazon logo on images)
  * - Wishlist + Share buttons
- * - Overview tab with bullet-point features
+ * - Tabs: Overview | Specs | Price
+ * - Specs tab shows real manufacturer specifications in clean table
  * - Rating badge
  * - Related products section
  * - Breadcrumb navigation
@@ -17,14 +18,42 @@ import ProductCard from "@/components/ProductCard";
 import {
   ExternalLink,
   Heart,
-  Star,
   Share2,
   ChevronRight,
   Bell,
   Copy,
+  ChevronLeft,
+  ChevronDown,
 } from "lucide-react";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+/* Amazon smile arrow SVG — clean, recognizable icon for the CTA button */
+function AmazonSmileIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none">
+      {/* The "a" letter */}
+      <path
+        d="M12.5 9.62c0 1.11 0.03 2.04-0.53 3.03-0.46 0.8-1.18 1.29-1.99 1.29-1.1 0-1.75-0.84-1.75-2.08 0-2.44 2.19-2.89 4.27-2.89v0.65z"
+        fill="currentColor"
+      />
+      <path
+        d="M16.18 16.12c-0.24 0.21-0.59 0.23-0.87 0.08-1.22-1.01-1.43-1.48-2.1-2.44-2.01 2.05-3.43 2.66-6.03 2.66-3.08 0-5.48-1.9-5.48-5.7 0-2.97 1.61-4.99 3.9-5.98 1.99-0.87 4.76-1.03 6.88-1.27v-0.47c0-0.87 0.07-1.9-0.44-2.65-0.45-0.67-1.3-0.95-2.05-0.95-1.4 0-2.64 0.72-2.95 2.2-0.06 0.33-0.3 0.66-0.63 0.68l-3.54-0.38c-0.3-0.07-0.63-0.3-0.54-0.75C3.07 0.63 5.97-0.38 8.56-0.38c1.32 0 3.05 0.35 4.09 1.35 1.32 1.23 1.19 2.87 1.19 4.66v4.22c0 1.27 0.53 1.83 1.02 2.51 0.17 0.25 0.21 0.54-0.01 0.72-0.55 0.46-1.53 1.32-2.07 1.8l-0.01-0.01"
+        fill="currentColor"
+        transform="translate(4 4) scale(0.67)"
+      />
+      {/* The smile arrow */}
+      <path
+        d="M4.5 17.5c2.5 1.8 6 2.8 9 2.8 3.5 0 7-1.3 9.5-3.5 0.3-0.25 0.02-0.6-0.3-0.4-2.7 1.6-6 2.5-9.5 2.5-3 0-6.2-0.8-8.7-2.2-0.3-0.15-0.5 0.2-0.2 0.4"
+        fill="#FF9900"
+      />
+      <path
+        d="M20.5 16c-0.4-0.5-2.5-0.25-3.5-0.12-0.3 0.03-0.35-0.22-0.08-0.4 1.7-1.2 4.5-0.85 4.8-0.45 0.3 0.4-0.08 3.2-1.7 4.5-0.25 0.2-0.48 0.1-0.37-0.17 0.35-0.9 1.15-2.9 0.75-3.35"
+        fill="#FF9900"
+      />
+    </svg>
+  );
+}
 
 export default function ProductPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -32,6 +61,13 @@ export default function ProductPage() {
   const { toggleWishlist, isInWishlist } = useWishlist();
   const [activeImage, setActiveImage] = useState(0);
   const [activeTab, setActiveTab] = useState<"overview" | "specs" | "price">("overview");
+
+  // Scroll to top on product change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setActiveImage(0);
+    setActiveTab("overview");
+  }, [slug]);
 
   if (!product) {
     return (
@@ -68,6 +104,9 @@ export default function ProductPage() {
   // Rating score out of 10
   const ratingScore = (product.rating * 2).toFixed(1);
 
+  // Determine if affiliate is Amazon
+  const isAmazon = product.affiliateUrl?.includes("amazon") || product.affiliateUrl?.includes("amzn.to");
+
   return (
     <div className="pt-20 lg:pt-24">
       <div className="container pb-16">
@@ -100,20 +139,40 @@ export default function ProductPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {/* Main Image */}
+            {/* Main Image — clean, no Amazon logo overlay */}
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden glass-card mb-3 bg-white">
+              {images.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setActiveImage(prev => prev > 0 ? prev - 1 : images.length - 1)}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/50 transition-colors"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={() => setActiveImage(prev => prev < images.length - 1 ? prev + 1 : 0)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/50 transition-colors"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </>
+              )}
               <img
                 src={images[activeImage] || product.image}
                 alt={product.title}
                 className="w-full h-full object-contain p-6"
               />
-              {/* Image credit */}
-              <span className="absolute bottom-3 right-3 text-[10px] text-gray-400 bg-black/40 px-2 py-0.5 rounded">
-                Image Credit: Manufacturer
-              </span>
+              {/* Image counter */}
+              {images.length > 1 && (
+                <span className="absolute bottom-3 right-3 text-xs text-white/80 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                  {activeImage + 1} / {images.length}
+                </span>
+              )}
             </div>
 
-            {/* Thumbnail Strip */}
+            {/* Thumbnail Strip — GadgetFlow style */}
             {images.length > 1 && (
               <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
                 {images.map((img: string, i: number) => (
@@ -131,6 +190,16 @@ export default function ProductPage() {
                 ))}
               </div>
             )}
+
+            {/* Editor's Quote — GadgetFlow style */}
+            <div className="mt-6 px-6 py-5 glass-card relative">
+              <div className="absolute top-3 left-4 text-4xl text-primary/20 font-serif leading-none">&ldquo;</div>
+              <p className="text-center text-sm italic text-muted-foreground px-6">
+                {descSentences[0] ? descSentences[0] + "." : product.description.slice(0, 100) + "..."}
+              </p>
+              <p className="text-center text-xs text-muted-foreground/60 mt-2 font-medium">Editor&apos;s Quote</p>
+              <div className="absolute bottom-3 right-4 text-4xl text-primary/20 font-serif leading-none">&rdquo;</div>
+            </div>
           </motion.div>
 
           {/* RIGHT: Product Details */}
@@ -146,28 +215,26 @@ export default function ProductPage() {
                 <span className="text-xs font-semibold uppercase tracking-wider text-primary">
                   Gadget Style Rating
                 </span>
-                <button className="text-muted-foreground hover:text-foreground">
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="currentColor">
-                    <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" strokeWidth="1.5" />
-                    <text x="8" y="11" textAnchor="middle" fontSize="9" fontWeight="bold">?</text>
-                  </svg>
-                </button>
               </div>
               <div className="w-14 h-14 rounded-full bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center shadow-lg shadow-rose-500/20">
                 <span className="text-white font-bold text-lg">{ratingScore}</span>
               </div>
             </div>
 
-            {/* Amazon CTA Button — Gadget Flow style green button */}
+            {/* Amazon CTA Button — GadgetFlow style: green with Amazon smile icon */}
             <a
               href={product.affiliateUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 px-6 py-4 bg-[#FF9900] hover:bg-[#e88b00] text-black rounded-xl font-semibold text-base transition-colors mb-4 shadow-lg shadow-[#FF9900]/20"
+              className="flex items-center gap-3 px-6 py-4 bg-[#1a8a4a] hover:bg-[#157a3f] text-white rounded-xl font-semibold text-base transition-colors mb-4 shadow-lg shadow-green-900/20"
             >
-              <span className="w-8 h-8 bg-black rounded-md flex items-center justify-center text-white font-bold text-lg shrink-0">a</span>
+              {isAmazon ? (
+                <AmazonSmileIcon className="w-6 h-6 shrink-0" />
+              ) : (
+                <ExternalLink className="w-5 h-5 shrink-0" />
+              )}
               <span>Get it for ${product.price.toFixed(2)}</span>
-              <ExternalLink className="w-4 h-4 ml-auto" />
+              <ExternalLink className="w-4 h-4 ml-auto opacity-60" />
             </a>
 
             {/* Action Buttons Row */}
@@ -259,31 +326,17 @@ export default function ProductPage() {
 
             {activeTab === "specs" && (
               <div className="space-y-4">
-                <h2 className="text-lg font-bold font-display">Specifications</h2>
-                <div className="glass-card p-4 space-y-3">
-                  <div className="flex justify-between text-sm py-2 border-b border-border/50">
-                    <span className="text-muted-foreground">Brand</span>
-                    <span className="font-medium">{product.title.split(' ')[0]}</span>
-                  </div>
-                  <div className="flex justify-between text-sm py-2 border-b border-border/50">
-                    <span className="text-muted-foreground">Category</span>
-                    <span className="font-medium">{product.category}</span>
-                  </div>
-                  <div className="flex justify-between text-sm py-2 border-b border-border/50">
-                    <span className="text-muted-foreground">Rating</span>
-                    <span className="font-medium flex items-center gap-1">
-                      <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
-                      {product.rating} ({product.reviewCount.toLocaleString()} reviews)
-                    </span>
-                  </div>
-                  <div className="flex justify-between text-sm py-2 border-b border-border/50">
-                    <span className="text-muted-foreground">ASIN</span>
-                    <span className="font-mono text-xs">{product.asin}</span>
-                  </div>
-                  <div className="flex justify-between text-sm py-2">
-                    <span className="text-muted-foreground">Retailer</span>
-                    <span className="font-medium">Amazon</span>
-                  </div>
+                <h2 className="text-lg font-bold font-display">
+                  {product.title}: Tech Specs
+                </h2>
+                {/* Real manufacturer specifications — GadgetFlow clean table style */}
+                <div className="divide-y divide-border/50">
+                  {product.specs && Object.entries(product.specs).map(([key, value]) => (
+                    <div key={key} className="flex justify-between items-start py-3 gap-4">
+                      <span className="text-sm font-semibold text-foreground shrink-0">{key}</span>
+                      <span className="text-sm text-muted-foreground text-right">{value}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
@@ -293,20 +346,22 @@ export default function ProductPage() {
                 <h2 className="text-lg font-bold font-display">Price Information</h2>
                 <div className="glass-card p-6 text-center">
                   <p className="text-4xl font-bold font-mono mb-2">${product.price.toFixed(2)}</p>
-                  <p className="text-sm text-muted-foreground mb-4">Current price on Amazon</p>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Current price on {isAmazon ? "Amazon" : "retailer"}
+                  </p>
                   <a
                     href={product.affiliateUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF9900] hover:bg-[#e88b00] text-black rounded-lg font-semibold transition-colors"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#1a8a4a] hover:bg-[#157a3f] text-white rounded-lg font-semibold transition-colors"
                   >
-                    <span className="w-6 h-6 bg-black rounded flex items-center justify-center text-white font-bold text-sm">a</span>
+                    {isAmazon && <AmazonSmileIcon className="w-5 h-5" />}
                     Check Latest Price
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
                 <p className="text-xs text-muted-foreground text-center italic">
-                  Prices may vary. Click through to Amazon for the most up-to-date pricing.
+                  Prices may vary. Click through for the most up-to-date pricing.
                 </p>
               </div>
             )}
