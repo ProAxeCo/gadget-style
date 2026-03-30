@@ -115,7 +115,7 @@ export default function ProductPage() {
             transition={{ duration: 0.5 }}
           >
             {/* Main Image */}
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white">
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-secondary/30 border border-border/50">
               {images.length > 1 && (
                 <>
                   <button
@@ -160,14 +160,14 @@ export default function ProductPage() {
                         : "border-border/50 opacity-60 hover:opacity-100"
                     }`}
                   >
-                    <img src={img} alt="" className="w-full h-full object-cover bg-white" />
+                    <img src={img} alt="" className="w-full h-full object-cover bg-secondary/30" />
                   </button>
                 ))}
               </div>
             )}
 
             {/* Editor's Quote */}
-            <div className="mt-6 px-6 py-5 glass-card relative">
+            <div className="mt-6 px-6 py-5 rounded-xl bg-card border border-border/50 relative">
               <div className="absolute top-3 left-4 text-4xl text-primary/20 font-serif leading-none">&ldquo;</div>
               <p className="text-center text-sm italic text-muted-foreground px-6">
                 {descSentences[0] ? descSentences[0] + "." : product.description.slice(0, 100) + "..."}
@@ -191,7 +191,7 @@ export default function ProductPage() {
                   Gadget Style Rating
                 </span>
               </div>
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center shadow-lg shadow-rose-500/20">
+              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-lg shadow-primary/20">
                 <span className="text-white font-bold text-lg">{ratingScore}</span>
               </div>
             </div>
@@ -338,7 +338,7 @@ export default function ProductPage() {
             {activeTab === "price" && (
               <div className="space-y-4">
                 <h2 className="text-lg font-bold font-display">Price Information</h2>
-                <div className="glass-card p-6 text-center">
+                <div className="rounded-xl bg-card border border-border/50 p-6 text-center">
                   <p className="text-4xl font-bold font-mono mb-2">${product.price.toFixed(2)}</p>
                   <p className="text-sm text-muted-foreground mb-4">
                     Current price on {isAmazon ? "Amazon" : "retailer"}

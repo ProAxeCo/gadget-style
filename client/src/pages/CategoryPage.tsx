@@ -60,24 +60,27 @@ export default function CategoryPage() {
 
   return (
     <div>
-      {/* Category Hero */}
-      <section className="relative h-[45vh] min-h-[320px] flex items-end overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={category.image} alt={category.name} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
-        </div>
-        <div className="container relative z-10 pb-10">
-          <Link href="/" className="inline-flex items-center gap-1 text-sm text-white/70 hover:text-white mb-4 transition-colors">
+      {/* Category Hero — light editorial style */}
+      <section className="pt-24 lg:pt-28 pb-10 lg:pb-14 bg-gradient-to-b from-primary/5 to-background">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6 transition-colors">
             <ArrowLeft className="w-4 h-4" /> Back to Home
           </Link>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-3xl lg:text-5xl font-bold font-display text-white mb-2 drop-shadow-lg"
-          >
-            {category.name}
-          </motion.h1>
-          <p className="text-white/70 max-w-lg">{category.description}</p>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+            <div>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-3xl lg:text-5xl font-bold font-display text-foreground mb-2"
+              >
+                {category.name}
+              </motion.h1>
+              <p className="text-muted-foreground max-w-lg">{category.description}</p>
+            </div>
+            <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-2xl overflow-hidden border border-border/50 shadow-lg shrink-0">
+              <img src={category.image} alt={category.name} className="w-full h-full object-cover" />
+            </div>
+          </div>
         </div>
       </section>
 

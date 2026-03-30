@@ -34,14 +34,14 @@ import { motion, AnimatePresence } from "framer-motion";
 /* New blue GS logo — concentric ring G with flowing S */
 const GS_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/logo_blue_v2-ZhrJEA2VoZxipLuGZMBdr4.png";
 
-/* Dot colors for each category */
+/* Dot colors for each category — using primary blue for consistency on light bg */
 const CATEGORY_COLORS = [
-  "bg-red-500",
-  "bg-blue-500",
-  "bg-emerald-500",
-  "bg-cyan-500",
-  "bg-violet-500",
-  "bg-rose-500",
+  "bg-primary",
+  "bg-primary/70",
+  "bg-primary/85",
+  "bg-primary/60",
+  "bg-primary/75",
+  "bg-primary/90",
 ];
 
 /* Primary nav items with icons — pill-shaped like GF */
@@ -328,7 +328,7 @@ export default function Header() {
                       className={`flex items-center gap-2 px-4 py-1.5 rounded-full whitespace-nowrap text-sm font-semibold transition-all duration-200 shrink-0 ${
                         isActive
                           ? "bg-primary/10 text-primary"
-                          : "text-muted-foreground hover:text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5"
+                          : "text-foreground/70 hover:text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5"
                       }`}
                     >
                       <span className={`w-2 h-2 rounded-full shrink-0 ${CATEGORY_COLORS[i % CATEGORY_COLORS.length]}`} />
