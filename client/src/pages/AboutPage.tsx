@@ -1,13 +1,13 @@
 /*
  * GADGET STYLE — About Page
- * Lumina Design: Editorial storytelling with brand values
+ * Blue corporate identity, editorial storytelling with brand values
  */
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Target, Eye, Zap, Shield } from "lucide-react";
 
-/* New GS monogram icon — solid amber/gold, transparent background */
-const GS_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/gadget_style_logo_icon-nF6fPR9PHBNpmcUuo9RZYg.png";
+/* Blue GS logo — concentric ring G with flowing S */
+const GS_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/logo_blue_v2-ZhrJEA2VoZxipLuGZMBdr4.png";
 
 export default function AboutPage() {
   const values = [
@@ -43,7 +43,7 @@ export default function AboutPage() {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <div className="flex items-center justify-center gap-3 mb-8">
-            <img src={GS_ICON} alt="GS" className="h-12 w-auto" />
+            <img src={GS_ICON} alt="GS" className="h-14 w-auto" />
             <span className="text-2xl font-bold tracking-tight text-foreground">
               GADGET <span className="text-primary">STYLE</span>
             </span>

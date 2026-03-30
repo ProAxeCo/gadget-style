@@ -1,6 +1,6 @@
 /*
  * GADGET STYLE — Editorial Feed Homepage
- * Design: Warm amber/gold, Instrument Serif headings, editorial rhythm.
+ * Design: Corporate blue (#1060A8), light background, Instrument Serif headings, editorial rhythm.
  * Sections: Pick of the Day → Explore Categories → Trending Strip → Editorial Feed → New Arrivals → Blog → Newsletter
  */
 import { useState, useRef } from "react";
@@ -44,11 +44,11 @@ function SectionHeading({ label, title, action, href }: { label: string; title: 
   return (
     <div className="flex items-end justify-between mb-8 lg:mb-10">
       <div>
-        <span className="text-amber font-mono text-xs tracking-widest uppercase block mb-2">{label}</span>
+        <span className="text-primary font-mono text-xs tracking-widest uppercase block mb-2">{label}</span>
         <h2 className="text-3xl lg:text-4xl font-display text-foreground">{title}</h2>
       </div>
       {action && href && (
-        <Link href={href} className="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-amber hover:text-amber-light transition-colors">
+        <Link href={href} className="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
           {action} <ArrowRight className="w-4 h-4" />
         </Link>
       )}
@@ -85,8 +85,8 @@ export default function Home() {
             alt={pick.title}
             className="w-full h-full object-cover animate-ken-burns"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
         </div>
 
         <div className="container relative z-10 pb-16 pt-32">
@@ -96,7 +96,7 @@ export default function Home() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber/15 border border-amber/25 text-amber text-xs font-mono tracking-widest uppercase mb-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 text-white text-xs font-mono tracking-widest uppercase mb-5">
               <Sparkles className="w-3.5 h-3.5" />
               Pick of the Day
             </div>
@@ -110,9 +110,9 @@ export default function Home() {
             </p>
 
             <div className="flex items-center gap-4 mb-8">
-              <span className="font-mono text-2xl text-amber font-semibold">${pick.price}</span>
-              <span className="flex items-center gap-1 text-amber-light/80 text-sm">
-                <Star className="w-4 h-4 fill-amber text-amber" />
+              <span className="font-mono text-2xl text-white font-semibold">${pick.price}</span>
+              <span className="flex items-center gap-1 text-yellow-400/80 text-sm">
+                <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                 {pick.rating}
               </span>
               <span className="text-white/40 text-sm font-mono">{pick.category}</span>
@@ -121,7 +121,7 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <Link
                 href={`/product/${pick.slug}`}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-amber text-black font-semibold rounded-lg hover:bg-amber-light transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
               >
                 Explore Product <ArrowRight className="w-4 h-4" />
               </Link>
@@ -140,7 +140,7 @@ export default function Home() {
               <button
                 key={i}
                 onClick={() => setPickIndex(i)}
-                className={`w-2 h-2 rounded-full transition-all ${i === pickIndex ? "bg-amber w-6" : "bg-white/30 hover:bg-white/50"}`}
+                className={`w-2 h-2 rounded-full transition-all ${i === pickIndex ? "bg-primary w-6" : "bg-white/30 hover:bg-white/50"}`}
               />
             ))}
           </div>
@@ -149,25 +149,24 @@ export default function Home() {
 
       {/* ════════════════════════════════════════════
           SECTION 2 — EXPLORE CATEGORIES (Carousel)
-          Moved here per user request — right after Pick of the Day
           ════════════════════════════════════════════ */}
       <section className="py-12 lg:py-16 border-t border-border/50">
         <div className="container">
           <div className="flex items-end justify-between mb-8 lg:mb-10">
             <div>
-              <span className="text-amber font-mono text-xs tracking-widest uppercase block mb-2">Browse</span>
+              <span className="text-primary font-mono text-xs tracking-widest uppercase block mb-2">Browse</span>
               <h2 className="text-3xl lg:text-4xl font-display text-foreground">Explore Categories</h2>
             </div>
             <div className="hidden sm:flex gap-2">
               <button
                 onClick={() => scrollCat(-1)}
-                className="p-2 rounded-lg border border-border/50 text-muted-foreground hover:text-amber hover:border-amber/30 transition-colors"
+                className="p-2 rounded-lg border border-border/50 text-muted-foreground hover:text-primary hover:border-primary/30 transition-colors"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={() => scrollCat(1)}
-                className="p-2 rounded-lg border border-border/50 text-muted-foreground hover:text-amber hover:border-amber/30 transition-colors"
+                className="p-2 rounded-lg border border-border/50 text-muted-foreground hover:text-primary hover:border-primary/30 transition-colors"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -202,7 +201,7 @@ export default function Home() {
       {/* ════════════════════════════════════════════
           SECTION 3 — NOW TRENDING (Numbered Strip)
           ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16 bg-card/30">
+      <section className="py-12 lg:py-16 bg-secondary/50 dark:bg-card/30">
         <div className="container">
           <SectionHeading label="Trending" title="Now Trending" action="View All" href="/category/smart-home" />
 
@@ -210,9 +209,9 @@ export default function Home() {
             {trending.slice(0, 5).map((product, i) => (
               <FadeSection key={product.id} delay={i * 0.08}>
                 <Link href={`/product/${product.slug}`}>
-                  <div className="group relative flex lg:flex-col items-center lg:items-start gap-4 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-amber/30 hover:bg-card transition-all">
+                  <div className="group relative flex lg:flex-col items-center lg:items-start gap-4 p-4 rounded-xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all">
                     {/* Rank number */}
-                    <span className="absolute top-2 left-3 font-mono text-4xl font-bold text-amber/20 group-hover:text-amber/40 transition-colors leading-none">
+                    <span className="absolute top-2 left-3 font-mono text-4xl font-bold text-primary/15 group-hover:text-primary/30 transition-colors leading-none">
                       {i + 1}
                     </span>
 
@@ -227,13 +226,13 @@ export default function Home() {
 
                     {/* Info */}
                     <div className="min-w-0 flex-1">
-                      <h3 className="font-medium text-sm text-foreground line-clamp-2 group-hover:text-amber transition-colors">
+                      <h3 className="font-medium text-sm text-foreground line-clamp-2 group-hover:text-primary transition-colors">
                         {product.title}
                       </h3>
                       <div className="flex items-center gap-2 mt-1.5">
-                        <span className="font-mono text-sm text-amber">${product.price}</span>
+                        <span className="font-mono text-sm text-primary">${product.price}</span>
                         <span className="flex items-center gap-0.5 text-xs text-muted-foreground">
-                          <Star className="w-3 h-3 fill-amber text-amber" />
+                          <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                           {product.rating}
                         </span>
                       </div>
@@ -247,7 +246,7 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════════
-          SECTION 4 — EDITORIAL DISCOVERY FEED
+          SECTION 4 — EDITOR'S PICKS (Alternating Editorial Feed)
           ════════════════════════════════════════════ */}
       <section className="py-12 lg:py-16">
         <div className="container">
@@ -269,17 +268,17 @@ export default function Home() {
                         alt={product.title}
                         className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
 
                     {/* Text side */}
                     <div className={`py-2 ${i % 2 === 1 ? "lg:order-1 lg:text-right" : ""}`} style={{ direction: "ltr" }}>
                       <div className={`flex items-center gap-2 mb-3 ${i % 2 === 1 ? "lg:justify-end" : ""}`}>
-                        <Tag className="w-3.5 h-3.5 text-amber" />
-                        <span className="text-xs font-mono text-amber tracking-wider uppercase">{product.category}</span>
+                        <Tag className="w-3.5 h-3.5 text-primary" />
+                        <span className="text-xs font-mono text-primary tracking-wider uppercase">{product.category}</span>
                       </div>
 
-                      <h3 className="text-2xl lg:text-3xl font-display text-foreground mb-3 group-hover:text-amber transition-colors">
+                      <h3 className="text-2xl lg:text-3xl font-display text-foreground mb-3 group-hover:text-primary transition-colors">
                         {product.title}
                       </h3>
 
@@ -288,14 +287,14 @@ export default function Home() {
                       </p>
 
                       <div className={`flex items-center gap-4 mb-5 ${i % 2 === 1 ? "lg:justify-end" : ""}`}>
-                        <span className="font-mono text-xl text-amber font-semibold">${product.price}</span>
+                        <span className="font-mono text-xl text-primary font-semibold">${product.price}</span>
                         <span className="flex items-center gap-1 text-sm text-muted-foreground">
-                          <Star className="w-4 h-4 fill-amber text-amber" />
+                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                           {product.rating}
                         </span>
                       </div>
 
-                      <span className={`inline-flex items-center gap-2 text-sm font-medium text-amber group-hover:gap-3 transition-all`}>
+                      <span className={`inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all`}>
                         View Product <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
@@ -313,7 +312,7 @@ export default function Home() {
       {/* ════════════════════════════════════════════
           SECTION 5 — NEW ARRIVALS (Grid)
           ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16 bg-card/30">
+      <section className="py-12 lg:py-16 bg-secondary/50 dark:bg-card/30">
         <div className="container">
           <SectionHeading label="Fresh" title="New Arrivals" action="See All" href="/category/smart-home" />
 
@@ -338,7 +337,7 @@ export default function Home() {
             {blogPosts.slice(0, 3).map((post, i) => (
               <FadeSection key={post.id} delay={i * 0.1}>
                 <Link href={`/blog/${post.slug}`}>
-                  <article className="group rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-amber/30 transition-all">
+                  <article className="group rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all">
                     <div className="aspect-[16/10] overflow-hidden">
                       <img
                         src={post.image}
@@ -354,7 +353,7 @@ export default function Home() {
                         </span>
                         <span>{post.date}</span>
                       </div>
-                      <h3 className="font-display text-lg text-foreground group-hover:text-amber transition-colors line-clamp-2 mb-2">
+                      <h3 className="font-display text-lg text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-2">
                         {post.title}
                       </h3>
                       <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
@@ -372,12 +371,12 @@ export default function Home() {
           ════════════════════════════════════════════ */}
       <section className="py-16 lg:py-24 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={NEWSLETTER_BG} alt="" className="w-full h-full object-cover opacity-30" />
-          <div className="absolute inset-0 bg-background/70" />
+          <img src={NEWSLETTER_BG} alt="" className="w-full h-full object-cover opacity-20 dark:opacity-30" />
+          <div className="absolute inset-0 bg-background/80 dark:bg-background/70" />
         </div>
         <div className="container relative z-10 text-center max-w-2xl mx-auto">
           <FadeSection>
-            <Mail className="w-10 h-10 text-amber mx-auto mb-4" />
+            <Mail className="w-10 h-10 text-primary mx-auto mb-4" />
             <h2 className="text-3xl lg:text-4xl font-display text-foreground mb-3">
               Stay in the Loop
             </h2>
@@ -391,11 +390,11 @@ export default function Home() {
               <input
                 type="email"
                 placeholder="your@email.com"
-                className="flex-1 px-4 py-3 rounded-lg bg-card border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-amber/50 transition-colors"
+                className="flex-1 px-4 py-3 rounded-lg bg-card border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
               />
               <button
                 type="submit"
-                className="px-6 py-3 bg-amber text-black font-semibold rounded-lg hover:bg-amber-light transition-colors whitespace-nowrap"
+                className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors whitespace-nowrap"
               >
                 Subscribe
               </button>

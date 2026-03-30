@@ -70,13 +70,13 @@ export default function BlogPostPage() {
               <Clock className="w-4 h-4" />
               {post.readTime} min read
             </div>
-            <button onClick={handleShare} className="p-2 rounded-lg hover:bg-white/5 text-muted-foreground hover:text-foreground transition-colors">
+            <button onClick={handleShare} className="p-2 rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/5 text-muted-foreground hover:text-foreground transition-colors">
               <Share2 className="w-4 h-4" />
             </button>
           </div>
 
           {/* Article content */}
-          <div className="prose prose-invert prose-sm max-w-none mb-12">
+          <div className="prose dark:prose-invert prose-sm max-w-none mb-12">
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">{post.excerpt}</p>
             <p className="text-muted-foreground leading-relaxed">{post.content}</p>
             <p className="text-muted-foreground leading-relaxed mt-4">

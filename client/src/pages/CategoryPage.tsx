@@ -64,7 +64,7 @@ export default function CategoryPage() {
       <section className="relative h-[45vh] min-h-[320px] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img src={category.image} alt={category.name} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
         </div>
         <div className="container relative z-10 pb-10">
           <Link href="/" className="inline-flex items-center gap-1 text-sm text-white/70 hover:text-white mb-4 transition-colors">
@@ -73,7 +73,7 @@ export default function CategoryPage() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl lg:text-5xl font-bold font-display text-white mb-2"
+            className="text-3xl lg:text-5xl font-bold font-display text-white mb-2 drop-shadow-lg"
           >
             {category.name}
           </motion.h1>

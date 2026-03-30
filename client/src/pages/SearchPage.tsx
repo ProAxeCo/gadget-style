@@ -104,13 +104,13 @@ export default function SearchPage() {
               value={inlineQuery}
               onChange={(e) => setInlineQuery(e.target.value)}
               placeholder="Search gadgets, categories, articles..."
-              className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/5 border border-border/50 text-lg outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all placeholder:text-muted-foreground/40"
+              className="w-full pl-12 pr-4 py-4 rounded-xl bg-black/[0.04] dark:bg-white/5 border border-border/50 text-lg outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all placeholder:text-muted-foreground/40"
             />
             {inlineQuery && (
               <button
                 type="button"
                 onClick={() => { setInlineQuery(""); inputRef.current?.focus(); }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-white/10 text-muted-foreground"
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-black/[0.06] dark:hover:bg-white/10 text-muted-foreground"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -143,7 +143,7 @@ export default function SearchPage() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as SortOption)}
-                  className="bg-white/5 border border-border/50 rounded-lg px-3 py-2 text-sm outline-none focus:border-primary/50 cursor-pointer"
+                  className="bg-black/[0.04] dark:bg-white/5 border border-border/50 rounded-lg px-3 py-2 text-sm outline-none focus:border-primary/50 cursor-pointer"
                 >
                   <option value="relevance">Most Relevant</option>
                   <option value="price-low">Price: Low to High</option>
@@ -163,7 +163,7 @@ export default function SearchPage() {
                 className={`px-3.5 py-1.5 rounded-full text-sm font-semibold transition-all ${
                   !activeCategory
                     ? "bg-primary text-primary-foreground"
-                    : "bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground"
+                    : "bg-black/[0.04] dark:bg-white/5 text-muted-foreground hover:bg-black/[0.07] dark:hover:bg-white/10 hover:text-foreground"
                 }`}
               >
                 All ({rawResults.length})
@@ -175,7 +175,7 @@ export default function SearchPage() {
                   className={`px-3.5 py-1.5 rounded-full text-sm font-semibold transition-all ${
                     activeCategory === cat.slug
                       ? "bg-primary text-primary-foreground"
-                      : "bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground"
+                      : "bg-black/[0.04] dark:bg-white/5 text-muted-foreground hover:bg-black/[0.07] dark:hover:bg-white/10 hover:text-foreground"
                   }`}
                 >
                   {cat.name} ({cat.count})
@@ -230,7 +230,7 @@ export default function SearchPage() {
                 <Link
                   key={cat.slug}
                   href={`/category/${cat.slug}`}
-                  className="px-4 py-2 rounded-full bg-white/5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors"
+                  className="px-4 py-2 rounded-full bg-black/[0.04] dark:bg-white/5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-black/[0.07] dark:hover:bg-white/10 transition-colors"
                 >
                   {cat.name}
                 </Link>
@@ -262,7 +262,7 @@ export default function SearchPage() {
                     setInlineQuery(term);
                     setLocation(`/search?q=${encodeURIComponent(term)}`);
                   }}
-                  className="px-4 py-2 rounded-full bg-white/5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors"
+                  className="px-4 py-2 rounded-full bg-black/[0.04] dark:bg-white/5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-black/[0.07] dark:hover:bg-white/10 transition-colors"
                 >
                   {term}
                 </button>

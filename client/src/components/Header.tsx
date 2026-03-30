@@ -1,10 +1,11 @@
 /*
  * GADGET STYLE — Header Component
+ * Blue corporate identity, light-mode default.
  * GadgetFlow-inspired two-row navigation:
- *   Row 1: Logo + pill-shaped nav items (Discover, Trending, Blog, About, Contact) + Search
+ *   Row 1: Logo + pill-shaped nav items + Search
  *   Row 2: Scrollable category links with colored dots
- *   Mobile: Full-screen slide-out drawer with nav + categories
- *   Search: Live suggestions dropdown with product/category matching
+ *   Mobile: Full-screen slide-out drawer
+ *   Search: Live suggestions dropdown
  */
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { Link, useLocation } from "wouter";
@@ -30,13 +31,13 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-/* New GS monogram icon — solid amber/gold, transparent background, no box */
-const GS_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/gadget_style_logo_icon-nF6fPR9PHBNpmcUuo9RZYg.png";
+/* New blue GS logo — concentric ring G with flowing S */
+const GS_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/logo_blue_v2-ZhrJEA2VoZxipLuGZMBdr4.png";
 
-/* Dot colors for each category — warm palette */
+/* Dot colors for each category */
 const CATEGORY_COLORS = [
   "bg-red-500",
-  "bg-amber-500",
+  "bg-blue-500",
   "bg-emerald-500",
   "bg-cyan-500",
   "bg-violet-500",
@@ -198,7 +199,7 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-background/95 backdrop-blur-xl shadow-lg shadow-black/10"
+            ? "bg-background/95 backdrop-blur-xl shadow-lg shadow-black/5"
             : "bg-background/80 backdrop-blur-md"
         }`}
       >
@@ -206,7 +207,7 @@ export default function Header() {
         <div className="border-b border-border/50">
           <div className="container">
             <div className="flex items-center justify-between h-16 lg:h-20">
-              {/* Logo — GS monogram + wordmark, large and prominent like GF */}
+              {/* Logo — Blue GS concentric ring + wordmark */}
               <Link href="/" className="shrink-0 flex items-center gap-2.5 group">
                 <img
                   src={GS_ICON}
@@ -234,7 +235,7 @@ export default function Header() {
                       className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-200 ${
                         isActive
                           ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
-                          : "bg-white/5 text-foreground hover:bg-white/10 hover:shadow-sm"
+                          : "bg-black/[0.04] dark:bg-white/5 text-foreground hover:bg-black/[0.07] dark:hover:bg-white/10 hover:shadow-sm"
                       }`}
                     >
                       <Icon className="w-4 h-4" />
@@ -249,11 +250,11 @@ export default function Header() {
                 {/* Search pill (desktop) */}
                 <button
                   onClick={() => setSearchOpen(!searchOpen)}
-                  className="hidden lg:flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground transition-all text-sm"
+                  className="hidden lg:flex items-center gap-2 px-4 py-2.5 rounded-full bg-black/[0.04] dark:bg-white/5 text-muted-foreground hover:bg-black/[0.07] dark:hover:bg-white/10 hover:text-foreground transition-all text-sm"
                 >
                   <Search className="w-4 h-4" />
                   <span className="font-medium">Search</span>
-                  <kbd className="hidden xl:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-white/5 text-[10px] text-muted-foreground/60 font-mono">
+                  <kbd className="hidden xl:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-black/[0.04] dark:bg-white/5 text-[10px] text-muted-foreground/60 font-mono">
                     ⌘K
                   </kbd>
                 </button>
@@ -261,7 +262,7 @@ export default function Header() {
                 {/* Mobile search icon */}
                 <button
                   onClick={() => setSearchOpen(!searchOpen)}
-                  className="lg:hidden p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
+                  className="lg:hidden p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5 transition-colors"
                   aria-label="Search"
                 >
                   <Search className="w-5 h-5" />
@@ -269,7 +270,7 @@ export default function Header() {
 
                 <Link
                   href="/wishlist"
-                  className="relative p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
+                  className="relative p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5 transition-colors"
                 >
                   <Heart className={`w-5 h-5 ${wishlistCount > 0 ? "fill-primary text-primary" : ""}`} />
                   {wishlistCount > 0 && (
@@ -281,7 +282,7 @@ export default function Header() {
 
                 <button
                   onClick={handleToggleTheme}
-                  className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
+                  className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5 transition-colors"
                   aria-label="Toggle theme"
                 >
                   {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -290,7 +291,7 @@ export default function Header() {
                 {/* Mobile hamburger button */}
                 <button
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="lg:hidden p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
+                  className="lg:hidden p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5 transition-colors"
                   aria-label="Menu"
                 >
                   {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -326,8 +327,8 @@ export default function Header() {
                       href={`/category/${cat.slug}`}
                       className={`flex items-center gap-2 px-4 py-1.5 rounded-full whitespace-nowrap text-sm font-semibold transition-all duration-200 shrink-0 ${
                         isActive
-                          ? "bg-white/10 text-foreground"
-                          : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                          ? "bg-primary/10 text-primary"
+                          : "text-muted-foreground hover:text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5"
                       }`}
                     >
                       <span className={`w-2 h-2 rounded-full shrink-0 ${CATEGORY_COLORS[i % CATEGORY_COLORS.length]}`} />
@@ -375,7 +376,7 @@ export default function Header() {
                     <button
                       type="button"
                       onClick={() => { setSearchQuery(""); setSearchSuggestions([]); }}
-                      className="p-1 rounded-full hover:bg-white/10 text-muted-foreground hover:text-foreground transition-colors"
+                      className="p-1 rounded-full hover:bg-black/[0.06] dark:hover:bg-white/10 text-muted-foreground hover:text-foreground transition-colors"
                     >
                       <X className="w-4 h-4" />
                     </button>
@@ -383,7 +384,7 @@ export default function Header() {
                   <button
                     type="button"
                     onClick={() => setSearchOpen(false)}
-                    className="text-sm text-muted-foreground hover:text-foreground px-2 py-1 rounded bg-white/5"
+                    className="text-sm text-muted-foreground hover:text-foreground px-2 py-1 rounded bg-black/[0.04] dark:bg-white/5"
                   >
                     ESC
                   </button>
@@ -401,7 +402,7 @@ export default function Header() {
                             <Link
                               key={cat.slug}
                               href={`/category/${cat.slug}`}
-                              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-sm font-medium transition-colors"
+                              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/[0.04] dark:bg-white/5 hover:bg-black/[0.07] dark:hover:bg-white/10 text-sm font-medium transition-colors"
                               onClick={() => { setSearchOpen(false); setSearchQuery(""); }}
                             >
                               <span className={`w-2 h-2 rounded-full ${CATEGORY_COLORS[categories.indexOf(cat) % CATEGORY_COLORS.length]}`} />
@@ -424,7 +425,7 @@ export default function Header() {
                               className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-colors ${
                                 selectedSuggestion === i
                                   ? "bg-primary/10 text-foreground"
-                                  : "hover:bg-white/5 text-foreground"
+                                  : "hover:bg-black/[0.04] dark:hover:bg-white/5 text-foreground"
                               }`}
                             >
                               <img
@@ -468,7 +469,7 @@ export default function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-[55] bg-black/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-[55] bg-black/40 backdrop-blur-sm lg:hidden"
               onClick={() => setMobileMenuOpen(false)}
             />
 
@@ -490,7 +491,7 @@ export default function Header() {
                 </Link>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
+                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5 transition-colors"
                   aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />
@@ -508,7 +509,7 @@ export default function Header() {
                       setMobileMenuOpen(false);
                     }
                   }}
-                  className="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-white/5 border border-border/30"
+                  className="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-black/[0.04] dark:bg-white/5 border border-border/30"
                 >
                   <Search className="w-4 h-4 text-muted-foreground shrink-0" />
                   <input
@@ -535,11 +536,11 @@ export default function Header() {
                       className={`flex items-center gap-3 px-3 py-3 text-base font-bold rounded-xl transition-all duration-200 ${
                         isActive
                           ? "bg-primary/10 text-primary"
-                          : "text-foreground hover:bg-white/5"
+                          : "text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5"
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      <div className={`p-2 rounded-lg ${isActive ? "bg-primary/20" : "bg-white/5"}`}>
+                      <div className={`p-2 rounded-lg ${isActive ? "bg-primary/20" : "bg-black/[0.04] dark:bg-white/5"}`}>
                         <Icon className="w-4.5 h-4.5" />
                       </div>
                       {item.label}
@@ -565,8 +566,8 @@ export default function Header() {
                       href={`/category/${cat.slug}`}
                       className={`flex items-center gap-3 px-3 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 ${
                         isActive
-                          ? "bg-white/10 text-foreground"
-                          : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                          ? "bg-primary/10 text-primary"
+                          : "text-muted-foreground hover:text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5"
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -585,10 +586,10 @@ export default function Header() {
               <div className="px-3 py-4 space-y-1">
                 <Link
                   href="/wishlist"
-                  className="flex items-center gap-3 px-3 py-3 text-base font-bold rounded-xl text-foreground hover:bg-white/5 transition-colors"
+                  className="flex items-center gap-3 px-3 py-3 text-base font-bold rounded-xl text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <div className="p-2 rounded-lg bg-white/5">
+                  <div className="p-2 rounded-lg bg-black/[0.04] dark:bg-white/5">
                     <Heart className={`w-4.5 h-4.5 ${wishlistCount > 0 ? "fill-primary text-primary" : ""}`} />
                   </div>
                   Wishlist
@@ -601,9 +602,9 @@ export default function Header() {
 
                 <button
                   onClick={() => { handleToggleTheme(); setMobileMenuOpen(false); }}
-                  className="w-full flex items-center gap-3 px-3 py-3 text-base font-bold rounded-xl text-foreground hover:bg-white/5 transition-colors text-left"
+                  className="w-full flex items-center gap-3 px-3 py-3 text-base font-bold rounded-xl text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5 transition-colors text-left"
                 >
-                  <div className="p-2 rounded-lg bg-white/5">
+                  <div className="p-2 rounded-lg bg-black/[0.04] dark:bg-white/5">
                     {theme === "dark" ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
                   </div>
                   {theme === "dark" ? "Light Mode" : "Dark Mode"}

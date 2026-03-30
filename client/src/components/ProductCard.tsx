@@ -48,7 +48,7 @@ function AmazonBadge() {
 /* Fallback placeholder when image fails to load */
 function ImagePlaceholder() {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#1a1a2e]">
+    <div className="absolute inset-0 flex flex-col items-center justify-center bg-secondary dark:bg-muted">
       <ImageOff className="w-10 h-10 text-muted-foreground/30 mb-2" />
       <span className="text-[10px] text-muted-foreground/30 font-medium">Image unavailable</span>
     </div>
@@ -99,7 +99,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
     if (t === "ces") return "bg-yellow-500/80 text-black";
     if (t === "luxury") return "bg-purple-500/80 text-white";
     if (t === "new") return "bg-emerald-500/80 text-white";
-    return "border border-yellow-500/50 text-yellow-400 bg-transparent";
+    return "border border-primary/40 text-primary bg-primary/5";
   };
 
   if (variant === "compact") {
@@ -112,7 +112,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
         className="group"
       >
         <div className="flex items-center gap-4 glass-card p-3">
-          <Link href={`/product/${product.slug}`} className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-[#1e1e2a] block">
+          <Link href={`/product/${product.slug}`} className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-secondary dark:bg-muted block">
             {imgError ? (
               <div className="w-full h-full flex items-center justify-center">
                 <ImageOff className="w-6 h-6 text-muted-foreground/30" />
@@ -130,7 +130,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
             <Link href={`/product/${product.slug}`}>
               <h4 className="text-sm font-semibold truncate group-hover:text-primary transition-colors">{product.title}</h4>
             </Link>
-            <span className="text-sm font-bold font-mono text-green-400">${product.price.toFixed(2)}</span>
+            <span className="text-sm font-bold font-mono text-green-600 dark:text-green-400">${product.price.toFixed(2)}</span>
           </div>
         </div>
       </motion.div>
@@ -147,7 +147,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
       className="group"
     >
       {/* Clickable image area — GF style: image fills card, rounded corners, NO TEXT */}
-      <Link href={`/product/${product.slug}`} className="block relative rounded-2xl overflow-hidden bg-[#1a1a2e] mb-2.5">
+      <Link href={`/product/${product.slug}`} className="block relative rounded-2xl overflow-hidden bg-secondary dark:bg-muted mb-2.5">
         <div className="aspect-[1.15/1] relative">
           {imgError ? (
             <ImagePlaceholder />
@@ -170,7 +170,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
             <TooltipTrigger asChild>
               <button
                 onClick={handleReminder}
-                className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-blue-400/80 hover:text-blue-300 hover:bg-black/60 transition-all"
+                className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-blue-300 hover:text-blue-200 hover:bg-black/60 transition-all"
                 aria-label="Add reminder"
               >
                 <Bell className="w-4 h-4" />
@@ -187,7 +187,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
                 className={`w-8 h-8 rounded-full backdrop-blur-sm flex items-center justify-center transition-all ${
                   saved
                     ? "bg-red-500/30 text-red-400 ring-1 ring-red-500/40"
-                    : "bg-black/40 text-pink-400/80 hover:text-pink-300 hover:bg-black/60"
+                    : "bg-black/40 text-pink-300 hover:text-pink-200 hover:bg-black/60"
                 }`}
                 aria-label={saved ? "Remove from wishlist" : "Add to wishlist"}
               >
@@ -213,7 +213,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
 
       {/* Below image: Price + Tags row — GF exact style */}
       <div className="flex items-center flex-wrap gap-1.5 mb-1">
-        <span className="text-[15px] font-bold font-mono text-green-400">${product.price.toFixed(2)}</span>
+        <span className="text-[15px] font-bold font-mono text-green-600 dark:text-green-400">${product.price.toFixed(2)}</span>
         {product.tags.slice(0, 3).map((tag: string) => (
           <span
             key={tag}

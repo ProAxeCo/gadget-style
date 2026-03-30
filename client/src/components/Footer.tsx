@@ -1,6 +1,6 @@
 /*
  * GADGET STYLE — Footer Component
- * Editorial Feed Design: Warm amber accents, Instrument Serif headings
+ * Blue corporate identity, light-mode default.
  */
 import { Link } from "wouter";
 import { useState } from "react";
@@ -8,8 +8,8 @@ import { toast } from "sonner";
 import { categories } from "@/lib/data";
 import { Mail, ArrowRight } from "lucide-react";
 
-/* New GS monogram icon — solid amber/gold, transparent background */
-const GS_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/gadget_style_logo_icon-nF6fPR9PHBNpmcUuo9RZYg.png";
+/* Blue GS logo — concentric ring G with flowing S */
+const GS_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/logo_blue_v2-ZhrJEA2VoZxipLuGZMBdr4.png";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-border bg-card/50">
+    <footer className="border-t border-border bg-secondary/50 dark:bg-card/50">
       {/* Newsletter section */}
       <div className="container py-16">
         <div className="max-w-2xl mx-auto text-center mb-16">
