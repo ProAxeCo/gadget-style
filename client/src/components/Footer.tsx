@@ -1,6 +1,6 @@
 /*
  * GADGET STYLE — Footer Component
- * Lumina Design: Clean editorial footer with newsletter signup
+ * Editorial Feed Design: Warm amber accents, Instrument Serif headings
  */
 import { Link } from "wouter";
 import { useState } from "react";
