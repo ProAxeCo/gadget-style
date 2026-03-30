@@ -229,7 +229,9 @@ export default function ProductPage() {
               className="flex items-center gap-3 px-6 py-4 bg-[#1a8a4a] hover:bg-[#157a3f] text-white rounded-xl font-semibold text-base transition-colors mb-4 shadow-lg shadow-green-900/20"
             >
               {isAmazon ? (
-                <AmazonSmileIcon className="w-6 h-6 shrink-0" />
+                <span className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shrink-0">
+                  <AmazonSmileIcon className="w-5 h-5 text-[#232F3E]" />
+                </span>
               ) : (
                 <ExternalLink className="w-5 h-5 shrink-0" />
               )}
