@@ -1,8 +1,7 @@
 /*
  * GADGET STYLE — Product Detail Page
- * Matches GadgetFlow layout:
  * - Large hero image with thumbnail strip below
- * - "Get it for $X" CTA button with Amazon smile icon (no Amazon logo on images)
+ * - "Get it for $X" CTA button with Amazon logo (no Amazon logo on images)
  * - Wishlist + Share buttons
  * - Tabs: Overview | Specs | Price
  * - Specs tab shows real manufacturer specifications in clean table
@@ -28,33 +27,8 @@ import {
 import { toast } from "sonner";
 import { useState, useEffect } from "react";
 
-/* Amazon round logo — matches GadgetFlow's orange circle with white "a" */
-function AmazonRoundLogo({ size = 32 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 40 40" className="shrink-0">
-      {/* Orange circle background */}
-      <circle cx="20" cy="20" r="20" fill="#FF9900" />
-      {/* White Amazon "a" letter */}
-      <path
-        d="M22.5 18.5c0 0.8 0.02 1.47-0.38 2.18-0.33 0.58-0.85 0.93-1.43 0.93-0.79 0-1.26-0.6-1.26-1.5 0-1.76 1.58-2.08 3.07-2.08v0.47z"
-        fill="white"
-      />
-      <path
-        d="M25.15 24.6c-0.17 0.15-0.42 0.16-0.63 0.06-0.88-0.73-1.03-1.07-1.51-1.76-1.45 1.48-2.47 1.92-4.34 1.92-2.22 0-3.95-1.37-3.95-4.11 0-2.14 1.16-3.6 2.81-4.31 1.43-0.63 3.43-0.74 4.96-0.92v-0.34c0-0.63 0.05-1.37-0.32-1.91-0.32-0.48-0.94-0.68-1.48-0.68-1.01 0-1.9 0.52-2.12 1.59-0.04 0.24-0.22 0.47-0.45 0.49l-2.55-0.27c-0.22-0.05-0.45-0.22-0.39-0.54 0.58-3.04 3.33-3.95 5.79-3.95 0.95 0 2.2 0.25 2.95 0.97 0.95 0.89 0.86 2.07 0.86 3.36v3.04c0 0.92 0.38 1.32 0.74 1.81 0.12 0.18 0.15 0.39-0.01 0.52-0.4 0.33-1.1 0.95-1.49 1.3l-0.01-0.01"
-        fill="white"
-      />
-      {/* Smile arrow */}
-      <path
-        d="M13.5 27.5c1.8 1.3 4.3 2 6.5 2 2.5 0 5-0.94 6.84-2.52 0.22-0.18 0.01-0.43-0.22-0.29-1.94 1.15-4.32 1.8-6.84 1.8-2.16 0-4.47-0.58-6.27-1.59-0.22-0.11-0.36 0.14-0.14 0.29"
-        fill="white"
-      />
-      <path
-        d="M25 26c-0.29-0.36-1.8-0.18-2.52-0.09-0.22 0.02-0.25-0.16-0.06-0.29 1.22-0.86 3.24-0.61 3.46-0.32 0.22 0.29-0.06 2.3-1.22 3.24-0.18 0.14-0.35 0.07-0.27-0.12 0.25-0.65 0.83-2.09 0.54-2.41"
-        fill="white"
-      />
-    </svg>
-  );
-}
+/* Amazon logo — uses the actual Amazon "a" + smile PNG for crisp, recognizable branding */
+const AMAZON_LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/amazon_logo_gf_3247f94d.png";
 
 export default function ProductPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -122,7 +96,7 @@ export default function ProductPage() {
           <span className="text-foreground font-medium line-clamp-1">{product.title}</span>
         </nav>
 
-        {/* Product Title — Gadget Flow style: title above the image */}
+        {/* Product Title */}
         <motion.h1
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -140,7 +114,7 @@ export default function ProductPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {/* Main Image — edge-to-edge like GadgetFlow, no padding */}
+            {/* Main Image */}
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white">
               {images.length > 1 && (
                 <>
@@ -173,7 +147,7 @@ export default function ProductPage() {
               )}
             </div>
 
-            {/* Thumbnail Strip — GadgetFlow style */}
+            {/* Thumbnail Strip */}
             {images.length > 1 && (
               <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
                 {images.map((img: string, i: number) => (
@@ -192,7 +166,7 @@ export default function ProductPage() {
               </div>
             )}
 
-            {/* Editor's Quote — GadgetFlow style */}
+            {/* Editor's Quote */}
             <div className="mt-6 px-6 py-5 glass-card relative">
               <div className="absolute top-3 left-4 text-4xl text-primary/20 font-serif leading-none">&ldquo;</div>
               <p className="text-center text-sm italic text-muted-foreground px-6">
@@ -210,7 +184,7 @@ export default function ProductPage() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="flex flex-col"
           >
-            {/* Rating Badge — Gadget Flow style circle */}
+            {/* Rating Badge */}
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-semibold uppercase tracking-wider text-primary">
@@ -222,20 +196,24 @@ export default function ProductPage() {
               </div>
             </div>
 
-            {/* Amazon CTA Button — GadgetFlow style: green with Amazon smile icon */}
+            {/* Amazon CTA Button — yellow with crisp Amazon logo */}
             <a
               href={product.affiliateUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 px-6 py-4 bg-[#1a8a4a] hover:bg-[#157a3f] text-white rounded-xl font-semibold text-base transition-colors mb-4 shadow-lg shadow-green-900/20"
+              className={`flex items-center gap-3 px-5 py-3.5 rounded-xl font-semibold text-base transition-colors mb-4 shadow-lg ${
+                isAmazon
+                  ? "bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] shadow-amber-500/15"
+                  : "bg-[#1a8a4a] hover:bg-[#157a3f] text-white shadow-green-900/20"
+              }`}
             >
               {isAmazon ? (
-                <AmazonRoundLogo size={28} />
+                <img src={AMAZON_LOGO_URL} alt="Amazon" className="h-7 w-auto shrink-0" />
               ) : (
                 <ExternalLink className="w-5 h-5 shrink-0" />
               )}
               <span>Get it for ${product.price.toFixed(2)}</span>
-              <ExternalLink className="w-4 h-4 ml-auto opacity-60" />
+              <ExternalLink className={`w-4 h-4 ml-auto ${isAmazon ? "opacity-40" : "opacity-60"}`} />
             </a>
 
             {/* Action Buttons Row */}
@@ -269,7 +247,7 @@ export default function ProductPage() {
               </button>
             </div>
 
-            {/* Tabs — Gadget Flow style */}
+            {/* Tabs */}
             <div className="border-b border-border mb-5">
               <div className="flex gap-6">
                 {(["overview", "specs", "price"] as const).map((tab) => (
@@ -345,7 +323,7 @@ export default function ProductPage() {
                 <h2 className="text-lg font-bold font-display">
                   {product.title}: Tech Specs
                 </h2>
-                {/* Real manufacturer specifications — GadgetFlow clean table style */}
+                {/* Real manufacturer specifications */}
                 <div className="divide-y divide-border/50">
                   {product.specs && Object.entries(product.specs).map(([key, value]) => (
                     <div key={key} className="flex justify-between items-start py-3 gap-4">
@@ -371,7 +349,7 @@ export default function ProductPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-[#1a8a4a] hover:bg-[#157a3f] text-white rounded-lg font-semibold transition-colors"
                   >
-                    {isAmazon && <AmazonRoundLogo size={22} />}
+                    {isAmazon && <img src={AMAZON_LOGO_URL} alt="Amazon" className="h-5 w-auto" />}
                     Check Latest Price
                     <ExternalLink className="w-4 h-4" />
                   </a>
@@ -389,21 +367,6 @@ export default function ProductPage() {
             </p>
           </motion.div>
         </div>
-
-        {/* Gadget Flow URL link if available */}
-        {product.gadgetFlowUrl && (
-          <div className="mt-8 p-4 glass-card flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">Also featured on Gadget Flow</span>
-            <a
-              href={product.gadgetFlowUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-primary hover:underline flex items-center gap-1"
-            >
-              View on Gadget Flow <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          </div>
-        )}
 
         {/* Related Products */}
         {related.length > 0 && (

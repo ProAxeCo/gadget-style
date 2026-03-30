@@ -1,6 +1,6 @@
 /*
  * GADGET STYLE — Home Page
- * Gadget Flow-matched layout: 5-column grid on desktop, larger product cards
+ * 5-column grid on desktop, larger product cards
  */
 import { Link } from "wouter";
 import { motion } from "framer-motion";
