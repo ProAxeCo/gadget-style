@@ -16,6 +16,12 @@ interface ThemeProviderProps {
   switchable?: boolean;
 }
 
+/**
+ * Versioned storage key — bump this when the default theme changes
+ * so returning users don't get stuck on the old cached theme.
+ */
+const THEME_STORAGE_KEY = "theme-v2";
+
 export function ThemeProvider({
   children,
   defaultTheme = "light",
@@ -23,7 +29,11 @@ export function ThemeProvider({
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (switchable) {
-      const stored = localStorage.getItem("theme");
+      // Clear legacy key if it exists
+      if (localStorage.getItem("theme")) {
+        localStorage.removeItem("theme");
+      }
+      const stored = localStorage.getItem(THEME_STORAGE_KEY);
       return (stored as Theme) || defaultTheme;
     }
     return defaultTheme;
@@ -40,7 +50,7 @@ export function ThemeProvider({
     }
 
     if (switchable) {
-      localStorage.setItem("theme", theme);
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
     }
   }, [theme, switchable]);
 
