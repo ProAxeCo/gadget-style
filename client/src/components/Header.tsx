@@ -26,8 +26,8 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const LOGO_DARK = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/gadgetstyle_electric_blue_dark_d95dfc14.png";
-const LOGO_LIGHT = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/gadgetstyle_electric_blue_white_fb90c8c3.png";
+/* New GS monogram icon — solid amber/gold, transparent background, no box */
+const GS_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/gadget_style_logo_icon-nF6fPR9PHBNpmcUuo9RZYg.png";
 
 /* Dot colors for each category — warm palette */
 const CATEGORY_COLORS = [
@@ -117,13 +117,18 @@ export default function Header() {
         <div className="border-b border-border/50">
           <div className="container">
             <div className="flex items-center justify-between h-16 lg:h-20">
-              {/* Logo — large like GF */}
-              <Link href="/" className="shrink-0">
+              {/* Logo — GS monogram + wordmark, large and prominent like GF */}
+              <Link href="/" className="shrink-0 flex items-center gap-2.5 group">
                 <img
-                  src={theme === "dark" ? LOGO_DARK : LOGO_LIGHT}
-                  alt="Gadget Style"
-                  className="h-10 sm:h-14 lg:h-16 w-auto object-contain"
+                  src={GS_ICON}
+                  alt="GS"
+                  className="h-9 sm:h-11 lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 />
+                <div className="hidden sm:flex flex-col leading-none">
+                  <span className="text-lg lg:text-xl font-bold tracking-tight text-foreground">
+                    GADGET <span className="text-primary">STYLE</span>
+                  </span>
+                </div>
               </Link>
 
               {/* Desktop: Pill-shaped nav items */}

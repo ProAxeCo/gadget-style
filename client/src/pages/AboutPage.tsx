@@ -6,7 +6,8 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Target, Eye, Zap, Shield } from "lucide-react";
 
-const LOGO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/gadgetstyle_electric_blue_dark_d95dfc14.png";
+/* New GS monogram icon — solid amber/gold, transparent background */
+const GS_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/gadget_style_logo_icon-nF6fPR9PHBNpmcUuo9RZYg.png";
 
 export default function AboutPage() {
   const values = [
@@ -41,7 +42,12 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          <img src={LOGO} alt="Gadget Style" className="h-12 w-auto mx-auto mb-8" />
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <img src={GS_ICON} alt="GS" className="h-12 w-auto" />
+            <span className="text-2xl font-bold tracking-tight text-foreground">
+              GADGET <span className="text-primary">STYLE</span>
+            </span>
+          </div>
           <h1 className="text-3xl lg:text-5xl font-bold font-display mb-5 leading-tight">
             We Find the Best Tech
             <br />

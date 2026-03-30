@@ -8,7 +8,8 @@ import { toast } from "sonner";
 import { categories } from "@/lib/data";
 import { Mail, ArrowRight } from "lucide-react";
 
-const LOGO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/gadgetstyle_electric_blue_dark_d95dfc14.png";
+/* New GS monogram icon — solid amber/gold, transparent background */
+const GS_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/gadget_style_logo_icon-nF6fPR9PHBNpmcUuo9RZYg.png";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -58,7 +59,12 @@ export default function Footer() {
         {/* Footer links grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
           <div className="col-span-2 md:col-span-1">
-            <img src={LOGO} alt="Gadget Style" className="h-8 w-auto mb-4" />
+            <div className="flex items-center gap-2 mb-4">
+              <img src={GS_ICON} alt="GS" className="h-8 w-auto" />
+              <span className="text-base font-bold tracking-tight text-foreground">
+                GADGET <span className="text-primary">STYLE</span>
+              </span>
+            </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Curated tech discoveries for the modern lifestyle. We find the best gadgets so you don't have to.
             </p>
