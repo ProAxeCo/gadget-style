@@ -1,6 +1,7 @@
-/*
+/**
  * GADGET STYLE — Editorial Feed Homepage
- * Design: Corporate blue (#1060A8), light background, Instrument Serif headings, editorial rhythm.
+ * Design: Corporate blue (#1060A8), LIGHT background, Instrument Serif headings, editorial rhythm.
+ * Hero: Split layout — text on light bg (left), product image (right). No dark overlays.
  * Sections: Pick of the Day → Explore Categories → Trending Strip → Editorial Feed → New Arrivals → Blog → Newsletter
  */
 import { useState, useRef } from "react";
@@ -18,8 +19,6 @@ import {
 } from "@/lib/data";
 
 /* ── Asset URLs ── */
-const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/editorial_hero_pick_of_day-EmWhSBV3qshBxytDzMfr6q.webp";
-const AMBIENT_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/editorial_hero_ambient-dHZbw4ZZmgipCmB7B3UxwE.webp";
 const NEWSLETTER_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/editorial_newsletter_bg-WorJPKjPiyTrP3RJRZfJDZ.webp";
 
 /* ── Fade-in wrapper ── */
@@ -72,85 +71,95 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
 
       {/* ════════════════════════════════════════════
-          SECTION 1 — PICK OF THE DAY (Hero)
+          SECTION 1 — PICK OF THE DAY (Light Split Hero)
           ════════════════════════════════════════════ */}
-      <section className="relative min-h-[80vh] flex items-end overflow-hidden">
-        {/* Background image with Ken Burns */}
-        <div className="absolute inset-0">
-          <img
-            src={pick.images[0] || pick.image}
-            alt={pick.title}
-            className="w-full h-full object-cover animate-ken-burns"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
-        </div>
+      <section className="relative bg-background overflow-hidden">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[70vh] py-12 lg:py-0">
+            {/* Left — Text content on light background */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="order-2 lg:order-1"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono tracking-widest uppercase mb-5">
+                <Sparkles className="w-3.5 h-3.5" />
+                Pick of the Day
+              </div>
 
-        <div className="container relative z-10 pb-16 pt-32">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="max-w-2xl"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 text-white text-xs font-mono tracking-widest uppercase mb-5">
-              <Sparkles className="w-3.5 h-3.5" />
-              Pick of the Day
-            </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display leading-[1.1] mb-4 text-foreground">
+                {pick.title}
+              </h1>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display leading-[1.1] mb-4 text-white">
-              {pick.title}
-            </h1>
+              <p className="text-lg text-muted-foreground mb-3 max-w-lg leading-relaxed line-clamp-3">
+                {pick.description}
+              </p>
 
-            <p className="text-lg text-white/70 mb-3 max-w-lg leading-relaxed line-clamp-3">
-              {pick.description}
-            </p>
+              <div className="flex items-center gap-4 mb-8">
+                <span className="font-mono text-2xl text-primary font-semibold">${pick.price}</span>
+                <span className="flex items-center gap-1 text-yellow-500 text-sm">
+                  <Star className="w-4 h-4 fill-yellow-500 text-yellow-500" />
+                  {pick.rating}
+                </span>
+                <span className="text-muted-foreground text-sm font-mono">{pick.category}</span>
+              </div>
 
-            <div className="flex items-center gap-4 mb-8">
-              <span className="font-mono text-2xl text-white font-semibold">${pick.price}</span>
-              <span className="flex items-center gap-1 text-yellow-400/80 text-sm">
-                <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                {pick.rating}
-              </span>
-              <span className="text-white/40 text-sm font-mono">{pick.category}</span>
-            </div>
+              <div className="flex items-center gap-3">
+                <Link
+                  href={`/product/${pick.slug}`}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+                >
+                  Explore Product <ArrowRight className="w-4 h-4" />
+                </Link>
+                <button
+                  onClick={() => setPickIndex((i) => (i + 1) % Math.min(featured.length, 5))}
+                  className="px-4 py-3 border border-border text-muted-foreground rounded-lg hover:bg-secondary hover:text-foreground transition-colors text-sm"
+                >
+                  Next Pick
+                </button>
+              </div>
 
-            <div className="flex items-center gap-3">
-              <Link
-                href={`/product/${pick.slug}`}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
-              >
-                Explore Product <ArrowRight className="w-4 h-4" />
-              </Link>
-              <button
-                onClick={() => setPickIndex((i) => (i + 1) % Math.min(featured.length, 5))}
-                className="px-4 py-3 border border-white/20 text-white/80 rounded-lg hover:bg-white/10 transition-colors text-sm"
-              >
-                Next Pick
-              </button>
-            </div>
-          </motion.div>
+              {/* Pick dots */}
+              <div className="flex gap-2 mt-8">
+                {featured.slice(0, 5).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setPickIndex(i)}
+                    className={`w-2 h-2 rounded-full transition-all ${i === pickIndex ? "bg-primary w-6" : "bg-border hover:bg-muted-foreground/40"}`}
+                  />
+                ))}
+              </div>
+            </motion.div>
 
-          {/* Pick dots */}
-          <div className="flex gap-2 mt-8">
-            {featured.slice(0, 5).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setPickIndex(i)}
-                className={`w-2 h-2 rounded-full transition-all ${i === pickIndex ? "bg-primary w-6" : "bg-white/30 hover:bg-white/50"}`}
-              />
-            ))}
+            {/* Right — Product image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+              className="order-1 lg:order-2"
+            >
+              <div className="relative rounded-3xl overflow-hidden aspect-[4/3] bg-secondary/50">
+                <img
+                  src={pick.images[0] || pick.image}
+                  alt={pick.title}
+                  className="w-full h-full object-cover"
+                />
+                {/* Subtle brand tint overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════
-          SECTION 2 — EXPLORE CATEGORIES (Carousel)
+          SECTION 2 — EXPLORE CATEGORIES (Light Cards)
           ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16 border-t border-border/50">
+      <section className="py-12 lg:py-16 border-t border-border/50 bg-secondary/30">
         <div className="container">
           <div className="flex items-end justify-between mb-8 lg:mb-10">
             <div>
@@ -180,20 +189,29 @@ export default function Home() {
           >
             {categories.map((cat) => (
               <Link key={cat.slug} href={`/category/${cat.slug}`}>
-                <div className="group snap-start flex-shrink-0 w-[280px] lg:w-[300px] rounded-2xl overflow-hidden relative aspect-[3/4]">
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <h3 className="text-xl font-display text-white mb-1">{cat.name}</h3>
-                    <p className="text-white/60 text-sm">{cat.productCount} products</p>
+                <div className="group snap-start flex-shrink-0 w-[280px] lg:w-[300px] rounded-2xl overflow-hidden relative bg-card border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-lg font-display text-foreground mb-0.5 group-hover:text-primary transition-colors">{cat.name}</h3>
+                    <p className="text-muted-foreground text-sm">{cat.productCount} products</p>
                   </div>
                 </div>
               </Link>
             ))}
+            <Link href="/category/smart-home">
+              <div className="snap-start flex-shrink-0 w-[280px] lg:w-[300px] rounded-2xl overflow-hidden bg-primary/5 border border-primary/20 flex items-center justify-center aspect-[4/3] hover:bg-primary/10 transition-colors cursor-pointer">
+                <div className="text-center p-6">
+                  <ArrowRight className="w-8 h-8 text-primary mx-auto mb-3" />
+                  <span className="text-primary font-medium">View All</span>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -201,7 +219,7 @@ export default function Home() {
       {/* ════════════════════════════════════════════
           SECTION 3 — NOW TRENDING (Numbered Strip)
           ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16 bg-secondary/50 dark:bg-card/30">
+      <section className="py-12 lg:py-16 bg-background">
         <div className="container">
           <SectionHeading label="Trending" title="Now Trending" action="View All" href="/category/smart-home" />
 
@@ -216,7 +234,7 @@ export default function Home() {
                     </span>
 
                     {/* Product image */}
-                    <div className="w-20 h-20 lg:w-full lg:h-36 rounded-lg overflow-hidden flex-shrink-0 mt-4 lg:mt-6">
+                    <div className="w-20 h-20 lg:w-full lg:h-36 rounded-lg overflow-hidden flex-shrink-0 mt-4 lg:mt-6 bg-secondary/30">
                       <img
                         src={product.image}
                         alt={product.title}
@@ -232,7 +250,7 @@ export default function Home() {
                       <div className="flex items-center gap-2 mt-1.5">
                         <span className="font-mono text-sm text-primary">${product.price}</span>
                         <span className="flex items-center gap-0.5 text-xs text-muted-foreground">
-                          <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                          <Star className="w-3 h-3 fill-yellow-500 text-yellow-500" />
                           {product.rating}
                         </span>
                       </div>
@@ -248,7 +266,7 @@ export default function Home() {
       {/* ════════════════════════════════════════════
           SECTION 4 — EDITOR'S PICKS (Alternating Editorial Feed)
           ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16">
+      <section className="py-12 lg:py-16 bg-secondary/20">
         <div className="container">
           <SectionHeading label="Curated" title="Editor's Picks" />
 
@@ -262,13 +280,12 @@ export default function Home() {
                     }`}
                   >
                     {/* Image side */}
-                    <div className={`relative overflow-hidden rounded-2xl aspect-[4/3] ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                    <div className={`relative overflow-hidden rounded-2xl aspect-[4/3] bg-secondary/30 ${i % 2 === 1 ? "lg:order-2" : ""}`}>
                       <img
                         src={product.images[0] || product.image}
                         alt={product.title}
                         className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
 
                     {/* Text side */}
@@ -289,7 +306,7 @@ export default function Home() {
                       <div className={`flex items-center gap-4 mb-5 ${i % 2 === 1 ? "lg:justify-end" : ""}`}>
                         <span className="font-mono text-xl text-primary font-semibold">${product.price}</span>
                         <span className="flex items-center gap-1 text-sm text-muted-foreground">
-                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          <Star className="w-4 h-4 fill-yellow-500 text-yellow-500" />
                           {product.rating}
                         </span>
                       </div>
@@ -312,7 +329,7 @@ export default function Home() {
       {/* ════════════════════════════════════════════
           SECTION 5 — NEW ARRIVALS (Grid)
           ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16 bg-secondary/50 dark:bg-card/30">
+      <section className="py-12 lg:py-16 bg-background">
         <div className="container">
           <SectionHeading label="Fresh" title="New Arrivals" action="See All" href="/category/smart-home" />
 
@@ -329,7 +346,7 @@ export default function Home() {
       {/* ════════════════════════════════════════════
           SECTION 6 — FROM THE BLOG
           ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16">
+      <section className="py-12 lg:py-16 bg-secondary/20">
         <div className="container">
           <SectionHeading label="Read" title="From the Blog" action="All Articles" href="/blog" />
 
@@ -369,10 +386,9 @@ export default function Home() {
       {/* ════════════════════════════════════════════
           SECTION 7 — NEWSLETTER CTA
           ════════════════════════════════════════════ */}
-      <section className="py-16 lg:py-24 relative overflow-hidden">
+      <section className="py-16 lg:py-24 relative overflow-hidden bg-primary/5">
         <div className="absolute inset-0">
-          <img src={NEWSLETTER_BG} alt="" className="w-full h-full object-cover opacity-20 dark:opacity-30" />
-          <div className="absolute inset-0 bg-background/80 dark:bg-background/70" />
+          <img src={NEWSLETTER_BG} alt="" className="w-full h-full object-cover opacity-10" />
         </div>
         <div className="container relative z-10 text-center max-w-2xl mx-auto">
           <FadeSection>
