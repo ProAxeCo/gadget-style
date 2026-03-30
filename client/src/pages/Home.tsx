@@ -1,9 +1,9 @@
 /*
  * GADGET STYLE — Editorial Feed Homepage
  * Design: Warm amber/gold, Instrument Serif headings, editorial rhythm.
- * Sections: Pick of the Day → Trending Strip → Editorial Feed → Category Spotlight → Newsletter
+ * Sections: Pick of the Day → Explore Categories → Trending Strip → Editorial Feed → New Arrivals → Blog → Newsletter
  */
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, TrendingUp, Star, ChevronLeft, ChevronRight, Clock, Tag, Mail, Sparkles } from "lucide-react";
@@ -148,138 +148,10 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════════
-          SECTION 2 — NOW TRENDING (Numbered Strip)
+          SECTION 2 — EXPLORE CATEGORIES (Carousel)
+          Moved here per user request — right after Pick of the Day
           ════════════════════════════════════════════ */}
       <section className="py-12 lg:py-16 border-t border-border/50">
-        <div className="container">
-          <SectionHeading label="Trending" title="Now Trending" action="View All" href="/category/trending" />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {trending.slice(0, 5).map((product, i) => (
-              <FadeSection key={product.id} delay={i * 0.08}>
-                <Link href={`/product/${product.slug}`}>
-                  <div className="group relative flex lg:flex-col items-center lg:items-start gap-4 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-amber/30 hover:bg-card transition-all">
-                    {/* Rank number */}
-                    <span className="absolute top-2 left-3 font-mono text-4xl font-bold text-amber/20 group-hover:text-amber/40 transition-colors leading-none">
-                      {i + 1}
-                    </span>
-
-                    {/* Product image */}
-                    <div className="w-20 h-20 lg:w-full lg:h-36 rounded-lg overflow-hidden flex-shrink-0 mt-4 lg:mt-6">
-                      <img
-                        src={product.image}
-                        alt={product.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-
-                    {/* Info */}
-                    <div className="min-w-0 flex-1">
-                      <h3 className="font-medium text-sm text-foreground line-clamp-2 group-hover:text-amber transition-colors">
-                        {product.title}
-                      </h3>
-                      <div className="flex items-center gap-2 mt-1.5">
-                        <span className="font-mono text-sm text-amber">${product.price}</span>
-                        <span className="flex items-center gap-0.5 text-xs text-muted-foreground">
-                          <Star className="w-3 h-3 fill-amber text-amber" />
-                          {product.rating}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </FadeSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          SECTION 3 — EDITORIAL DISCOVERY FEED
-          ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16">
-        <div className="container">
-          <SectionHeading label="Curated" title="Editor's Picks" />
-
-          <div className="space-y-12 lg:space-y-16">
-            {featured.slice(0, 6).map((product, i) => (
-              <FadeSection key={product.id}>
-                <Link href={`/product/${product.slug}`}>
-                  <article
-                    className={`group grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center ${
-                      i % 2 === 1 ? "lg:direction-rtl" : ""
-                    }`}
-                  >
-                    {/* Image side */}
-                    <div className={`relative overflow-hidden rounded-2xl aspect-[4/3] ${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                      <img
-                        src={product.images[0] || product.image}
-                        alt={product.title}
-                        className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                      />
-                      {/* Ambient glow behind image */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    </div>
-
-                    {/* Text side */}
-                    <div className={`py-2 ${i % 2 === 1 ? "lg:order-1 lg:text-right" : ""}`} style={{ direction: "ltr" }}>
-                      <div className={`flex items-center gap-2 mb-3 ${i % 2 === 1 ? "lg:justify-end" : ""}`}>
-                        <Tag className="w-3.5 h-3.5 text-amber" />
-                        <span className="text-xs font-mono text-amber tracking-wider uppercase">{product.category}</span>
-                      </div>
-
-                      <h3 className="text-2xl lg:text-3xl font-display text-foreground mb-3 group-hover:text-amber transition-colors">
-                        {product.title}
-                      </h3>
-
-                      <p className="text-muted-foreground leading-relaxed mb-4 line-clamp-3">
-                        {product.description}
-                      </p>
-
-                      <div className={`flex items-center gap-4 mb-5 ${i % 2 === 1 ? "lg:justify-end" : ""}`}>
-                        <span className="font-mono text-xl text-amber font-semibold">${product.price}</span>
-                        <span className="flex items-center gap-1 text-sm text-muted-foreground">
-                          <Star className="w-4 h-4 fill-amber text-amber" />
-                          {product.rating} ({product.reviewCount})
-                        </span>
-                      </div>
-
-                      <span className={`inline-flex items-center gap-2 text-sm font-medium text-amber group-hover:gap-3 transition-all ${i % 2 === 1 ? "" : ""}`}>
-                        View Product <ArrowRight className="w-4 h-4" />
-                      </span>
-                    </div>
-                  </article>
-                </Link>
-
-                {/* Editorial divider */}
-                {i < 5 && <div className="editorial-divider mt-12 lg:mt-16" />}
-              </FadeSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          SECTION 4 — NEW ARRIVALS (Grid)
-          ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16 bg-card/30">
-        <div className="container">
-          <SectionHeading label="Fresh" title="New Arrivals" action="See All" href="/category/new" />
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
-            {newArrivals.slice(0, 8).map((product, i) => (
-              <FadeSection key={product.id} delay={i * 0.05}>
-                <ProductCard product={product} />
-              </FadeSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          SECTION 5 — CATEGORY SPOTLIGHT (Carousel)
-          ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16">
         <div className="container">
           <div className="flex items-end justify-between mb-8 lg:mb-10">
             <div>
@@ -328,9 +200,137 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════════
-          SECTION 6 — FROM THE BLOG
+          SECTION 3 — NOW TRENDING (Numbered Strip)
           ════════════════════════════════════════════ */}
       <section className="py-12 lg:py-16 bg-card/30">
+        <div className="container">
+          <SectionHeading label="Trending" title="Now Trending" action="View All" href="/category/smart-home" />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {trending.slice(0, 5).map((product, i) => (
+              <FadeSection key={product.id} delay={i * 0.08}>
+                <Link href={`/product/${product.slug}`}>
+                  <div className="group relative flex lg:flex-col items-center lg:items-start gap-4 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-amber/30 hover:bg-card transition-all">
+                    {/* Rank number */}
+                    <span className="absolute top-2 left-3 font-mono text-4xl font-bold text-amber/20 group-hover:text-amber/40 transition-colors leading-none">
+                      {i + 1}
+                    </span>
+
+                    {/* Product image */}
+                    <div className="w-20 h-20 lg:w-full lg:h-36 rounded-lg overflow-hidden flex-shrink-0 mt-4 lg:mt-6">
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+
+                    {/* Info */}
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-medium text-sm text-foreground line-clamp-2 group-hover:text-amber transition-colors">
+                        {product.title}
+                      </h3>
+                      <div className="flex items-center gap-2 mt-1.5">
+                        <span className="font-mono text-sm text-amber">${product.price}</span>
+                        <span className="flex items-center gap-0.5 text-xs text-muted-foreground">
+                          <Star className="w-3 h-3 fill-amber text-amber" />
+                          {product.rating}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </FadeSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
+          SECTION 4 — EDITORIAL DISCOVERY FEED
+          ════════════════════════════════════════════ */}
+      <section className="py-12 lg:py-16">
+        <div className="container">
+          <SectionHeading label="Curated" title="Editor's Picks" />
+
+          <div className="space-y-12 lg:space-y-16">
+            {featured.slice(0, 6).map((product, i) => (
+              <FadeSection key={product.id}>
+                <Link href={`/product/${product.slug}`}>
+                  <article
+                    className={`group grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center ${
+                      i % 2 === 1 ? "lg:direction-rtl" : ""
+                    }`}
+                  >
+                    {/* Image side */}
+                    <div className={`relative overflow-hidden rounded-2xl aspect-[4/3] ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                      <img
+                        src={product.images[0] || product.image}
+                        alt={product.title}
+                        className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
+
+                    {/* Text side */}
+                    <div className={`py-2 ${i % 2 === 1 ? "lg:order-1 lg:text-right" : ""}`} style={{ direction: "ltr" }}>
+                      <div className={`flex items-center gap-2 mb-3 ${i % 2 === 1 ? "lg:justify-end" : ""}`}>
+                        <Tag className="w-3.5 h-3.5 text-amber" />
+                        <span className="text-xs font-mono text-amber tracking-wider uppercase">{product.category}</span>
+                      </div>
+
+                      <h3 className="text-2xl lg:text-3xl font-display text-foreground mb-3 group-hover:text-amber transition-colors">
+                        {product.title}
+                      </h3>
+
+                      <p className="text-muted-foreground leading-relaxed mb-4 line-clamp-3">
+                        {product.description}
+                      </p>
+
+                      <div className={`flex items-center gap-4 mb-5 ${i % 2 === 1 ? "lg:justify-end" : ""}`}>
+                        <span className="font-mono text-xl text-amber font-semibold">${product.price}</span>
+                        <span className="flex items-center gap-1 text-sm text-muted-foreground">
+                          <Star className="w-4 h-4 fill-amber text-amber" />
+                          {product.rating}
+                        </span>
+                      </div>
+
+                      <span className={`inline-flex items-center gap-2 text-sm font-medium text-amber group-hover:gap-3 transition-all`}>
+                        View Product <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
+                  </article>
+                </Link>
+
+                {/* Editorial divider */}
+                {i < 5 && <div className="editorial-divider mt-12 lg:mt-16" />}
+              </FadeSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
+          SECTION 5 — NEW ARRIVALS (Grid)
+          ════════════════════════════════════════════ */}
+      <section className="py-12 lg:py-16 bg-card/30">
+        <div className="container">
+          <SectionHeading label="Fresh" title="New Arrivals" action="See All" href="/category/smart-home" />
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
+            {newArrivals.slice(0, 8).map((product, i) => (
+              <FadeSection key={product.id} delay={i * 0.05}>
+                <ProductCard product={product} />
+              </FadeSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
+          SECTION 6 — FROM THE BLOG
+          ════════════════════════════════════════════ */}
+      <section className="py-12 lg:py-16">
         <div className="container">
           <SectionHeading label="Read" title="From the Blog" action="All Articles" href="/blog" />
 
