@@ -1,6 +1,6 @@
 /*
  * GADGET STYLE — Category Page
- * Lumina Design: Full-bleed category hero, filterable product grid with pagination
+ * GadgetFlow-inspired full-width hero banner with category image, title, description, and product count
  */
 import { useParams, Link } from "wouter";
 import { motion } from "framer-motion";
@@ -12,6 +12,16 @@ import { ArrowLeft, SlidersHorizontal, ChevronDown, Grid3X3, LayoutList } from "
 const PRODUCTS_PER_PAGE = 15;
 
 type SortOption = "newest" | "price-low" | "price-high" | "rating" | "popular";
+
+/* Category banner images — mapped to each category slug */
+const BANNER_IMAGES: Record<string, string> = {
+  "smart-home": "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/banner_smart_home-Lwe9YFSYX3gE8xqhxj9kTj.webp",
+  "audio-sound": "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/banner_audio_sound-m3tVjiQeQUeRXkB4fbHybh.webp",
+  "gaming-accessories": "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/banner_gaming-MmqK9Gn2W2jAptfuN4VvKE.webp",
+  "wearables-fitness": "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/banner_wearables-MYdZmCFMz5FTBhXFVFWVxa.webp",
+  "outdoor-adventure-tech": "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/banner_outdoor-EkMk8AcUMoSLDSaCgZYsrr.webp",
+  "everyday-carry-accessories": "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/banner_edc-YKLckERraRsUZBDx53WA2Z.webp",
+};
 
 export default function CategoryPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -58,34 +68,54 @@ export default function CategoryPage() {
     );
   }
 
+  const bannerImage = BANNER_IMAGES[slug || ""] || category.image;
+
   return (
     <div>
-      {/* Category Hero — light editorial style */}
-      <section className="pt-24 lg:pt-28 pb-10 lg:pb-14 bg-gradient-to-b from-primary/5 to-background">
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6 transition-colors">
+      {/* ═══ FULL-WIDTH GF-STYLE CATEGORY HERO BANNER ═══ */}
+      <section className="relative pt-24 pb-12 lg:pt-28 lg:pb-16 overflow-hidden">
+        {/* Background image with dark overlay */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('${bannerImage}')` }}
+        >
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/50" />
+        </div>
+
+        {/* Content overlay */}
+        <div className="relative z-10 max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="inline-flex items-center gap-1 text-sm text-white/70 hover:text-white mb-6 transition-colors">
             <ArrowLeft className="w-4 h-4" /> Back to Home
           </Link>
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
-            <div>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-3xl lg:text-5xl font-bold font-display text-foreground mb-2"
-              >
-                {category.name}
-              </motion.h1>
-              <p className="text-muted-foreground max-w-lg">{category.description}</p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-2xl"
+          >
+            {/* Product count badge */}
+            <div className="inline-block px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
+              <p className="text-sm font-semibold text-white">
+                {sortedProducts.length} <span className="text-white/70">Products</span>
+              </p>
             </div>
-            <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-2xl overflow-hidden border border-border/50 shadow-lg shrink-0">
-              <img src={category.image} alt={category.name} className="w-full h-full object-cover" />
-            </div>
-          </div>
+
+            {/* Category title */}
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold font-display text-white mb-4 leading-tight">
+              {category.name}
+            </h1>
+
+            {/* Category description */}
+            <p className="text-lg text-white/80 max-w-xl leading-relaxed">
+              {category.description}
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Products Grid */}
-      <section className="py-12 lg:py-16">
+      {/* ═══ PRODUCTS GRID ═══ */}
+      <section className="py-12 lg:py-16 bg-background">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Toolbar */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-border">
@@ -99,36 +129,39 @@ export default function CategoryPage() {
               <div className="relative">
                 <select
                   value={sortBy}
-                  onChange={(e) => {
-                    setSortBy(e.target.value as SortOption);
-                    setVisibleCount(PRODUCTS_PER_PAGE);
-                  }}
-                  className="appearance-none bg-card border border-border rounded-lg px-4 py-2.5 pr-10 text-sm font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  onChange={(e) => setSortBy(e.target.value as SortOption)}
+                  className="appearance-none px-4 py-2.5 rounded-lg bg-black/[0.04] dark:bg-white/5 border border-border text-sm font-medium cursor-pointer pr-8"
                 >
-                  <option value="newest">Newest First</option>
+                  <option value="newest">Newest</option>
                   <option value="price-low">Price: Low to High</option>
                   <option value="price-high">Price: High to Low</option>
                   <option value="rating">Highest Rated</option>
                   <option value="popular">Most Popular</option>
                 </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
               </div>
 
               {/* View mode toggle */}
-              <div className="hidden sm:flex items-center gap-1 bg-card border border-border rounded-lg p-1">
+              <div className="flex items-center gap-1 bg-black/[0.04] dark:bg-white/5 rounded-lg p-1">
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={`p-2 rounded-md transition-colors ${
-                    viewMode === "grid" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
+                  className={`p-2 rounded transition-colors ${
+                    viewMode === "grid"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
+                  aria-label="Grid view"
                 >
                   <Grid3X3 className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={`p-2 rounded-md transition-colors ${
-                    viewMode === "list" ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground"
+                  className={`p-2 rounded transition-colors ${
+                    viewMode === "list"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
+                  aria-label="List view"
                 >
                   <LayoutList className="w-4 h-4" />
                 </button>
@@ -136,35 +169,34 @@ export default function CategoryPage() {
             </div>
           </div>
 
-          {/* Product grid */}
+          {/* Products Grid */}
           <div
             className={
               viewMode === "grid"
-                ? "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 lg:gap-6"
+                ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6"
                 : "space-y-4"
             }
           >
-            {displayProducts.map((product, i) => (
-              <ProductCard
+            {displayProducts.map((product) => (
+              <motion.div
                 key={product.id}
-                product={product}
-                index={i}
-                variant={viewMode === "list" ? "featured" : undefined}
-              />
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ProductCard product={product} />
+              </motion.div>
             ))}
           </div>
 
-          {/* Load more */}
+          {/* Load more button */}
           {hasMore && (
-            <div className="text-center mt-12">
+            <div className="flex justify-center mt-12">
               <button
-                onClick={() => setVisibleCount((prev) => prev + PRODUCTS_PER_PAGE)}
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity"
+                onClick={() => setVisibleCount(prev => prev + PRODUCTS_PER_PAGE)}
+                className="px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
               >
                 Load More Products
-                <span className="text-xs opacity-70">
-                  ({sortedProducts.length - visibleCount} remaining)
-                </span>
               </button>
             </div>
           )}
