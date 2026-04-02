@@ -78,7 +78,7 @@ export default function Home() {
           ════════════════════════════════════════════ */}
       <section className="relative bg-background overflow-hidden">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[70vh] py-12 lg:py-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center pt-6 pb-10 lg:pt-8 lg:pb-12">
             {/* Left — Text content on light background */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
