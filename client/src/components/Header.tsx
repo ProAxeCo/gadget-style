@@ -1,9 +1,9 @@
 /*
  * GADGET STYLE — Header Component
  * Blue corporate identity, light-mode default.
- * GadgetFlow-inspired single-row category navigation:
- *   Row 1: Logo + Search + Wishlist + Theme + Mobile menu
- *   Row 2: Scrollable category links with colored dots (GF-style)
+ * GadgetFlow-inspired two-row navigation:
+ *   Row 1: Logo + pill-shaped nav items + Search
+ *   Row 2: Scrollable category links with colored dots
  *   Mobile: Full-screen slide-out drawer
  *   Search: Live suggestions dropdown
  */
@@ -20,6 +20,11 @@ import {
   Moon,
   Menu,
   X,
+  Compass,
+  TrendingUp,
+  BookOpen,
+  Info,
+  Mail,
   ChevronLeft,
   ChevronRight,
   ArrowRight,
@@ -37,6 +42,15 @@ const CATEGORY_COLORS = [
   "bg-primary/60",
   "bg-primary/75",
   "bg-primary/90",
+];
+
+/* Primary nav items with icons — pill-shaped like GF */
+const primaryNav = [
+  { label: "Discover", href: "/", icon: Compass },
+  { label: "Trending", href: "/category/smart-home", icon: TrendingUp },
+  { label: "Blog", href: "/blog", icon: BookOpen },
+  { label: "About", href: "/about", icon: Info },
+  { label: "Contact", href: "/contact", icon: Mail },
 ];
 
 export default function Header() {
@@ -189,7 +203,7 @@ export default function Header() {
             : "bg-background/80 backdrop-blur-md"
         }`}
       >
-        {/* ═══ ROW 1: Logo + Search + Wishlist + Theme + Mobile menu ═══ */}
+        {/* ═══ ROW 1: Logo + Pill Nav + Search ═══ */}
         <div className="border-b border-border/50">
           <div className="container">
             <div className="flex items-center justify-between h-16 lg:h-20">
@@ -206,6 +220,30 @@ export default function Header() {
                   </span>
                 </div>
               </Link>
+
+              {/* Desktop: Pill-shaped nav items */}
+              <nav className="hidden lg:flex items-center gap-2">
+                {primaryNav.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = item.href === "/"
+                    ? location === "/"
+                    : location.startsWith(item.href);
+                  return (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-200 ${
+                        isActive
+                          ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
+                          : "bg-black/[0.04] dark:bg-white/5 text-foreground hover:bg-black/[0.07] dark:hover:bg-white/10 hover:shadow-sm"
+                      }`}
+                    >
+                      <Icon className="w-4 h-4" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </nav>
 
               {/* Right actions: Search, Wishlist, Theme, Mobile menu */}
               <div className="flex items-center gap-1">
@@ -236,7 +274,7 @@ export default function Header() {
                 >
                   <Heart className={`w-5 h-5 ${wishlistCount > 0 ? "fill-primary text-primary" : ""}`} />
                   {wishlistCount > 0 && (
-                    <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center">
+                    <span className="absolute -top-0.5 -right-0.5 w-4.5 h-4.5 bg-primary text-primary-foreground text-[10px] font-bold rounded-full flex items-center justify-center">
                       {wishlistCount}
                     </span>
                   )}
@@ -263,8 +301,8 @@ export default function Header() {
           </div>
         </div>
 
-        {/* ═══ ROW 2: Category links with colored dots (GF-style, desktop only) ═══ */}
-        <div className="hidden lg:block relative border-t border-border/30">
+        {/* ═══ ROW 2: Category links with colored dots (desktop only) ═══ */}
+        <div className="hidden lg:block relative">
           <div className="container">
             <div className="relative flex items-center">
               {canScrollLeft && (
@@ -482,6 +520,40 @@ export default function Header() {
                   />
                 </form>
               </div>
+
+              {/* Primary navigation */}
+              <div className="px-3 py-4">
+                <p className="px-3 text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground/50 mb-2">Navigation</p>
+                {primaryNav.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = item.href === "/"
+                    ? location === "/"
+                    : location.startsWith(item.href);
+                  return (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className={`flex items-center gap-3 px-3 py-3 text-base font-bold rounded-xl transition-all duration-200 ${
+                        isActive
+                          ? "bg-primary/10 text-primary"
+                          : "text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5"
+                      }`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div className={`p-2 rounded-lg ${isActive ? "bg-primary/20" : "bg-black/[0.04] dark:bg-white/5"}`}>
+                        <Icon className="w-4.5 h-4.5" />
+                      </div>
+                      {item.label}
+                      {isActive && (
+                        <span className="ml-auto w-1.5 h-1.5 rounded-full bg-primary" />
+                      )}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Divider */}
+              <div className="mx-5 border-t border-border/30" />
 
               {/* Categories */}
               <div className="px-3 py-4">
