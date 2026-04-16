@@ -1695,7 +1695,7 @@ export const categories: Category[] = [
     description: "Transform your living space with intelligent devices",
     icon: "Home",
     productCount: 12,
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/product_11_img1_7db2e566.jpg",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/banner_smart_home_modern-CJjmzf3kFbLCmdCaKvFC3a.webp",
   },
   {
     name: "Audio & Sound",
@@ -1703,7 +1703,7 @@ export const categories: Category[] = [
     description: "Premium audio gear for audiophiles and music lovers",
     icon: "Headphones",
     productCount: 13,
-    image: "https://d1ncau8tqf99kp.cloudfront.net/converted/103364_original_local_1200x1050_v3_converted.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/banner_audio_modern-c32rVWTgJLowj8bFntMRk2.webp",
   },
   {
     name: "Gaming & Accessories",
@@ -1711,7 +1711,7 @@ export const categories: Category[] = [
     description: "Level up your gaming setup with pro-grade gear",
     icon: "Gamepad2",
     productCount: 13,
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/product_53_img1_17b59822.jpg",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/banner_gaming_modern-ZZgRqWGBVQhYgTty8C2WVM.webp",
   },
   {
     name: "Wearables & Fitness",
@@ -1719,7 +1719,7 @@ export const categories: Category[] = [
     description: "Track your health and stay connected on the go",
     icon: "Watch",
     productCount: 13,
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/product_39_img1_7fc1f44a.jpg",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/banner_wearables_modern-dMvz9ez7HvnCkNYBggkLZ4.webp",
   },
   {
     name: "Outdoor & Adventure Tech",
@@ -1727,7 +1727,7 @@ export const categories: Category[] = [
     description: "Gear up for your next adventure with rugged tech",
     icon: "Mountain",
     productCount: 12,
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663395363177/DmYYNnfthgmIhawA.jpg",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/banner_outdoor_modern-QrtTPDVqe7NcuLWSHMPtNr.webp",
   },
   {
     name: "Everyday Carry & Accessories",
@@ -1735,7 +1735,7 @@ export const categories: Category[] = [
     description: "Essential tech accessories for your daily life",
     icon: "Briefcase",
     productCount: 13,
-    image: "https://thegadgetflow.com/wp-content/uploads/2022/08/Anker-737-Power-Bank-PowerCore-24K-01-1024x576.jpg",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/banner_edc_modern-eYnJngmeSeWrdHSZi8agck.webp",
   },
 ];
 
