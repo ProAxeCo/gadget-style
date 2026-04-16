@@ -76,7 +76,7 @@ export default function Home() {
       {/* ════════════════════════════════════════════
           SECTION 1 — PICK OF THE DAY (Light Split Hero)
           ════════════════════════════════════════════ */}
-      <section className="relative bg-background overflow-hidden">
+      <section className="relative bg-background overflow-hidden mt-32 lg:mt-40">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[70vh] py-12 lg:py-0">
             {/* Left — Text content on light background */}
