@@ -206,7 +206,7 @@ export default function Header() {
         {/* ═══ ROW 1: Logo + Pill Nav + Search ═══ */}
         <div className="border-b border-border/50">
           <div className="container">
-            <div className="flex items-center justify-between h-16 lg:h-20">
+            <div className="flex items-center justify-between h-16 lg:h-20 gap-4 lg:gap-6">
               {/* Logo — Blue GS concentric ring + wordmark */}
               <Link href="/" className="shrink-0 flex items-center gap-2.5 group">
                 <img
@@ -222,7 +222,7 @@ export default function Header() {
               </Link>
 
               {/* Desktop: Pill-shaped nav items */}
-              <nav className="hidden lg:flex items-center gap-2">
+              <nav className="hidden lg:flex items-center gap-2 shrink-0">
                 {primaryNav.map((item) => {
                   const Icon = item.icon;
                   const isActive = item.href === "/"
@@ -245,20 +245,22 @@ export default function Header() {
                 })}
               </nav>
 
-              {/* Right actions: Search, Wishlist, Theme, Mobile menu */}
-              <div className="flex items-center gap-1">
-                {/* Search pill (desktop) */}
+              {/* Extended search bar (desktop) */}
+              <div className="hidden lg:flex flex-1 max-w-md">
                 <button
                   onClick={() => setSearchOpen(!searchOpen)}
-                  className="hidden lg:flex items-center gap-2 px-4 py-2.5 rounded-full bg-black/[0.04] dark:bg-white/5 text-muted-foreground hover:bg-black/[0.07] dark:hover:bg-white/10 hover:text-foreground transition-all text-sm"
+                  className="w-full flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/[0.04] dark:bg-white/5 text-muted-foreground hover:bg-black/[0.07] dark:hover:bg-white/10 hover:text-foreground transition-all text-sm"
                 >
-                  <Search className="w-4 h-4" />
-                  <span className="font-medium">Search</span>
-                  <kbd className="hidden xl:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-black/[0.04] dark:bg-white/5 text-[10px] text-muted-foreground/60 font-mono">
+                  <Search className="w-4 h-4 shrink-0" />
+                  <span className="font-medium flex-1 text-left">Search products...</span>
+                  <kbd className="hidden xl:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-black/[0.04] dark:bg-white/5 text-[10px] text-muted-foreground/60 font-mono shrink-0">
                     ⌘K
                   </kbd>
                 </button>
+              </div>
 
+              {/* Right actions: Wishlist, Theme, Mobile menu */}
+              <div className="flex items-center gap-1 shrink-0">
                 {/* Mobile search icon */}
                 <button
                   onClick={() => setSearchOpen(!searchOpen)}
