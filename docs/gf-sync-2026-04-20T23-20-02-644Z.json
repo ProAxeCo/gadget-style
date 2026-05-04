@@ -1,0 +1,49 @@
+{
+  "startedAt": "2026-04-20T23:20:02.644Z",
+  "finishedAt": "2026-04-20T23:20:11.636Z",
+  "durationMs": 8992,
+  "dryRun": true,
+  "discovery": {
+    "total": 36,
+    "alreadyInCatalog": 32,
+    "fresh": 4
+  },
+  "scrape": {
+    "attempted": 4,
+    "succeeded": 4,
+    "failed": 0,
+    "withAmazon": 2,
+    "withExternal": 2,
+    "noBuyLink": 0
+  },
+  "ingest": {
+    "added": 0,
+    "skipped": [
+      {
+        "url": "https://thegadgetflow.com/product/insta360-snap-selfie-screen-for-creators/",
+        "reason": "duplicate slug: insta360-snap-selfie-screen"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/dyson-hushjet-mini-cool-portable-cooling-fan/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/cricut-joy-2-cutting-machine/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-echo-show-8-4th-generation-2025/",
+        "reason": "duplicate slug: amazon-echo-show-8-4th-generation-2025"
+      }
+    ]
+  },
+  "images": {
+    "mirrored": 0,
+    "failed": 0
+  },
+  "validate": {
+    "ok": false,
+    "summary": ""
+  },
+  "drafts": []
+}

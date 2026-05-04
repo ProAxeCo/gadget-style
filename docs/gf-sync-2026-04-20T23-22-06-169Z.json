@@ -1,0 +1,362 @@
+{
+  "startedAt": "2026-04-20T23:22:06.169Z",
+  "finishedAt": "2026-04-20T23:22:46.835Z",
+  "durationMs": 40666,
+  "dryRun": false,
+  "discovery": {
+    "total": 144,
+    "alreadyInCatalog": 33,
+    "fresh": 111
+  },
+  "scrape": {
+    "attempted": 111,
+    "succeeded": 111,
+    "failed": 0,
+    "withAmazon": 93,
+    "withExternal": 5,
+    "noBuyLink": 13
+  },
+  "ingest": {
+    "added": 50,
+    "skipped": [
+      {
+        "url": "https://thegadgetflow.com/product/insta360-snap-selfie-screen-for-creators/",
+        "reason": "duplicate slug: insta360-snap-selfie-screen"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/dyson-hushjet-mini-cool-portable-cooling-fan/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/cricut-joy-2-cutting-machine/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-echo-show-8-4th-generation-2025/",
+        "reason": "duplicate slug: amazon-echo-show-8-4th-generation-2025"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-eero-pro-7-tri-band-mesh-wi-fi-7-router/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-fire-tv-stick-4k-max/",
+        "reason": "duplicate ASIN: B0BP9SNVH9"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/eero-outdoor-7/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      }
+    ]
+  },
+  "images": {
+    "mirrored": 50,
+    "failed": 0
+  },
+  "validate": {
+    "ok": true,
+    "summary": "errors=0, warnings=85"
+  },
+  "drafts": [
+    {
+      "id": 163,
+      "title": "Amazon Fire TV Soundbar Plus with Dolby Atmos and DTS:X for Powerful Sound and Clear Dialogue",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0CXZTT4MT?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 164,
+      "title": "Amazon Fire HD 10 Kids and Kids Pro Tablets",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0BL6DCNGR?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 165,
+      "title": "Amazon Echo Spot",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0BFC7WQ6R?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 166,
+      "title": "Kindle Colorsoft Signature Edition: Paper-like Color Solutions by Amazon on Gadget Flow",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0CN3XR57P?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 167,
+      "title": "Amazon Blink Mini 2",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0BWWZXWPL?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 168,
+      "title": "Amazon Basics Fire Resistant Security Safe with Programmable Electonic Keyboard",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B074KHWNJZ?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 169,
+      "title": "Blink Video Doorbell 2nd Gen with Head-to-Toe HD View and an Amazing 2-Year Battery Life",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0DGQZ8JZK?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 170,
+      "title": "Garmin Varia eRTL615: The Must-Have Rearview Radar Taillight for Safer eBike Rides",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0F1ZKMFFD?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 171,
+      "title": "Brane Audio Brane X Smart Speaker with RAD Bass and 360° Sound for Smart Streaming",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0D7TXSS56?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 172,
+      "title": "Amazon Kindle Scribe (32GB)",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0CZ9VFQ2P?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 173,
+      "title": "Kindle Paperwhite: E-Reader 12th Gen with Glare-Free Display by Amazon on Gadget Flow",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0CFPJYX7P?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 174,
+      "title": "Amazon eero 6 dual-band mesh Wi-Fi router supports Wi-Fi 6 connectivity",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B085VM9ZDD?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 175,
+      "title": "Amazon All-New Echo Buds 2nd-Gen wireless earbuds offer ANC and Alexa",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B085WTYQ4X?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 176,
+      "title": "Amazon Echo Glow Companion Lamp responds to your voice for fun party modes",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07KRY43KN?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 177,
+      "title": "Amazon Echo Show 8 (3rd Gen, 2023) has a new display, camera, and mics for better calls",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0CDR2MP7Q?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 178,
+      "title": "Fire 7 Kids tablet: Ad-Free Content with Parental Controls by Amazon on Gadget Flow",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0BL8T7R1T?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 179,
+      "title": "Amazon Echo Dot Kids 5th Gen 2022 speaker is designed for children & has parental controls",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09B9CD1YB?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 180,
+      "title": "Amazon All-New Fire TV Cube Alexa streaming box has Wi-Fi 6E & 4K Ultra HD quality",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09BZZ3MM7?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 181,
+      "title": "Amazon Fire TV 4-Series 4K UHD smart TV delivers 4K Ultra HD, HDR 10, & Dolby Digital Plus",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08SVZ775L?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 182,
+      "title": "Blink Outdoor 4 (4th Gen) outdoor wireless security camera has a 2-year battery life",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0B1N5HW22?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 183,
+      "title": "Amazon eero 6+ Wi-Fi 6 Router",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08ZK39NSL?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 184,
+      "title": "Fire HD 8 2024: Tablet with 8” Display and Easy-to-Use Tools by Amazon on Gadget Flow",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0CVDN4QS6?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 185,
+      "title": "Fire HD 8 Kids: Portable Tablet for Kids with Parental Controls by Amazon on Gadget Flow",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0D1DV6G2N?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 186,
+      "title": "Amazon Echo Pop compact smart speaker offers full-bodied sound and Alexa compatibility",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09ZXJDSL5?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 187,
+      "title": "Amazon Echo Show 5 3rd Gen Smart Display",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09B2SBHQK?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 188,
+      "title": "Carrera Smart Glasses collection with Alexa boasts cutting-edge open-ear audio technology",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0BL5RKSHH?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 189,
+      "title": "Amazon Fire TV Stick 4K 2nd gen streaming device supports Wi-Fi 6 and has a new processor",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0CJM1GNFQ?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 190,
+      "title": "Amazon Fire TV Soundbar delivers room-filling 3D sound and supports DTS Virtual:X",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0C4BZ28PG?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 191,
+      "title": "Amazon eero Max 7 Wi-Fi 7 mesh system is remarkably faster with speeds up to 4.3 Gbps",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09HJJN7MS?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 192,
+      "title": "Amazon Echo Hub smart home control panel mounts on your wall and is powered by Alexa",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0BCR7M9KX?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 193,
+      "title": "Amazon Echo Frames (3rd Gen) smart Alexa spectacles offer fashion and on-the-go smarts",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09SVFXLLS?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 194,
+      "title": "Amazon Echo Pop Kids smart speaker comes in Marvel’s Avengers and Disney Princess designs",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0CB9PF1N6?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 195,
+      "title": "Amazon Fire Max 11 tablet is very big and powerful thanks to its octa-core processor",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0B1VQ1ZQY?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 196,
+      "title": "Amazon Astro 2nd Gen smart robot offers useful features for home and office situations",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B078NSDFSB?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 197,
+      "title": "Amazon Echo Show 5 Kids 3rd Gen has an improved speaker for more fun than ever before",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09B2SB77Q?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 198,
+      "title": "Amazon Echo Buds (2023 Release) true wireless earbuds have 12 mm drivers for crisp audio",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09JVG3TWX?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 199,
+      "title": "Amazon eero PoE 10-Port Wired Gateway supplies 100 watts of pooled power for PoE systems",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09HJNCG81?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 200,
+      "title": "Blink Mini Pan Tilt rotating indoor security cam offers 2-way audio & motion detection",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09N6D5SDX?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 201,
+      "title": "Amazon eero PoE 6 dual-band Wi-Fi 6 access point has a ceiling- or wall-mountable design",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09HJB9RJ3?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 202,
+      "title": "Blink Wired Floodlight Camera boasts 2,600 lumens of brightness and HD live view",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0B5VLCL1N?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 203,
+      "title": "Amazon Fire TV Omni QLED Series television takes 4K UHD smart content to a new level",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09N6J7KJD?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 204,
+      "title": "Amazon Alexa Voice Remote Pro comes with remote finder feature so you keep track of it",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09RX4HKTD?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 205,
+      "title": "Amazon Echo Auto 2nd Gen smart car accessory provides intelligent on-the-go assistance",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09X27YPS1?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 206,
+      "title": "Amazon Echo Dot with Clock 2022 version has an updated high-resolution dot matrix display",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09B8W5FW7?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 207,
+      "title": "Amazon Echo Studio Gen 2 2022 smart speaker boasts Dolby Atmos spatial audio technology",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09M67KSSF?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 208,
+      "title": "Amazon Halo Rise smart lamp & alarm clock is a sleep tracker that you don’t have to wear",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09MGBK9VV?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 209,
+      "title": "Amazon Kindle Scribe large eReader works with a pen that actually writes on the screen",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09BS26B8B?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 210,
+      "title": "Amazon Fire HD 8 tablet 2022 release is up to 30% faster than the previous generation",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B099Z8HLHT?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 211,
+      "title": "Amazon All-new Kindle Kids (2022 release) eReader has a high-res display for ages 3–12",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0B4GD5YJJ?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 212,
+      "title": "Amazon All-new Kindle (2022 release) eReader has a 6” 300 ppi high-resolution display",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09SWW583J?tag=gadgetstyle01-20"
+    }
+  ]
+}

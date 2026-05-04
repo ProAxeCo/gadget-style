@@ -8,6 +8,7 @@ import { useState, useMemo } from "react";
 import ProductCard from "@/components/ProductCard";
 import { getCategoryBySlug, getProductsByCategory } from "@/lib/data";
 import { ArrowLeft, SlidersHorizontal, ChevronDown, Grid3X3, LayoutList } from "lucide-react";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const PRODUCTS_PER_PAGE = 15;
 
@@ -17,6 +18,10 @@ export default function CategoryPage() {
   const { slug } = useParams<{ slug: string }>();
   const category = getCategoryBySlug(slug || "");
   const allProducts = slug ? getProductsByCategory(slug) : [];
+  useDocumentTitle(
+    category ? category.name : "Category",
+    category ? category.description : undefined,
+  );
 
   const [sortBy, setSortBy] = useState<SortOption>("newest");
   const [visibleCount, setVisibleCount] = useState(PRODUCTS_PER_PAGE);

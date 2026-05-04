@@ -7,10 +7,12 @@ import { motion } from "framer-motion";
 import { getBlogPostBySlug, blogPosts } from "@/lib/data";
 import { ArrowLeft, Clock, Share2 } from "lucide-react";
 import { toast } from "sonner";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
   const post = getBlogPostBySlug(slug || "");
+  useDocumentTitle(post ? post.title : "Article Not Found", post?.excerpt);
 
   if (!post) {
     return (

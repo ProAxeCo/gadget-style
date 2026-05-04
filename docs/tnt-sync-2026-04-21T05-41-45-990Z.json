@@ -1,0 +1,275 @@
+{
+  "startedAt": "2026-04-21T05:41:45.990Z",
+  "finishedAt": "2026-04-21T05:42:38.241Z",
+  "durationMs": 52251,
+  "dryRun": false,
+  "augmentAmazon": true,
+  "discovery": {
+    "articleUrls": 141,
+    "scraped": 20
+  },
+  "candidates": {
+    "totalExtracted": 479,
+    "lowQualityTitle": 154,
+    "duplicateAsin": 3,
+    "unique": 300
+  },
+  "augment": {
+    "attempted": 30,
+    "succeeded": 26,
+    "failed": 4
+  },
+  "ingest": {
+    "added": 30
+  },
+  "images": {
+    "mirrored": 145,
+    "failed": 0
+  },
+  "validate": {
+    "ok": false,
+    "summary": "errors=1, warnings=44"
+  },
+  "drafts": [
+    {
+      "id": 271,
+      "asin": "B004DW471O",
+      "title": "CREATIVE ART MATERIALS Caran D'ache Ballpoint Pen Metal Fluor Orange (849.030)",
+      "category": "everyday-carry",
+      "sourceArticle": "https://toolsandtoys.net/guides/gear-guide-orange-vibes/",
+      "augmented": true
+    },
+    {
+      "id": 272,
+      "asin": "B07K4XY6PT",
+      "title": "Field Notes: Expedition 3-Pack Waterproof Notebook with Dot-Graph Paper - 3.5\" x 5.5\"",
+      "category": "everyday-carry",
+      "sourceArticle": "https://toolsandtoys.net/guides/gear-guide-orange-vibes/",
+      "augmented": true
+    },
+    {
+      "id": 273,
+      "asin": "B082LJN89H",
+      "title": "Le Creuset PG90433A-002 Stoneware Mug, Set of 4, 14-Ounce, Flame",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/gear-guide-orange-vibes/",
+      "augmented": true
+    },
+    {
+      "id": 274,
+      "asin": "B0076NOHG2",
+      "title": "Le Creuset Enameled Cast Iron Signature Round Dutch Oven, 5.5 qt., Flame",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/gear-guide-orange-vibes/",
+      "augmented": true
+    },
+    {
+      "id": 275,
+      "asin": "B08N5WR4HG",
+      "title": "OXWALLEN Packs Stretchy Bands",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/gear-guide-orange-vibes/",
+      "augmented": true
+    },
+    {
+      "id": 276,
+      "asin": "B0C7HK93QS",
+      "title": "Recycled Firefighter Sergeant Slim Wallet for Men & Women – Minimalist Front Pocket Wallet w/Elastic Money Clip – Card Holder for 4-8 Cards – Travel Essentials Orange/Black",
+      "category": "outdoor-tech",
+      "sourceArticle": "https://toolsandtoys.net/guides/gear-guide-orange-vibes/",
+      "augmented": true
+    },
+    {
+      "id": 277,
+      "asin": "B08TZJS4QY",
+      "title": "Eagle Creek",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/gear-guide-orange-vibes/",
+      "augmented": true
+    },
+    {
+      "id": 278,
+      "asin": "B08KWQX3LK",
+      "title": "S.O.L. Survive Outdoors Longer Fire Lite Fuel Free Rechargeable Lighter",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/gear-guide-orange-vibes/",
+      "augmented": true
+    },
+    {
+      "id": 279,
+      "asin": "B00ZIADJSW",
+      "title": "Arborwear Men's Double Thick Pullover Sweatshirt",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/gear-guide-orange-vibes/",
+      "augmented": true
+    },
+    {
+      "id": 280,
+      "asin": "B00013J89A",
+      "title": "Pelican 1150 Camera Case",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/gear-guide-orange-vibes/",
+      "augmented": true
+    },
+    {
+      "id": 281,
+      "asin": "B0000DYV7B",
+      "title": "Pelican Products Inc #1151 Replacement Foam 3 Piece Set for 1150 Protector Case, Grey, 1150-400-000",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/gear-guide-orange-vibes/",
+      "augmented": true
+    },
+    {
+      "id": 282,
+      "asin": "B0BXH3CK3G",
+      "title": "Aulumu A16 for iPhone 16 Pro Magnetic Thermal Case | Updated Camera Control | IMD Technology | Compatible with Magsafe | Complete Wrap-Around | Touch Translucent Gray",
+      "category": "everyday-carry",
+      "sourceArticle": "https://toolsandtoys.net/guides/everyday-carry-cyberpunk/",
+      "augmented": true
+    },
+    {
+      "id": 283,
+      "asin": "B08FCTVLT2",
+      "title": "WC PadZ - The Ultimate Upgraded Earpads by Wicked Cushions - Compatible with Audio Technica, HyperX, SteelSeries Arctis & More - Extra Thick - Bigger Opening - Softer Memory Foam | (Speed Racer)",
+      "category": "audio",
+      "sourceArticle": "https://toolsandtoys.net/guides/everyday-carry-cyberpunk/",
+      "augmented": true
+    },
+    {
+      "id": 284,
+      "asin": "B07SNVZZCF",
+      "title": "TG Plasma Lighter Windproof Waterproof USB Rechargeable Flameless Dual Arc for EDC Camping Survival Tactical",
+      "category": "outdoor-tech",
+      "sourceArticle": "https://toolsandtoys.net/guides/everyday-carry-cyberpunk/",
+      "augmented": true
+    },
+    {
+      "id": 285,
+      "asin": "B0BN2SDTS5",
+      "title": "SPIGEN Ultra Hybrid Zero One (MagFit) Case Designed for Apple AirPods Pro 2 (2022) MagSafe Compatible Hook Cover - Zero One",
+      "category": "everyday-carry",
+      "sourceArticle": "https://toolsandtoys.net/guides/everyday-carry-cyberpunk/",
+      "augmented": true
+    },
+    {
+      "id": 286,
+      "asin": "B017B2043W",
+      "title": "Arlo (VMC3040-100NAS) Q – Wired, 1080p HD Security Camera | Night Vision, Indoor Only, 2-Way Audio | Cloud Storage Included | Works with Alexa (VMC3040), White",
+      "category": "audio",
+      "sourceArticle": "https://toolsandtoys.net/guides/a-few-great-sales/",
+      "augmented": true
+    },
+    {
+      "id": 287,
+      "asin": "B00R2AZLD2",
+      "title": "NETGEAR Nighthawk Smart Wi-Fi Router, R6700 - AC1750 Wireless Speed Up to 1750 Mbps | Up to 1500 Sq Ft Coverage & 25 Devices | 4 x 1G Ethernet and 1 x 3.0 USB Ports | Armor Security",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/a-few-great-sales/",
+      "augmented": true
+    },
+    {
+      "id": 288,
+      "asin": "B06XS33WDQ",
+      "title": "Refurbished Roku Premiere+ Streaming Player",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/a-few-great-sales/",
+      "augmented": false
+    },
+    {
+      "id": 289,
+      "asin": "B002FSZP5A",
+      "title": "uni-ball Jetstream Retractable Ball Point Pens,0.7mm, Black Ink, 3-Count",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/a-few-great-sales/",
+      "augmented": true
+    },
+    {
+      "id": 290,
+      "asin": "B01LD85JIK",
+      "title": "Twelve South HiRise 2 for iPhone/iPad, Black | Adjustable Charging Stand, Requires Apple Lightning Cable (not Included)",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/a-few-great-sales/",
+      "augmented": true
+    },
+    {
+      "id": 291,
+      "asin": "B01A6L85CC",
+      "title": "Jackery Bolt 6000 mAh Battery",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/a-few-great-sales/",
+      "augmented": false
+    },
+    {
+      "id": 292,
+      "asin": "B01NAYM1TP",
+      "title": "LG C7 65-inch OLED TV",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/a-few-great-sales/",
+      "augmented": false
+    },
+    {
+      "id": 293,
+      "asin": "B01MZF7WCT",
+      "title": "LG C7 55-inch OLED TV",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/a-few-great-sales/",
+      "augmented": false
+    },
+    {
+      "id": 294,
+      "asin": "B09XZ4Y1YC",
+      "title": "Technivorm Moccamaster 69211 Cup One, One-Cup Coffee Maker 10 Ounce, Off-White",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/fathers-day-2024-gift-guide/",
+      "augmented": true
+    },
+    {
+      "id": 295,
+      "asin": "B0C8JMMQ14",
+      "title": "Bulova Men's Classic Sutton 4-Hand Automatic Watch, 24-Hour Sub Dial, Open Aperture, Self-Winding, Exhibition Caseback, Double Curved Mineral Crystal, Luminous Hands, 42mm",
+      "category": "wearables",
+      "sourceArticle": "https://toolsandtoys.net/guides/fathers-day-2024-gift-guide/",
+      "augmented": true
+    },
+    {
+      "id": 296,
+      "asin": "B01BOH69NY",
+      "title": "S&W Manufacturing Co., Inc. Girl's Swtc-wm1 thread checker, White, Large UK",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/fathers-day-2024-gift-guide/",
+      "augmented": true
+    },
+    {
+      "id": 297,
+      "asin": "B01BEEFOBU",
+      "title": "Best Choice Products Folding Zero Gravity Outdoor Recliner Patio Lounge Chair w/Adjustable Canopy Shade, Headrest, Side Accessory Tray, Textilene Mesh - Beige",
+      "category": "outdoor-tech",
+      "sourceArticle": "https://toolsandtoys.net/guides/fathers-day-2024-gift-guide/",
+      "augmented": true
+    },
+    {
+      "id": 298,
+      "asin": "B09DKZPRBJ",
+      "title": "novium Hoverpen Interstellar Edition - Futuristic Luxury Pen Made With Aerospace Alloys, Unique Aesthetic, Free Spinning, Birthday Gifts for Men & Women (Mars Magma, Basic)",
+      "category": "everyday-carry",
+      "sourceArticle": "https://toolsandtoys.net/guides/fathers-day-2024-gift-guide/",
+      "augmented": true
+    },
+    {
+      "id": 299,
+      "asin": "B0001ACKWU",
+      "title": "All-Clad 59917 Stainless Steel Measuring Cups Cookware Set, 5-Piece, Silver",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/fathers-day-2024-gift-guide/",
+      "augmented": true
+    },
+    {
+      "id": 300,
+      "asin": "B0BT54FY4N",
+      "title": "Tetris Waffle Maker - Create Deliciously Fun and Geeky Tetrimino Waffles at Home! Makes Waffles in 3-5 Minutes. Tetrimino Shaped Plates. Officially Licensed Tetris Merchandise from Fizz Creations",
+      "category": "electronics",
+      "sourceArticle": "https://toolsandtoys.net/guides/fathers-day-2024-gift-guide/",
+      "augmented": true
+    }
+  ]
+}

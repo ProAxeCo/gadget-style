@@ -1,0 +1,358 @@
+{
+  "startedAt": "2026-04-20T23:29:15.007Z",
+  "finishedAt": "2026-04-20T23:29:50.616Z",
+  "durationMs": 35609,
+  "dryRun": false,
+  "discovery": {
+    "total": 144,
+    "alreadyInCatalog": 83,
+    "fresh": 61
+  },
+  "scrape": {
+    "attempted": 61,
+    "succeeded": 61,
+    "failed": 0,
+    "withAmazon": 43,
+    "withExternal": 5,
+    "noBuyLink": 13
+  },
+  "ingest": {
+    "added": 40,
+    "skipped": [
+      {
+        "url": "https://thegadgetflow.com/product/insta360-snap-selfie-screen-for-creators/",
+        "reason": "duplicate slug: insta360-snap-selfie-screen"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/dyson-hushjet-mini-cool-portable-cooling-fan/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/cricut-joy-2-cutting-machine/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-echo-show-8-4th-generation-2025/",
+        "reason": "duplicate slug: amazon-echo-show-8-4th-generation-2025"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-eero-pro-7-tri-band-mesh-wi-fi-7-router/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-fire-tv-stick-4k-max/",
+        "reason": "duplicate ASIN: B0BP9SNVH9"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/eero-outdoor-7/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-aware-collection-includes-carbon-neutral-apparel-beauty-products-and-more/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-echo-show-15/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-echo-dot-4th-generation-speaker/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-luna-controller/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-eero-pro-6-router/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/new-amazon-echo-4th-generation/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-echo-dot-kids-edition-speaker/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-halo/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazonbasics-aroma-diffuser-with-a-light/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-dash-smart-shelf/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/retro-inspired-bluetooth-speaker/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-echo-frames/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/amazon-echo-loop/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/all-new-amazon-echo/",
+        "reason": "no Amazon ASIN (--amazon-only mode)"
+      }
+    ]
+  },
+  "images": {
+    "mirrored": 40,
+    "failed": 0
+  },
+  "validate": {
+    "ok": true,
+    "summary": "errors=0, warnings=126"
+  },
+  "drafts": [
+    {
+      "id": 213,
+      "title": "Amazon Fire 7 2022 kids tablet has a durable Kid-Proof Case with a built-in stand",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B099HDR2Y6?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 214,
+      "title": "Amazon All-new Fire 7 tablet has a 30% faster quad-core processor & a longer battery life",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B096WKKK2K?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 215,
+      "title": "Amazon eero Pro 6E Wi-Fi router supports 100+ connected devices & covers up to 2,000 sq ft",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B091G65HH6?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 216,
+      "title": "Amazon Basics Smart Switches and Dimmers let you schedule when your lights turn on and off",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B095X8YD3Q?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 217,
+      "title": "Amazon Smart Air Quality Monitor makes it easy to understand what’s in your indoor air",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08W8KS8D3?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 218,
+      "title": "Blink Floodlight Cam gives you a totally wireless outdoor HD smart security setup",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B094YXRLCN?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 219,
+      "title": "Blink Solar Panel Charging Mount uses the sun’s power to charge the Blink Outdoor",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B099HXDWZS?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 220,
+      "title": "Blink Smart Video Doorbell allows you to answer your door anywhere from your smartphone",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08SG2MS3V?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 221,
+      "title": "Amazon Halo View fitness band offers a bright AMOLED color display to see health metrics",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08NCGKHKF?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 222,
+      "title": "Amazon Glow smart display projector combines video calling with immersive projection",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B09DWNZQYM?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 223,
+      "title": "Amazon Smart Thermostat automatically adjusts your indoor environment with advanced tech",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08J4C8871?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 224,
+      "title": "Amazon 11th Gen. Kindle Paperwhite has a 6.8-inch display and an adjustable warm light",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08KTZ8249?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 225,
+      "title": "Amazon Fire TV Omni Series 4K UHD Smart TV features Dolby Vision and built-in Alexa",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08T6J1HG8?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 226,
+      "title": "Amazon Smart Soap Dispenser has a 20-second timer and works with a compatible Echo device",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08GWRT223?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 227,
+      "title": "Bose Smart Soundbar 300 sleek speaker gives you spacious sound and versatile connectivity",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08D68QLW3?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 228,
+      "title": "Amazon Echo Show 5 Kids 2nd Gen children’s tablet has recycled plastics & a 2 MP camera",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08LMSC4WZ?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 229,
+      "title": "Amazon Echo Show 8 2nd-Gen smart display gadget has stereo speakers and an 8″ display",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B084DC4LW6?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 230,
+      "title": "Amazon Echo Show 5 2nd Gen smart display easily manages your life and smart home",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08J8FFJ8H?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 231,
+      "title": "Amazon Fire HD 10 Kids and Kids Pro 2021 tablets have octa-core processors & tough designs",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08F5MXVYL?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 232,
+      "title": "Amazon Fire HD 10 Plus tablet features a powerful octa-core processor and 3 GB of RAM",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08F6FYN6B?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 233,
+      "title": "Amazon Smart Nutrition Scale shares the calories, carbs, and sugar content of food",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08SPBLN1C?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 234,
+      "title": "Amazon Smart Cuckoo Clock lets you set timers, alarms, and more via voice command",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08TCL7ZLQ?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 235,
+      "title": "Amazon Smart Sticky Note Printer works with Alexa and your Echo device",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B08SZ26WF9?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 236,
+      "title": "Amazon 2nd Gen Echo Frames feature open-ear audio and hands-free access to Alexa",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B083C5FC7S?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 237,
+      "title": "Amazon Echo Show 10 (3rd Gen) smart display has a motorized base",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B082X1HRV5?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 238,
+      "title": "Amazon All-New Fire TV Stick comes with the Alexa Voice Remote",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07ZZVX1F2?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 239,
+      "title": "Amazon Fire TV Stick Lite comes with the Alexa Voice Remote Lite",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07YNLBS7R?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 240,
+      "title": "Amazon Fire HD 8 Plus 32 GB Tablet lets you enjoy your favorite apps",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B0839NDRB2?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 241,
+      "title": "Amazon Kindle Paperwhite Waterproof eReader has a completely glare-free screen",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07CXG6C9W?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 242,
+      "title": "Amazon Echo Show 8 HD Smart Screen is the smart home hub for your kitchen",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07RQ3TCT2?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 243,
+      "title": "Amazon Fire HD 8 Alexa Tablet offers up to 10 hours of battery life",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07952VWF2?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 244,
+      "title": "Amazon Fire TV Blaster Voice-Control Entertainment Device lets your media setup respond to Alexa",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B075F9PYGR?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 245,
+      "title": "Amazon All-New Fire HD 10 Kids Edition Children’s Tablet comes with a variety of educational content",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07KD87XW7?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 246,
+      "title": "Amazon All-New Fire HD 10 Alexa-Enabled Tablet now gives you up to 12 hours of battery life",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07KD6BTCZ?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 247,
+      "title": "Amazon Echo Flex Smart Outlet Speaker extends your Alexa range",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07MLY3JKV?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 248,
+      "title": "Amazon Alexa Smart Oven manages the cooking for you",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07PB21SRV?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 249,
+      "title": "Amazon Echo Buds In-Ear Headphones use Bose noise-reducing technology",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07F6VM1S3?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 250,
+      "title": "Amazon Echo Studio Dolby Atmos Speaker gives you the sound you’ve been missing",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07G9Y3ZMC?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 251,
+      "title": "Amazon Echo Dot with Clock Smart Alarm is a discreet alarm clock for your nightstand",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07N8RPRF7?tag=gadgetstyle01-20"
+    },
+    {
+      "id": 252,
+      "title": "Amazon Fire TV Cube Alexa Streaming Box gives you voice control of your television and home",
+      "destination": "amazon",
+      "buyUrl": "https://www.amazon.com/dp/B07KGVB6D6?tag=gadgetstyle01-20"
+    }
+  ]
+}

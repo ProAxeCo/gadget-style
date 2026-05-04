@@ -1,0 +1,65 @@
+[
+  {
+    "gadgetFlowUrl": "https://thegadgetflow.com/product/samsung-galaxy-a57-5g-smartphone/",
+    "title": "Samsung Galaxy A57 5G Smartphone",
+    "description": "The Samsung Galaxy A57 5G offers fast 5G connectivity, generous storage options, and a sleek design. See if it fits your needs and budget.",
+    "image": "https://thegadgetflow.com/wp-content/uploads/2026/04/Samsung-Galaxy-A57-01.jpg",
+    "images": [
+      "https://thegadgetflow.com/wp-content/uploads/2026/04/Samsung-Galaxy-A57-01.jpg"
+    ],
+    "amazonUrl": null,
+    "asin": null,
+    "hasAmazonLink": false,
+    "externalUrl": "https://www.samsung.com/us/smartphones/galaxy-a57-5g/buy/galaxy-a57-5g-128gb-unlocked-sku-sm-a576udbaxaa/?utm_source=GadgetFlow&utm_medium=GadgetFlow&utm_campaign=GadgetFlow",
+    "priceHint": "549.99",
+    "categoryHint": null,
+    "tags": [],
+    "raw": {
+      "ogTitle": "Samsung Galaxy A57 5G Smartphone",
+      "ogDescription": "The Samsung Galaxy A57 5G offers fast 5G connectivity, generous storage options, and a sleek design. See if it fits your needs and budget.",
+      "ogImage": "https://thegadgetflow.com/wp-content/uploads/2026/04/Samsung-Galaxy-A57-01.jpg"
+    }
+  },
+  {
+    "gadgetFlowUrl": "https://thegadgetflow.com/product/cricut-joy-2-cutting-machine/",
+    "title": "Cricut Joy 2 Compact Cutting Machine",
+    "description": "The Cricut Joy 2 cuts 75+ materials, prints full-color stickers, and fits anywhere. See what this compact crafting machine can do.",
+    "image": "https://thegadgetflow.com/wp-content/uploads/2026/04/Circuit-Joy-2-01.jpg",
+    "images": [
+      "https://thegadgetflow.com/wp-content/uploads/2026/04/Circuit-Joy-2-01.jpg"
+    ],
+    "amazonUrl": null,
+    "asin": null,
+    "hasAmazonLink": false,
+    "externalUrl": "https://cricut.com/en-us/cutting-machines/cricut-joy/cricut-joy-2/cricut-joy-2/2012138.html?utm_source=GadgetFlow&utm_medium=GadgetFlow&utm_campaign=GadgetFlow",
+    "priceHint": "99",
+    "categoryHint": null,
+    "tags": [],
+    "raw": {
+      "ogTitle": "Cricut Joy 2 Compact Cutting Machine",
+      "ogDescription": "The Cricut Joy 2 cuts 75+ materials, prints full-color stickers, and fits anywhere. See what this compact crafting machine can do.",
+      "ogImage": "https://thegadgetflow.com/wp-content/uploads/2026/04/Circuit-Joy-2-01.jpg"
+    }
+  },
+  {
+    "gadgetFlowUrl": "https://thegadgetflow.com/product/dji-osmo-pocket-4/",
+    "title": "DJI Osmo Pocket 4 Gimbal Camera",
+    "description": "The DJI Osmo Pocket 4 shoots 4K/240fps with a 1-inch sensor, 14-stop dynamic range, and 3-axis stabilization.",
+    "image": "https://thegadgetflow.com/wp-content/uploads/2026/04/DJI-Osmo-Pocket-4-01.jpg",
+    "images": [
+      "https://thegadgetflow.com/wp-content/uploads/2026/04/DJI-Osmo-Pocket-4-01.jpg"
+    ],
+    "amazonUrl": null,
+    "asin": null,
+    "hasAmazonLink": false,
+    "externalUrl": "https://www.dji.com/global/osmo-pocket-4?utm_source=GadgetFlow&utm_medium=GadgetFlow&utm_campaign=GadgetFlow",
+    "priceHint": "497",
+    "categoryHint": null,
+    "tags": [],
+    "raw": {
+      "ogTitle": "DJI Osmo Pocket 4 Gimbal Camera",
+      "ogDescription": "The DJI Osmo Pocket 4 shoots 4K/240fps with a 1-inch sensor, 14-stop dynamic range, and 3-axis stabilization.",
+      "ogImage": "https://thegadgetflow.com/wp-content/uploads/2026/04/DJI-Osmo-Pocket-4-01.jpg"
+    }
+  }
+]

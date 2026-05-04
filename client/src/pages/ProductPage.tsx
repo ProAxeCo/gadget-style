@@ -23,26 +23,83 @@ import {
   Copy,
   ChevronLeft,
   ChevronDown,
+  Play,
 } from "lucide-react";
 import { toast } from "sonner";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 /* Amazon logo — uses the actual Amazon "a" + smile PNG for crisp, recognizable branding */
-const AMAZON_LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/amazon_logo_gf_3247f94d.png";
+const AMAZON_LOGO_URL = "/images/mirrored/amazon_logo_gf_3247f94d.png";
+
+/**
+ * Normalize YouTube/Vimeo URLs to their embeddable form. Handles:
+ *   - youtube.com/watch?v=ID  → youtube.com/embed/ID
+ *   - youtu.be/ID             → youtube.com/embed/ID
+ *   - youtube.com/embed/ID    → passthrough
+ *   - vimeo.com/ID            → player.vimeo.com/video/ID
+ *   - player.vimeo.com/*      → passthrough
+ */
+function toEmbedUrl(url: string): string | null {
+  try {
+    const u = new URL(url);
+    // YouTube watch URL
+    if (/youtube\.com$/.test(u.hostname) && u.pathname === "/watch") {
+      const id = u.searchParams.get("v");
+      return id ? `https://www.youtube.com/embed/${id}` : null;
+    }
+    // youtu.be short link
+    if (u.hostname === "youtu.be") {
+      const id = u.pathname.replace(/^\//, "");
+      return id ? `https://www.youtube.com/embed/${id}` : null;
+    }
+    // Already an embed
+    if (/youtube\.com$|youtube-nocookie\.com$/.test(u.hostname) && u.pathname.startsWith("/embed/")) {
+      return u.toString();
+    }
+    // Vimeo canonical
+    if (u.hostname === "vimeo.com" && /^\/\d+/.test(u.pathname)) {
+      const id = u.pathname.replace(/^\//, "").split("/")[0];
+      return `https://player.vimeo.com/video/${id}`;
+    }
+    if (u.hostname === "player.vimeo.com") return u.toString();
+    return null;
+  } catch {
+    return null;
+  }
+}
 
 export default function ProductPage() {
   const { slug } = useParams<{ slug: string }>();
   const product = getProductBySlug(slug || "");
+  useDocumentTitle(
+    product ? product.title : "Product Not Found",
+    product ? `${product.title}. ${product.description.slice(0, 155)}` : undefined,
+  );
   const { toggleWishlist, isInWishlist } = useWishlist();
   const [activeImage, setActiveImage] = useState(0);
   const [activeTab, setActiveTab] = useState<"overview" | "specs" | "price">("overview");
+  const [descExpanded, setDescExpanded] = useState(false);
+  const overviewRef = useRef<HTMLDivElement>(null);
+  const collapseDescription = () => {
+    setDescExpanded(false);
+    // Scroll all the way to the top of the product page. Using rAF defers
+    // until after React's re-render so the page height matches the collapsed
+    // state and the scroll animation lands correctly.
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  };
 
-  // Scroll to top on product change
+  // Scroll to top on product change. Default the main viewer to the first
+  // IMAGE (not the first video) so the page is quiet on load — videos still
+  // sit at the top of the thumbnail strip for visibility, but autoplay is off.
   useEffect(() => {
     window.scrollTo(0, 0);
-    setActiveImage(0);
+    setActiveImage(product?.videos?.length ?? 0);
     setActiveTab("overview");
-  }, [slug]);
+    setDescExpanded(false);
+  }, [slug, product?.videos?.length]);
 
   if (!product) {
     return (
@@ -79,8 +136,17 @@ export default function ProductPage() {
   // Rating score out of 10
   const ratingScore = (product.rating * 2).toFixed(1);
 
-  // Determine if affiliate is Amazon
-  const isAmazon = product.affiliateUrl?.includes("amazon") || product.affiliateUrl?.includes("amzn.to");
+  // Determine if affiliate is Amazon — drives UI chrome (Amazon badge, "Buy on Amazon" label).
+  // For destination:"external" products, we show a generic buy button instead.
+  const effectiveDestination = product.destination ?? "amazon";
+  const isAmazon =
+    effectiveDestination === "amazon" &&
+    (product.affiliateUrl?.includes("amazon") || product.affiliateUrl?.includes("amzn.to"));
+  const buyUrl =
+    effectiveDestination === "external" && product.externalUrl
+      ? product.externalUrl
+      : product.affiliateUrl;
+  const buyLabel = isAmazon ? "Get it on Amazon" : "Visit Store";
 
   return (
     <div className="pt-20 lg:pt-24">
@@ -108,63 +174,110 @@ export default function ProductPage() {
         {/* Main Grid: Image Left, Details Right */}
         <div className="grid lg:grid-cols-[58%_42%] gap-6 lg:gap-10">
 
-          {/* LEFT: Image Gallery */}
+          {/* LEFT: Image + Video Gallery (GF-style: thumbnails on the left,
+              main viewer on the right). Videos sit at the top of the
+              thumbnail strip so they're visually prioritized, and clicking
+              one swaps the main viewer to an embedded player. */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {/* Main Image */}
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-secondary/30 border border-border/50">
-              {images.length > 1 && (
-                <>
-                  <button
-                    onClick={() => setActiveImage(prev => prev > 0 ? prev - 1 : images.length - 1)}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
-                    aria-label="Previous image"
-                  >
-                    <ChevronLeft className="w-5 h-5" />
-                  </button>
-                  <button
-                    onClick={() => setActiveImage(prev => prev < images.length - 1 ? prev + 1 : 0)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
-                    aria-label="Next image"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
-                </>
-              )}
-              <img
-                src={images[activeImage] || product.image}
-                alt={product.title}
-                className="w-full h-full object-cover"
-              />
-              {/* Image counter */}
-              {images.length > 1 && (
-                <span className="absolute bottom-3 right-3 text-xs text-white/80 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">
-                  {activeImage + 1} / {images.length}
-                </span>
-              )}
-            </div>
+            {(() => {
+              type MediaItem =
+                | { kind: "video"; url: string; poster: string }
+                | { kind: "image"; url: string };
+              const videoItems: MediaItem[] = (product.videos ?? [])
+                .map((v) => ({ url: toEmbedUrl(v), original: v }))
+                .filter((x): x is { url: string; original: string } => !!x.url)
+                .map((x) => ({ kind: "video", url: x.url, poster: images[0] ?? product.image }));
+              const imageItems: MediaItem[] = images.map((url) => ({ kind: "image", url }));
+              const mediaItems: MediaItem[] = [...videoItems, ...imageItems];
+              const active = Math.max(0, Math.min(activeImage, mediaItems.length - 1));
+              const current = mediaItems[active];
 
-            {/* Thumbnail Strip */}
-            {images.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                {images.map((img: string, i: number) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveImage(i)}
-                    className={`shrink-0 w-24 h-20 rounded-lg overflow-hidden border-2 transition-all ${
-                      activeImage === i
-                        ? "border-primary ring-1 ring-primary/30"
-                        : "border-border/50 opacity-60 hover:opacity-100"
-                    }`}
-                  >
-                    <img src={img} alt="" className="w-full h-full object-cover bg-secondary/30" />
-                  </button>
-                ))}
-              </div>
-            )}
+              const stepBy = (delta: number) => {
+                const next = (active + delta + mediaItems.length) % mediaItems.length;
+                setActiveImage(next);
+              };
+
+              return (
+                <div className="grid grid-cols-[76px_1fr] md:grid-cols-[92px_1fr] gap-3">
+                  {/* Thumbnail column — videos at the top with play overlay,
+                      then images. Scrolls if there are many. */}
+                  <div className="flex flex-col gap-2 max-h-[600px] overflow-y-auto pr-1 scrollbar-hide">
+                    {mediaItems.map((item, i) => (
+                      <button
+                        key={`${item.kind}-${i}`}
+                        onClick={() => setActiveImage(i)}
+                        className={`relative shrink-0 w-full aspect-square rounded-lg overflow-hidden border-2 transition-all ${
+                          active === i
+                            ? "border-primary ring-1 ring-primary/30"
+                            : "border-border/50 opacity-70 hover:opacity-100"
+                        }`}
+                        aria-label={item.kind === "video" ? `Video ${i + 1}` : `Image ${i + 1}`}
+                      >
+                        <img
+                          src={item.kind === "video" ? item.poster : item.url}
+                          alt=""
+                          className="w-full h-full object-cover bg-secondary/30"
+                        />
+                        {item.kind === "video" && (
+                          <span className="absolute inset-0 flex items-center justify-center bg-black/40">
+                            <span className="w-7 h-7 rounded-full bg-white/95 flex items-center justify-center shadow">
+                              <Play className="w-3.5 h-3.5 text-black fill-black ml-0.5" />
+                            </span>
+                          </span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Main viewer — image or iframe */}
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-secondary/30 border border-border/50">
+                    {mediaItems.length > 1 && current?.kind === "image" && (
+                      <>
+                        <button
+                          onClick={() => stepBy(-1)}
+                          className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
+                          aria-label="Previous"
+                        >
+                          <ChevronLeft className="w-5 h-5" />
+                        </button>
+                        <button
+                          onClick={() => stepBy(1)}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
+                          aria-label="Next"
+                        >
+                          <ChevronRight className="w-5 h-5" />
+                        </button>
+                      </>
+                    )}
+                    {current?.kind === "video" ? (
+                      <iframe
+                        src={current.url}
+                        title={`${product.title} — video`}
+                        loading="lazy"
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full border-0"
+                      />
+                    ) : (
+                      <img
+                        src={current?.url || product.image}
+                        alt={product.title}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                    {mediaItems.length > 1 && current?.kind === "image" && (
+                      <span className="absolute bottom-3 right-3 text-xs text-white/80 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                        {active + 1} / {mediaItems.length}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })()}
 
             {/* Editor's Quote */}
             <div className="mt-6 px-6 py-5 rounded-xl bg-card border border-border/50 relative">
@@ -196,9 +309,9 @@ export default function ProductPage() {
               </div>
             </div>
 
-            {/* Amazon CTA Button — yellow with crisp Amazon logo */}
+            {/* CTA Button — Amazon yellow for Amazon products, green for external brand links */}
             <a
-              href={product.affiliateUrl}
+              href={buyUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={`flex items-center gap-3 px-5 py-3.5 rounded-xl font-semibold text-base transition-colors mb-4 shadow-lg ${
@@ -274,38 +387,59 @@ export default function ProductPage() {
 
             {/* Tab Content */}
             {activeTab === "overview" && (
-              <div className="space-y-4">
-                <h2 className="text-lg font-bold font-display">
-                  {product.title}: Overview
-                </h2>
-                <p className="text-sm text-foreground/80 leading-relaxed">
-                  {product.description}
-                </p>
-                {descSentences.length >= 1 && (
-                  <ul className="space-y-3 mt-4">
-                    {descSentences.map((sentence, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                        <span>{sentence}.</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+              <div ref={overviewRef} className="space-y-5 scroll-mt-28">
+                <h2 className="text-lg font-bold font-display">{product.title}</h2>
 
-                {/* Additional product highlights from specs */}
-                {product.specs && (
-                  <div className="mt-5 pt-5 border-t border-border/50">
-                    <h3 className="text-sm font-bold text-foreground mb-3">Key Specifications</h3>
-                    <ul className="space-y-2.5">
-                      {Object.entries(product.specs).slice(0, 4).map(([key, value]) => (
-                        <li key={key} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 shrink-0" />
-                          <span><strong className="text-foreground">{key}:</strong> {value}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                {/* Description — first paragraph is always shown (the hook);
+                    remaining paragraphs are gated behind a "…More info" toggle
+                    so the initial Overview stays scannable. Pro descriptions
+                    are 3-4 paragraphs separated by blank lines. */}
+                <div className="prose prose-sm max-w-none">
+                  {(() => {
+                    const paragraphs = (product.description || "")
+                      .split(/\n{2,}/)
+                      .map((p) => p.trim())
+                      .filter(Boolean);
+                    const [firstPara, ...restParas] = paragraphs;
+                    const hasMore = restParas.length > 0;
+                    return (
+                      <>
+                        <p className="text-[16px] font-medium leading-relaxed text-foreground">
+                          {firstPara}
+                          {hasMore && !descExpanded && (
+                            <>
+                              {" "}
+                              <button
+                                onClick={() => setDescExpanded(true)}
+                                className="text-primary hover:underline font-medium text-[15px]"
+                              >
+                                …More info
+                              </button>
+                            </>
+                          )}
+                        </p>
+                        {descExpanded && (
+                          <>
+                            {restParas.map((para, i) => (
+                              <p
+                                key={i}
+                                className="text-[15px] leading-relaxed text-foreground/85"
+                              >
+                                {para}
+                              </p>
+                            ))}
+                            <button
+                              onClick={collapseDescription}
+                              className="text-primary hover:underline font-medium text-[14px]"
+                            >
+                              ← Show less
+                            </button>
+                          </>
+                        )}
+                      </>
+                    );
+                  })()}
+                </div>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mt-4">
@@ -344,7 +478,7 @@ export default function ProductPage() {
                     Current price on {isAmazon ? "Amazon" : "retailer"}
                   </p>
                   <a
-                    href={product.affiliateUrl}
+                    href={buyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-[#1a8a4a] hover:bg-[#157a3f] text-white rounded-lg font-semibold transition-colors"
@@ -360,11 +494,6 @@ export default function ProductPage() {
               </div>
             )}
 
-            {/* Affiliate Disclaimer */}
-            <p className="text-[10px] text-muted-foreground/50 mt-6 italic">
-              As an Amazon Associate and affiliate partner, Gadget Style earns from qualifying purchases.
-              Prices and availability are subject to change.
-            </p>
           </motion.div>
         </div>
 

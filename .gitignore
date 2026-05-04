@@ -7,6 +7,9 @@ dist/
 build/
 *.dist
 
+# Validator transient output
+audit-report.txt
+
 # Environment variables
 .env
 .env.local

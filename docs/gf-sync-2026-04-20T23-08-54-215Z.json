@@ -1,0 +1,48 @@
+{
+  "startedAt": "2026-04-20T23:08:54.215Z",
+  "finishedAt": "2026-04-20T23:08:57.453Z",
+  "durationMs": 3238,
+  "dryRun": true,
+  "discovery": {
+    "total": 15,
+    "alreadyInCatalog": 12,
+    "fresh": 3
+  },
+  "scrape": {
+    "attempted": 3,
+    "succeeded": 3,
+    "failed": 0,
+    "withAmazon": 1,
+    "withExternal": 2,
+    "noBuyLink": 0
+  },
+  "ingest": {
+    "added": 1,
+    "skipped": [
+      {
+        "url": "https://thegadgetflow.com/product/insta360-snap-selfie-screen-for-creators/",
+        "reason": "duplicate slug: insta360-snap-selfie-screen"
+      },
+      {
+        "url": "https://thegadgetflow.com/product/dyson-hushjet-mini-cool-portable-cooling-fan/",
+        "reason": "duplicate slug: dyson-hushjet-mini-cool"
+      }
+    ]
+  },
+  "images": {
+    "mirrored": 0,
+    "failed": 0
+  },
+  "validate": {
+    "ok": false,
+    "summary": ""
+  },
+  "drafts": [
+    {
+      "id": 144,
+      "title": "Motorola razr FIFA World Cup 26 Edition",
+      "destination": "external",
+      "buyUrl": "https://motorolanews.com/new-motorola-fifa-world-cup-26-editions/?utm_source=GadgetFlow&utm_medium=GadgetFlow&utm_campaign=GadgetFlow"
+    }
+  ]
+}

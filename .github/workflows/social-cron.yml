@@ -1,0 +1,79 @@
+name: Social queue (daily)
+
+# Runs once a day to publish a handful of products to Pinterest + Instagram.
+# Adjust the cron expression to control posting time — posts appear within
+# ~5 minutes of the scheduled run.
+#
+# Required GitHub Actions secrets (Settings → Secrets → Actions):
+#   PINTEREST_CLIENT_ID
+#   PINTEREST_CLIENT_SECRET
+#   PINTEREST_REFRESH_TOKEN
+#   META_APP_ID
+#   META_APP_SECRET
+#   META_PAGE_ACCESS_TOKEN       # ~60-day TTL; refresh via social-oauth-setup.ts
+#   META_IG_BUSINESS_ID
+
+on:
+  schedule:
+    # 10:00 AEST (Sydney) = 00:00 UTC → pin drops in the morning for AU audience
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+    inputs:
+      pinterest:
+        description: "Number of Pinterest pins to post"
+        required: false
+        default: "3"
+      instagram:
+        description: "Number of Instagram posts to make"
+        required: false
+        default: "1"
+      dry_run:
+        description: "Dry run (preview, no posts)"
+        type: boolean
+        default: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Post queue
+        env:
+          PINTEREST_CLIENT_ID: ${{ secrets.PINTEREST_CLIENT_ID }}
+          PINTEREST_CLIENT_SECRET: ${{ secrets.PINTEREST_CLIENT_SECRET }}
+          PINTEREST_REFRESH_TOKEN: ${{ secrets.PINTEREST_REFRESH_TOKEN }}
+          META_APP_ID: ${{ secrets.META_APP_ID }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_IG_BUSINESS_ID: ${{ secrets.META_IG_BUSINESS_ID }}
+        run: |
+          PIN=${{ inputs.pinterest || 3 }}
+          IG=${{ inputs.instagram || 1 }}
+          DRY=${{ inputs.dry_run && '--dry-run' || '' }}
+          pnpm tsx scripts/social-queue.ts --pinterest $PIN --ig $IG $DRY
+
+      - name: Commit log
+        if: success() && !inputs.dry_run
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git status --porcelain docs/social-log | grep -q .; then
+            git add docs/social-log
+            git commit -m "chore(social): log daily post results"
+            git push
+          else
+            echo "no new log entries"
+          fi

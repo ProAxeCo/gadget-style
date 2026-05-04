@@ -1,0 +1,444 @@
+{
+  "startedAt": "2026-04-21T05:26:23.323Z",
+  "finishedAt": "2026-04-21T05:26:36.882Z",
+  "durationMs": 13559,
+  "dryRun": true,
+  "sources": [
+    {
+      "label": "Electronics (Best Sellers)",
+      "tiles": 12
+    },
+    {
+      "label": "Electronics (Movers & Shakers)",
+      "tiles": 12
+    },
+    {
+      "label": "Headphones (Best Sellers)",
+      "tiles": 12
+    },
+    {
+      "label": "Bluetooth Speakers (Best Sellers)",
+      "tiles": 12
+    },
+    {
+      "label": "Wearable Tech (Best Sellers)",
+      "tiles": 0
+    },
+    {
+      "label": "Camera & Photo (Best Sellers)",
+      "tiles": 12
+    },
+    {
+      "label": "Smart Home (Best Sellers)",
+      "tiles": 12
+    },
+    {
+      "label": "Computers & Accessories (Best Sellers)",
+      "tiles": 12
+    }
+  ],
+  "dedupe": {
+    "totalDiscovered": 84,
+    "duplicateAsin": 3,
+    "unique": 75
+  },
+  "filter": {
+    "passed": 0,
+    "rejected": 75,
+    "rejections": [
+      {
+        "asin": "B08JHCVHTY",
+        "title": "blink plus plan with monthly auto-renewal",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DCH8VDXF",
+        "title": "Apple EarPods Headphones with USB-C Plug, Wired Ear Buds with Built-in Remote to Control Music, Phone Calls, and Volume",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GJTFXNRX",
+        "title": "Apple AirTag (2nd Generation): Tracker for Keychain, Wallet, and More; Locator with Sound; Simple One-Tap Setup with iPhone or iPad; Key Finder with up to 1.5X Precision Finding Range",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DGHMNQ5Z",
+        "title": "Apple AirPods 4 Wireless Earbuds, Bluetooth Headphones, Personalized Spatial Audio, Sweat and Water Resistant, USB-C Charging Case, H2 Chip, Up to 30 Hours of Battery Life, Effortless Setup for iPhone",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0FQFB8FMG",
+        "title": "Apple AirPods Pro 3 Wireless Earbuds, Active Noise Cancellation, Live Translation, Heart Rate Sensing, Hearing Aid Feature, Bluetooth Headphones, Spatial Audio, High-Fidelity Sound, USB-C Charging",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0F7Z4QZTT",
+        "title": "Amazon Fire TV Stick 4K Plus (newest model) with AI-powered Fire TV Search, Wi-Fi 6, stream hundreds of thousands of movies and shows, free & live TV, find shows faster with Alexa+",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0CQMRKRV5",
+        "title": "Amazon Fire TV Stick HD, free and live TV, Alexa Voice Remote, smart home controls, HD streaming",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DXXYS4BJ",
+        "title": "Roku Streaming Stick HD — HD Streaming Device for TV with Roku Voice Remote, Free & Live TV",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DGQVYW2K",
+        "title": "Blink Video Doorbell (newest model) – Head-to-toe HD view, two-year battery life, and simple setup. Required Sync Module not included – Add-On (Black)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DZ7871B8",
+        "title": "Apple iPad 11-inch: A16 chip, 11-inch Model, Liquid Retina Display, 128GB, Wi-Fi 6, 12MP Front/12MP Back Camera, Touch ID, All-Day Battery Life — Pink",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B08R6S1M1K",
+        "title": "Wall Charger, Surge Protector, QINLIANF 5 Outlet Extender with 4 USB Charging Ports, 3-Sided 1680J Power Strip Multi Plug Adapter Spaced for Home Travel Office",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GXVNMSC7",
+        "title": "Voice Rechargeable Remote for Samsung-Smart-TV-Remote-Control, Replacement Compatible for Samsung Frame QLED Crystal UHD Solar Smart TVs",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GXVWP563",
+        "title": "(2 Pack) Cover for Samsung Remote Silicone Protective Case Compatible with Samsung TV Remote Control Cover BN59 Series Glow in The Dark Remote Skin Sleeve",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GX64R17X",
+        "title": "PocBuds Bluetooth Headphones Wireless Earbuds 80hrs Playtime Wireless Charging Case Digital Display Sport Ear Buds with Earhook Deep Bass IPX7 Waterproof Over-Ear Earphones for Phone Laptop Beige",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GXVMYQ2Q",
+        "title": "Voice Remote Control Replacement for Hisense Smart Google TV，Compatible with Hisense QLED UHD Mini-LED ULED Google TVs",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GXW31RHL",
+        "title": "AN-MR24gn-Magic-for-LG-Smart-TV-Voice-Remote-Control-Replacement Universal Compatible with LG OLED Webos Thinq Nano Cell Service TVs for AKB75855501 MR23gn MR22gn MR21ga MR20ga",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GXVG761R",
+        "title": "Travel Essentials for Apple Watch Charger,iPhone Charger,3 in 2 Type C/Lightning/Magnetic Fast Charging Cable Docks,Multi Charging Cable Portable Designed for iWatch Series,iPhone 17-11,S26,Car-4FT",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GXVQ2Z74",
+        "title": "Universal Remote Control XRT140 for VIZIO Smart TV Remote Replacement XRT136 XRT260 XRT270 Smartcast D, E, M, P, V, PX Series Smart TVs",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GXVH9YC4",
+        "title": "Backlit Remote for LG Smart TV, Universal Replacement for All LG TV Remote Control for Easy Nighttime Use.1-Year Warranty.",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GXV4LB4F",
+        "title": "Replacement Remote Control Only for All Roku TV, Compatible for TCL Roku/Hisense Roku/Onn Roku Series Smart TVs (Not for Roku Stick and Box)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GXVVDXFB",
+        "title": "Universal Remote Control Compatible for All Samsung TV LED QLED UHD SUHD HDR LCD Frame Curved Solar HDTV 4K 8K 3D Smart TV Remotes Replacement",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GXVJZ3L6",
+        "title": "Universal Replacement Remote Control for Roku Express, for Roku Premiere, for Roku Box, for Roku Player, for Roku 1 2 3 4 -【NOT for Stick or TV】",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GXWZZFTK",
+        "title": "Fujifilm QuickSnap Flash 400 One-Time-Use Camera -2 Pack",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0D7FVQ1ZB",
+        "title": "Apple EarPods Headphones with Lightning Connector, Wired Ear Buds for iPhone with Built-in Remote to Control Music, Phone Calls, and Volume",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B09DT48V16",
+        "title": "TAGRY Bluetooth Headphones True Wireless Earbuds 60H Playback LED Power Display Earphones with Wireless Charging Case IPX5 Waterproof in-Ear Ear buds with Mic for TV Smart Phone Laptop Computer Sports",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0C3HCD34R",
+        "title": "Soundcore by Anker Q20i Hybrid Active Noise Cancelling Headphones, Wireless Over-Ear Bluetooth, 40H Long ANC Playtime, Hi-Res Audio, Big Bass, Customize via an App, Transparency Mode (Black)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0CXGXT6W8",
+        "title": "JLab Go Air Pop+ True Wireless Earbuds, in Ear Headphones, Bluetooth Earphones, 35H Playtime Ear Buds, Bluetooth Earbuds with Microphone, USB-C Charging Case, Dual Connect, EQ3 Sound, Black",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0BQPNMXQV",
+        "title": "JBL Vibe Beam - True Wireless JBL Deep Bass Sound Earbuds, Bluetooth 5.2, Water & Dust Resistant, Hands-Free Call with VoiceAware, Up to 32 Hours of Battery Life (Black)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0BTYCRJSS",
+        "title": "Soundcore by Anker P20i True Wireless Earbuds, 10mm Drivers with Big Bass, Bluetooth 5.3, 30H Long Playtime, Water-Resistant, 2 Mics for AI Clear Calls, 22 Preset EQs, Customization via App",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0BS1PRC4L",
+        "title": "Sony WH-CH520 Wireless Headphones Bluetooth On-Ear Headset with Microphone and up to 50 Hours Battery Life with Quick Charging, Black",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0FHWGB7FW",
+        "title": "Wireless Earbuds, Bluetooth 5.4 Headphones Bass Stereo, Ear Buds with Noise Cancelling Mic, LED Display in Ear Earphones Clear Calls, IP7 Waterproof Bluetooth Earbuds for Phones/Sports/Laptop, Black",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0CZPGX972",
+        "title": "Beats Solo 4 - Wireless On-Ear Bluetooth Headphones, Up to 50-Hour Battery Life, Ultra-Lightweight Comfort, Powerful and Balanced Sound, Apple & Android Compatible - Cloud Pink",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B09LYF2ST7",
+        "title": "BERIBES Bluetooth Headphones Over Ear, 65H Playtime and 6 EQ Music Modes Wireless Headphones with Microphone, HiFi Stereo Foldable Lightweight Headset, Deep Bass for Home Office Cellphone PC Ect.",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B01MTB55WH",
+        "title": "Anker Soundcore 2 Portable Bluetooth Speaker with Stereo Sound, Bluetooth 5, Bassup, IPX7 Waterproof, 24-Hour Playtime, Wireless, Speaker for Home, Outdoors, Travel",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0CTNTFBNX",
+        "title": "JBL Go 4 - Ultra-Portable, Waterproof and Dustproof Bluetooth Speaker, Big JBL Pro Sound with Punchy bass, 7-Hour Built-in Battery, Made in Part with Recycled Materials (Blue)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0BRKPVZB4",
+        "title": "BolaButty Bluetooth Speaker with HD Sound, Portable Wireless, IPX5 Waterproof, Up to 20H Playtime, TWS Pairing, BT5.3, for Home/Party/Outdoor/Beach, Electronic Gadgets, Birthday Gift (Black)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B08KW1KR5H",
+        "title": "JBL Go 3 - Portable Mini Bluetooth Speaker, big audio and punchy bass, IP67 waterproof and dustproof, 5 hours of playtime, speaker for home, outdoor and travel (Black)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B07QK2SPP7",
+        "title": "JBL FLIP 5, Waterproof Portable Bluetooth Speaker, Black, Small",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0CTP56C5R",
+        "title": "JBL Clip 5 - Ultra-Portable, Waterproof & Dustproof Bluetooth Speaker, Big JBL Pro Sound with Punchy bass, Integrated Carabiner, Up to 12 Hours of Play, Made in Part with Recycled Materials (Black)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DV5H3S16",
+        "title": "Bose SoundLink Flex Bluetooth Speaker (2nd Gen) - Portable Outdoor Speaker with Hi-Fi Audio, Waterproof and Dustproof, USB-C, Up to 12 Hours Battery Life, Twilight Blue - Limited Edition Color",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0CX1FRR27",
+        "title": "Portable Bluetooth Speaker Beach Vacation Essentials: Powerful Crystal Clear Sound/Dynamic Light/IPX5 Waterproof/All Day Playtime/BT 5.3/TWS Paring, Small Wireless Speaker for Outdoor|Travel|Camping",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DN2ZCZX6",
+        "title": "JBL Charge 6 - Portable Waterproof & Drop-Proof Bluetooth Speaker, Bold JBL Pro Sound with AI Sound Boost, 28Hrs of Playtime, Built-in powerbank & Comes with a Sturdy/Removable Carrying Strap (Black)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0F2JG7QMZ",
+        "title": "Turtlebox Ranger: Loud! Outdoor Portable Bluetooth 5.4 Speaker | Rugged, Waterproof, Ultra-Portable | Plays to 105db, Deep Bass, Shockproof, Unlimited Pairing for Full Stereo Experience, Gray",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DB1753RZ",
+        "title": "Soundcore Select 4 Go Bluetooth Shower Speaker by Anker, IP67 Waterproof/Dustproof, Ultra-Portable Speaker, Wireless, 20H Playtime, Floatable, Powerful Sound, Electronics for Outdoors/Home/Travel",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DMV3BMGP",
+        "title": "JBL Flip 7 - Portable Waterproof and Drop-Proof Speaker, Bold JBL Pro Sound with AI Boost, 16Hrs of Playtime, and PushLock System with Interchangeable Accessories (Black)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0756BXDTX",
+        "title": "Occer 12x25 Compact Binoculars for Adults and Kids, Large Eyepiece Waterproof Binocular with Low Light Vision,High Powered Easy Focus Binoculars for Bird Watching,Outdoor Hunting,Travel,Sightseeing",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0CJRTRRTG",
+        "title": "20x50 High Powered Binoculars for Adults, Waterproof Compact Binoculars with Low Light Vision for Bird Watching Hunting Camping Travel Cruise Hiking Sports Stargazing, Christmas Birthday Gifts for Men",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B07GQ8J4QX",
+        "title": "POLDR 12X25 Small Pocket Binoculars Compact Adults,Mini Kids Binoculars Boys for Bird Watching,Concert Theater Opera",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B07QB79SN6",
+        "title": "Elikliv Microscope, LCD Digital Coin Microscope 1000x, Coin Magnifier with 8 Adjustable LED Lights, PC View Compatible with Windows/MacBook, EDM4, 4.3-Inch",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B07Q1GHB5X",
+        "title": "Hontry Binoculars for Adults and Kids, 10x25 Compact Binoculars for Bird Watching, Theater and Concerts, Hunting and Sport Games",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0C6N72X5Y",
+        "title": "Vortex Optics Triumph HD 10x42 Binoculars - HD Optical System, Fully Multi-Coated Lenses, Rubber Armor, Tripod Adaptable, Waterproof, Fogproof, Shockproof - Unlimited, Unconditional Warranty",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B07V3LB5DN",
+        "title": "Vortex Optics Crossfire HD 10x42 Binoculars - HD Optical System, Tripod Adaptable, Rubber Armor, Waterproof, Fogproof, Shockproof, Included GlassPak - Unlimited, Unconditional Warranty",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DPHHG48X",
+        "title": "15x55 UHD Binoculars for Adults High Powered with Phone Adapter - Large View, BAK4 Prism, Waterproof, Lightweight for Bird Watching, Hunting, Cruise, Travel, Sports (Blue)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0D4DZYS8S",
+        "title": "Binoculars for Adults | Compact Small Mini Travel Binocular for Bird Watching High Powered Electronics Cruise Ship Essentials Norwegian Alaska Must Haves Hiking Camping Gear a by VULNESS (Black, 8X21)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B081RJ8DW1",
+        "title": "Gskyer Telescope, 70mm Aperture 400mm AZ Mount Astronomical Refracting Telescope for Kids Beginners - Travel Telescope with Carry Bag, Phone Adapter and Wireless Remote.",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B06XT7M6P5",
+        "title": "Aurosports Compact Binoculars for Adults and Kids - 10x25 Small Lightweight Binoculars for Bird Watching, Easy Focus for Theater, Cruise & Travel - Ideal Gift with Carrying Case & Strap",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B07GF4JCDY",
+        "title": "Adorrgon 12x42 HD Binoculars for Adults High Powered with Phone Adapter, Tripod and Tripod Adapter - Large View Binoculars with Clear Low Light Vision - Binocular for Bird Watching Cruise Travel",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0BZWRSRWV",
+        "title": "Ring Battery Doorbell, Home or business security with Head-to-Toe video, Live View with Two-Way Talk, and Motion Detection & Alerts, Satin Nickel",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DHLQT3CG",
+        "title": "Blink Outdoor 4 – Wireless smart security camera, two-year battery life, 1080p HD day and infrared night live view, two-way talk. Sync Module Core included – 3 camera system",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0B6GLQJMV",
+        "title": "Ring Indoor Cam, Home or business security in 1080p HD video, White",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0C6W3D4RM",
+        "title": "Amazon Fire TV Stick 4K Select (newest model), start streaming in 4K, AI-powered search, and free & live TV, find shows faster with Alexa+",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B07X6C9RMF",
+        "title": "Blink Mini - Compact indoor plug-in smart security camera, 1080p HD video, night vision, motion detection, two-way audio, easy set up, Works with Alexa – 1 camera (White)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0D241GHP5",
+        "title": "Ring Outdoor Cam Plus, Battery (newest model), Home or business security, Wide-Angle 2K Video with Ring Vision, Low-Light Sight for full-color night vision, Mount-Anywhere Versatility, White",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0BQLLB61B",
+        "title": "Anker USB C Hub, 5-in-1 USBC to HDMI Splitter with 4K Display, 1 x Powered USB-C 5Gbps & 2×Powered USB-A 3.0 5Gbps Data Ports for MacBook Pro, MacBook Air, Dell and More",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GR6FHGXX",
+        "title": "Apple 2026 MacBook Neo 13-inch Laptop with A18 Pro chip: Built for AI and Apple Intelligence, Liquid Retina Display, 8GB Unified Memory, 256GB SSD Storage, 1080p FaceTime HD Camera; Indigo",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DKVDZXSN",
+        "title": "TP-Link Deco 7 BE25 Dual-Band BE5000 WiFi 7 Mesh Wi-Fi System | 4-Stream 5 Gbps, 240 Mhz | Covers up to 6,600 Sq.Ft | 2X 2.5G Ports Wired Backhaul | VPN,MLO, AI-Roaming, HomeShield, 3-Pack",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GR1JTFP8",
+        "title": "Apple 2026 MacBook Air 13-inch Laptop with M5 chip: Built for AI, 13.6-inch Liquid Retina Display, 16GB Unified Memory, 512GB SSD, 12MP Center Stage Camera, Touch ID, Wi-Fi 7; Midnight",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B089T1SX32",
+        "title": "Charger Compatible with HP Laptop Computer 65W 45W Smart Blue Tip Power Adapter",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DFCH3C4W",
+        "title": "Anker MacBook Charger,140W Max 4-Port GaN USB C Charger Block with Smart Display,Fast Charger USB C Power Adapter,Touch Controls for MacBook,iPad,iPhone 17/16 Series (Include 5FT Cable,Non-Battery)",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0C8C2NZMQ",
+        "title": "Amazon Fire 7 Kids tablet (newest model) ages 3-7. Top-selling 7\" kids tablet on Amazon. Includes 6 months of ad-free and exclusive content, easy parental controls, 10-hr battery, 16 GB, Blue",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0BHZWT2FR",
+        "title": "Amazon Fire HD 10 tablet (newest model) built for relaxation, 10.1\" vibrant Full HD screen, octa-core processor, 3 GB RAM, 64 GB, Lilac",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B08H8ZLKKK",
+        "title": "TP-Link AX1800 WiFi 6 Router (Archer AX21 V5) – Dual Band Wireless Internet, Gigabit, Easy Mesh, Works with Alexa - A Certified for Humans Device, Free Expert Support",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0DZ5KG7XG",
+        "title": "VJYUIJAY Universal 65W USB C Laptop Charger Compatible with HP chromebook Lenovo Dell Acer Asus Samsung Google Computer Type C Power Adapter",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B0GR114BV7",
+        "title": "Apple 2026 MacBook Air 15-inch Laptop with M5 chip: Built for AI, 15.3-inch Liquid Retina Display, 16GB Unified Memory, 512GB SSD, 12MP Center Stage Camera, Touch ID, Wi-Fi 7; Midnight",
+        "reason": "no price on tile"
+      },
+      {
+        "asin": "B09TD2HVVQ",
+        "title": "SightPro Magnetic Privacy Screen for MacBook Pro 14 Inch (2021-2026, M1-M5, Pro, Max) Patented Removable Laptop Privacy Filter Shield and Protector",
+        "reason": "no price on tile"
+      }
+    ]
+  },
+  "detailFetch": {
+    "attempted": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "ingest": {
+    "added": 0,
+    "skipped": []
+  },
+  "images": {
+    "mirrored": 0,
+    "failed": 0
+  },
+  "validate": {
+    "ok": false,
+    "summary": ""
+  },
+  "drafts": []
+}

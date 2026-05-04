@@ -17,9 +17,10 @@ import {
   getNewProducts,
   blogPosts,
 } from "@/lib/data";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 /* ── Asset URLs ── */
-const NEWSLETTER_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/editorial_newsletter_bg-WorJPKjPiyTrP3RJRZfJDZ.webp";
+const NEWSLETTER_BG = "/images/mirrored/editorial_newsletter_bg-WorJPKjPiyTrP3RJRZfJDZ.webp";
 
 /* ── Fade-in wrapper ── */
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -56,6 +57,7 @@ function SectionHeading({ label, title, action, href }: { label: string; title: 
 }
 
 export default function Home() {
+  useDocumentTitle(""); // home uses the default site title
   const featured = getFeaturedProducts();
   const trending = getTrendingProducts();
   const newArrivals = getNewProducts(12);

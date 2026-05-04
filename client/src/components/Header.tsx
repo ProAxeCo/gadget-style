@@ -32,7 +32,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 
 /* New blue GS logo — concentric ring G with flowing S */
-const GS_ICON = "https://d2xsxph8kpxj0f.cloudfront.net/310519663395363177/nZmSiQVXzc25kuuG4eCQev/logo_blue_v2-ZhrJEA2VoZxipLuGZMBdr4.png";
+const GS_ICON = "/images/mirrored/logo_blue_v2-ZhrJEA2VoZxipLuGZMBdr4.png";
 
 /* Dot colors for each category — using primary blue for consistency on light bg */
 const CATEGORY_COLORS = [

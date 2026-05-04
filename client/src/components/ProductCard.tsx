@@ -60,7 +60,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
   const saved = isInWishlist(product.id);
   const [imgError, setImgError] = useState(false);
 
-  const isAmazon = product.affiliateUrl?.includes("amazon");
+  const isAmazon = (product.destination ?? "amazon") === "amazon" && product.affiliateUrl?.includes("amazon");
 
   const handleWishlistToggle = (e: React.MouseEvent) => {
     e.preventDefault();
