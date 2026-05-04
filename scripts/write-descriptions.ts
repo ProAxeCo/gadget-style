@@ -89,6 +89,7 @@ const limitCount = (() => {
   const i = argv.indexOf("--limit");
   return i < 0 ? Infinity : parseInt(argv[i + 1] ?? "0", 10);
 })();
+const includeDrafts = argv.includes("--include-drafts");
 
 // --- prompt ---
 // Editorial voice prompt — targeted at hard-core gadget enthusiasts.
@@ -165,7 +166,7 @@ async function generateDescription(p: Product): Promise<string> {
 // --- pick targets ---
 function shouldRewrite(p: Product): boolean {
   if (!p.title) return false;
-  if (p.isDraft) return false;
+  if (p.isDraft && !includeDrafts) return false;
   if (ids) return ids.has(p.id);
   if (sinceId && p.id < sinceId) return false;
   if (force) return true;
