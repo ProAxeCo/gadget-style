@@ -5,7 +5,7 @@
  *   docs/social/pinterest.csv   — one row per pin (ready for bulk upload)
  *   docs/social/instagram.md    — one block per post (copy-paste friendly)
  *
- * Both link back to the product page at https://www.gadgetstyle.com/product/<slug>.
+ * Both link back to the product page at https://www.gadgetstyle.com.au/product/<slug>.
  * Pinterest pins can link to external URLs; Instagram uses link-in-bio so
  * destination is informational.
  *
@@ -21,7 +21,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, "..");
 const OUT_DIR = join(REPO_ROOT, "docs", "social");
-const SITE_BASE = "https://www.gadgetstyle.com";
+const SITE_BASE = "https://www.gadgetstyle.com.au";
 
 // --- optional id filter ---
 const idsArg = process.argv.find((a) => a.startsWith("--ids"))?.split("=")[1];

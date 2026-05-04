@@ -5,7 +5,7 @@
  * Auth: OAuth 2.0. You need:
  *   1. An app registered at developers.pinterest.com with redirect URI set
  *      to http://localhost:3000/oauth/pinterest/callback (for dev) or
- *      https://www.gadgetstyle.com/oauth/pinterest/callback (prod).
+ *      https://www.gadgetstyle.com.au/oauth/pinterest/callback (prod).
  *   2. A refresh_token obtained via the one-off OAuth flow
  *      (scripts/social-oauth-setup.ts pinterest).
  *

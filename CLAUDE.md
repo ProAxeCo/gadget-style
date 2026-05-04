@@ -279,13 +279,13 @@ rules, so you can't accidentally publish bad data.
 
 **Target:** Vercel, connected to the `ProAxeCo/gadget-style` GitHub repo.
 Every push to `main` triggers a production deploy. Custom domain:
-**www.gadgetstyle.com**.
+**www.gadgetstyle.com.au**.
 
 Build config (in `vercel.json`): build command `pnpm build`, output directory
 `dist/public`, install command `pnpm install`. Node 20+.
 
 DNS: at your registrar, add a CNAME for `www` pointing to
-`cname.vercel-dns.com`, plus an A record for the apex (`gadgetstyle.com`) per
+`cname.vercel-dns.com`, plus an A record for the apex (`gadgetstyle.com.au`) per
 Vercel's instructions in the Domains UI.
 
 ## Things that were cut (and why)

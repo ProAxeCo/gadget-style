@@ -9,7 +9,7 @@ Image paths are relative to `client/public/` — e.g. `/images/mirrored/foo.jpg`
 
 **Image:** `/images/mirrored/product_1_img1_6a3b0eda.jpg`  
 
-**Destination (for your records):** https://www.gadgetstyle.com/product/amazon-echo-dot-5th-gen-smart-speaker-with-alexa
+**Destination (for your records):** https://www.gadgetstyle.com.au/product/amazon-echo-dot-5th-gen-smart-speaker-with-alexa
 
 **Caption:**
 
@@ -35,7 +35,7 @@ Love the look of the 4th-gen Echo Dot?
 
 **Image:** `/images/mirrored/103364_original_local_1200x1050_v3_converted.webp`  
 
-**Destination (for your records):** https://www.gadgetstyle.com/product/sony-wh-1000xm5-wireless-noise-canceling-headphones
+**Destination (for your records):** https://www.gadgetstyle.com.au/product/sony-wh-1000xm5-wireless-noise-canceling-headphones
 
 **Caption:**
 
@@ -61,7 +61,7 @@ Industry-leading noise cancellation with Auto NC Optimizer.
 
 **Image:** `/images/mirrored/product_50_img1_785df91f.jpg`  
 
-**Destination (for your records):** https://www.gadgetstyle.com/product/ray-ban-meta-wayfarer-smart-glasses
+**Destination (for your records):** https://www.gadgetstyle.com.au/product/ray-ban-meta-wayfarer-smart-glasses
 
 **Caption:**
 

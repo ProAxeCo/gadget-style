@@ -42,7 +42,7 @@ maintained.
 - **Approval:** App goes from "trial" to "standard" access via Pinterest's
   review — 1–2 weeks. Trial access is fine for our volume during dev.
 - **Good for us:** 100% matches our product catalog model. Each product
-  becomes a pin linking to `gadgetstyle.com/product/<slug>` with the hero
+  becomes a pin linking to `gadgetstyle.com.au/product/<slug>` with the hero
   image and an auto-generated caption.
 
 ### Meta Graph API — Instagram Content Publishing
@@ -82,8 +82,8 @@ requires Claude — it's all browser work in developer dashboards.
    sign up (uses your existing Pinterest account).
 2. Create a new **app**. Set:
    - App name: "Gadget Style Social"
-   - Website: `https://www.gadgetstyle.com`
-   - Redirect URI: `https://www.gadgetstyle.com/oauth/pinterest/callback`
+   - Website: `https://www.gadgetstyle.com.au`
+   - Redirect URI: `https://www.gadgetstyle.com.au/oauth/pinterest/callback`
      (placeholder — we'll serve this later; you can use
      `http://localhost:3000/oauth/pinterest/callback` for dev).
 3. Request scopes: `boards:read`, `pins:write`, `pins:read`.
@@ -103,7 +103,7 @@ requires Claude — it's all browser work in developer dashboards.
    Business account.
 4. Add products: **Instagram Graph API** and **Facebook Login**.
 5. Configure Facebook Login:
-   - Redirect URI: `https://www.gadgetstyle.com/oauth/facebook/callback`
+   - Redirect URI: `https://www.gadgetstyle.com.au/oauth/facebook/callback`
 6. Request permissions for App Review:
    - `instagram_content_publish`
    - `instagram_basic`

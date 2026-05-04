@@ -95,9 +95,9 @@ export default function ContactPage() {
 
           <div className="mt-8 text-center">
             <p className="text-sm text-muted-foreground mb-2">Or reach us directly at</p>
-            <a href="mailto:hello@gadgetstyle.com" className="inline-flex items-center gap-2 text-primary hover:underline">
+            <a href="mailto:hello@gadgetstyle.com.au" className="inline-flex items-center gap-2 text-primary hover:underline">
               <Mail className="w-4 h-4" />
-              hello@gadgetstyle.com
+              hello@gadgetstyle.com.au
             </a>
           </div>
         </motion.div>

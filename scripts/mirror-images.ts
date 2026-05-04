@@ -1,7 +1,7 @@
 /**
  * Downloads every external image URL in data.ts to client/public/images/mirrored/
  * and rewrites data.ts to use local paths. Makes the site independent of
- * Manus's CDN so we can deploy to Vercel + www.gadgetstyle.com.
+ * Manus's CDN so we can deploy to Vercel + www.gadgetstyle.com.au.
  *
  * Strategy: content-addressed filenames preserving the URL basename when safe.
  * If two URLs collide on basename, disambiguate with a short hash suffix.

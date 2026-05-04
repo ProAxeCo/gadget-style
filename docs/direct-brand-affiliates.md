@@ -35,7 +35,7 @@ The five networks that matter for consumer tech:
 
 - **Pre-fill a content-ready site.** You already have 248 live products with
   enthusiast-voice descriptions — that's exactly what networks want to see.
-- **Use your real domain for the signup** (`www.gadgetstyle.com`). Networks
+- **Use your real domain for the signup** (`www.gadgetstyle.com.au`). Networks
   reject accounts that use placeholders or pre-launch landing pages.
 - **Set "niche" to "Consumer Electronics / Gadget Reviews"** — don't try to
   be broader than you are; specific niches get approved faster.

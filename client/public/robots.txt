@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.gadgetstyle.com/sitemap.xml
+Sitemap: https://www.gadgetstyle.com.au/sitemap.xml

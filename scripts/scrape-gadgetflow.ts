@@ -110,7 +110,7 @@ async function fetchHtml(url: string): Promise<string> {
       // GF doesn't block a plain fetch in testing, but sending a browser-ish UA
       // is polite and reduces the chance of getting a cached light version.
       "User-Agent":
-        "Mozilla/5.0 (compatible; GadgetStyleScraper/1.0; +https://www.gadgetstyle.com)",
+        "Mozilla/5.0 (compatible; GadgetStyleScraper/1.0; +https://www.gadgetstyle.com.au)",
     },
   });
   if (!res.ok) throw new Error(`fetch ${url}: HTTP ${res.status}`);

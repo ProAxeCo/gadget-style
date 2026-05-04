@@ -6,7 +6,7 @@
 
 import { products, categories } from "../../client/src/lib/data.js";
 
-export const SITE_BASE = "https://www.gadgetstyle.com";
+export const SITE_BASE = "https://www.gadgetstyle.com.au";
 
 const BRAND_HASHTAGS = ["#gadgetstyle", "#techfinds", "#coolgadgets"];
 

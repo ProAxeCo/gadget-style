@@ -11,7 +11,7 @@ import { fileURLToPath } from "node:url";
 import { products, categories, blogPosts } from "../client/src/lib/data.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const SITE = "https://www.gadgetstyle.com";
+const SITE = "https://www.gadgetstyle.com.au";
 const OUT = join(__dirname, "..", "client", "public", "sitemap.xml");
 
 type Entry = { loc: string; changefreq?: string; priority?: string; lastmod?: string };
