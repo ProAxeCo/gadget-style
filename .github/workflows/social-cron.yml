@@ -12,11 +12,19 @@ name: Social queue (daily)
 #   META_APP_SECRET
 #   META_PAGE_ACCESS_TOKEN       # ~60-day TTL; refresh via social-oauth-setup.ts
 #   META_IG_BUSINESS_ID
+#
+# ⚠️  AUTOMATIC SCHEDULE IS DISABLED until secrets are configured.
+# Pinterest dev app trial + Meta business verification are pending (2026-05-05).
+# When BOTH approvals land:
+#   1. Configure all 7 secrets at https://github.com/ProAxeCo/gadget-style/settings/secrets/actions
+#   2. Uncomment the `schedule:` block below
+#   3. Run via workflow_dispatch with dry_run=true to verify
+#   4. Watch the first scheduled run land successfully before walking away
 
 on:
-  schedule:
-    # 10:00 AEST (Sydney) = 00:00 UTC → pin drops in the morning for AU audience
-    - cron: "0 0 * * *"
+  # schedule:
+  #   # 10:00 AEST (Sydney) = 00:00 UTC → pin drops in the morning for AU audience
+  #   - cron: "0 0 * * *"
   workflow_dispatch:
     inputs:
       pinterest:
@@ -30,7 +38,7 @@ on:
       dry_run:
         description: "Dry run (preview, no posts)"
         type: boolean
-        default: false
+        default: true
 
 jobs:
   post:
@@ -45,10 +53,38 @@ jobs:
 
       - uses: pnpm/action-setup@v4
 
+      - name: Verify required secrets exist
+        env:
+          PINTEREST_CLIENT_ID: ${{ secrets.PINTEREST_CLIENT_ID }}
+          PINTEREST_CLIENT_SECRET: ${{ secrets.PINTEREST_CLIENT_SECRET }}
+          PINTEREST_REFRESH_TOKEN: ${{ secrets.PINTEREST_REFRESH_TOKEN }}
+          META_APP_ID: ${{ secrets.META_APP_ID }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_IG_BUSINESS_ID: ${{ secrets.META_IG_BUSINESS_ID }}
+        run: |
+          missing=()
+          for var in PINTEREST_CLIENT_ID PINTEREST_CLIENT_SECRET PINTEREST_REFRESH_TOKEN \
+                     META_APP_ID META_APP_SECRET META_PAGE_ACCESS_TOKEN META_IG_BUSINESS_ID; do
+            if [ -z "${!var}" ]; then
+              missing+=("$var")
+            fi
+          done
+          if [ ${#missing[@]} -ne 0 ]; then
+            echo "::warning::Cron skipped — missing secrets: ${missing[*]}"
+            echo "Configure them at https://github.com/${{ github.repository }}/settings/secrets/actions"
+            echo "Then re-enable the schedule in .github/workflows/social-cron.yml"
+            echo "SECRETS_OK=false" >> $GITHUB_ENV
+            exit 0
+          fi
+          echo "SECRETS_OK=true" >> $GITHUB_ENV
+
       - name: Install dependencies
+        if: env.SECRETS_OK == 'true'
         run: pnpm install --frozen-lockfile
 
       - name: Post queue
+        if: env.SECRETS_OK == 'true'
         env:
           PINTEREST_CLIENT_ID: ${{ secrets.PINTEREST_CLIENT_ID }}
           PINTEREST_CLIENT_SECRET: ${{ secrets.PINTEREST_CLIENT_SECRET }}
@@ -64,7 +100,7 @@ jobs:
           pnpm tsx scripts/social-queue.ts --pinterest $PIN --ig $IG $DRY
 
       - name: Commit log
-        if: success() && !inputs.dry_run
+        if: env.SECRETS_OK == 'true' && success() && !inputs.dry_run
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
