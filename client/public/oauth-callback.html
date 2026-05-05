@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>OAuth Callback — Gadget Style</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+    max-width: 720px;
+    margin: 60px auto;
+    padding: 0 20px;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  h1 { font-size: 1.5rem; margin: 0 0 8px; }
+  .lead { color: #475569; margin: 0 0 24px; font-size: 0.95rem; }
+  .field { margin: 0 0 20px; }
+  label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  textarea, input[readonly] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+    background: #f8fafc;
+    box-sizing: border-box;
+    word-break: break-all;
+  }
+  textarea { min-height: 90px; resize: vertical; }
+  button {
+    background: #1060A8;
+    color: white;
+    border: 0;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  button:hover { background: #0d4f8c; }
+  .ok { color: #047857; font-weight: 600; }
+  .err { color: #b91c1c; font-weight: 600; }
+  .small { font-size: 0.85rem; color: #475569; }
+  details { margin-top: 24px; font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<h1>OAuth Callback</h1>
+<p class="lead">Meta sent you here after authorization. Copy the <strong>code</strong> below and paste it back to Claude in the conversation.</p>
+
+<div id="status">Reading URL parameters…</div>
+
+<div id="result" style="display:none">
+  <div class="field">
+    <label>Authorization code</label>
+    <textarea id="code" readonly></textarea>
+    <button onclick="copyField('code')">Copy code</button>
+  </div>
+
+  <div class="field">
+    <label>State (verify it matches what Claude told you)</label>
+    <input id="state" type="text" readonly />
+  </div>
+
+  <details>
+    <summary>What is this?</summary>
+    <p>This page is part of the OAuth handshake for the <strong>Gadget Style Social</strong> Meta app.
+      It does not store, log, or transmit anything — the code is only displayed in your browser.</p>
+    <p>The code is short-lived (a few minutes) and only useful in combination with the app secret.
+      It will be exchanged for a long-lived access token by the script.</p>
+  </details>
+</div>
+
+<div id="error" style="display:none">
+  <p class="err">No <code>code</code> parameter found in the URL.</p>
+  <p class="small">If Meta redirected here with an error, the URL above will tell you why.
+    Otherwise, you may have visited this page directly — go back to the OAuth flow.</p>
+</div>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const code = params.get('code');
+  const state = params.get('state');
+  const error = params.get('error');
+  const errorReason = params.get('error_reason') || params.get('error_description');
+
+  const statusEl = document.getElementById('status');
+  const resultEl = document.getElementById('result');
+  const errorEl = document.getElementById('error');
+
+  if (error) {
+    statusEl.innerHTML = '<p class="err">Meta returned an error: <code>' + escapeHtml(error) + '</code> — ' + escapeHtml(errorReason || '(no description)') + '</p>';
+  } else if (code) {
+    statusEl.innerHTML = '<p class="ok">✓ Got authorization code from Meta.</p>';
+    document.getElementById('code').value = code;
+    document.getElementById('state').value = state || '(no state)';
+    resultEl.style.display = '';
+  } else {
+    statusEl.innerHTML = '';
+    errorEl.style.display = '';
+  }
+
+  function copyField(id) {
+    const el = document.getElementById(id);
+    el.select();
+    document.execCommand('copy');
+    const btn = el.nextElementSibling;
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = orig; }, 1500);
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[c]);
+  }
+</script>
+
+</body>
+</html>
