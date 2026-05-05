@@ -30,6 +30,11 @@ import { products } from "../client/src/lib/data.js";
 import { createPin, listBoards, type PinterestBoard } from "./lib/pinterest.js";
 import { publishSingle, verifyAuth } from "./lib/meta-ig.js";
 import {
+  publishPhoto as fbPublishPhoto,
+  verifyPage as fbVerifyPage,
+} from "./lib/meta-fb-page.js";
+import {
+  buildFbPageContent,
   buildInstagramContent,
   buildPinterestContent,
 } from "./lib/social-content.js";
@@ -55,16 +60,24 @@ loadDotEnv();
 interface Args {
   pinterestCount: number;
   igCount: number;
+  fbPageCount: number;
   dryRun: boolean;
 }
 function parseArgs(): Args {
   const argv = process.argv.slice(2);
-  const out: Args = { pinterestCount: 3, igCount: 1, dryRun: false };
+  const out: Args = {
+    pinterestCount: 3,
+    igCount: 1,
+    fbPageCount: 1,
+    dryRun: false,
+  };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--pinterest") out.pinterestCount = parseInt(argv[++i] ?? "3", 10);
     else if (a === "--ig" || a === "--instagram")
       out.igCount = parseInt(argv[++i] ?? "1", 10);
+    else if (a === "--fb-page" || a === "--facebook")
+      out.fbPageCount = parseInt(argv[++i] ?? "1", 10);
     else if (a === "--dry-run") out.dryRun = true;
   }
   return out;
@@ -80,6 +93,7 @@ function loadRecentlyPosted(): Map<string, Set<number>> {
   const byPlatform = new Map<string, Set<number>>();
   byPlatform.set("pinterest", new Set<number>());
   byPlatform.set("instagram", new Set<number>());
+  byPlatform.set("facebook", new Set<number>());
   if (!existsSync(LOG_DIR)) return byPlatform;
   const cutoff = Date.now() - REPOST_COOLDOWN_DAYS * 24 * 60 * 60 * 1000;
   for (const f of readdirSync(LOG_DIR)) {
@@ -145,7 +159,7 @@ function weightedShuffle<T>(items: T[], weights: number[]): T[] {
 
 interface PostResult {
   id: number;
-  platform: "pinterest" | "instagram";
+  platform: "pinterest" | "instagram" | "facebook";
   title: string;
   ok: boolean;
   error?: string;
@@ -159,7 +173,7 @@ async function main(): Promise<void> {
 
   console.log(`■ social-queue ${dateStr}`);
   console.log(
-    `  pinterest=${args.pinterestCount}  ig=${args.igCount}  dryRun=${args.dryRun}`,
+    `  pinterest=${args.pinterestCount}  ig=${args.igCount}  fb-page=${args.fbPageCount}  dryRun=${args.dryRun}`,
   );
 
   const recent = loadRecentlyPosted();
@@ -178,13 +192,20 @@ async function main(): Promise<void> {
     live.filter((p) => !recent.get("instagram")!.has(p.id)),
     live.filter((p) => !recent.get("instagram")!.has(p.id)).map(computeWeight),
   );
+  const fbPool = weightedShuffle(
+    live.filter((p) => !recent.get("facebook")!.has(p.id)),
+    live.filter((p) => !recent.get("facebook")!.has(p.id)).map(computeWeight),
+  );
   const piPicks = piPool.slice(0, args.pinterestCount);
   const igPicks = igPool.slice(0, args.igCount);
+  const fbPicks = fbPool.slice(0, args.fbPageCount);
 
   console.log(`\n  Pinterest picks (${piPicks.length}):`);
   for (const p of piPicks) console.log(`    #${p.id} [${p.categorySlug}] ${p.title.slice(0, 70)}`);
   console.log(`  Instagram picks (${igPicks.length}):`);
   for (const p of igPicks) console.log(`    #${p.id} [${p.categorySlug}] ${p.title.slice(0, 70)}`);
+  console.log(`  FB Page picks (${fbPicks.length}):`);
+  for (const p of fbPicks) console.log(`    #${p.id} [${p.categorySlug}] ${p.title.slice(0, 70)}`);
 
   if (args.dryRun) {
     console.log("\n(dry run — no API calls made)");
@@ -297,6 +318,60 @@ async function main(): Promise<void> {
       }
       // Polite pacing: 30s between IG posts (IG throttles hard)
       await new Promise((r) => setTimeout(r, 30_000));
+    }
+  }
+
+  // Facebook Page (single-photo posts with caption + link to gadgetstyle.com.au)
+  if (fbPicks.length > 0) {
+    if (
+      !process.env.META_PAGE_ACCESS_TOKEN ||
+      !process.env.META_FB_PAGE_ID
+    ) {
+      console.log("\n■ FB Page: skipping — META_PAGE_ACCESS_TOKEN / META_FB_PAGE_ID not set");
+      fbPicks.length = 0;
+    } else {
+      console.log("\n■ FB Page: verifying token...");
+      try {
+        const v = await fbVerifyPage();
+        console.log(`  page_id=${v.id}  valid=${v.isValid}  scopes=${v.scopes.length}`);
+      } catch (e) {
+        console.error(
+          `  verify failed, skipping FB: ${e instanceof Error ? e.message : e}`,
+        );
+        fbPicks.length = 0;
+      }
+    }
+    for (const p of fbPicks) {
+      const content = buildFbPageContent(p);
+      try {
+        const post = await fbPublishPhoto({
+          url: content.imageUrl,
+          caption: content.caption,
+          published: true,
+        });
+        const externalId = post.post_id ?? post.id;
+        console.log(`  ✓ #${p.id} FB post=${externalId}`);
+        results.push({
+          id: p.id,
+          platform: "facebook",
+          title: p.title,
+          ok: true,
+          externalId,
+        });
+      } catch (e) {
+        console.error(
+          `  ✗ #${p.id} FB failed: ${e instanceof Error ? e.message : e}`,
+        );
+        results.push({
+          id: p.id,
+          platform: "facebook",
+          title: p.title,
+          ok: false,
+          error: e instanceof Error ? e.message : String(e),
+        });
+      }
+      // Polite pacing: 10s between FB posts (FB is more lenient than IG)
+      await new Promise((r) => setTimeout(r, 10_000));
     }
   }
 

@@ -136,3 +136,69 @@ export function buildInstagramContent(
     galleryUrls: gallery,
   };
 }
+
+export interface FbPageContent {
+  caption: string; // ~300-500 chars; FB allows much longer but engagement drops
+  link: string; // product page on gadgetstyle.com.au — shown as link card
+  imageUrl: string; // hero product image
+}
+
+/**
+ * Build a Facebook Page caption + link.
+ *
+ * Conventions:
+ *   - Caption ~300-500 chars: punchy headline, one-sentence pitch, price+rating
+ *     line, link, then a few hashtags. FB engagement drops sharply past ~600
+ *     chars and hashtag returns are smaller than IG, so we keep the tag block
+ *     short (3 brand + up to 3 category + 2 product = max 8).
+ *   - Affiliate disclosure is implicit via the "🛒 Affiliate link" prefix on
+ *     the URL line per CLAUDE.md compliance rules; the destination URL itself
+ *     points at gadgetstyle.com.au where the full disclosure lives.
+ *   - Link is the on-site product page (gadgetstyle.com.au/product/<slug>),
+ *     NOT the raw Amazon URL — keeps users in our funnel and lets us rotate
+ *     destinations later (e.g. AU/US tag split).
+ */
+export function buildFbPageContent(
+  p: (typeof products)[number],
+): FbPageContent {
+  const firstSentence = p.description.split(/(?<=[.!?])\s+/)[0].trim();
+  const tagHashes = p.tags.map(toHashtag);
+  const catHashes = CATEGORY_HASHTAGS[p.categorySlug] ?? [];
+  const hashtags = [
+    ...BRAND_HASHTAGS,
+    ...catHashes.slice(0, 3),
+    ...tagHashes.slice(0, 2),
+  ]
+    .filter((h, i, arr) => arr.indexOf(h) === i)
+    .join(" ");
+
+  const link = `${SITE_BASE}/product/${p.slug}`;
+
+  const priceLine =
+    p.price > 0
+      ? `💸 $${p.price.toFixed(2)} · ⭐ ${p.rating} (${p.reviewCount.toLocaleString()} reviews)`
+      : `⭐ ${p.rating} · Tap for current price`;
+
+  // Build body, then trim the description to fit a soft 500-char total budget.
+  const fixed =
+    `${p.title}\n\n` +
+    `\n` + // gap before pitch
+    `${priceLine}\n\n` +
+    `🛒 Affiliate link: ${link}\n\n` +
+    `${hashtags}`;
+  const room = Math.max(80, 500 - fixed.length);
+  const pitch = truncateWords(firstSentence, room);
+
+  const caption =
+    `${p.title}\n\n` +
+    `${pitch}\n\n` +
+    `${priceLine}\n\n` +
+    `🛒 Affiliate link: ${link}\n\n` +
+    `${hashtags}`;
+
+  return {
+    caption,
+    link,
+    imageUrl: absoluteImageUrl(p.image),
+  };
+}
