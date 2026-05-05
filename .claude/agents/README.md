@@ -9,6 +9,7 @@ Five specialist sub-agents you can summon via the `Agent` tool with `subagent_ty
 | `gs-catalog` | `data.ts`, drafts, validation, scraping (GF/T&T/Amazon), images | Anything catalog: add/remove products, run pipelines, fix validator |
 | `gs-affiliates` | Amazon Associates, direct-brand programs, link wrapping | Anything monetization: signups, tracking links, commission |
 | `gs-content` | Descriptions, captions, hashtags, brand voice, blog | Anything written: copy, voice, content audits |
+| `gs-growth` | SEO, Google ecosystem, Pinterest/IG growth + monetization, web UX/perf | Anything strategic: rank, grow, monetize, fast-track followers |
 
 ## How they're invoked
 
