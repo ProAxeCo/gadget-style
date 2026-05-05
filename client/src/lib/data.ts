@@ -5560,8 +5560,10 @@ export const products: Product[
     price: 0,
     category: "Everyday Carry",
     categorySlug: "electronics",
+    // 2026-05-06 image augmentation: only 1 unique Amazon thumbnail beyond hero;
+    // added it. Le Creuset listing publishes very few gallery images for this SKU.
     image: "/images/mirrored/51VRmkcdlzL._AC_SL1000_.jpg",
-    images: ["/images/mirrored/51VRmkcdlzL._AC_SL1000_.jpg"],
+    images: ["/images/mirrored/51VRmkcdlzL._AC_SL1000_.jpg", "/images/mirrored/41NF-14LTQL._AC_SL1500_.jpg"],
     rating: 4.5,
     reviewCount: 0,
     asin: "B0076NOHG2",
@@ -5575,9 +5577,12 @@ export const products: Product[
     isDraft: true,
   },
   {
+    // Catalog-quality fix 2026-05-06: title was generic ("Stretchy Bands") but ASIN
+    // resolves to OXWALLEN XL Stretch Solo Loop Apple Watch Band. Updated title +
+    // slug to match the actual Amazon product. ASIN unchanged.
     id: 275,
-    title: "OXWALLEN Packs Stretchy Bands",
-    slug: "oxwallen-packs-stretchy-bands",
+    title: "OXWALLEN XL Stretch Solo Loop Band Compatible with Apple Watch (42mm/41mm/40mm/38mm), Adjustable Elastic Nylon Braided Sport Strap, Orange",
+    slug: "oxwallen-xl-stretch-solo-loop-apple-watch-band-orange",
     description: "Stretchy retention bands occupy a narrow but genuinely useful slice of the EDC accessories market — the kind of product that sounds trivial until the fourth time your notebook, field wallet, or folding knife rattles loose in a bag. OXWALLEN's entry sits in the utility-band category alongside stalwarts like Niteize's Steelie system and the various silicone strap solutions from Ridge and Bellroy, though at an unconfirmed price point it's harder to place on the value curve without more data. The key variable in this category is elastomer formulation: whether the compound maintains tension over thousands of stretch cycles without the surface tackiness degrading or the band taking a permanent set.\n\nWithout a published spec sheet, the relevant engineering questions center on cross-sectional profile, durometer rating, and the stretch-to-relaxed ratio. Premium bands in this category — think the TPU straps used on Bellroy's card sleeves — target a Shore A hardness somewhere in the 40–60 range, which balances grip-without-creep against usability in cold temperatures where stiffer compounds lose compliance. Band geometry matters too: a wider, flatter profile distributes pressure across a notebook cover or gear bundle more evenly than round-cord designs, reducing the risk of compression marks on soft goods. If OXWALLEN is using a multi-layer or co-extruded construction, that typically extends fatigue life significantly versus single-durometer silicone. \"Stretchy\" in the product title suggests meaningful elongation — likely 150–200% stretch ratio — though the meaningful number is retained force at working extension, not peak elongation.\n\nIn daily use, the practical concerns are retention force consistency, surface interaction with different materials (leather, nylon, polycarbonate all behave differently under sustained elastic compression), and whether the band UV-yellows or surface-cracks after six months in a jacket pocket. Bands in this category frequently underperform on the last metric — silicone degrades faster than TPU under UV and ozone exposure, which matters for users who carry gear outdoors. The \"Orange Vibes\" tag suggests at least one colorway leans bright, which is useful for visibility in a dark bag but may show grime faster on lighter elastomers. No codec or connectivity considerations apply here, but tactile fatigue — how the band feels after repeated daily manipulation — is a real differentiator at this tier.\n\nThe right buyer is the organized EDC carrier who already has a system but needs low-profile retention for specific items: bundled cables, a pen against a notebook, or a backup card against a slim wallet. At an unconfirmed price, it's difficult to recommend over Ridge's silicone straps or Niteize's SpotLit bundles outright, but if OXWALLEN lands under eight dollars for a multipack, the value case gets straightforward. Skip it if primary use is high-cycle mechanical stress — heavy tool bundles or bike-mount retention — where dedicated hook-and-loop or injection-molded clips remain the more durable call.",
     price: 0,
     category: "Everyday Carry",
@@ -5604,8 +5609,12 @@ export const products: Product[
     price: 0,
     category: "Outdoor & Adventure Tech",
     categorySlug: "outdoor-tech",
-    image: "/images/mirrored/IMG_5287.jpeg",
-    images: ["/images/mirrored/IMG_5287.jpeg"],
+    // Catalog-quality fix 2026-05-06: replaced single custom IMG_5287 upload with
+    // Amazon hi-res images (still only 2 unique images on Amazon for this listing,
+    // both retained at _SL1500_ for hi-res). Image density target unmet (Amazon
+    // does not publish more thumbnails for this ASIN).
+    image: "/images/mirrored/61vvZ8fFm0L._AC_SL1500_.jpg",
+    images: ["/images/mirrored/61vvZ8fFm0L._AC_SL1500_.jpg", "/images/mirrored/61Qe1Z37FsL._AC_SL1500_.jpg"],
     rating: 4.5,
     reviewCount: 0,
     asin: "B0C7HK93QS",
@@ -5619,10 +5628,13 @@ export const products: Product[
     isDraft: true,
   },
   {
+    // Catalog-quality fix 2026-05-06: title was just "Eagle Creek" (no model) and
+    // description was an LLM-refusal placeholder. Title updated to canonical Amazon
+    // listing; description placeholder flagged for gs-content rewrite before promotion.
     id: 277,
-    title: "Eagle Creek",
-    slug: "eagle-creek",
-    description: "The information provided here is too sparse to write a responsible product description for a tech-savvy audience. There's no product type (is this a bag, a packing cube system, a travel organizer, a multi-tool?), no specs, no price, and no existing description to draw facts from. Writing 500–700 words of substantive, number-grounded analysis without knowing what the product actually is would mean fabricating specifications — which would mislead the exact audience this piece is meant to serve.\n\nTo produce the description, the following minimum information is needed:\n\n**What it is** — specific product category (e.g., \"packing cube set,\" \"sling pack,\" \"RFID wallet\")\n\n**Key specs or materials** — capacity in liters, fabric weight (denier), closure type, dimensions, weight, organizational layout, any notable hardware (YKK zippers, Fidlock magnetics, Dyneema construction, etc.)\n\n**Price** — essential for the value paragraph\n\n**Competitive context** — what Eagle Creek line or tier this belongs to (e.g., Pack-It, Migrate, Wayfinder)\n\nOnce those details are available, the full four-paragraph review can be written to the spec requested.",
+    title: "Eagle Creek Pack-It Gear Cube M, Sahara Yellow",
+    slug: "eagle-creek-pack-it-gear-cube-m-sahara-yellow",
+    description: "Eagle Creek's Pack-It Gear Cube M is a medium-format travel packing cube in the brand's long-running Pack-It system, in a Sahara Yellow colorway. PLACEHOLDER: full review pending gs-content rewrite — flagged for re-description before promotion.",
     price: 0,
     category: "Everyday Carry",
     categorySlug: "electronics",
@@ -5663,9 +5675,13 @@ export const products: Product[
     isDraft: true,
   },
   {
+    // Catalog-quality fix 2026-05-06: ASIN B00ZIADJSW resolves to the HOODED
+    // Double-Thick variant, not the non-hooded pullover the title described.
+    // Title + slug updated to match the actual product. Description still references
+    // "no zipper" + "no hood" — flagged for gs-content rewrite.
     id: 279,
-    title: "Arborwear Men's Double Thick Pullover Sweatshirt",
-    slug: "arborwear-mens-double-thick-pullover-sweatshirt",
+    title: "Arborwear Double-Thick Hooded Pullover Sweatshirts For Men - Heavyweight Hoodies With Snap Neck Collar and Handwarmer Pouch",
+    slug: "arborwear-double-thick-hooded-pullover-sweatshirt-mens",
     description: "The Double Thick Pullover occupies a specific niche within the workwear-adjacent fleece category — not a fashion-forward crewneck, not a technical midlayer, but a purpose-built job-site pullover designed around material mass rather than weight savings. Arborwear has built its reputation supplying arborists and tree workers, a trade that demands abrasion resistance, freedom of arm movement for overhead work, and warmth that holds up through outdoor exposure. That lineage shapes every decision here, placing it closer to Carhartt's heavyweight hooded sweatshirts and Duluth Trading's Fire Hose-reinforced fleeces than anything in the athleisure or even outdoor-performance aisle.\n\nThe \"Double Thick\" designation refers to a doubled fabric construction at the high-wear zones — shoulders, forearms, and elbows — over what is already a heavy-weight cotton-blend fleece base. Without published fabric weight specs, the honest reference point is that Arborwear's standard pullovers typically run in the 12–14 oz cotton fleece range; the double-layer reinforcement in stress zones effectively puts those panels in the 24–28 oz equivalent range, territory shared with heavy canvas work jackets. The cut is notably generous through the chest and shoulders — reportedly sized around a climber's harness-over-layers use case — which translates to exceptional range of motion for overhead work. Seam placement avoids the underarm and shoulder zones where tool harnesses and chainsaw chaps create friction hotspots. No zipper hardware means no snagging points on rigging lines or climbing equipment, a deliberate trade-off for utility over convenience.\n\nIn daily wear, the mass of the fabric translates to meaningful wind resistance that a standard 9 oz fleece simply doesn't provide, making it a credible single-layer option down into the low 40s Fahrenheit with moderate activity. The cotton-forward blend absorbs moisture rather than wicking it, which is the central thermal trade-off — stop moving in wet conditions and the retained moisture will work against warmth retention faster than a synthetic midlayer would. Arborwear's durability reputation is the clearest category advantage: the double-thick panels resist the kind of abrasion from bark, rope, and rough surfaces that destroys standard sweatshirts in a single season. Sizing runs consistent with the brand's generous proportions, and the lack of a hood reduces thermal coverage at the neck versus Carhartt's hooded heavyweight, a practical difference in sustained cold-weather outdoor work.\n\nThe target buyer is someone who works outdoors or does sustained physical labor in cool-to-cold conditions and needs outerwear that survives genuine abuse rather than weekend light use. Arborists, landscapers, and construction workers will get the most from the reinforced zone placement. For a casual wearer wanting a thick, cozy pullover, the Carhartt Midweight sleeve logo sweatshirt delivers comparable warmth at a lower price without the workwear engineering overhead. The value equation here is durability-per-wear over time: the upfront cost is higher than a comparable-weight generic fleece, but the structural reinforcement meaningfully extends garment life under the specific stress conditions it was designed to handle.",
     price: 0,
     category: "Everyday Carry",
@@ -5692,8 +5708,11 @@ export const products: Product[
     price: 0,
     category: "Everyday Carry",
     categorySlug: "electronics",
+    // Catalog-quality fix 2026-05-06: image density boosted from 3 to 5 by adding
+    // 2 additional Amazon gallery thumbs (hi-res _SL1500_ versions) to meet the
+    // "4-8 quality images" non-negotiable rule (working_practices rule 11).
     image: "/images/mirrored/81Fq4rZ-ewL._AC_SL1500_.jpg",
-    images: ["/images/mirrored/81Fq4rZ-ewL._AC_SL1500_.jpg", "/images/mirrored/91hXMHfDWLL._AC_SL1500_.jpg", "/images/mirrored/61z5ZMuiNlS._AC_SL1489_.jpg"],
+    images: ["/images/mirrored/81Fq4rZ-ewL._AC_SL1500_.jpg", "/images/mirrored/91hXMHfDWLL._AC_SL1500_.jpg", "/images/mirrored/61z5ZMuiNlS._AC_SL1489_.jpg", "/images/mirrored/41I3ueGqfqL._AC_SL1500_.jpg", "/images/mirrored/51Wn4zcYWJL._AC_SL1500_.jpg", "/images/mirrored/311AlNlNfRS._AC_SL1500_.jpg", "/images/mirrored/310Ohd-BwJL._AC_SL1500_.jpg"],
     rating: 4.5,
     reviewCount: 0,
     asin: "B00013J89A",
@@ -5729,19 +5748,23 @@ export const products: Product[
     isDraft: true,
   },
   {
+    // Catalog-quality fix 2026-05-06: ASIN B0BXH3CK3G (Translucent Gray) redirects
+    // to B08CR97FGW (Touch Translucent White) — Gray variant appears delisted.
+    // Switched to the still-live White variant. Description still mentions the
+    // gray colorway in places; flagged for gs-content tweak before promotion.
     id: 282,
-    title: "Aulumu A16 for iPhone 16 Pro Magnetic Thermal Case | Updated Camera Control | IMD Technology | Compatible with Magsafe | Complete Wrap-Around | Touch Translucent Gray",
-    slug: "aulumu-a16-for-iphone-16-pro-magnetic-thermal-case-updated-camera-control-imd-te",
+    title: "Aulumu A16 iPhone 16 Pro Magnetic Thermal Case | Updated Camera Control | IMD Technology | Compatible with Magsafe | Complete Wrap-Around | Touch Translucent White",
+    slug: "aulumu-a16-iphone-16-pro-magnetic-thermal-case-translucent-white",
     description: "The A16 lands in the crowded premium iPhone 16 Pro case segment — a category split between minimalist MagSafe-compatible slim cases (Pitaka, Nomad, Peak Design) and the more expressive, hardware-forward designs that treat the case itself as an aesthetic object. Aulumu positions the A16 firmly in the second camp, but with engineering pretensions: the translucent gray \"Touch\" colorway uses a two-layer IMD (In-Mold Decoration) construction rather than printed surface graphics, and the aluminum camera ring and button hardware push it closer to boutique accessory territory than commodity TPU.\n\nIMD process matters here more than it sounds. Single-layer IMD embeds graphics between substrate and outer coating; Aulumu's claimed two-layer stack means the pattern is sandwiched between two separate film layers before being injection-molded into the case body. The practical result is that abrasion resistance is significantly higher than surface-printed cases — the graphic layer never contacts anything directly. The glow-in-the-dark line detailing runs through this same stack, which means the luminescent pigment doesn't degrade from handling the way topcoat-applied phosphorescent finishes typically do within six months of daily carry. The aluminum camera ring is a meaningful hardware choice on the iPhone 16 Pro specifically: Apple's 48MP triple-array with the ProRes-capable sensor stack is physically vulnerable, and a flush or sub-flush aluminum surround with defined tolerances beats polycarbonate lips for scratch resistance when the phone is placed face-up on abrasive surfaces. The updated camera control cutout — called out explicitly in the product name — correctly exposes the iPhone 16 Pro's capacitive camera control button, which earlier third-party cases frequently blocked or recessed into inaccessibility.\n\nMagSafe compatibility means the internal magnet array aligns to Apple's 25W MagSafe standard, though the actual sustained charge rate through a case of this construction will depend on the material stack's thickness — thicker IMD constructions can reduce effective field strength and drop charging to 15W or below. That's a known trade-off in the category and not unique here. The complete wrap-around construction suggests full-edge coverage, which typically adds 1.5–2.5mm to overall dimensions and meaningfully affects one-hand grip on the already-large 6.3-inch Pro chassis. There's no published drop-test rating visible in available materials, which is a gap worth noting against competitors like Spigen's Tough Armor or UAG's Pathfinder that certify to MIL-STD-810G. The translucent finish will show oils and micro-scratches on the outer surface over time — matte translucent finishes in this category almost universally do.\n\nThe right buyer for the A16 is someone who treats the iPhone 16 Pro as a carried object with aesthetic weight — closer to the Dbrand Grip buyer than the Apple Clear Case buyer, but who wants hardware details (aluminum buttons, real ring protection) rather than pure brand recognition. It punches above generic IMD cases from no-name vendors on build quality, and the camera control compatibility issue that plagued first-wave iPhone 16 Pro cases makes this more relevant than it would have been otherwise. Buyers who need verified drop protection metrics should look at Spigen or UAG at similar or lower price points. Buyers chasing minimal bulk should look at Pitaka's MagEZ lineup instead.",
     price: 0,
     category: "Everyday Carry & Accessories",
     categorySlug: "everyday-carry",
-    image: "/images/mirrored/61OH4vCnSHL._AC_SL1500_.jpg",
-    images: ["/images/mirrored/61OH4vCnSHL._AC_SL1500_.jpg", "/images/mirrored/61xXAR9Sj_L._AC_SL1500_.jpg", "/images/mirrored/718xre9ZYmL._AC_SL1500_.jpg", "/images/mirrored/51ENN-EHbiL._AC_SL1500_.jpg", "/images/mirrored/71GEBX1DCoL._AC_SL1500_.jpg", "/images/mirrored/611MARCjD_L._AC_SL1500_.jpg", "/images/mirrored/61WtSdMc_kL._AC_SL1500_.jpg", "/images/mirrored/61KObRmikkL._AC_SL1500_.jpg"],
+    image: "/images/mirrored/61UWh9j5YfL._AC_SL1500_.jpg",
+    images: ["/images/mirrored/61UWh9j5YfL._AC_SL1500_.jpg", "/images/mirrored/41nsXgoMuyL._AC_SL1500_.jpg", "/images/mirrored/41WdVwWg5nL._AC_SL1500_.jpg", "/images/mirrored/41-dfHs1drL._AC_SL1500_.jpg", "/images/mirrored/31xyX54stiL._AC_SL1500_.jpg", "/images/mirrored/41StoS1PF5L._AC_SL1500_.jpg", "/images/mirrored/41KUbx_lSzL._AC_SL1500_.jpg"],
     rating: 4.5,
     reviewCount: 0,
-    asin: "B0BXH3CK3G",
-    affiliateUrl: "https://www.amazon.com/dp/B0BXH3CK3G?tag=gadgetstyle01-20",
+    asin: "B08CR97FGW",
+    affiliateUrl: "https://www.amazon.com/dp/B08CR97FGW?tag=gadgetstyle01-20",
     gadgetFlowUrl: "",
     tags: ["Aulumu", "Cyberpunk — Tools and Toys", "Tools & Toys Pick", "Price TBD"],
     dateAdded: "2026-04-21",
@@ -5905,19 +5928,24 @@ export const products: Product[
     isDraft: true,
   },
   {
+    // Catalog-quality fix 2026-05-06: ASIN B01LD85JIK (HiRise 2, no cable) redirects
+    // to B01LD85ORQ (HiRise 2 Deluxe with Lightning + Micro-USB cables included).
+    // Switched ASIN, refreshed title, image, and slug to match Deluxe variant.
+    // Description still says "Requires Apple Lightning Cable (not Included)" —
+    // flagged for gs-content edit before promotion.
     id: 290,
-    title: "Twelve South HiRise 2 for iPhone/iPad, Black | Adjustable Charging Stand, Requires Apple Lightning Cable (not Included)",
-    slug: "twelve-south-hirise-2-for-iphone-ipad-black-adjustable-charging-stand-requires-a",
+    title: "Twelve South HiRise 2 Deluxe for iPhone/iPad, Black | Adjustable Charging Stand with Lightning + Micro-USB Cables",
+    slug: "twelve-south-hirise-2-deluxe-iphone-ipad-black",
     description: "The HiRise 2 occupies the passive Lightning dock segment — a category that sounds simple until you've watched cheaper alternatives skid across a desk every time you pull your phone one-handed. Twelve South positions this squarely against Belkin's BoostCharge stands and Griffin's WatchStand lineage: premium-priced, desktop-permanent accessories built for people who treat their desk setup with the same seriousness as their hardware. The all-metal construction and matte black finish signal that this is a display piece as much as a utility item, and the adjustable-height column puts it a tier above fixed-angle competitors that force a single viewing position.\n\nThe stand itself is hardware-agnostic in the sense that it delivers no power of its own — it routes an existing Apple Lightning cable through its spine, which means charge speed is entirely determined by the adapter and cable already in the user's kit. Plug in an 18W or 20W USB-C PD adapter with Apple's USB-C to Lightning cable and the connected iPhone charges at up to ~18–20W where the device supports it; pair it with a 5W cube and that's the ceiling. The adjustable column accommodates iPhone and iPad form factors across a meaningful height range, which matters for FaceTime framing and for fitting cases of varying thickness. The weighted base is the engineering choice worth noting: mass at the bottom means one-handed undocking doesn't require a second hand to chase the stand across the desk, a friction problem that plagues lighter competitors. No MagSafe, no Qi coil, no passthrough data — this is purely a mechanical and aesthetic solution to upright charging.\n\nIn daily use, the relevant performance variables are all upstream of the stand itself: charge rate, cable quality, and adapter wattage. What the HiRise 2 contributes is positional stability and viewing angle. The height adjustment is stepless within its range, which gives genuine flexibility for portrait FaceTime or landscape media viewing. The Lightning-only architecture is the most significant constraint: Lightning's 480 Mbps data ceiling and the format's end-of-life trajectory mean this stand's useful life is tied directly to Lightning device ownership. No USB-C iPhone or iPad Pro will work here. The lack of Qi or MagSafe integration also means AirPods or Apple Watch can't share the footprint, unlike multi-coil competitors such as the Belkin MagSafe 3-in-1.\n\nThe right buyer here is an iPhone 14 or earlier user — or someone still running a Lightning iPad — who wants a permanent desktop charging station with enough visual weight to justify the desk real estate and price premium. It competes directly with the Belkin BoostCharge Pro stand on aesthetics and build, and wins on adjustability. Anyone already on USB-C iPhone 15 or later should stop reading here. For Lightning households, though, particularly those pairing it with a dedicated adapter setup at a home desk or studio workstation, the build quality and stability are meaningfully better than the $15–20 alternatives, and the price reflects that honestly without overclaiming.",
     price: 0,
     category: "Everyday Carry",
     categorySlug: "electronics",
-    image: "/images/mirrored/51xmUnX9MSL._AC_SL1000_.jpg",
-    images: ["/images/mirrored/51xmUnX9MSL._AC_SL1000_.jpg", "/images/mirrored/51g1FvwwOyL._AC_SL1000_.jpg", "/images/mirrored/41_n0r1tKTL._AC_SL1000_.jpg"],
+    image: "/images/mirrored/71OV45f1maL._AC_SL1500_.jpg",
+    images: ["/images/mirrored/71OV45f1maL._AC_SL1500_.jpg", "/images/mirrored/41eR8BT5TDL._AC_SL1500_.jpg", "/images/mirrored/41np6IOKpAL._AC_SL1500_.jpg", "/images/mirrored/31VrYzAQG5L._AC_SL1500_.jpg", "/images/mirrored/51hCS2XaGeL._AC_SL1500_.jpg", "/images/mirrored/51K0vyHGVmL._AC_SL1500_.jpg"],
     rating: 4.5,
     reviewCount: 0,
-    asin: "B01LD85JIK",
-    affiliateUrl: "https://www.amazon.com/dp/B01LD85JIK?tag=gadgetstyle01-20",
+    asin: "B01LD85ORQ",
+    affiliateUrl: "https://www.amazon.com/dp/B01LD85ORQ?tag=gadgetstyle01-20",
     gadgetFlowUrl: "",
     tags: ["Twelve South", "A Few Great Sales — Tools and Toys", "Tools & Toys Pick", "Price TBD"],
     dateAdded: "2026-04-21",
