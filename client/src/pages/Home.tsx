@@ -213,46 +213,20 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════════
-          SECTION 3 — NOW TRENDING (Numbered Strip)
+          SECTION 3 — NOW TRENDING
+          Uses the standard ProductCard with the SAME grid + container as
+          /category, /brand, /search, and the Categories section above —
+          so trending cards are pixel-identical to every other product
+          card on the site.
           ════════════════════════════════════════════ */}
       <section className="py-12 lg:py-16 bg-background">
-        <div className="container">
+        <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
           <SectionHeading label="Trending" title="Now Trending" action="View All" href="/category/smart-home" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 lg:gap-6">
             {trending.slice(0, 12).map((product, i) => (
-              <FadeSection key={product.id} delay={i * 0.08}>
-                <Link href={`/product/${product.slug}`}>
-                  <div className="group relative flex lg:flex-col items-center lg:items-start gap-4 p-4 rounded-xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all">
-                    {/* Rank number */}
-                    <span className="absolute top-2 left-3 font-mono text-4xl font-bold text-primary/15 group-hover:text-primary/30 transition-colors leading-none">
-                      {i + 1}
-                    </span>
-
-                    {/* Product image */}
-                    <div className="w-20 h-20 lg:w-full lg:h-36 rounded-lg overflow-hidden flex-shrink-0 mt-4 lg:mt-6 bg-secondary/30">
-                      <img
-                        src={product.image}
-                        alt={product.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-
-                    {/* Info */}
-                    <div className="min-w-0 flex-1">
-                      <h3 className="font-medium text-sm text-foreground line-clamp-2 group-hover:text-primary transition-colors">
-                        {product.title}
-                      </h3>
-                      <div className="flex items-center gap-2 mt-1.5">
-                        <span className="font-mono text-sm text-primary">${product.price}</span>
-                        <span className="flex items-center gap-0.5 text-xs text-muted-foreground">
-                          <Star className="w-3 h-3 fill-yellow-500 text-yellow-500" />
-                          {product.rating}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
+              <FadeSection key={product.id} delay={i * 0.05}>
+                <ProductCard product={product} index={i} />
               </FadeSection>
             ))}
           </div>
@@ -323,16 +297,18 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════════
-          SECTION 5 — NEW ARRIVALS (Grid)
+          SECTION 5 — NEW ARRIVALS
+          Same grid + wide container as Now Trending and the product
+          list pages — pixel-identical card sizing across the site.
           ════════════════════════════════════════════ */}
       <section className="py-12 lg:py-16 bg-background">
-        <div className="container">
+        <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
           <SectionHeading label="Fresh" title="New Arrivals" action="See All" href="/category/smart-home" />
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 lg:gap-6">
-            {newArrivals.slice(0, 10).map((product, i) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 lg:gap-6">
+            {newArrivals.slice(0, 12).map((product, i) => (
               <FadeSection key={product.id} delay={i * 0.05}>
-                <ProductCard product={product} />
+                <ProductCard product={product} index={i} />
               </FadeSection>
             ))}
           </div>
