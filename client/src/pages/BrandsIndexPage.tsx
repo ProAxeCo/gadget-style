@@ -139,10 +139,11 @@ export default function BrandsIndexPage() {
                     {/* Subtle dark vignette for legibility of bottom info */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
 
-                    {/* Logo pill — auto-toned to the accent so it always reads */}
-                    <div className="absolute inset-0 flex items-center justify-center px-4 pb-12">
+                    {/* Circular logo bubble — GF parity (white circle with
+                        the logo centered inside, sits in the middle of the card) */}
+                    <div className="absolute inset-0 flex items-center justify-center pb-10">
                       <div
-                        className={`rounded-2xl px-5 py-4 lg:px-6 lg:py-5 backdrop-blur-sm shadow-2xl flex items-center justify-center w-full max-w-[180px] h-20 lg:h-24 ${
+                        className={`rounded-full backdrop-blur-sm shadow-2xl flex items-center justify-center aspect-square w-24 h-24 lg:w-28 lg:h-28 p-5 lg:p-6 ${
                           tone === "dark"
                             ? "bg-zinc-900/90"
                             : "bg-white/95"
@@ -151,11 +152,11 @@ export default function BrandsIndexPage() {
                         <img
                           src={brand.logoUrl}
                           alt={`${brand.name} logo`}
-                          className="max-h-12 lg:max-h-14 max-w-full object-contain"
+                          className="max-h-full max-w-full object-contain"
                           loading="lazy"
                           onError={(e) => {
                             const t = e.currentTarget as HTMLImageElement;
-                            t.outerHTML = `<span class="font-display text-lg lg:text-xl ${
+                            t.outerHTML = `<span class="font-display text-base lg:text-lg ${
                               tone === "dark" ? "text-white" : "text-zinc-800"
                             }">${brand.name}</span>`;
                           }}

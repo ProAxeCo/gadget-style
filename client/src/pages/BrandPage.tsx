@@ -164,12 +164,12 @@ export default function BrandPage() {
             <ArrowLeft className="w-4 h-4" /> All brands
           </Link>
 
-          {/* Logo pill — auto-toned to the accent so it always reads */}
+          {/* Circular logo bubble — GF parity */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className={`w-24 h-24 lg:w-28 lg:h-28 rounded-2xl flex items-center justify-center shadow-2xl mb-7 p-4 ${
+            className={`w-28 h-28 lg:w-32 lg:h-32 rounded-full flex items-center justify-center shadow-2xl mb-7 p-6 ${
               pillTone === "dark" ? "bg-zinc-900/85 backdrop-blur" : "bg-white/95 backdrop-blur"
             }`}
           >
