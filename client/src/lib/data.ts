@@ -6410,6 +6410,58 @@ export const categories: Category[] = [
     productCount: 88,
     image: "/images/mirrored/banner_edc_modern-eYnJngmeSeWrdHSZi8agck.webp",
   },
+  // ── New "in the pipeline" categories (productCount: 0 until backfilled).
+  // Validator passes because 0 products currently carry these categorySlugs.
+  // Backfill from existing tags/titles via scripts/backfill-categories.ts
+  // when ready, or hand-tag products in data.ts.
+  {
+    name: "Office & Productivity",
+    slug: "office-productivity",
+    description: "Desks, monitors, ergonomic gear and tools that earn back hours",
+    icon: "Monitor",
+    productCount: 0,
+    image: "/images/brands/heroes/asus.jpg",
+  },
+  {
+    name: "Travel Tech",
+    slug: "travel-tech",
+    description: "Lightweight, durable, airport-friendly gear for every trip",
+    icon: "Plane",
+    productCount: 0,
+    image: "/images/brands/heroes/dji.jpg",
+  },
+  {
+    name: "Charging & Power",
+    slug: "charging-power",
+    description: "GaN bricks, MagSafe pucks, power banks — keep everything alive",
+    icon: "Battery",
+    productCount: 0,
+    image: "/images/brands/heroes/anker.jpg",
+  },
+  {
+    name: "Photography & Imaging",
+    slug: "photography",
+    description: "Cameras, lenses, gimbals and the kit that frames your story",
+    icon: "Camera",
+    productCount: 0,
+    image: "/images/brands/heroes/sony.jpg",
+  },
+  {
+    name: "Home & Living",
+    slug: "home-living",
+    description: "Lighting, cleaning, climate — the gadgets that quietly run a home",
+    icon: "Lamp",
+    productCount: 0,
+    image: "/images/mirrored/banner_smart_home_modern-CJjmzf3kFbLCmdCaKvFC3a.webp",
+  },
+  {
+    name: "Health & Wellness",
+    slug: "health-wellness",
+    description: "Recovery tech, sleep, hydration and the tools that move the dial",
+    icon: "HeartPulse",
+    productCount: 0,
+    image: "/images/brands/heroes/garmin.jpg",
+  },
 ];
 
 export const blogPosts: BlogPost[] = [

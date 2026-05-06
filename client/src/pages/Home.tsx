@@ -42,9 +42,9 @@ function FadeSection({ children, className = "", delay = 0 }: { children: React.
 /* ── Section heading ── */
 function SectionHeading({ label, title, action, href }: { label: string; title: string; action?: string; href?: string }) {
   return (
-    <div className="flex items-end justify-between mb-8 lg:mb-10">
+    <div className="flex items-end justify-between mb-5 lg:mb-7">
       <div>
-        <span className="text-primary font-mono text-xs tracking-widest uppercase block mb-2">{label}</span>
+        <span className="text-primary font-mono text-xs tracking-widest uppercase block mb-1.5">{label}</span>
         <h2 className="text-3xl lg:text-4xl font-display text-foreground">{title}</h2>
       </div>
       {action && href && (
@@ -163,11 +163,11 @@ export default function Home() {
           /category, /brand, /search — so category cards line up
           pixel-identical with product cards across the site.
           ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16 border-t border-border/50 bg-secondary/30">
+      <section className="py-6 lg:py-10 border-t border-border/50 bg-secondary/30">
         <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
-          <div className="flex items-end justify-between mb-8 lg:mb-10">
+          <div className="flex items-end justify-between mb-5 lg:mb-7">
             <div>
-              <span className="text-primary font-mono text-xs tracking-widest uppercase block mb-2">Browse</span>
+              <span className="text-primary font-mono text-xs tracking-widest uppercase block mb-1.5">Browse</span>
               <h2 className="text-3xl lg:text-4xl font-display text-foreground">Explore Categories</h2>
             </div>
             <Link
@@ -223,7 +223,7 @@ export default function Home() {
           so trending cards are pixel-identical to every other product
           card on the site.
           ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16 bg-background">
+      <section className="py-6 lg:py-10 bg-background">
         <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
           <SectionHeading label="Trending" title="Now Trending" action="View All" href="/category/smart-home" />
 
@@ -243,7 +243,7 @@ export default function Home() {
           Same canonical 6-across product card grid as everything else
           on the site, so cards line up pixel-identical.
           ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16 bg-secondary/20">
+      <section className="py-6 lg:py-10 bg-secondary/20">
         <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
           <SectionHeading label="Curated" title="Featured this Week" action="See All" href="/category/smart-home" />
 
@@ -262,7 +262,7 @@ export default function Home() {
           Newly curated products — the latest catalog additions, deeper
           than "New Arrivals". Same canonical grid + container.
           ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16 bg-background">
+      <section className="py-6 lg:py-10 bg-background">
         <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
           <SectionHeading label="Just In" title="New Discoveries" action="See All" href="/category/smart-home" />
 
@@ -281,7 +281,7 @@ export default function Home() {
           Same grid + wide container as Now Trending and the product
           list pages — pixel-identical card sizing across the site.
           ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16 bg-background">
+      <section className="py-6 lg:py-10 bg-background">
         <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
           <SectionHeading label="Fresh" title="New Arrivals" action="See All" href="/category/smart-home" />
 
@@ -297,13 +297,15 @@ export default function Home() {
 
       {/* ════════════════════════════════════════════
           SECTION 6 — FROM THE BLOG
+          Same wide max-w-[1880px] wrapper as the product sections so
+          the blog grid stretches the full page width too.
           ════════════════════════════════════════════ */}
-      <section className="py-12 lg:py-16 bg-secondary/20">
-        <div className="container">
+      <section className="py-6 lg:py-10 bg-secondary/20">
+        <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
           <SectionHeading label="Read" title="From the Blog" action="All Articles" href="/blog" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {blogPosts.slice(0, 4).map((post, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-6">
+            {blogPosts.slice(0, 5).map((post, i) => (
               <FadeSection key={post.id} delay={i * 0.1}>
                 <Link href={`/blog/${post.slug}`}>
                   <article className="group rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all">
@@ -338,7 +340,7 @@ export default function Home() {
       {/* ════════════════════════════════════════════
           SECTION 7 — NEWSLETTER CTA
           ════════════════════════════════════════════ */}
-      <section className="py-16 lg:py-24 relative overflow-hidden bg-primary/5">
+      <section className="py-10 lg:py-14 relative overflow-hidden bg-primary/5">
         <div className="absolute inset-0">
           <img src={NEWSLETTER_BG} alt="" className="w-full h-full object-cover opacity-10" />
         </div>
