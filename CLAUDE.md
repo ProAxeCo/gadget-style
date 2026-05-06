@@ -98,6 +98,25 @@ Warnings do not fail the build. Errors do.
 - `pnpm tsx scripts/generate-social.ts [--ids=1,2,3]` — produce
   `docs/social/pinterest.csv` and `docs/social/instagram.md` for every
   product (or a subset by id).
+- `pnpm brands:audit` — validate every brand has a logo SVG file, valid
+  6-digit hex accent color, ≥60-char description, and any heroImageUrl
+  that resolves. Writes `docs/brand-asset-audit.json`. Exits non-zero on
+  errors. **Run before shipping any brand-related change.**
+- `pnpm brands:logos [-- --slug=<slug>] [--force]` — download official
+  brand wordmarks from Wikimedia Commons to
+  `client/public/images/brands/<slug>.svg`. URL map maintained in
+  `scripts/source-brand-logos.ts`. Trademark nominative use.
+- `pnpm brands:imagery [-- --slug=<slug>] [--force]` — download brand-
+  themed lifestyle photos from Pexels (royalty-free, commercial OK) to
+  `client/public/images/brands/heroes/<slug>.jpg`. Query map in
+  `scripts/source-brand-imagery.ts`. Uses curl (Pexels rate-limits
+  Node's native fetch); throttled 800ms between brands.
+
+**Copyright rule:** never scrape brand banners or hero imagery from
+competitor publishers (Gadget Flow, GSMArena, etc). They licensed those
+assets and we have no rights. Pexels / Wikimedia / brand press kits /
+own photography only. The `gf:sync` product pipeline is fine because we
+preserve attribution via the `gadgetFlowUrl` field.
 
 ### The unbreakable chain
 
@@ -287,6 +306,38 @@ Build config (in `vercel.json`): build command `pnpm build`, output directory
 DNS: at your registrar, add a CNAME for `www` pointing to
 `cname.vercel-dns.com`, plus an A record for the apex (`gadgetstyle.com.au`) per
 Vercel's instructions in the Domains UI.
+
+## Canonical UI patterns ("Claude Design")
+
+Don't re-design these. Read `docs/brand-design-system.md` and the memory
+notes (`project_design_system.md`, `project_brand_visual_system.md`)
+before touching UI surfaces.
+
+**Product surface** — used everywhere products or brand cards are
+listed (`/category`, `/brand`, `/search`, home Categories / Now Trending
+/ Featured this Week / New Discoveries / New Arrivals, `/brands`):
+
+```tsx
+<section className="py-6 lg:py-10">
+  <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
+    <SectionHeading ... />
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 lg:gap-6">
+      {items.map(...)}
+    </div>
+  </div>
+</section>
+```
+
+**Card structure** — square image area on top + info area below
+(price/count + title). Brand cards mirror ProductCard structurally so
+they line up pixel-identical in mixed grids.
+
+**Brand logo on photo** — native brand color (NEVER `brightness-0
+invert`), white radial spotlight bloom behind for legibility on busy
+photos, no white pill.
+
+**ScrollToTop on route change** — mounted in `client/src/components/Layout.tsx`.
+wouter doesn't do this natively; don't remove it.
 
 ## Things that were cut (and why)
 
