@@ -120,14 +120,16 @@ export default function BrandsIndexPage() {
                 className="group"
               >
                 <Link href={`/brand/${brand.slug}`}>
-                  {/* Square image area — matches ProductCard's aspect-square */}
-                  <div className="relative rounded-2xl overflow-hidden aspect-square shadow-md group-hover:shadow-2xl transition-all duration-300 mb-3">
+                  {/* Square image area — matches ProductCard's aspect-square.
+                      Image is shown CLEAR (no full-card tint). Only a soft
+                      radial darkening behind the logo for legibility. */}
+                  <div className="relative rounded-2xl overflow-hidden aspect-square shadow-md group-hover:shadow-2xl transition-all duration-300 mb-3 bg-secondary">
                     {brand.heroImageUrl ? (
                       <img
                         src={brand.heroImageUrl}
                         alt=""
                         loading="lazy"
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
                       <div
@@ -137,35 +139,29 @@ export default function BrandsIndexPage() {
                         }}
                       />
                     )}
-                    {/* Brand-color tint overlay */}
+                    {/* Soft radial darkening behind the centered logo so it
+                        reads on busy/light photos — image otherwise clear */}
                     <div
-                      className="absolute inset-0 mix-blend-multiply"
+                      className="absolute inset-0 pointer-events-none"
                       style={{
-                        background: `linear-gradient(135deg, ${accent}cc 0%, ${accent}80 50%, ${accent}66 100%)`,
+                        background:
+                          "radial-gradient(circle at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 30%, transparent 60%)",
                       }}
                     />
-                    {/* Circular logo bubble — centered, GF parity */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div
-                        className={`rounded-full backdrop-blur-sm shadow-2xl flex items-center justify-center aspect-square w-24 h-24 lg:w-28 lg:h-28 p-5 lg:p-6 ${
-                          tone === "dark"
-                            ? "bg-zinc-900/90"
-                            : "bg-white/95"
-                        }`}
-                      >
-                        <img
-                          src={brand.logoUrl}
-                          alt={`${brand.name} logo`}
-                          className="max-h-full max-w-full object-contain"
-                          loading="lazy"
-                          onError={(e) => {
-                            const t = e.currentTarget as HTMLImageElement;
-                            t.outerHTML = `<span class="font-display text-base lg:text-lg ${
-                              tone === "dark" ? "text-white" : "text-zinc-800"
-                            }">${brand.name}</span>`;
-                          }}
-                        />
-                      </div>
+                    {/* Logo placed directly on the photo — NO white pill.
+                        Brightness-0 invert turns dark logos white so they
+                        read on the lifestyle photo backdrop. */}
+                    <div className="absolute inset-0 flex items-center justify-center p-6 lg:p-8">
+                      <img
+                        src={brand.logoUrl}
+                        alt={`${brand.name} logo`}
+                        className="max-h-[55%] max-w-[80%] object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] [filter:brightness(0)_invert(1)_drop-shadow(0_2px_8px_rgba(0,0,0,0.6))]"
+                        loading="lazy"
+                        onError={(e) => {
+                          const t = e.currentTarget as HTMLImageElement;
+                          t.outerHTML = `<span class="font-display text-2xl lg:text-3xl text-white drop-shadow-lg">${brand.name}</span>`;
+                        }}
+                      />
                     </div>
                   </div>
 

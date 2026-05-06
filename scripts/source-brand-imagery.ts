@@ -44,17 +44,19 @@ const UA =
 // Curated Pexels search per brand. Tweak these queries to change the visual
 // identity each brand projects on its hero. Keep queries short — Pexels
 // ranks short queries better.
+// Tight, brand-category-specific queries. Each must describe a clear,
+// single product type the brand actually makes — no abstract setups.
 const QUERIES: Record<string, string> = {
-  apple: "macbook desk",
-  samsung: "smartphone modern",
-  sony: "headphones",
-  belkin: "charging cable",
-  anker: "usb cable",
-  amazon: "smart home",
-  dji: "drone aerial",
-  garmin: "running watch",
-  razer: "gaming setup",
-  asus: "laptop keyboard",
+  apple: "macbook pro",
+  samsung: "galaxy phone",
+  sony: "noise cancelling headphones",
+  belkin: "wireless charger phone",
+  anker: "power bank battery",
+  amazon: "echo speaker",
+  dji: "drone flying",
+  garmin: "fitness watch",
+  razer: "mechanical keyboard rgb",
+  asus: "gaming laptop",
 };
 
 const args = process.argv.slice(2);

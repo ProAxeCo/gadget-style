@@ -120,12 +120,13 @@ export default function BrandPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero — full-bleed brand-themed lifestyle photo with accent tint */}
+      {/* Hero — full-bleed brand-themed lifestyle photo, shown CLEAR.
+          The photo carries the brand identity; we only add a soft bottom
+          gradient so the headline remains readable over busy imagery. */}
       <section
         className="relative w-full mt-24 lg:mt-28 mb-12 lg:mb-16 mx-4 sm:mx-6 lg:mx-8 rounded-3xl overflow-hidden"
         style={heroOverlay ? undefined : heroStyle}
       >
-        {/* Lifestyle backdrop (Pexels-sourced when heroImageUrl is set) */}
         {heroOverlay && (
           <img
             src={heroOverlay}
@@ -133,27 +134,8 @@ export default function BrandPage() {
             className="absolute inset-0 w-full h-full object-cover"
           />
         )}
-
-        {/* Brand-color tint overlay — multiply blend ties the photo to the
-            brand's identity while keeping the image readable */}
-        <div
-          className="absolute inset-0 mix-blend-multiply"
-          style={{
-            background: heroOverlay
-              ? `linear-gradient(135deg, ${accent}b3 0%, ${accent}80 55%, ${accent}66 100%)`
-              : "transparent",
-          }}
-        />
-        {/* Soft top-left highlight for depth */}
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            background:
-              "radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.25), transparent 60%)",
-          }}
-        />
-        {/* Bottom vignette for content legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/15 to-black/45" />
+        {/* Soft bottom-only vignette for headline legibility — image stays clear */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/55" />
 
         <div className="relative z-10 container py-20 lg:py-28 flex flex-col items-center text-center">
           {/* Back link */}
@@ -164,28 +146,24 @@ export default function BrandPage() {
             <ArrowLeft className="w-4 h-4" /> All brands
           </Link>
 
-          {/* Circular logo bubble — GF parity */}
+          {/* Logo placed directly on the lifestyle photo — NO white pill.
+              Brightness-0 invert turns dark logos white so they read on
+              the photo backdrop, with a soft drop shadow for depth. */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className={`w-28 h-28 lg:w-32 lg:h-32 rounded-full flex items-center justify-center shadow-2xl mb-7 p-6 ${
-              pillTone === "dark" ? "bg-zinc-900/85 backdrop-blur" : "bg-white/95 backdrop-blur"
-            }`}
+            className="mb-8 flex items-center justify-center h-20 lg:h-28"
           >
             {logoBroken ? (
-              <span
-                className={`text-xl lg:text-2xl font-display ${
-                  pillTone === "dark" ? "text-white" : "text-zinc-800"
-                }`}
-              >
+              <span className="text-4xl lg:text-6xl font-display text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
                 {brand.name}
               </span>
             ) : (
               <img
                 src={brand.logoUrl}
                 alt={`${brand.name} logo`}
-                className="w-full h-full object-contain"
+                className="h-full w-auto max-w-[280px] lg:max-w-[360px] object-contain [filter:brightness(0)_invert(1)_drop-shadow(0_4px_12px_rgba(0,0,0,0.6))]"
                 onError={() => setLogoBroken(true)}
               />
             )}
