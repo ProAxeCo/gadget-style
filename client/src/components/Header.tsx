@@ -28,6 +28,7 @@ import {
   ChevronLeft,
   ChevronRight,
   ArrowRight,
+  MoreHorizontal,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -60,6 +61,7 @@ export default function Header() {
   const { wishlistCount } = useWishlist();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState<Product[]>([]);
@@ -289,6 +291,101 @@ export default function Header() {
                 >
                   {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                 </button>
+
+                {/* Desktop "More" mega-menu trigger — GF-style */}
+                <div className="hidden lg:block relative">
+                  <button
+                    onClick={() => setMoreOpen(!moreOpen)}
+                    className={`p-2.5 rounded-lg transition-colors ${
+                      moreOpen
+                        ? "bg-primary/10 text-primary"
+                        : "text-muted-foreground hover:text-foreground hover:bg-black/[0.04] dark:hover:bg-white/5"
+                    }`}
+                    aria-label="More"
+                    aria-expanded={moreOpen}
+                  >
+                    <MoreHorizontal className="w-5 h-5" />
+                  </button>
+
+                  <AnimatePresence>
+                    {moreOpen && (
+                      <>
+                        {/* Backdrop to dismiss on outside click */}
+                        <div
+                          className="fixed inset-0 z-40"
+                          onClick={() => setMoreOpen(false)}
+                          aria-hidden="true"
+                        />
+                        <motion.div
+                          initial={{ opacity: 0, y: -8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{ duration: 0.18 }}
+                          className="absolute right-0 top-full mt-2 z-50 w-[640px] rounded-2xl bg-card border border-border/60 shadow-2xl p-6 grid grid-cols-4 gap-6"
+                          role="menu"
+                        >
+                          {/* Column 1 — Explore More */}
+                          <div>
+                            <h4 className="text-foreground font-display text-lg mb-3">
+                              Explore More
+                            </h4>
+                            <ul className="space-y-2 text-sm">
+                              <li><Link href="/brands" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Brands</Link></li>
+                              <li><Link href="/category/smart-home" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Categories</Link></li>
+                              <li><Link href="/blog" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Magazine</Link></li>
+                              <li><Link href="/wishlist" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Wishlist</Link></li>
+                              <li><a href="https://www.pinterest.com/con_tsekouras/" target="_blank" rel="noopener" className="text-muted-foreground hover:text-primary transition-colors">Pinterest ↗</a></li>
+                              <li><a href="https://www.instagram.com/gadgetstyleaustralia/" target="_blank" rel="noopener" className="text-muted-foreground hover:text-primary transition-colors">Instagram ↗</a></li>
+                            </ul>
+                          </div>
+
+                          {/* Column 2 — About */}
+                          <div>
+                            <h4 className="text-foreground font-display text-lg mb-3">
+                              About
+                            </h4>
+                            <ul className="space-y-2 text-sm">
+                              <li><Link href="/about" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
+                              <li><Link href="/contact" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
+                              <li><a href="mailto:contsekouras@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">Email</a></li>
+                              <li><Link href="/about" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Editorial Standards</Link></li>
+                            </ul>
+                          </div>
+
+                          {/* Column 3 — Legal */}
+                          <div>
+                            <h4 className="text-foreground font-display text-lg mb-3">
+                              Legal
+                            </h4>
+                            <ul className="space-y-2 text-sm">
+                              <li><Link href="/about" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Affiliate Disclosure</Link></li>
+                              <li><Link href="/about" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link></li>
+                              <li><Link href="/about" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Terms of Use</Link></li>
+                              <li><Link href="/about" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Cookie Policy</Link></li>
+                            </ul>
+                          </div>
+
+                          {/* Column 4 — Services */}
+                          <div>
+                            <h4 className="text-foreground font-display text-lg mb-3">
+                              Services
+                            </h4>
+                            <ul className="space-y-2 text-sm">
+                              <li><Link href="/contact" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">List your Product</Link></li>
+                              <li><Link href="/contact" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Brand Partnerships</Link></li>
+                              <li><Link href="/contact" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Press Inquiries</Link></li>
+                            </ul>
+                          </div>
+
+                          {/* Footer line — registered identity */}
+                          <div className="col-span-4 pt-4 mt-2 border-t border-border/40 text-xs text-muted-foreground/80 font-mono">
+                            Gadget Style Australia · ABN 75185709936 · Level 2, 450 St Kilda Rd, Melbourne VIC 3004
+                          </div>
+                        </motion.div>
+                      </>
+                    )}
+                  </AnimatePresence>
+                </div>
 
                 {/* Mobile hamburger button */}
                 <button

@@ -22,11 +22,12 @@ different order.
 | Field | Value |
 |-------|-------|
 | Site URL | `https://www.gadgetstyle.com.au` |
-| Business name | Gadget Style |
+| Business name | Gadget Style Australia |
 | Legal owner | Constantinos Tsekouras |
 | ABN | 75185709936 |
-| Business address | 16 Cypress Way, Kew, VIC 3101, Australia |
+| Business address | Level 2, 450 St Kilda Road, Melbourne VIC 3004, Australia |
 | Contact email | contsekouras@gmail.com |
+| Phone | +61 414651195 |
 | Niche / category | Consumer Electronics / Gadget Reviews |
 | Promotional methods | SEO, editorial curation, Pinterest, Instagram |
 | Monthly traffic | "<1,000 unique visitors (newly launched, growing)" |
@@ -59,6 +60,45 @@ form is copy-paste, not retyping.
 ---
 
 ## Networks to apply to (priority order)
+
+### 0. Amazon AU Associates — `https://affiliate-program.amazon.com.au/` ★ HIGHEST PRIORITY
+
+**Do this BEFORE the other 6 networks.** It's the biggest immediate
+revenue lever — site is .com.au, ~70% of traffic is AU, and the current
+US-only tag either FX-discounts AU commissions or (on amazon.com →
+amazon.com.au auto-redirect) strips them entirely.
+
+Full application pack: `docs/amazon-au-application-pack.md`. Dual-tag
+implementation spec: `docs/dual-tag-implementation.md`.
+
+**Approval:** 1–3 business days (verify on application page).
+
+**Network signup fields (paste-ready):**
+- Account information — Payee name → Constantinos Tsekouras
+- Address line 1 → Level 2, 450 St Kilda Road
+- Suburb / City → Melbourne
+- State → VIC, Postcode → 3004, Country → Australia
+- Phone → +61 414651195
+- Business name → Gadget Style Australia
+- ABN → 75185709936
+- Website list → `https://www.gadgetstyle.com.au`
+- Preferred Associates Store ID → `gadgetstyle-22` (fallback: `gadgetstyleau-22`)
+- Niche → Consumer Electronics / Gadget Reviews
+- Tax → Australian tax resident, non-US person; AU bank EFT for payouts
+- Site description → paste the verbatim block below
+
+**No per-brand applications needed inside Amazon AU** — once the AU tag
+is issued you can deep-link to any product on amazon.com.au using the
+same `?tag=` pattern.
+
+**While waiting for approval (parallel work):**
+- Run `pnpm check:data` to confirm validator is green (Amazon checks
+  the site on first crawl)
+- Confirm Privacy Policy + About + Contact pages are live with the new
+  St Kilda Road address
+- Continue with Steps 1–6 below (the 6 brand networks)
+
+---
 
 ### 1. Impact — `https://app.impact.com/campaign-mediapartner-signup/`
 
@@ -349,11 +389,12 @@ that justify catalog expansion toward EU products.
 | Step | Time |
 |------|------|
 | Prep info file (one-off) | 15 min |
+| Amazon AU Associates signup (Step 0) | 10 min |
 | 6 network signups | ~30 min total (5 min each) |
 | 27 brand applications across all networks | ~90 min total (~3 min each, mostly paste site description + agree to terms) |
 | Initial approval wait | 1–7 business days, no work |
 | First-hour-per-approval (template grab + pilot test) | 15 min × ~10 brands = 2.5 hrs spread over 2 weeks |
-| **Total active work** | **~3.5 hours** |
+| **Total active work** | **~3.7 hours** |
 
 ---
 

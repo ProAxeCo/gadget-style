@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-05-05T20:31:06.395Z",
+  "pinsTotal": 90,
+  "pinTypes": {
+    "product-feature": 38,
+    "category-roundup": 26,
+    "comparison": 17,
+    "lifestyle": 9
+  },
+  "igTotal": 30,
+  "igTypes": {
+    "single-product": 18,
+    "comparison": 7,
+    "category-roundup": 5
+  },
+  "queueAov": {
+    "median": 229,
+    "average": 338.4983076923076,
+    "max": 1599.99,
+    "n": 65
+  },
+  "live": {
+    "count": 248,
+    "median": 159.99,
+    "average": 248.14064516129028,
+    "max": 1599.99
+  },
+  "topFeatured": [
+    {
+      "id": 188,
+      "title": "Carrera Smart Glasses collection with Alexa boasts cutting-edge open-ear audio technology",
+      "price": 314.99,
+      "uses": 3
+    },
+    {
+      "id": 57,
+      "title": "Goal Zero Nomad 50 Portable Solar Panel",
+      "price": 249.95,
+      "uses": 3
+    },
+    {
+      "id": 262,
+      "title": "Amazon eero Pro 6 mesh Wi-Fi 6 router connects more than 75 devices at once",
+      "price": 229,
+      "uses": 3
+    },
+    {
+      "id": 47,
+      "title": "Amazfit T-Rex Ultra GPS Outdoor Smartwatch",
+      "price": 549.99,
+      "uses": 3
+    },
+    {
+      "id": 137,
+      "title": "8BitDo Retro 68 Keyboard – AP50th Limited Edition",
+      "price": 499.99,
+      "uses": 3
+    }
+  ]
+}

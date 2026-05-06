@@ -1,0 +1,117 @@
+{
+  "page_id": "439829266452302",
+  "page_name": "Gadget Style Australia",
+  "runs": [
+    {
+      "page_id": "439829266452302",
+      "run_at": "2026-05-05T06:10:40.948549+00:00",
+      "phase": "initial-delete-pass",
+      "summary": {
+        "posts_seen": 5,
+        "deleted": 1,
+        "skipped_already_gone": 0,
+        "failed": 4
+      },
+      "deleted_posts": [
+        {
+          "id": "439829266452302_714626552305904",
+          "created_time": "2019-05-15T03:56:23+0000",
+          "message": null
+        }
+      ],
+      "skipped_posts": [],
+      "failed_posts": [
+        {
+          "id": "439829266452302_122239044716047217",
+          "created_time": "2026-05-05T06:04:44+0000",
+          "http_status": 403,
+          "error": {
+            "message": "(#200) This post wasn't created by the application",
+            "type": "OAuthException",
+            "code": 200,
+            "fbtrace_id": "AK-Ny3oZ9Y64yRhyS_cOAhz"
+          },
+          "interpretation": "Auto-generated activity event from profile photo upload at 06:04:44 — Graph API forbids apps from deleting system/activity events on a Page even with pages_manage_posts. Only Page admin can hide via FB UI activity log."
+        },
+        {
+          "id": "439829266452302_962161016534282",
+          "created_time": "2026-05-05T05:37:07+0000",
+          "http_status": 403,
+          "error": {
+            "message": "(#200) This post wasn't created by the application",
+            "type": "OAuthException",
+            "code": 200,
+            "fbtrace_id": "Aa2mJ2hKw95Jyioxs93rVkz"
+          },
+          "interpretation": "Auto-generated activity event tied to profile photo / about update at 05:37:07."
+        },
+        {
+          "id": "439829266452302_122239043426047217",
+          "created_time": "2026-05-05T05:36:41+0000",
+          "http_status": 403,
+          "error": {
+            "message": "(#200) This post wasn't created by the application",
+            "type": "OAuthException",
+            "code": 200,
+            "fbtrace_id": "AMgyQw0tzob8-PcvilnTVSH"
+          },
+          "interpretation": "Auto-generated activity event tied to profile photo / about update at 05:36:41."
+        },
+        {
+          "id": "439829266452302_714603692308190",
+          "created_time": "2019-05-15T02:50:45+0000",
+          "exception": "The read operation timed out",
+          "note": "FB acknowledged but response timed out — retried successfully in phase=retry-timeout below."
+        }
+      ],
+      "all_post_ids_at_run_start": [
+        "439829266452302_122239044716047217",
+        "439829266452302_962161016534282",
+        "439829266452302_122239043426047217",
+        "439829266452302_714626552305904",
+        "439829266452302_714603692308190"
+      ]
+    },
+    {
+      "phase": "retry-timeout",
+      "run_at": "2026-05-05T06:13:00+00:00",
+      "summary": {
+        "deleted": 1
+      },
+      "deleted_posts": [
+        {
+          "id": "439829266452302_714603692308190",
+          "created_time": "2019-05-15T02:50:45+0000",
+          "message_excerpt": "Suitable for hot and cold drinks, this copper plated mug set will add style and ..."
+        }
+      ]
+    },
+    {
+      "phase": "final-state",
+      "captured_at": "2026-05-05T06:15:00+00:00",
+      "page": {
+        "id": "439829266452302",
+        "name": "Gadget Style Australia",
+        "about": "Gadgets, gear, the occasional oddity. Curated from Amazon + direct-brand drops. Drop the hype, keep the specs. https://gadgetstyle.com.au",
+        "description": "Gadgets, gear, the occasional oddity. Curated from Amazon + direct-brand drops. We surface tech finds, design-led tools, smart-home gear, EDC, audio, and the occasional weird-but-useful drop - all linked back to where you can buy them. Drop the hype, keep the specs. Visit https://gadgetstyle.com.au for the full catalog.",
+        "picture_url": "https://scontent-syd2-1.xx.fbcdn.net/v/t39.30808-1/690640762_122239044722047217_7980925182311473043_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=109&ccb=1-7&_nc_sid=f907e8&_nc_ohc=l3gRByIj41sQ7kNvwEW-ZaW&_nc_oc=Adrl6JO00us39B_vMjOp7vMC02Moqf3Kzdg36WBWnTY2SYXkf464jNtRUjokt1dUDHY&_nc_zt=24&_nc_ht=scontent-syd2-1.xx&edm=AJdBtusEAAAA&_nc_gid=mL5LPVavmYEHUS-lZjUAKg&_nc_tpa=Q5bMBQEM86wz3iRT2O8WHI_N8Q3sOp2Ht4koLvpfJ8cnKqgxTuhpoDTZ5Q5ATDHGd2VLYZkSD588_SrPSA&oh=00_Af5rx7dQL9kxEIdn0FlY_8bb30irKSiiEUuuDY9xyjukvg&oe=69FF64E8",
+        "picture_photo_id": "690640762_122239044722047217",
+        "previous_picture_photo_id": "689173215_122239043408047217"
+      },
+      "posts_remaining": 3,
+      "posts_remaining_explanation": "All 3 remaining /posts entries are auto-generated activity events created today (2026-05-05) by FB itself when the profile photo + about/description were updated via this script. Graph API does NOT allow apps to delete system-generated activity events (#200 'This post wasn't created by the application'). The 2 actual old user-created posts from 2019 (copper mug + paired post) were both successfully deleted. To remove the 3 remaining activity events, the Page admin must hide them manually via Page > Settings > Activity log in the FB UI.",
+      "remaining_post_ids": [
+        "439829266452302_122239044716047217",
+        "439829266452302_962161016534282",
+        "439829266452302_122239043426047217"
+      ]
+    }
+  ],
+  "totals": {
+    "old_user_posts_deleted": 2,
+    "auto_activity_events_undeletable_via_api": 3,
+    "profile_photo_updated": true,
+    "about_updated": true,
+    "description_updated": true
+  }
+}

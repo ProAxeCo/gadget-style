@@ -1,0 +1,38 @@
+network,brand,signup_url,application_status,approved_date,tracking_link_template,sample_product_url,notes
+Amazon AU,Amazon AU Associates (network),https://affiliate-program.amazon.com.au/,,,,https://www.amazon.com.au/dp/__ASIN__?tag=__AU_TAG__,Highest priority. 1-3 day approval. Establishes AU tag for dual-tag rollout.
+Impact,Impact (network),https://app.impact.com/campaign-mediapartner-signup/,,,,,Network signup; brand apps submitted inside the dashboard.
+Impact,Samsung,https://app.impact.com/secure/marketplace/marketplace.ihtml?searchTerm=Samsung,,,,https://www.samsung.com/us/,Live IDs #131 #133. Search 'Samsung US' inside Impact. May be slow approval.
+Impact,Sony Electronics,https://app.impact.com/secure/marketplace/marketplace.ihtml?searchTerm=Sony,,,,https://electronics.sony.com/,Live ID #149 (BRAVIA Soundbar). Pilot product candidate.
+Impact,DJI,https://app.impact.com/secure/marketplace/marketplace.ihtml?searchTerm=DJI,,,,https://www.dji.com/,Live ID #130 (Osmo Pocket 4). Drones/cameras have best rates.
+Impact,Bose,https://app.impact.com/secure/marketplace/marketplace.ihtml?searchTerm=Bose,,,,https://www.bose.com/,Future-proofing - no live products yet.
+Impact,JBL,https://app.impact.com/secure/marketplace/marketplace.ihtml?searchTerm=JBL,,,,https://www.jbl.com/,Future-proofing - no live products yet.
+Impact,Shark / Ninja,https://app.impact.com/secure/marketplace/marketplace.ihtml?searchTerm=Shark,,,,https://www.sharkclean.com/,Future-proofing - no live products yet.
+Impact,Denon,https://app.impact.com/secure/marketplace/marketplace.ihtml?searchTerm=Denon,,,,https://www.denon.com/,Live ID #129 (Home 600). Search 'Denon' or 'D+M / Masimo'.
+Impact,Corsair,https://app.impact.com/secure/marketplace/marketplace.ihtml?searchTerm=Corsair,,,,https://www.corsair.com/,Live IDs #138 #256 (case + mousepad). Includes Elgato bonus.
+Impact,MSI,https://app.impact.com/secure/marketplace/marketplace.ihtml?searchTerm=MSI,,,,https://www.msi.com/,Live ID #140 (HERALD BE9400 router).
+Impact,TESSAN,https://app.impact.com/secure/marketplace/marketplace.ihtml?searchTerm=TESSAN,,,,https://tessan.com/,Live IDs #150 #151. Smaller brand - may be partial coverage.
+Partnerize,Partnerize (network),https://www.partnerize.com/en/partners/register,,,,,Network signup. Premium brands inside take 1-2 weeks.
+Partnerize,GoPro,https://console.partnerize.com/,,,,https://gopro.com/,Live ID #127 (draft). Promote once price is set.
+Partnerize,Dell,https://console.partnerize.com/,,,,https://www.dell.com/,Live ID #145 (Pro 5 Micro ~$800). Pilot product candidate (highest AOV).
+Partnerize,Lenovo,https://console.partnerize.com/,,,,https://www.lenovo.com/,Future-proofing - no live products yet.
+Partnerize,HP,https://console.partnerize.com/,,,,https://www.hp.com/,Future-proofing - no live products yet.
+Partnerize,Microsoft Store,https://console.partnerize.com/,,,,https://www.microsoft.com/store,Future-proofing - no live products yet.
+Partnerize,Dyson,https://console.partnerize.com/,,,,https://www.dyson.com/,Future-proofing - no live products yet.
+ShareASale,ShareASale (network),https://www.shareasale.com/newSignUp.cfm,,,,,Network signup. Most brand apps auto-approve.
+ShareASale,Keychron,https://www.shareasale.com/shareasale.cfm?searchterm=keychron,,,,https://www.keychron.com/,Live ID #146. Instant-approve. Pilot product candidate (easy validation).
+ShareASale,NuPhy,https://www.shareasale.com/shareasale.cfm?searchterm=nuphy,,,,https://nuphy.com/,Live ID #141 (Air 65 V3). Usually instant approval.
+ShareASale,Soundboks,https://www.shareasale.com/shareasale.cfm?searchterm=soundboks,,,,https://www.soundboks.com/,Live ID #255 (Mix). Check Awin too.
+ShareASale,8BitDo,https://www.shareasale.com/shareasale.cfm?searchterm=8bitdo,,,,https://www.8bitdo.com/,Live ID #137. If absent on ShareASale fall back to 8bitdo.com contact form.
+ShareASale,Vastnaut,https://www.shareasale.com/shareasale.cfm?searchterm=vastnaut,,,,,Live ID #142. Small brand - likely no program; direct email fallback.
+CJ Affiliate,CJ (network),https://www.cj.com/publisher-sign-up,,,,,Network signup - strictest review (2-5 days).
+CJ Affiliate,ASUS,https://members.cj.com/member/publisher/advertisers,,,,https://www.asus.com/,Live ID #148 (Zenbook A14 ~$1200). 5-7 days for ASUS approval.
+CJ Affiliate,Logitech,https://members.cj.com/member/publisher/advertisers,,,,https://www.logitech.com/,Future-proofing - no live products yet.
+CJ Affiliate,Lenovo (CJ variant),https://members.cj.com/member/publisher/advertisers,,,,https://www.lenovo.com/,Some Lenovo sub-brands live on CJ exclusively.
+Awin,Awin (network),https://www.awin.com/us/publishers/join-awin,,,,,Network signup. $1 USD verification fee (refunded with first payout).
+Awin,Philips,https://ui.awin.com/merchant-profile/,,,,https://www.philips.com/,Future-proofing - no live products yet. EU-leaning.
+Awin,Huawei,https://ui.awin.com/merchant-profile/,,,,https://consumer.huawei.com/,Live ID #132 (draft). Awin AU/EU is the path - no US program.
+Awin,Xiaomi,https://ui.awin.com/merchant-profile/,,,,https://www.mi.com/,Future-proofing - no live products yet.
+Rakuten,Rakuten Advertising (network),https://rakutenadvertising.com/join,,,,,Network signup. Slowest of six (3-7 days). Lowest priority - 0 matching live products.
+Rakuten,Walmart,https://rakutenadvertising.com/,,,,https://www.walmart.com/,Future-proofing - no live products yet.
+Rakuten,Best Buy,https://rakutenadvertising.com/,,,,https://www.bestbuy.com/,Future-proofing - no live products yet.
+Rakuten,Macy's,https://rakutenadvertising.com/,,,,https://www.macys.com/,Future-proofing - no live products yet.

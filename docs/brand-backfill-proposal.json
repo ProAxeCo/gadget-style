@@ -1,0 +1,2264 @@
+{
+  "generatedAt": "2026-05-05T22:37:15.020Z",
+  "summary": {
+    "productsScanned": 280,
+    "productsWithProposal": 202,
+    "productsSkipped": 78,
+    "brandsDetected": 39,
+    "brandsWithThreePlusProducts": 9
+  },
+  "brands": [
+    {
+      "slug": "amazon",
+      "name": "Amazon",
+      "productCount": 124
+    },
+    {
+      "slug": "apple",
+      "name": "Apple",
+      "productCount": 10
+    },
+    {
+      "slug": "sony",
+      "name": "Sony",
+      "productCount": 6
+    },
+    {
+      "slug": "garmin",
+      "name": "Garmin",
+      "productCount": 6
+    },
+    {
+      "slug": "samsung",
+      "name": "Samsung",
+      "productCount": 5
+    },
+    {
+      "slug": "anker",
+      "name": "Anker",
+      "productCount": 4
+    },
+    {
+      "slug": "razer",
+      "name": "Razer",
+      "productCount": 3
+    },
+    {
+      "slug": "asus",
+      "name": "Asus",
+      "productCount": 3
+    },
+    {
+      "slug": "dji",
+      "name": "DJI",
+      "productCount": 3
+    },
+    {
+      "slug": "google",
+      "name": "Google",
+      "productCount": 2
+    },
+    {
+      "slug": "sonos",
+      "name": "Sonos",
+      "productCount": 2
+    },
+    {
+      "slug": "bose",
+      "name": "Bose",
+      "productCount": 2
+    },
+    {
+      "slug": "gopro",
+      "name": "GoPro",
+      "productCount": 2
+    },
+    {
+      "slug": "jackery",
+      "name": "Jackery",
+      "productCount": 2
+    },
+    {
+      "slug": "insta360",
+      "name": "Insta360",
+      "productCount": 2
+    },
+    {
+      "slug": "roborock",
+      "name": "Roborock",
+      "productCount": 2
+    },
+    {
+      "slug": "lg",
+      "name": "LG",
+      "productCount": 2
+    },
+    {
+      "slug": "ring",
+      "name": "Ring",
+      "productCount": 1
+    },
+    {
+      "slug": "irobot",
+      "name": "iRobot",
+      "productCount": 1
+    },
+    {
+      "slug": "philips",
+      "name": "Philips",
+      "productCount": 1
+    },
+    {
+      "slug": "ecobee",
+      "name": "Ecobee",
+      "productCount": 1
+    },
+    {
+      "slug": "nanoleaf",
+      "name": "Nanoleaf",
+      "productCount": 1
+    },
+    {
+      "slug": "jbl",
+      "name": "JBL",
+      "productCount": 1
+    },
+    {
+      "slug": "audio-technica",
+      "name": "Audio-Technica",
+      "productCount": 1
+    },
+    {
+      "slug": "sennheiser",
+      "name": "Sennheiser",
+      "productCount": 1
+    },
+    {
+      "slug": "logitech",
+      "name": "Logitech",
+      "productCount": 1
+    },
+    {
+      "slug": "microsoft",
+      "name": "Microsoft",
+      "productCount": 1
+    },
+    {
+      "slug": "fitbit",
+      "name": "Fitbit",
+      "productCount": 1
+    },
+    {
+      "slug": "oura",
+      "name": "Oura",
+      "productCount": 1
+    },
+    {
+      "slug": "dyson",
+      "name": "Dyson",
+      "productCount": 1
+    },
+    {
+      "slug": "lenovo",
+      "name": "Lenovo",
+      "productCount": 1
+    },
+    {
+      "slug": "polaroid",
+      "name": "Polaroid",
+      "productCount": 1
+    },
+    {
+      "slug": "twelve-south",
+      "name": "Twelve South",
+      "productCount": 1
+    },
+    {
+      "slug": "moccamaster",
+      "name": "Moccamaster",
+      "productCount": 1
+    },
+    {
+      "slug": "bulova",
+      "name": "Bulova",
+      "productCount": 1
+    },
+    {
+      "slug": "best-choice-products",
+      "name": "Best Choice Products",
+      "productCount": 1
+    },
+    {
+      "slug": "novium",
+      "name": "novium",
+      "productCount": 1
+    },
+    {
+      "slug": "all-clad",
+      "name": "All-Clad",
+      "productCount": 1
+    },
+    {
+      "slug": "fizz-creations",
+      "name": "Fizz Creations",
+      "productCount": 1
+    }
+  ],
+  "candidatesForBrandPages": [
+    {
+      "slug": "amazon",
+      "name": "Amazon",
+      "productCount": 124
+    },
+    {
+      "slug": "apple",
+      "name": "Apple",
+      "productCount": 10
+    },
+    {
+      "slug": "sony",
+      "name": "Sony",
+      "productCount": 6
+    },
+    {
+      "slug": "garmin",
+      "name": "Garmin",
+      "productCount": 6
+    },
+    {
+      "slug": "samsung",
+      "name": "Samsung",
+      "productCount": 5
+    },
+    {
+      "slug": "anker",
+      "name": "Anker",
+      "productCount": 4
+    },
+    {
+      "slug": "razer",
+      "name": "Razer",
+      "productCount": 3
+    },
+    {
+      "slug": "asus",
+      "name": "Asus",
+      "productCount": 3
+    },
+    {
+      "slug": "dji",
+      "name": "DJI",
+      "productCount": 3
+    }
+  ],
+  "proposals": [
+    {
+      "id": 1,
+      "slug": "amazon-echo-dot-5th-gen-smart-speaker-with-alexa",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Echo Dot (5th Gen) Smart Speaker with Alexa"
+    },
+    {
+      "id": 2,
+      "slug": "google-nest-hub-2nd-gen-smart-display",
+      "proposedBrand": "google",
+      "brandName": "Google",
+      "source": "tag",
+      "matched": "Google Assistant"
+    },
+    {
+      "id": 3,
+      "slug": "ring-video-doorbell-4-with-enhanced-wi-fi",
+      "proposedBrand": "ring",
+      "brandName": "Ring",
+      "source": "title",
+      "matched": "Ring Video Doorbell 4 with Enhanced Wi-Fi"
+    },
+    {
+      "id": 4,
+      "slug": "irobot-roomba-j7-self-emptying-robot-vacuum",
+      "proposedBrand": "irobot",
+      "brandName": "iRobot",
+      "source": "title",
+      "matched": "iRobot Roomba j7+ Self-Emptying Robot Vacuum"
+    },
+    {
+      "id": 5,
+      "slug": "philips-hue-white-and-color-ambiance-starter-kit",
+      "proposedBrand": "philips",
+      "brandName": "Philips",
+      "source": "tag",
+      "matched": "Philips Hue"
+    },
+    {
+      "id": 6,
+      "slug": "ecobee-smart-thermostat-premium",
+      "proposedBrand": "ecobee",
+      "brandName": "Ecobee",
+      "source": "title",
+      "matched": "ecobee Smart Thermostat Premium"
+    },
+    {
+      "id": 9,
+      "slug": "amazon-fire-tv-stick-4k-max-2nd-gen",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Fire TV Stick 4K Max (2nd Gen)"
+    },
+    {
+      "id": 10,
+      "slug": "sonos-era-100-wireless-smart-speaker",
+      "proposedBrand": "sonos",
+      "brandName": "Sonos",
+      "source": "tag",
+      "matched": "Sonos"
+    },
+    {
+      "id": 11,
+      "slug": "nanoleaf-shapes-hexagons-smarter-kit-9-panels",
+      "proposedBrand": "nanoleaf",
+      "brandName": "Nanoleaf",
+      "source": "title",
+      "matched": "Nanoleaf Shapes Hexagons Smarter Kit (9 Panels)"
+    },
+    {
+      "id": 13,
+      "slug": "sony-wh-1000xm5-wireless-noise-canceling-headphones",
+      "proposedBrand": "sony",
+      "brandName": "Sony",
+      "source": "tag",
+      "matched": "Sony"
+    },
+    {
+      "id": 14,
+      "slug": "apple-airpods-pro-2nd-generation-with-usb-c",
+      "proposedBrand": "apple",
+      "brandName": "Apple",
+      "source": "tag",
+      "matched": "Apple"
+    },
+    {
+      "id": 15,
+      "slug": "jbl-charge-5-portable-bluetooth-speaker",
+      "proposedBrand": "jbl",
+      "brandName": "JBL",
+      "source": "tag",
+      "matched": "JBL"
+    },
+    {
+      "id": 16,
+      "slug": "bose-quietcomfort-ultra-earbuds",
+      "proposedBrand": "bose",
+      "brandName": "Bose",
+      "source": "tag",
+      "matched": "Bose"
+    },
+    {
+      "id": 17,
+      "slug": "sonos-beam-gen-2-smart-soundbar",
+      "proposedBrand": "sonos",
+      "brandName": "Sonos",
+      "source": "tag",
+      "matched": "Sonos"
+    },
+    {
+      "id": 18,
+      "slug": "samsung-galaxy-buds3-pro-wireless-earbuds",
+      "proposedBrand": "samsung",
+      "brandName": "Samsung",
+      "source": "tag",
+      "matched": "Samsung"
+    },
+    {
+      "id": 19,
+      "slug": "audio-technica-at-lp120xusb-direct-drive-turntable",
+      "proposedBrand": "audio-technica",
+      "brandName": "Audio-Technica",
+      "source": "title",
+      "matched": "Audio-Technica AT-LP120XUSB Direct-Drive Turntable"
+    },
+    {
+      "id": 20,
+      "slug": "sennheiser-momentum-4-wireless-headphones",
+      "proposedBrand": "sennheiser",
+      "brandName": "Sennheiser",
+      "source": "tag",
+      "matched": "Sennheiser"
+    },
+    {
+      "id": 24,
+      "slug": "bose-soundlink-max-portable-bluetooth-speaker",
+      "proposedBrand": "bose",
+      "brandName": "Bose",
+      "source": "tag",
+      "matched": "Bose"
+    },
+    {
+      "id": 25,
+      "slug": "sony-wf-1000xm5-truly-wireless-earbuds",
+      "proposedBrand": "sony",
+      "brandName": "Sony",
+      "source": "tag",
+      "matched": "Sony"
+    },
+    {
+      "id": 26,
+      "slug": "logitech-g502-x-plus-lightspeed-wireless-gaming-mouse",
+      "proposedBrand": "logitech",
+      "brandName": "Logitech",
+      "source": "tag",
+      "matched": "Logitech"
+    },
+    {
+      "id": 28,
+      "slug": "razer-blackwidow-v4-75-mechanical-gaming-keyboard",
+      "proposedBrand": "razer",
+      "brandName": "Razer",
+      "source": "tag",
+      "matched": "Razer"
+    },
+    {
+      "id": 29,
+      "slug": "xbox-elite-wireless-controller-series-2-core",
+      "proposedBrand": "microsoft",
+      "brandName": "Microsoft",
+      "source": "tag",
+      "matched": "Xbox"
+    },
+    {
+      "id": 31,
+      "slug": "asus-rog-swift-pg27aqn-27-360hz-gaming-monitor",
+      "proposedBrand": "asus",
+      "brandName": "Asus",
+      "source": "title",
+      "matched": "ASUS ROG Swift PG27AQN 27\" 360Hz Gaming Monitor"
+    },
+    {
+      "id": 32,
+      "slug": "razer-viper-v3-pro-wireless-gaming-mouse",
+      "proposedBrand": "razer",
+      "brandName": "Razer",
+      "source": "tag",
+      "matched": "Razer"
+    },
+    {
+      "id": 35,
+      "slug": "dualsense-edge-wireless-controller-for-ps5",
+      "proposedBrand": "sony",
+      "brandName": "Sony",
+      "source": "tag",
+      "matched": "PS5"
+    },
+    {
+      "id": 37,
+      "slug": "razer-kiyo-pro-ultra-4k-streaming-webcam",
+      "proposedBrand": "razer",
+      "brandName": "Razer",
+      "source": "tag",
+      "matched": "Razer"
+    },
+    {
+      "id": 39,
+      "slug": "apple-watch-series-10-gps-46mm",
+      "proposedBrand": "apple",
+      "brandName": "Apple",
+      "source": "tag",
+      "matched": "Apple"
+    },
+    {
+      "id": 40,
+      "slug": "samsung-galaxy-watch-ultra-47mm-gps-lte",
+      "proposedBrand": "samsung",
+      "brandName": "Samsung",
+      "source": "tag",
+      "matched": "Samsung"
+    },
+    {
+      "id": 41,
+      "slug": "garmin-venu-3s-gps-smartwatch",
+      "proposedBrand": "garmin",
+      "brandName": "Garmin",
+      "source": "tag",
+      "matched": "Garmin"
+    },
+    {
+      "id": 42,
+      "slug": "fitbit-charge-6-advanced-fitness-tracker",
+      "proposedBrand": "fitbit",
+      "brandName": "Fitbit",
+      "source": "tag",
+      "matched": "Fitbit"
+    },
+    {
+      "id": 43,
+      "slug": "oura-ring-gen-3-heritage-smart-ring",
+      "proposedBrand": "oura",
+      "brandName": "Oura",
+      "source": "title",
+      "matched": "Oura Ring Gen 3 Heritage Smart Ring"
+    },
+    {
+      "id": 44,
+      "slug": "garmin-forerunner-265-gps-running-watch",
+      "proposedBrand": "garmin",
+      "brandName": "Garmin",
+      "source": "tag",
+      "matched": "Garmin"
+    },
+    {
+      "id": 46,
+      "slug": "google-pixel-watch-3-45mm-wifi-lte",
+      "proposedBrand": "google",
+      "brandName": "Google",
+      "source": "tag",
+      "matched": "Google"
+    },
+    {
+      "id": 48,
+      "slug": "apple-watch-ultra-2-gps-cellular-49mm",
+      "proposedBrand": "apple",
+      "brandName": "Apple",
+      "source": "tag",
+      "matched": "Apple"
+    },
+    {
+      "id": 52,
+      "slug": "gopro-hero13-black-action-camera",
+      "proposedBrand": "gopro",
+      "brandName": "GoPro",
+      "source": "tag",
+      "matched": "GoPro"
+    },
+    {
+      "id": 53,
+      "slug": "dji-osmo-action-5-pro-adventure-camera",
+      "proposedBrand": "dji",
+      "brandName": "DJI",
+      "source": "tag",
+      "matched": "DJI"
+    },
+    {
+      "id": 54,
+      "slug": "garmin-inreach-mini-2-satellite-communicator",
+      "proposedBrand": "garmin",
+      "brandName": "Garmin",
+      "source": "tag",
+      "matched": "Garmin"
+    },
+    {
+      "id": 55,
+      "slug": "jackery-explorer-1000-plus-portable-power-station",
+      "proposedBrand": "jackery",
+      "brandName": "Jackery",
+      "source": "tag",
+      "matched": "Jackery"
+    },
+    {
+      "id": 58,
+      "slug": "dji-mini-4-pro-drone-with-rc-2-controller",
+      "proposedBrand": "dji",
+      "brandName": "DJI",
+      "source": "tag",
+      "matched": "DJI"
+    },
+    {
+      "id": 59,
+      "slug": "garmin-gpsmap-67-handheld-gps-navigator",
+      "proposedBrand": "garmin",
+      "brandName": "Garmin",
+      "source": "tag",
+      "matched": "Garmin"
+    },
+    {
+      "id": 61,
+      "slug": "garmin-overlander-all-terrain-gps-navigator",
+      "proposedBrand": "garmin",
+      "brandName": "Garmin",
+      "source": "tag",
+      "matched": "Garmin"
+    },
+    {
+      "id": 63,
+      "slug": "insta360-x4-360-action-camera",
+      "proposedBrand": "insta360",
+      "brandName": "Insta360",
+      "source": "tag",
+      "matched": "Insta360"
+    },
+    {
+      "id": 64,
+      "slug": "anker-737-power-bank-24-000mah-140w",
+      "proposedBrand": "anker",
+      "brandName": "Anker",
+      "source": "tag",
+      "matched": "Anker"
+    },
+    {
+      "id": 66,
+      "slug": "apple-magsafe-charger-with-15w-fast-charging",
+      "proposedBrand": "apple",
+      "brandName": "Apple",
+      "source": "tag",
+      "matched": "Apple"
+    },
+    {
+      "id": 70,
+      "slug": "anker-usb-c-to-usb-c-cable-100w-6ft-2-pack",
+      "proposedBrand": "anker",
+      "brandName": "Anker",
+      "source": "tag",
+      "matched": "Anker"
+    },
+    {
+      "id": 71,
+      "slug": "samsung-t7-shield-2tb-portable-ssd",
+      "proposedBrand": "samsung",
+      "brandName": "Samsung",
+      "source": "tag",
+      "matched": "Samsung"
+    },
+    {
+      "id": 75,
+      "slug": "anker-nano-ii-65w-usb-c-gan-charger",
+      "proposedBrand": "anker",
+      "brandName": "Anker",
+      "source": "title",
+      "matched": "Anker Nano II 65W USB-C GaN Charger"
+    },
+    {
+      "id": 76,
+      "slug": "apple-airtag-4-pack-bluetooth-tracker",
+      "proposedBrand": "apple",
+      "brandName": "Apple",
+      "source": "tag",
+      "matched": "Apple"
+    },
+    {
+      "id": 78,
+      "slug": "sony-inzone-m10s-ii-oled-gaming-monitor",
+      "proposedBrand": "sony",
+      "brandName": "Sony",
+      "source": "title",
+      "matched": "Sony INZONE M10S II OLED Gaming Monitor"
+    },
+    {
+      "id": 80,
+      "slug": "dyson-hushjet-mini-cool",
+      "proposedBrand": "dyson",
+      "brandName": "Dyson",
+      "source": "title",
+      "matched": "Dyson HushJet Mini Cool"
+    },
+    {
+      "id": 83,
+      "slug": "roborock-f25-gt-cordless-all-in-one-wet-dry-vacuum-mop",
+      "proposedBrand": "roborock",
+      "brandName": "Roborock",
+      "source": "title",
+      "matched": "roborock F25 GT Cordless All in One Wet Dry Vacuum Mop"
+    },
+    {
+      "id": 84,
+      "slug": "roborock-f25-ultra-steam-wet-dry-vacuum-cleaner",
+      "proposedBrand": "roborock",
+      "brandName": "Roborock",
+      "source": "title",
+      "matched": "roborock F25 Ultra Steam Wet Dry Vacuum Cleaner"
+    },
+    {
+      "id": 91,
+      "slug": "sony-inzone-h6-air-wired-open-back-gaming-headset",
+      "proposedBrand": "sony",
+      "brandName": "Sony",
+      "source": "tag",
+      "matched": "Playstation"
+    },
+    {
+      "id": 92,
+      "slug": "insta360-snap-selfie-screen",
+      "proposedBrand": "insta360",
+      "brandName": "Insta360",
+      "source": "title",
+      "matched": "Insta360 Snap Selfie Screen"
+    },
+    {
+      "id": 98,
+      "slug": "lenovo-idea-tab-plus",
+      "proposedBrand": "lenovo",
+      "brandName": "Lenovo",
+      "source": "title",
+      "matched": "Lenovo Idea Tab Plus"
+    },
+    {
+      "id": 108,
+      "slug": "polaroid-hi-print-3x3-instant-photo-printer",
+      "proposedBrand": "polaroid",
+      "brandName": "Polaroid",
+      "source": "title",
+      "matched": "Polaroid Hi-Print 3x3 Instant Photo Printer"
+    },
+    {
+      "id": 110,
+      "slug": "sandisk-phone-drive-with-usb-c-for-iphone-and-mac",
+      "proposedBrand": "apple",
+      "brandName": "Apple",
+      "source": "tag",
+      "matched": "iPhone"
+    },
+    {
+      "id": 114,
+      "slug": "rog-strix-morph-96-wireless-keyboard",
+      "proposedBrand": "asus",
+      "brandName": "Asus",
+      "source": "title",
+      "matched": "ROG Strix Morph 96 Wireless Keyboard"
+    },
+    {
+      "id": 115,
+      "slug": "amazon-kindle-scribe-colorsoft-64gb-color-ereader",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Kindle Scribe Colorsoft 64GB Color eReader"
+    },
+    {
+      "id": 116,
+      "slug": "amazon-ember-artline-55-4k-qled-fire-tv",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Ember Artline 55\" 4K QLED Fire TV"
+    },
+    {
+      "id": 117,
+      "slug": "amazon-kindle-scribe-64gb-11-ereader-with-pen",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Kindle Scribe 64GB 11\" e-reader with pen"
+    },
+    {
+      "id": 118,
+      "slug": "amazon-echo-studio-2025-spatial-smart-speaker",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Echo Studio (2025) Spatial Smart Speaker"
+    },
+    {
+      "id": 119,
+      "slug": "amazon-fire-tv-omni-qled-series-50-75",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Fire TV Omni QLED Series (50\"-75\")"
+    },
+    {
+      "id": 120,
+      "slug": "amazon-echo-show-8-4th-generation-2025",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Echo Show 8 (4th Generation, 2025)"
+    },
+    {
+      "id": 122,
+      "slug": "amazon-echo-dot-max-smart-speaker-with-room-filling-sound",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Echo Dot Max Smart Speaker with Room-Filling Sound"
+    },
+    {
+      "id": 123,
+      "slug": "amazon-echo-show-11-smart-display-with-az3-pro-chip",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Echo Show 11 Smart Display with AZ3 Pro Chip"
+    },
+    {
+      "id": 124,
+      "slug": "amazon-eero-signal-with-flexible-placement",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon eero Signal with Flexible Placement"
+    },
+    {
+      "id": 125,
+      "slug": "amazon-kindle-colorsoft-kids-ereader-with-16gb-storage",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Kindle Colorsoft Kids eReader with 16GB Storage"
+    },
+    {
+      "id": 126,
+      "slug": "amazon-kindle-colorsoft-16gb-with-a-paper-like-display",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Kindle Colorsoft 16GB with a paper-like display"
+    },
+    {
+      "id": 127,
+      "slug": "gopro-mission-1-pro-series-cinema-cameras",
+      "proposedBrand": "gopro",
+      "brandName": "GoPro",
+      "source": "title",
+      "matched": "GoPro MISSION 1 PRO Series Cinema Cameras"
+    },
+    {
+      "id": 128,
+      "slug": "anker-nano-power-strip-10-in-1-70w-clamp",
+      "proposedBrand": "anker",
+      "brandName": "Anker",
+      "source": "title",
+      "matched": "Anker Nano Power Strip (10-in-1, 70W, Clamp)"
+    },
+    {
+      "id": 130,
+      "slug": "dji-osmo-pocket-4-gimbal-camera",
+      "proposedBrand": "dji",
+      "brandName": "DJI",
+      "source": "title",
+      "matched": "DJI Osmo Pocket 4 Gimbal Camera"
+    },
+    {
+      "id": 131,
+      "slug": "samsung-galaxy-a57-5g-smartphone",
+      "proposedBrand": "samsung",
+      "brandName": "Samsung",
+      "source": "title",
+      "matched": "Samsung Galaxy A57 5G Smartphone"
+    },
+    {
+      "id": 133,
+      "slug": "samsung-galaxy-a37-5g-smartphone",
+      "proposedBrand": "samsung",
+      "brandName": "Samsung",
+      "source": "title",
+      "matched": "Samsung Galaxy A37 5G Smartphone"
+    },
+    {
+      "id": 139,
+      "slug": "ultimal-rugged-case-with-band-for-apple-watch-ultra",
+      "proposedBrand": "apple",
+      "brandName": "Apple",
+      "source": "tag",
+      "matched": "Apple Watch Accessories"
+    },
+    {
+      "id": 148,
+      "slug": "asus-zenbook-a14-ux3407-laptop",
+      "proposedBrand": "asus",
+      "brandName": "Asus",
+      "source": "title",
+      "matched": "ASUS Zenbook A14 (UX3407) Laptop"
+    },
+    {
+      "id": 149,
+      "slug": "sony-bravia-theatre-bar-5-soundbar",
+      "proposedBrand": "sony",
+      "brandName": "Sony",
+      "source": "title",
+      "matched": "Sony BRAVIA Theatre Bar 5 Soundbar"
+    },
+    {
+      "id": 152,
+      "slug": "amazon-kindle-scribe-colorsoft-64gb-ereader-and-digital-notebook",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Kindle Scribe Colorsoft 64GB eReader and Digital Notebook"
+    },
+    {
+      "id": 153,
+      "slug": "amazon-ember-artline-55-qled-fire-tv",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 154,
+      "slug": "amazon-kindle-scribe-2025-11-e-reader",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Kindle Scribe 2025 11″ E-Reader"
+    },
+    {
+      "id": 155,
+      "slug": "amazon-echo-studio-2025-smart-speaker",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 156,
+      "slug": "amazon-fire-tv-omni-qled-series",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Fire TV Omni QLED Series"
+    },
+    {
+      "id": 157,
+      "slug": "amazon-kindle-scribe-colorsoft",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Kindle Scribe Colorsoft"
+    },
+    {
+      "id": 158,
+      "slug": "amazon-echo-dot-max-smart-speaker",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 159,
+      "slug": "amazon-echo-show-11",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 160,
+      "slug": "amazon-eero-signal-4g-lte-cellular-backup",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon eero Signal 4G LTE Cellular Backup"
+    },
+    {
+      "id": 161,
+      "slug": "amazon-kindle-colorsoft-kids-16-gb-ereader-optimized-for-comfortable-reading-in-",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Kindle Colorsoft Kids 16 GB eReader Optimized for Comfortable Reading in Color"
+    },
+    {
+      "id": 162,
+      "slug": "amazon-kindle-colorsoft-16gb-ereader-with-a-paper-like-color-display-and-adjusta",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Kindle Colorsoft 16GB eReader with a Paper-Like Color Display & Adjustable Warm Light"
+    },
+    {
+      "id": 163,
+      "slug": "amazon-fire-tv-soundbar-plus-with-dolby-atmos-and-dts-x-for-powerful-sound-and-c",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Fire TV Soundbar Plus with Dolby Atmos and DTS:X for Powerful Sound and Clear Dialogue"
+    },
+    {
+      "id": 164,
+      "slug": "amazon-fire-hd-10-kids-and-kids-pro-tablets",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Fire HD 10 Kids and Kids Pro Tablets"
+    },
+    {
+      "id": 165,
+      "slug": "amazon-echo-spot",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 166,
+      "slug": "kindle-colorsoft-signature-edition-paper-like-color-solutions-by-amazon-on-gadge",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Kindle Colorsoft Signature Edition: Paper-like Color Solutions by Amazon on Gadget Flow"
+    },
+    {
+      "id": 167,
+      "slug": "amazon-blink-mini-2",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 168,
+      "slug": "amazon-basics-fire-resistant-security-safe-with-programmable-electonic-keyboard",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Basics Fire Resistant Security Safe with Programmable Electonic Keyboard"
+    },
+    {
+      "id": 170,
+      "slug": "garmin-varia-ertl615-the-must-have-rearview-radar-taillight-for-safer-ebike-ride",
+      "proposedBrand": "garmin",
+      "brandName": "Garmin",
+      "source": "title",
+      "matched": "Garmin Varia eRTL615: The Must-Have Rearview Radar Taillight for Safer eBike Rides"
+    },
+    {
+      "id": 172,
+      "slug": "amazon-kindle-scribe-32gb",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Kindle Scribe (32GB)"
+    },
+    {
+      "id": 173,
+      "slug": "kindle-paperwhite-e-reader-12th-gen-with-glare-free-display-by-amazon-on-gadget-",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Kindle Paperwhite: E-Reader 12th Gen with Glare-Free Display by Amazon on Gadget Flow"
+    },
+    {
+      "id": 174,
+      "slug": "amazon-eero-6-dual-band-mesh-wi-fi-router-supports-wi-fi-6-connectivity",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 175,
+      "slug": "amazon-all-new-echo-buds-2nd-gen-wireless-earbuds-offer-anc-and-alexa",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 176,
+      "slug": "amazon-echo-glow-companion-lamp-responds-to-your-voice-for-fun-party-modes",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Echo Glow Companion Lamp responds to your voice for fun party modes"
+    },
+    {
+      "id": 177,
+      "slug": "amazon-echo-show-8-3rd-gen-2023-has-a-new-display-camera-and-mics-for-better-cal",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 178,
+      "slug": "fire-7-kids-tablet-ad-free-content-with-parental-controls-by-amazon-on-gadget-fl",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Fire 7 Kids tablet: Ad-Free Content with Parental Controls by Amazon on Gadget Flow"
+    },
+    {
+      "id": 179,
+      "slug": "amazon-echo-dot-kids-5th-gen-2022-speaker-is-designed-for-children-and-has-paren",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 180,
+      "slug": "amazon-all-new-fire-tv-cube-alexa-streaming-box-has-wi-fi-6e-and-4k-ultra-hd-qua",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 181,
+      "slug": "amazon-fire-tv-4-series-4k-uhd-smart-tv-delivers-4k-ultra-hd-hdr-10-and-dolby-di",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 182,
+      "slug": "blink-outdoor-4-4th-gen-outdoor-wireless-security-camera-has-a-2-year-battery-li",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 183,
+      "slug": "amazon-eero-6-wi-fi-6-router",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 184,
+      "slug": "fire-hd-8-2024-tablet-with-8-display-and-easy-to-use-tools-by-amazon-on-gadget-f",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 185,
+      "slug": "fire-hd-8-kids-portable-tablet-for-kids-with-parental-controls-by-amazon-on-gadg",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Fire HD 8 Kids: Portable Tablet for Kids with Parental Controls by Amazon on Gadget Flow"
+    },
+    {
+      "id": 186,
+      "slug": "amazon-echo-pop-compact-smart-speaker-offers-full-bodied-sound-and-alexa-compati",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 187,
+      "slug": "amazon-echo-show-5-3rd-gen-smart-display",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 188,
+      "slug": "carrera-smart-glasses-collection-with-alexa-boasts-cutting-edge-open-ear-audio-t",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 189,
+      "slug": "amazon-fire-tv-stick-4k-2nd-gen-streaming-device-supports-wi-fi-6-and-has-a-new-",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 190,
+      "slug": "amazon-fire-tv-soundbar-delivers-room-filling-3d-sound-and-supports-dts-virtual-",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Fire TV Soundbar delivers room-filling 3D sound and supports DTS Virtual:X"
+    },
+    {
+      "id": 191,
+      "slug": "amazon-eero-max-7-wi-fi-7-mesh-system-is-remarkably-faster-with-speeds-up-to-4-3",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 192,
+      "slug": "amazon-echo-hub-smart-home-control-panel-mounts-on-your-wall-and-is-powered-by-a",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 193,
+      "slug": "amazon-echo-frames-3rd-gen-smart-alexa-spectacles-offer-fashion-and-on-the-go-sm",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 194,
+      "slug": "amazon-echo-pop-kids-smart-speaker-comes-in-marvel-s-avengers-and-disney-princes",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 195,
+      "slug": "amazon-fire-max-11-tablet-is-very-big-and-powerful-thanks-to-its-octa-core-proce",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 196,
+      "slug": "amazon-astro-2nd-gen-smart-robot-offers-useful-features-for-home-and-office-situ",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 197,
+      "slug": "amazon-echo-show-5-kids-3rd-gen-has-an-improved-speaker-for-more-fun-than-ever-b",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 198,
+      "slug": "amazon-echo-buds-2023-release-true-wireless-earbuds-have-12-mm-drivers-for-crisp",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 199,
+      "slug": "amazon-eero-poe-10-port-wired-gateway-supplies-100-watts-of-pooled-power-for-poe",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 200,
+      "slug": "blink-mini-pan-tilt-rotating-indoor-security-cam-offers-2-way-audio-and-motion-d",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 201,
+      "slug": "amazon-eero-poe-6-dual-band-wi-fi-6-access-point-has-a-ceiling-or-wall-mountable",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 202,
+      "slug": "blink-wired-floodlight-camera-boasts-2-600-lumens-of-brightness-and-hd-live-view",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 203,
+      "slug": "amazon-fire-tv-omni-qled-series-television-takes-4k-uhd-smart-content-to-a-new-l",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 204,
+      "slug": "amazon-alexa-voice-remote-pro-comes-with-remote-finder-feature-so-you-keep-track",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 205,
+      "slug": "amazon-echo-auto-2nd-gen-smart-car-accessory-provides-intelligent-on-the-go-assi",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 206,
+      "slug": "amazon-echo-dot-with-clock-2022-version-has-an-updated-high-resolution-dot-matri",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 207,
+      "slug": "amazon-echo-studio-gen-2-2022-smart-speaker-boasts-dolby-atmos-spatial-audio-tec",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 208,
+      "slug": "amazon-halo-rise-smart-lamp-and-alarm-clock-is-a-sleep-tracker-that-you-don-t-ha",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 209,
+      "slug": "amazon-kindle-scribe-large-ereader-works-with-a-pen-that-actually-writes-on-the-",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Kindle Scribe large eReader works with a pen that actually writes on the screen"
+    },
+    {
+      "id": 210,
+      "slug": "amazon-fire-hd-8-tablet-2022-release-is-up-to-30-faster-than-the-previous-genera",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 211,
+      "slug": "amazon-all-new-kindle-kids-2022-release-ereader-has-a-high-res-display-for-ages-",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon All-new Kindle Kids (2022 release) eReader has a high-res display for ages 3–12"
+    },
+    {
+      "id": 212,
+      "slug": "amazon-all-new-kindle-2022-release-ereader-has-a-6-300-ppi-high-resolution-displ",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon All-new Kindle (2022 release) eReader has a 6” 300 ppi high-resolution display"
+    },
+    {
+      "id": 213,
+      "slug": "amazon-fire-7-2022-kids-tablet-has-a-durable-kid-proof-case-with-a-built-in-stan",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Fire 7 2022 kids tablet has a durable Kid-Proof Case with a built-in stand"
+    },
+    {
+      "id": 214,
+      "slug": "amazon-all-new-fire-7-tablet-has-a-30-faster-quad-core-processor-and-a-longer-ba",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 215,
+      "slug": "amazon-eero-pro-6e-wi-fi-router-supports-100-connected-devices-and-covers-up-to-",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 216,
+      "slug": "amazon-basics-smart-switches-and-dimmers-let-you-schedule-when-your-lights-turn-",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 217,
+      "slug": "amazon-smart-air-quality-monitor-makes-it-easy-to-understand-what-s-in-your-indo",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 218,
+      "slug": "blink-floodlight-cam-gives-you-a-totally-wireless-outdoor-hd-smart-security-setu",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 219,
+      "slug": "blink-solar-panel-charging-mount-uses-the-sun-s-power-to-charge-the-blink-outdoo",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 220,
+      "slug": "blink-smart-video-doorbell-allows-you-to-answer-your-door-anywhere-from-your-sma",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 221,
+      "slug": "amazon-halo-view-fitness-band-offers-a-bright-amoled-color-display-to-see-health",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Halo View fitness band offers a bright AMOLED color display to see health metrics"
+    },
+    {
+      "id": 222,
+      "slug": "amazon-glow-smart-display-projector-combines-video-calling-with-immersive-projec",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 223,
+      "slug": "amazon-smart-thermostat-automatically-adjusts-your-indoor-environment-with-advan",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 224,
+      "slug": "amazon-11th-gen-kindle-paperwhite-has-a-6-8-inch-display-and-an-adjustable-warm-",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon 11th Gen. Kindle Paperwhite has a 6.8-inch display and an adjustable warm light"
+    },
+    {
+      "id": 225,
+      "slug": "amazon-fire-tv-omni-series-4k-uhd-smart-tv-features-dolby-vision-and-built-in-al",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 226,
+      "slug": "amazon-smart-soap-dispenser-has-a-20-second-timer-and-works-with-a-compatible-ec",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 227,
+      "slug": "bose-smart-soundbar-300-sleek-speaker-gives-you-spacious-sound-and-versatile-con",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 228,
+      "slug": "amazon-echo-show-5-kids-2nd-gen-children-s-tablet-has-recycled-plastics-and-a-2-",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Echo Show 5 Kids 2nd Gen children’s tablet has recycled plastics & a 2 MP camera"
+    },
+    {
+      "id": 229,
+      "slug": "amazon-echo-show-8-2nd-gen-smart-display-gadget-has-stereo-speakers-and-an-8-dis",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 230,
+      "slug": "amazon-echo-show-5-2nd-gen-smart-display-easily-manages-your-life-and-smart-home",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 231,
+      "slug": "amazon-fire-hd-10-kids-and-kids-pro-2021-tablets-have-octa-core-processors-and-t",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Fire HD 10 Kids and Kids Pro 2021 tablets have octa-core processors & tough designs"
+    },
+    {
+      "id": 232,
+      "slug": "amazon-fire-hd-10-plus-tablet-features-a-powerful-octa-core-processor-and-3-gb-o",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 233,
+      "slug": "amazon-smart-nutrition-scale-shares-the-calories-carbs-and-sugar-content-of-food",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 234,
+      "slug": "amazon-smart-cuckoo-clock-lets-you-set-timers-alarms-and-more-via-voice-command",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 235,
+      "slug": "amazon-smart-sticky-note-printer-works-with-alexa-and-your-echo-device",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 236,
+      "slug": "amazon-2nd-gen-echo-frames-feature-open-ear-audio-and-hands-free-access-to-alexa",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 237,
+      "slug": "amazon-echo-show-10-3rd-gen-smart-display-has-a-motorized-base",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 238,
+      "slug": "amazon-all-new-fire-tv-stick-comes-with-the-alexa-voice-remote",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 239,
+      "slug": "amazon-fire-tv-stick-lite-comes-with-the-alexa-voice-remote-lite",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 240,
+      "slug": "amazon-fire-hd-8-plus-32-gb-tablet-lets-you-enjoy-your-favorite-apps",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 241,
+      "slug": "amazon-kindle-paperwhite-waterproof-ereader-has-a-completely-glare-free-screen",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Kindle Paperwhite Waterproof eReader has a completely glare-free screen"
+    },
+    {
+      "id": 242,
+      "slug": "amazon-echo-show-8-hd-smart-screen-is-the-smart-home-hub-for-your-kitchen",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 243,
+      "slug": "amazon-fire-hd-8-alexa-tablet-offers-up-to-10-hours-of-battery-life",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 244,
+      "slug": "amazon-fire-tv-blaster-voice-control-entertainment-device-lets-your-media-setup-",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 245,
+      "slug": "amazon-all-new-fire-hd-10-kids-edition-children-s-tablet-comes-with-a-variety-of",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 246,
+      "slug": "amazon-all-new-fire-hd-10-alexa-enabled-tablet-now-gives-you-up-to-12-hours-of-b",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 247,
+      "slug": "amazon-echo-flex-smart-outlet-speaker-extends-your-alexa-range",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 248,
+      "slug": "amazon-alexa-smart-oven-manages-the-cooking-for-you",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 249,
+      "slug": "amazon-echo-buds-in-ear-headphones-use-bose-noise-reducing-technology",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 250,
+      "slug": "amazon-echo-studio-dolby-atmos-speaker-gives-you-the-sound-you-ve-been-missing",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 251,
+      "slug": "amazon-echo-dot-with-clock-smart-alarm-is-a-discreet-alarm-clock-for-your-nights",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 252,
+      "slug": "amazon-fire-tv-cube-alexa-streaming-box-gives-you-voice-control-of-your-televisi",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 253,
+      "slug": "amazon-echo-show-15-gen-2-smart-display-for-home-organization-and-entertainment",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 257,
+      "slug": "amazon-eero-pro-7-tri-band-mesh-wi-fi-7-router-with-support-for-internet-plans-u",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 259,
+      "slug": "amazon-aware-collection-includes-carbon-neutral-apparel-beauty-products-and-more",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Aware Collection includes carbon neutral apparel, beauty products, and more"
+    },
+    {
+      "id": 260,
+      "slug": "amazon-echo-dot-4th-generation-smart-speaker-is-smaller-and-rounder",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 261,
+      "slug": "amazon-luna-controller-connects-to-games-in-the-cloud",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Luna Controller connects to games in the cloud"
+    },
+    {
+      "id": 262,
+      "slug": "amazon-eero-pro-6-mesh-wi-fi-6-router-connects-more-than-75-devices-at-once",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon eero Pro 6 mesh Wi-Fi 6 router connects more than 75 devices at once"
+    },
+    {
+      "id": 263,
+      "slug": "new-amazon-echo-4th-generation-smart-speaker-comes-in-a-spherical-shape",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 264,
+      "slug": "amazon-echo-dot-kids-edition-4th-generation-smart-speaker-has-an-animal-themed-d",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Echo Dot Kids’ Edition 4th-generation smart speaker has an animal-themed design"
+    },
+    {
+      "id": 265,
+      "slug": "amazon-halo-health-and-wellness-band-analyzes-your-health-data",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Halo health and wellness band analyzes your health data"
+    },
+    {
+      "id": 266,
+      "slug": "amazon-dash-smart-shelf-inventory-sensing-scale-automatically-detects-low-stock",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "title",
+      "matched": "Amazon Dash Smart Shelf inventory-sensing scale automatically detects low stock"
+    },
+    {
+      "id": 268,
+      "slug": "amazon-echo-frames-alexa-enabled-eyeglasses-give-you-hands-free-access-to-your-f",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 269,
+      "slug": "amazon-echo-loop-alexa-enabled-ring-gives-you-quick-access-to-everything",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 270,
+      "slug": "all-new-amazon-echo-fabric-smart-speaker-has-the-hardware-you-love-from-the-echo",
+      "proposedBrand": "amazon",
+      "brandName": "Amazon",
+      "source": "tag",
+      "matched": "Amazon Alexa Gadgets"
+    },
+    {
+      "id": 275,
+      "slug": "oxwallen-xl-stretch-solo-loop-apple-watch-band-orange",
+      "proposedBrand": "apple",
+      "brandName": "Apple",
+      "source": "title",
+      "matched": "OXWALLEN XL Stretch Solo Loop Band Compatible with Apple Watch (42mm/41mm/40mm/38mm), Adjustable Elastic Nylon Braided Sport Strap, Orange"
+    },
+    {
+      "id": 282,
+      "slug": "aulumu-a16-iphone-16-pro-magnetic-thermal-case-translucent-white",
+      "proposedBrand": "apple",
+      "brandName": "Apple",
+      "source": "title",
+      "matched": "Aulumu A16 iPhone 16 Pro Magnetic Thermal Case | Updated Camera Control | IMD Technology | Compatible with Magsafe | Complete Wrap-Around | Touch Translucent White"
+    },
+    {
+      "id": 285,
+      "slug": "spigen-ultra-hybrid-zero-one-magfit-case-designed-for-apple-airpods-pro-2-2022-m",
+      "proposedBrand": "apple",
+      "brandName": "Apple",
+      "source": "title",
+      "matched": "SPIGEN Ultra Hybrid Zero One (MagFit) Case Designed for Apple AirPods Pro 2 (2022) MagSafe Compatible Hook Cover - Zero One"
+    },
+    {
+      "id": 290,
+      "slug": "twelve-south-hirise-2-deluxe-iphone-ipad-black",
+      "proposedBrand": "twelve-south",
+      "brandName": "Twelve South",
+      "source": "tag",
+      "matched": "Twelve South"
+    },
+    {
+      "id": 291,
+      "slug": "jackery-bolt-6000-mah-battery",
+      "proposedBrand": "jackery",
+      "brandName": "Jackery",
+      "source": "title",
+      "matched": "Jackery Bolt 6000 mAh Battery"
+    },
+    {
+      "id": 292,
+      "slug": "lg-c7-65-inch-oled-tv",
+      "proposedBrand": "lg",
+      "brandName": "LG",
+      "source": "title",
+      "matched": "LG C7 65-inch OLED TV"
+    },
+    {
+      "id": 293,
+      "slug": "lg-c7-55-inch-oled-tv",
+      "proposedBrand": "lg",
+      "brandName": "LG",
+      "source": "title",
+      "matched": "LG C7 55-inch OLED TV"
+    },
+    {
+      "id": 294,
+      "slug": "technivorm-moccamaster-69211-cup-one-one-cup-coffee-maker-10-ounce-off-white",
+      "proposedBrand": "moccamaster",
+      "brandName": "Moccamaster",
+      "source": "title",
+      "matched": "Technivorm Moccamaster 69211 Cup One, One-Cup Coffee Maker 10 Ounce, Off-White"
+    },
+    {
+      "id": 295,
+      "slug": "bulova-mens-classic-sutton-4-hand-automatic-watch-24-hour-sub-dial-open-aperture",
+      "proposedBrand": "bulova",
+      "brandName": "Bulova",
+      "source": "tag",
+      "matched": "Bulova"
+    },
+    {
+      "id": 297,
+      "slug": "best-choice-products-folding-zero-gravity-outdoor-recliner-patio-lounge-chair-w-",
+      "proposedBrand": "best-choice-products",
+      "brandName": "Best Choice Products",
+      "source": "title",
+      "matched": "Best Choice Products Folding Zero Gravity Outdoor Recliner Patio Lounge Chair w/Adjustable Canopy Shade, Headrest, Side Accessory Tray, Textilene Mesh - Beige"
+    },
+    {
+      "id": 298,
+      "slug": "novium-hoverpen-interstellar-edition-futuristic-luxury-pen-made-with-aerospace-a",
+      "proposedBrand": "novium",
+      "brandName": "novium",
+      "source": "tag",
+      "matched": "novium"
+    },
+    {
+      "id": 299,
+      "slug": "all-clad-59917-stainless-steel-measuring-cups-cookware-set-5-piece-silver",
+      "proposedBrand": "all-clad",
+      "brandName": "All-Clad",
+      "source": "tag",
+      "matched": "All-Clad"
+    },
+    {
+      "id": 300,
+      "slug": "tetris-waffle-maker-create-deliciously-fun-and-geeky-tetrimino-waffles-at-home-m",
+      "proposedBrand": "fizz-creations",
+      "brandName": "Fizz Creations",
+      "source": "tag",
+      "matched": "Fizz Creations"
+    }
+  ],
+  "skipped": [
+    {
+      "id": 7,
+      "slug": "tp-link-kasa-smart-plug-mini-4-pack",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 8,
+      "slug": "arlo-pro-5s-2k-spotlight-security-camera",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 12,
+      "slug": "yale-assure-lock-2-smart-lock-with-wi-fi",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 21,
+      "slug": "marshall-stanmore-iii-bluetooth-speaker",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 22,
+      "slug": "fiio-k7-hi-res-desktop-dac-headphone-amplifier",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 23,
+      "slug": "jabra-elite-10-gen-2-true-wireless-earbuds",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 27,
+      "slug": "steelseries-arctis-nova-pro-wireless-gaming-headset",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 30,
+      "slug": "elgato-stream-deck-mk-2-15-keys",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 33,
+      "slug": "hyperx-cloud-iii-wireless-gaming-headset",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 34,
+      "slug": "elgato-hd60-x-external-capture-card",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 36,
+      "slug": "corsair-k70-rgb-pro-mechanical-gaming-keyboard",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 38,
+      "slug": "steelseries-qck-heavy-xxl-gaming-mouse-pad",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 45,
+      "slug": "whoop-4-0-health-fitness-tracker",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 47,
+      "slug": "amazfit-t-rex-ultra-gps-outdoor-smartwatch",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 49,
+      "slug": "coros-pace-3-gps-sport-watch",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 50,
+      "slug": "ray-ban-meta-wayfarer-smart-glasses",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 51,
+      "slug": "withings-scanwatch-2-hybrid-smartwatch-42mm",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 56,
+      "slug": "biolite-campstove-2-wood-burning-usb-charger",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 57,
+      "slug": "goal-zero-nomad-50-portable-solar-panel",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 60,
+      "slug": "nitecore-tiki-uv-keychain-flashlight",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 62,
+      "slug": "black-diamond-spot-400-headlamp",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 65,
+      "slug": "caldigit-ts4-thunderbolt-4-dock-18-ports",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 67,
+      "slug": "bellroy-tech-kit-compact-organizer",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 68,
+      "slug": "roost-v3-portable-laptop-stand",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 69,
+      "slug": "peak-design-everyday-backpack-v2-20l",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 72,
+      "slug": "leatherman-wave-multi-tool",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 73,
+      "slug": "nomad-base-one-max-magsafe-charger",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 74,
+      "slug": "keysmart-max-tile-tracker-key-organizer",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 77,
+      "slug": "cricut-joy-2-compact-cutting-machine",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 79,
+      "slug": "lego-editions-cristiano-ronaldo-soccer-highlights",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 81,
+      "slug": "homture-magic-frame-101-inch-wifi-digital-picture-frame",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 82,
+      "slug": "laifen-se-2-high-speed-hair-dryer",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 86,
+      "slug": "skullcandy-push-540-open-true-wireless-earbuds",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 87,
+      "slug": "redmagic-11-air-gaming-smartphone-with-snapdragon-8-elite",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 89,
+      "slug": "lumioclaw-ai-projector-learning-buddy-for-kids",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 90,
+      "slug": "4iiii-viiiiva-ant-and-bluetooth-heart-rate-monitor",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 95,
+      "slug": "unihertz-jelly-star-small-android-13-smartphone",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 97,
+      "slug": "corsair-3200d-rs-argb",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 100,
+      "slug": "aula-win60-he-60-magnetic-gaming-keyboard",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 109,
+      "slug": "dxracer-martian-series-gaming-chairs",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 111,
+      "slug": "aqara-doorbell-camera-g400-wired-2k-smart-doorbell",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 129,
+      "slug": "denon-home-600",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 132,
+      "slug": "huawei-pura-x-max-foldable-phone",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 137,
+      "slug": "8bitdo-retro-68-keyboard-ap50th-limited-edition",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 138,
+      "slug": "corsair-3200d-rs-argb-mid-tower-pc-case",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 140,
+      "slug": "msi-herald-be9400",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 141,
+      "slug": "nuphy-air-65-v3",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 142,
+      "slug": "vastnaut-one",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 143,
+      "slug": "oppo-a6k-smartphone",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 144,
+      "slug": "motorola-razr-fifa-world-cup-26-edition",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 145,
+      "slug": "dell-pro-5-micro-desktop",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 146,
+      "slug": "keychron-g3-ultra-light-wireless-mouse",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 147,
+      "slug": "gsi-outdoors-glacier-insulated-travel-stack",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 150,
+      "slug": "tessan-voyager-205-8-in-1-universal-travel-adapter",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 151,
+      "slug": "tessan-pd-65w-usb-c-charging-station-cs07",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 169,
+      "slug": "blink-video-doorbell-2nd-gen-with-head-to-toe-hd-view-and-an-amazing-2-year-batt",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 171,
+      "slug": "brane-audio-brane-x-smart-speaker-with-rad-bass-and-360-sound-for-smart-streamin",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 254,
+      "slug": "amazonbasics-humidifier-aroma-diffuser-with-a-light-combats-dry-air",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 255,
+      "slug": "soundboks-mix",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 256,
+      "slug": "corsair-mm-anti-fray-cloth-gaming-mouse-pad",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 258,
+      "slug": "outdoor-7-ip66-rated-access-point-for-your-wi-fi-network-by-eero-on-gadget-flow",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 267,
+      "slug": "amazonbasics-vintage-retro-inspired-bluetooth-speaker-mixes-funky-style-with-mod",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 271,
+      "slug": "creative-art-materials-caran-dache-ballpoint-pen-metal-fluor-orange-849-030",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 272,
+      "slug": "field-notes-expedition-3-pack-waterproof-notebook-with-dot-graph-paper-3-5-x-5-5",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 273,
+      "slug": "le-creuset-pg90433a-002-stoneware-mug-set-of-4-14-ounce-flame",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 274,
+      "slug": "le-creuset-enameled-cast-iron-signature-round-dutch-oven-5-5-qt-flame",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 276,
+      "slug": "recycled-firefighter-sergeant-slim-wallet-for-men-women-minimalist-front-pocket-",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 277,
+      "slug": "eagle-creek-pack-it-gear-cube-m-sahara-yellow",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 278,
+      "slug": "s-o-l-survive-outdoors-longer-fire-lite-fuel-free-rechargeable-lighter",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 279,
+      "slug": "arborwear-double-thick-hooded-pullover-sweatshirt-mens",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 280,
+      "slug": "pelican-1150-camera-case",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 281,
+      "slug": "pelican-products-inc-1151-replacement-foam-3-piece-set-for-1150-protector-case-g",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 283,
+      "slug": "wc-padz-the-ultimate-upgraded-earpads-by-wicked-cushions-compatible-with-audio-t",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 284,
+      "slug": "tg-plasma-lighter-windproof-waterproof-usb-rechargeable-flameless-dual-arc-for-e",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 286,
+      "slug": "arlo-vmc3040-100nas-q-wired-1080p-hd-security-camera-night-vision-indoor-only-2-",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 287,
+      "slug": "netgear-nighthawk-smart-wi-fi-router-r6700-ac1750-wireless-speed-up-to-1750-mbps",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 288,
+      "slug": "refurbished-roku-premiere-streaming-player",
+      "reason": "no-brand-match"
+    },
+    {
+      "id": 289,
+      "slug": "uni-ball-jetstream-retractable-ball-point-pens-0-7mm-black-ink-3-count",
+      "reason": "no-brand-match"
+    }
+  ]
+}

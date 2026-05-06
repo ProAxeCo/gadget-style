@@ -1,1 +1,16 @@
-{}
+{
+  "_currency": "AUD",
+  "_source": "Chrome MCP scrape of amazon.com on 2026-05-05",
+  "_note": "Browser was geolocated to Australia. Prices shown are AUD as quoted on amazon.com (US storefront) for AU shoppers. Spot-check before merging into draft-prices.json. Some items are unavailable for AU shipping and require a US-ZIP re-scrape to get USD prices.",
+  "271": 39.48,
+  "272": 20.81,
+  "275": 13.91,
+  "282": 47.31,
+  "283": 38.22,
+  "285": 41.75,
+  "289": 9.82,
+  "295": 745.52,
+  "298": 137.83,
+  "299": 97.38,
+  "300": 34.79
+}

@@ -52,6 +52,14 @@ export interface Product {
    * Rendered alongside the image gallery on the product page.
    */
   videos?: string[];
+  /**
+   * Optional brand slug. URL-safe, lowercase, hyphenated (e.g. "belkin",
+   * "anker"). Used to power the /brand/:slug pages. When set, the product
+   * is grouped under that brand on the brands index and brand-specific
+   * landing pages. The actual Brand display data (name, logo, description)
+   * lives in `client/src/lib/brands.ts` and is matched by this slug.
+   */
+  brand?: string;
 }
 
 export interface Category {
@@ -103,6 +111,7 @@ export const products: Product[
     isFeatured: true,
     isTrending: true,
     specs: { "Speaker Size": "1.73-inch front-firing", "Connectivity": "Wi-Fi 5, Bluetooth 5.0", "Dimensions": "3.9\" x 3.9\" x 3.5\"", "Weight": "10.7 oz", "Audio": "Eero mesh Wi-Fi built-in" },
+    brand: "amazon",
   },
   {
     id: 2,
@@ -124,6 +133,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "7\" touchscreen", "Speaker": "1.7-inch full-range", "Connectivity": "Wi-Fi 802.11ac, Bluetooth 5.0", "Dimensions": "7.0\" x 4.7\" x 2.7\"", "Sleep Tracking": "Soli radar sensor" },
+    brand: "google",
   },
   {
     id: 3,
@@ -145,6 +155,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Resolution": "1080p HD", "Field of View": "160° horizontal, 84° vertical", "Power": "Quick-release battery pack", "Connectivity": "Wi-Fi 802.11 b/g/n (2.4 GHz)", "Night Vision": "Color Pre-Roll" },
+    brand: "ring",
   },
   {
     id: 4,
@@ -166,6 +177,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Navigation": "PrecisionVision Navigation", "Suction Power": "10x suction (vs Roomba 600)", "Runtime": "Up to 75 minutes", "Dustbin": "Self-emptying Clean Base", "Smart Features": "P.O.O.P. obstacle avoidance" },
+    brand: "irobot",
   },
   {
     id: 5,
@@ -187,6 +199,7 @@ export const products: Product[
     isFeatured: true,
     isTrending: false,
     specs: { "Bulb Type": "A19 E26, 75W equivalent", "Lumens": "1,100 per bulb", "Color Range": "16 million colors", "Connectivity": "Zigbee 3.0 + Bluetooth", "Includes": "3 bulbs + Hue Bridge" },
+    brand: "philips",
   },
   {
     id: 6,
@@ -208,6 +221,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: true,
     specs: { "Display": "3.5\" full-color touchscreen", "Sensors": "Built-in occupancy + temperature", "Connectivity": "Wi-Fi 802.11 b/g/n, Bluetooth", "Compatibility": "Alexa, Google, HomeKit, SmartThings", "Power": "24 VAC, C-wire or PEK included" },
+    brand: "ecobee",
   },
   {
     id: 7,
@@ -271,6 +285,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Resolution": "4K Ultra HD, HDR10+, Dolby Vision", "Processor": "2.0 GHz quad-core", "RAM": "2 GB", "Storage": "16 GB", "Wi-Fi": "Wi-Fi 6E tri-band", "Audio": "Dolby Atmos" },
+    brand: "amazon",
   },
   {
     id: 10,
@@ -292,6 +307,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Drivers": "2 tweeters + 1 mid-woofer", "Connectivity": "Wi-Fi 6, Bluetooth 5.0, AirPlay 2", "Dimensions": "7.18\" x 5.14\" x 4.73\"", "Weight": "4.44 lbs", "Audio Format": "Stereo sound" },
+    brand: "sonos",
   },
   {
     id: 11,
@@ -313,6 +329,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: true,
     specs: { "Panel Count": "9 panels", "Lumens": "100 per panel", "Color Range": "16 million+ colors", "Connectivity": "Wi-Fi, Thread, Bluetooth", "Dimensions": "9\" x 7.75\" per panel" },
+    brand: "nanoleaf",
   },
   {
     id: 12,
@@ -355,6 +372,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Driver": "30mm carbon fiber composite", "ANC": "Dual processor, 8 microphones", "Battery Life": "Up to 30 hours", "Codec Support": "LDAC, AAC, SBC", "Weight": "8.82 oz (250g)", "Connectivity": "Bluetooth 5.2, 3.5mm" },
+    brand: "sony",
   },
   {
     id: 14,
@@ -377,6 +395,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Driver": "Apple H2 chip", "ANC": "2x more active noise cancellation", "Battery Life": "6 hrs (buds), 30 hrs (case)", "Charging": "USB-C, MagSafe, Qi", "IP Rating": "IPX4 sweat/water resistant", "Audio": "Adaptive Audio, Personalized Spatial Audio" },
     videos: ["https://www.youtube.com/embed/ql6mhhHCldY"],
+    brand: "apple",
   },
   {
     id: 15,
@@ -398,6 +417,7 @@ export const products: Product[
     isFeatured: true,
     isTrending: false,
     specs: { "Driver": "Racetrack woofer + tweeter", "Battery Life": "Up to 20 hours", "IP Rating": "IP67 waterproof & dustproof", "Output Power": "30W RMS", "Weight": "1.76 lbs (800g)", "Connectivity": "Bluetooth 5.1" },
+    brand: "jbl",
   },
   {
     id: 16,
@@ -419,6 +439,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: true,
     specs: { "Driver": "9.3mm custom driver", "ANC": "CustomTune active noise cancellation", "Battery Life": "6 hrs (buds), 24 hrs (case)", "Audio": "Bose Immersive Audio, Snapdragon Sound", "IP Rating": "IPX4", "Connectivity": "Bluetooth 5.3" },
+    brand: "bose",
   },
   {
     id: 17,
@@ -441,6 +462,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Channels": "5.0 virtual surround", "Drivers": "5 Class-D amplifiers", "Audio Format": "Dolby Atmos", "Connectivity": "Wi-Fi 5, HDMI eARC, AirPlay 2", "Dimensions": "25.6\" x 2.7\" x 3.9\"", "Weight": "6.2 lbs" },
     videos: ["https://www.youtube.com/embed/5hxCvCJtRJY"],
+    brand: "sonos",
   },
   {
     id: 18,
@@ -462,6 +484,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Driver": "10.5mm dynamic + 6.1mm planar", "ANC": "Adaptive active noise cancellation", "Battery Life": "7 hrs (buds), 30 hrs (case)", "Codec": "Samsung Scalable, SSC HiFi", "IP Rating": "IP57", "Connectivity": "Bluetooth 5.4" },
+    brand: "samsung",
   },
   {
     id: 19,
@@ -483,6 +506,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Drive Type": "Direct-drive, DC servo motor", "Speeds": "33/45/78 RPM", "Cartridge": "AT-VM95E Dual Moving Magnet", "Output": "Phono/Line switchable, USB", "Platter": "Die-cast aluminum", "Dimensions": "17.8\" x 13.9\" x 6.3\"" },
+    brand: "audio-technica",
   },
   {
     id: 20,
@@ -504,6 +528,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Driver": "42mm transducer", "ANC": "Adaptive noise cancellation", "Battery Life": "Up to 60 hours", "Codec Support": "aptX, aptX Adaptive, AAC, SBC", "Weight": "10.0 oz (283g)", "Connectivity": "Bluetooth 5.2, 3.5mm, USB-C" },
+    brand: "sennheiser",
   },
   {
     id: 21,
@@ -590,6 +615,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Drivers": "2 custom racetrack transducers", "Battery Life": "Up to 20 hours", "IP Rating": "IP67", "Output Power": "Peak output with dual passive radiators", "Weight": "4.6 lbs (2.1 kg)", "Connectivity": "Bluetooth 5.4, 3.5mm AUX" },
+    brand: "bose",
   },
   {
     id: 25,
@@ -612,6 +638,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Driver": "8.4mm Dynamic Driver X", "ANC": "Integrated Processor V2", "Battery Life": "8 hrs (buds), 24 hrs (case)", "Codec": "LDAC, DSEE Extreme", "Weight": "0.19 oz per earbud", "IP Rating": "IPX4" },
     videos: ["https://www.youtube.com/embed/Kz9yXbbOI1I"],
+    brand: "sony",
   },
   {
     id: 26,
@@ -637,6 +664,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: true,
     specs: { "Sensor": "HERO 25K", "Resolution": "100–25,600 DPI", "Switches": "LIGHTFORCE hybrid optical-mechanical", "Weight": "3.74 oz (106g)", "Battery Life": "Up to 130 hours", "Connectivity": "LIGHTSPEED wireless, USB-C" },
+    brand: "logitech",
   },
   {
     id: 27,
@@ -679,6 +707,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Switches": "Razer Orange Tactile Mechanical", "Layout": "75% compact", "Lighting": "Razer Chroma RGB per-key", "Connectivity": "USB-C wired", "Keycaps": "Doubleshot ABS", "Features": "Rotary knob, magnetic wrist rest" },
+    brand: "razer",
   },
   {
     id: 29,
@@ -701,6 +730,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Connectivity": "Xbox Wireless, Bluetooth, USB-C", "Battery Life": "Up to 40 hours", "Thumbsticks": "Adjustable-tension thumbsticks", "Triggers": "Hair trigger locks", "Weight": "12.0 oz (340g)", "Compatibility": "Xbox Series X|S, Xbox One, PC" },
     videos: ["https://www.youtube.com/embed/j5RBYrkvxPo"],
+    brand: "microsoft",
   },
   {
     id: 30,
@@ -743,6 +773,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: true,
     specs: { "Panel": "27-inch IPS", "Resolution": "2560 x 1440 (QHD)", "Refresh Rate": "360 Hz", "Response Time": "1ms GTG", "HDR": "DisplayHDR 600", "Connectivity": "HDMI 2.0, DP 1.4, USB-C" },
+    brand: "asus",
   },
   {
     id: 32,
@@ -764,6 +795,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Sensor": "Focus Pro 36K", "Resolution": "100–36,000 DPI", "Switches": "Razer Gen-3 Optical", "Weight": "1.94 oz (55g)", "Battery Life": "Up to 95 hours", "Polling Rate": "Up to 8,000 Hz" },
+    brand: "razer",
   },
   {
     id: 33,
@@ -835,6 +867,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Connectivity": "Bluetooth 5.1, USB-C", "Battery": "Built-in rechargeable Li-ion", "Triggers": "Adjustable trigger dead zones", "Thumbsticks": "Replaceable stick modules", "Weight": "11.6 oz (325g)", "Features": "Back buttons, function buttons, profiles" },
     videos: ["https://www.youtube.com/embed/TzAS_g9OuWs"],
+    brand: "sony",
   },
   {
     id: 36,
@@ -878,6 +911,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Resolution": "4K 30fps / 1080p 60fps", "Sensor": "1/1.2-inch Sony STARVIS 2", "Lens": "f/1.7 wide-angle", "HDR": "Yes", "Connectivity": "USB 3.0 Type-C", "Features": "AI-powered face tracking, auto-focus" },
+    brand: "razer",
   },
   {
     id: 38,
@@ -920,6 +954,7 @@ export const products: Product[
     isFeatured: true,
     isTrending: false,
     specs: { "Display": "46mm LTPO3 OLED Always-On", "Chip": "Apple S10 SiP", "Sensors": "Heart rate, SpO2, ECG, temperature", "Water Resistance": "WR50 (50 meters)", "Battery Life": "Up to 18 hours", "Connectivity": "GPS, Bluetooth 5.3, Wi-Fi, UWB" },
+    brand: "apple",
   },
   {
     id: 40,
@@ -941,6 +976,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "1.47-inch Super AMOLED, 3,000 nits", "Processor": "Exynos W1000", "Durability": "10 ATM, IP68, MIL-STD-810H", "Battery Life": "Up to 60 hours", "OS": "Wear OS 5 / One UI Watch 6", "Sensors": "BioActive Sensor, GPS L1+L5" },
+    brand: "samsung",
   },
   {
     id: 41,
@@ -962,6 +998,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: true,
     specs: { "Display": "1.2-inch AMOLED", "Battery Life": "Up to 10 days (smartwatch mode)", "Sensors": "Elevate v5 HR, SpO2, Body Battery", "Water Rating": "5 ATM", "Music Storage": "Up to 500 songs", "Connectivity": "GPS, Bluetooth, Wi-Fi, ANT+" },
+    brand: "garmin",
   },
   {
     id: 42,
@@ -983,6 +1020,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "AMOLED touchscreen", "Sensors": "Optical HR, SpO2, EDA, skin temp", "Battery Life": "Up to 7 days", "Water Resistance": "50 meters", "GPS": "Built-in GPS with Google Maps", "Connectivity": "Bluetooth 5.0, NFC" },
+    brand: "fitbit",
   },
   {
     id: 43,
@@ -1005,6 +1043,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Sensors": "Infrared PPG, NTC temperature, 3D accelerometer", "Battery Life": "Up to 7 days", "Water Resistance": "100 meters", "Weight": "4–6 grams", "Material": "Titanium", "Connectivity": "Bluetooth 5.0 LE" },
     videos: ["https://www.youtube.com/embed/cuRmwctvZ2k"],
+    brand: "oura",
   },
   {
     id: 44,
@@ -1027,6 +1066,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Display": "1.3-inch AMOLED, 416 x 416", "Battery Life": "13 days (smartwatch), 20 hrs (GPS)", "Sensors": "Elevate v5 HR, SpO2, barometric altimeter", "Weight": "1.59 oz (47g)", "Water Rating": "5 ATM", "Navigation": "GPS, GLONASS, Galileo" },
     videos: ["https://www.youtube.com/embed/cJTrCAScbxI"],
+    brand: "garmin",
   },
   {
     id: 45,
@@ -1069,6 +1109,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: true,
     specs: { "Display": "1.4-inch AMOLED, 2,000 nits", "Processor": "Qualcomm SW5100", "Battery Life": "Up to 36 hours (battery saver)", "OS": "Wear OS 5", "Sensors": "HR, SpO2, ECG, skin temperature", "Connectivity": "LTE, GPS, Wi-Fi, Bluetooth 5.3, UWB" },
+    brand: "google",
   },
   {
     id: 47,
@@ -1111,6 +1152,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "49mm LTPO2 OLED, 3,000 nits", "Chip": "Apple S9 SiP, U2 UWB", "Durability": "MIL-STD 810H, WR100, EN13319", "Battery Life": "Up to 36 hours (72 hrs low power)", "Sensors": "HR, SpO2, ECG, depth gauge, water temp", "Material": "Titanium case, sapphire crystal" },
+    brand: "apple",
   },
   {
     id: 49,
@@ -1198,6 +1240,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Sensor": "1/1.9-inch", "Video": "5.3K60, 4K120", "Stabilization": "HyperSmooth 6.0", "Water Rating": "33ft (10m) without housing", "Battery": "1,900mAh Enduro", "Weight": "5.6 oz (159g)" },
     videos: ["https://www.youtube.com/embed/_PMRqrna4sU"],
+    brand: "gopro",
   },
   {
     id: 53,
@@ -1219,6 +1262,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Sensor": "1/1.3-inch CMOS", "Video": "4K120, 5.3K30", "Stabilization": "RockSteady 3.0 + HorizonSteady", "Water Rating": "66ft (20m) without housing", "Battery": "1,950mAh", "Display": "Dual touchscreens (front + rear)" },
+    brand: "dji",
   },
   {
     id: 54,
@@ -1240,6 +1284,7 @@ export const products: Product[
     isFeatured: true,
     isTrending: false,
     specs: { "Communication": "Two-way satellite messaging", "SOS": "Interactive SOS via GEOS 24/7", "Battery Life": "Up to 14 days (30-min tracking)", "Weight": "3.5 oz (100g)", "Water Rating": "IPX7", "Navigation": "GPS, Galileo, GLONASS" },
+    brand: "garmin",
   },
   {
     id: 55,
@@ -1261,6 +1306,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Capacity": "1,264Wh LiFePO4", "Output Power": "2,000W (4,000W surge)", "Ports": "3x AC, 2x USB-C (100W), 2x USB-A", "Charging": "Solar (800W max), AC (1,200W)", "Weight": "32.8 lbs (14.8 kg)", "Cycle Life": "4,000+ cycles to 70%" },
+    brand: "jackery",
   },
   {
     id: 56,
@@ -1324,6 +1370,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Camera": "1/1.3-inch CMOS, 48MP", "Video": "4K100 / HDR 4K60", "Flight Time": "Up to 34 minutes", "Weight": "249g (sub-250g class)", "Obstacle Sensing": "Omnidirectional", "Transmission": "O4 HD (20km range)" },
+    brand: "dji",
   },
   {
     id: 59,
@@ -1345,6 +1392,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "3.0\" sunlight-readable color", "Battery Life": "Up to 180 hours (expedition mode)", "Navigation": "Multi-band GPS, topo maps", "Memory": "16 GB internal", "Water Rating": "IPX7", "Weight": "8.0 oz (230g)" },
+    brand: "garmin",
   },
   {
     id: 60,
@@ -1387,6 +1435,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: true,
     specs: { "Display": "7.0\" color touchscreen", "Navigation": "Preloaded topo, road maps", "Sensors": "Barometric altimeter, compass", "Camera": "Built-in dash cam", "Power": "12V/24V vehicle power", "Memory": "64 GB internal" },
+    brand: "garmin",
   },
   {
     id: 62,
@@ -1430,6 +1479,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Video": "8K30 / 5.7K60 360°", "Sensor": "1/2-inch (x2)", "Stabilization": "FlowState + 360° Horizon Lock", "Battery": "2,290mAh (135 min @ 5.7K)", "Water Rating": "33ft (10m) without case", "Weight": "7.0 oz (203g)" },
     videos: ["https://www.youtube.com/embed/utIKv7KNOYo"],
+    brand: "insta360",
   },
   {
     id: 64,
@@ -1451,6 +1501,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Capacity": "24,000mAh", "Max Output": "140W USB-C PD 3.1", "Ports": "2x USB-C, 1x USB-A", "Display": "Smart digital display", "Weight": "1.42 lbs (645g)", "Recharge Time": "58 minutes (140W input)" },
+    brand: "anker",
   },
   {
     id: 65,
@@ -1494,6 +1545,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: true,
     specs: { "Output": "Up to 15W (MagSafe), 7.5W (Qi)", "Cable Length": "1 meter", "Compatibility": "iPhone 12+, AirPods Pro 2", "Connector": "USB-C", "Alignment": "Magnetic auto-alignment" },
+    brand: "apple",
   },
   {
     id: 67,
@@ -1579,6 +1631,7 @@ export const products: Product[
     isFeatured: true,
     isTrending: false,
     specs: { "Power Rating": "100W (20V/5A)", "Data Transfer": "480 Mbps (USB 2.0)", "Length": "6 feet (1.8m)", "Shielding": "Double-braided nylon", "Connector": "USB-C to USB-C", "Pack": "2-pack" },
+    brand: "anker",
   },
   {
     id: 71,
@@ -1600,6 +1653,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: true,
     specs: { "Capacity": "2 TB", "Read Speed": "Up to 1,050 MB/s", "Write Speed": "Up to 1,000 MB/s", "Interface": "USB 3.2 Gen 2 (USB-C)", "Durability": "IP65, 3m drop resistant", "Weight": "3.1 oz (98g)" },
+    brand: "samsung",
   },
   {
     id: 72,
@@ -1684,6 +1738,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Output": "65W USB-C PD", "Technology": "GaN II", "Ports": "1x USB-C", "Dimensions": "1.7\" x 1.6\" x 1.6\"", "Weight": "3.9 oz (112g)", "Compatibility": "MacBook Pro, iPhone, iPad, Galaxy" },
+    brand: "anker",
   },
   {
     id: 76,
@@ -1709,6 +1764,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: true,
     specs: { "Tracking": "Ultra-Wideband (U1 chip) + Bluetooth", "Battery": "CR2032 (1+ year)", "Water Resistance": "IP67", "Speaker": "Built-in", "Weight": "0.39 oz (11g) each", "Network": "Find My network (billions of devices)" },
+    brand: "apple",
   },
   {
     id: 77,
@@ -1751,6 +1807,7 @@ export const products: Product[
     isFeatured: true,
     isTrending: true,
     specs: { "Display": "27-inch OLED", "Resolution": "QHD (2560 x 1440)", "Refresh Rate": "540Hz", "Response Time": "0.02ms", "Feature": "Super Anti-reflection Film" },
+    brand: "sony",
   },
   {
     id: 79,
@@ -1793,6 +1850,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Weight": "212g", "Diameter": "38mm", "Run time": "Up to 6 hours", "Number of speed settings": "5", "Airflow": "Up to 25m/s in boost mode" },
+    brand: "dyson",
   },
   {
     id: 81,
@@ -1857,6 +1915,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Suction Power": "20000 Pa", "Self-Cleaning": "194°F High Temperature Self-Washing", "Self-Drying": "194°F 30mins Hot-Air Self-Drying", "Battery": "2500mAh Pouch Battery", "Weight": "8.82 lbs", "Dimensions": "10.31*8.70*43.31 inches" },
     videos: ["https://youtu.be/c492Xt7hp34"],
+    brand: "roborock",
   },
   {
     id: 84,
@@ -1879,6 +1938,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Cleaning Technology": "356°F Steam & 187°F Hot Water", "Suction Power": "22,000Pa", "Maneuverability": "180° Lay-Flat & 70° Swivel Steering", "Self-Cleaning": "194°F High-Temperature Self-Cleaning & Drying", "Special Feature": "Blue Light for Hidden Debris Detection", "Weight": "12.3 pounds" },
     videos: ["https://youtu.be/XqT80Azs0GU"],
+    brand: "roborock",
   },
   {
     id: 86,
@@ -1984,6 +2044,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Weight": "Approx. 199 g (without cable and microphone)", "Cord Length": "Approx. 2.0 m", "Cord type": "Single-sided (detachable)", "Plug": "Gold-plated L-shaped 4-pole Mini Plug (CTIA)", "Microphone Mute": "Button", "Direction of Microphone": "Cardioid" },
+    brand: "sony",
   },
   {
     id: 92,
@@ -2005,6 +2066,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Connection": "USB-C", "Lag": "30ms", "Screen": "3.5-inch high-res touchscreen", "Compatibility": "iPhone 15 and later, Android devices with USB-C and DisplayPort (DP) Alt Mode", "Special Feature": "One-tap mirroring" },
+    brand: "insta360",
   },
     {
     id: 95,
@@ -2068,6 +2130,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Processor": "MediaTek Dimensity 6400", "Operating System": "Android 15", "Memory": "8 GB LPDDR4X", "Storage": "128 GB UFS 2.2", "Display": "12.1-inch 2.5K (2560 x 1600) IPS", "Battery": "10200mAh" },
+    brand: "lenovo",
   },
     {
     id: 100,
@@ -2110,6 +2173,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Printing Technology": "Dye Diffusion Thermal Transfer", "Printing Speed": "< 50 seconds", "Connectivity": "Bluetooth", "Compatibility": "iOS and Android", "Power Source": "Lithium-Ion Battery", "Dimensions": "103 x 131 x 30 mm" },
+    brand: "polaroid",
   },
   {
     id: 109,
@@ -2152,6 +2216,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Capacity": "256GB", "Interface": "USB 3.2 Gen 1", "Connector": "Lightning and USB-C", "Sequential Read Performance": "90MB/s", "Sequential Write Performance": "10MB/s", "Warranty": "2-Year Limited Warranty" },
+    brand: "apple",
   },
   {
     id: 111,
@@ -2194,6 +2259,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Key Switch": "ROG NX V2 Mechanical Switch", "Connectivity": "USB 2.0 (TypeC to TypeA), Bluetooth 5.1, RF 2.4GHz", "Size (Full/TKL)": "96%", "Lighting": "RGB Per keys", "AURA Sync": "Yes", "Anti-Ghosting": "N Key Rollover" },
+    brand: "asus",
   },
   {
     id: 115,
@@ -2215,6 +2281,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "11-inch Colorsoft display", "Storage": "64GB", "Connectivity": "Wi-Fi and Bluetooth", "Pen": "Premium Pen included", "Battery Life": "Weeks of reading on a single charge", "Dimensions": "7.4” x 9.6” x .21”" },
+    brand: "amazon",
   },
   {
     id: 116,
@@ -2236,6 +2303,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "55-inch 4K QLED with matte finish", "Resolution": "3840 x 2160 (4K Ultra HD)", "HDR": "HDR10+", "Smart TV Platform": "Fire TV", "Voice Control": "Alexa built-in", "Customization": "10 snap-on frame options" },
+    brand: "amazon",
   },
   {
     id: 117,
@@ -2257,6 +2325,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Screen Size": "11.01 inches", "Total Storage Capacity": "64 gigabytes", "Wireless Connectivity": "Wi-Fi, Bluetooth", "Battery Chemistry": "Lithium-ion", "Charging Interface(s)": "USB-C", "Dimensions": "0.21' x 7.44' x 9.65'" },
+    brand: "amazon",
   },
   {
     id: 118,
@@ -2278,6 +2347,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Audio": "Three 1.5-inch full-range drivers and a 3.75-inch woofer", "Audio formats": "Spatial audio, Dolby Atmos, Sony 360 Reality Audio", "Processor": "Amazon AZ3 Pro", "Connectivity": "Wi-Fi and Bluetooth", "Smart Home": "Built-in smart home hub with Matter and Zigbee", "Voice Assistant": "Alexa+" },
+    brand: "amazon",
   },
   {
     id: 119,
@@ -2299,6 +2369,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Screen Size": "50 inches", "Resolution": "4K UHD (3840 x 2160)", "Display Technology": "QLED with Full-Array Local Dimming", "HDR Support": "Dolby Vision IQ, HDR10+ Adaptive, HDR10, HLG", "Refresh Rate": "60Hz", "Smart TV Platform": "Fire TV with Alexa Voice Remote" },
+    brand: "amazon",
   },
   {
     id: 120,
@@ -2320,6 +2391,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "8.7-inch HD touchscreen", "Resolution": "1340 x 800 pixels", "Camera": "13MP with auto-framing", "Audio": "1 x 2.8″ woofer + 2 x 1.6” tweeters", "Dimensions": "8.2” x 5” x 5.9”", "Weight": "37 oz (1049 grams)" },
+    brand: "amazon",
   },
     {
     id: 122,
@@ -2341,6 +2413,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Speakers": "2.5-inch woofer and 0.8-inch tweeter", "Connectivity": "Wi-Fi 6E, Bluetooth 5.3", "Smart Home Hub": "Matter, Thread, Zigbee", "Dimensions": "4.27” x 4.27” x 3.9”", "Weight": "17.82 oz (505.3 g)", "Sensors": "Ambient Temperature Sensor" },
+    brand: "amazon",
   },
   {
     id: 123,
@@ -2362,6 +2435,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "11-inch Full HD Touchscreen", "Screen Resolution": "1920 x 1200", "Processor": "AZ3 Pro chip", "Camera": "13 Megapixel with auto-framing", "Connectivity": "Wi-Fi (802.11a/b/g/n/ac), Zigbee, Sidewalk, Bluetooth", "Virtual Assistant": "Alexa" },
+    brand: "amazon",
   },
   {
     id: 124,
@@ -2383,6 +2457,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Wi-Fi Coverage": "Up to 1,500 sq. ft.", "Wi-Fi Standard": "Wi-Fi 6 (802.11ax)", "Speed": "Up to 500 Mbps", "Smart Home Hub": "Built-in Zigbee and Thread", "App Control": "eero app for setup and management", "Compatibility": "Backward compatible with all eero generations" },
+    brand: "amazon",
   },
   {
     id: 125,
@@ -2404,6 +2479,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Dimensions (Overall)": "7 Inches (H) x 5.2 Inches (W) x .5 Inches (D)", "Weight": ".73 Pounds", "Product Model": "Amazon Kindle Colorsoft", "Data Storage Capacity": "16GB", "Screen Resolution": "300 ppi", "Wireless Technology": "Wi-Fi, Bluetooth" },
+    brand: "amazon",
   },
   {
     id: 126,
@@ -2425,6 +2501,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "7-inch Color E Ink", "Storage": "16 GB", "Connectivity": "Wi-Fi, Bluetooth", "Waterproofing": "IPX8", "Battery Life": "Up to 8 weeks", "Charging": "USB-C" },
+    brand: "amazon",
   },
   {
     id: 127,
@@ -2449,6 +2526,7 @@ export const products: Product[
     isDraft: true,
     destination: "external",
     externalUrl: "https://gopro.com/en/us/news/gopro-announces-three-cameras-mission-1-2026?clickref=1100lCf3XjuX&utm_source=partnerize&utm_medium=affiliate&utm_campaign=33257X910903X09a989f403abfb28c682a07e1922cb32&clickId=1100lCf3XjuX&utm_content=0&click_country=IN",
+    brand: "gopro",
   },
   {
     id: 128,
@@ -2470,6 +2548,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Total Ports": "10 (6 AC, 2 USB-C, 2 USB-A)", "Max USB-C Output": "70 W (Single Port); 5V/3A, 9V/3A, 15V/3A, 20V/3.5A", "Max USB-A Output": "12 W Per Port (5V/2.4A)", "AC Output": "1,875 W Total (125V~, 60Hz, 15A Input)", "Surge Protection": "1,500 Joules", "Total Power Outlets": "10" },
+    brand: "anker",
   },
   {
     id: 129,
@@ -2518,6 +2597,7 @@ export const products: Product[
     destination: "external",
     externalUrl: "https://www.dji.com/global/osmo-pocket-4",
     videos: ["https://youtu.be/EbebFc9PHcU"],
+    brand: "dji",
   },
   {
     id: 131,
@@ -2541,6 +2621,7 @@ export const products: Product[
     specs: { "Network": "5G", "Storage Options": "128GB, 256GB", "Operating System": "Android with Samsung One UI", "Color": "Awesome Navy" },
     destination: "external",
     externalUrl: "https://www.samsung.com/us/smartphones/galaxy-a57-5g/buy/galaxy-a57-5g-128gb-unlocked-sku-sm-a576udbaxaa/",
+    brand: "samsung",
   },
   {
     id: 132,
@@ -2588,6 +2669,7 @@ export const products: Product[
     specs: { "Display": "6.7-inch FHD+ Super AMOLED", "Processor": "Exynos 1480 Octa-core", "Rear Cameras": "50 MP Wide (OIS) + 8 MP Ultra Wide + 5 MP Macro", "Front Camera": "12 MP with Super HDR video support", "Battery": "5,000 mAh (typical); up to 60% charge in 30 min via 45W Super Fast Charging 2.0", "Storage & RAM Options": "128 GB / 6 GB RAM or 256 GB / 8 GB RAM", "Water Resistance": "IP68 (up to 1.5 m freshwater for 30 minutes)" },
     destination: "external",
     externalUrl: "https://www.samsung.com/us/smartphones/galaxy-a37-5g/",
+    brand: "samsung",
   },
   {
     id: 137,
@@ -2656,6 +2738,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Compatible Models": "Apple Watch Ultra 3 / 2 / 1 (49mm)", "Available Sizes": "44mm, 45mm, 46mm, 49mm", "Materials": "Reinforced TPU and metal", "Wrist Size Range": "6.3 to 9 inches", "Package Dimensions": "3.58 x 2.91 x 2.91 inches", "Item Weight": "4.6 ounces", "Wireless Charging": "Compatible without case removal" },
     videos: ["https://thegadgetflow.com/categories/apple-watch-accessories/"],
+    brand: "apple",
   },
   {
     id: 140,
@@ -2862,6 +2945,7 @@ export const products: Product[
     specs: { "Model": "ASUS Zenbook A14 (UX3407)", "Weight": "2.18 lbs", "Display size": "14-inch", "Processor": "Snapdragon X2 Elite, 18-core", "NPU": "80 TOPS", "Battery": "70 Wh, over 33 hours video playback", "Chassis": "ASUS Ceraluminum" },
     destination: "external",
     externalUrl: "https://www.asus.com/us/laptops/for-home/zenbook/asus-zenbook-a14-ux3407/",
+    brand: "asus",
   },
   {
     id: 149,
@@ -2886,6 +2970,7 @@ export const products: Product[
     destination: "external",
     externalUrl: "https://electronics.sony.com/audio/soundbars/all-soundbars/p/htb500",
     videos: ["https://youtu.be/r36EWgMEKrk"],
+    brand: "sony",
   },
   {
     id: 150,
@@ -2954,6 +3039,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Brand": "Amazon", "Model": "Kindle Scribe Colorsoft (newest model)", "Storage capacity": "64 GB", "Display size": "11 inches", "Display type": "Oxide-based Colorsoft paper-like color display with front light", "Device thickness": "5.4 mm", "Weight": "400 g", "Processor": "Quad-core processor", "Included pen": "Premium Pen, battery-free" },
+    brand: "amazon",
   },
   {
     id: 153,
@@ -2978,6 +3064,7 @@ export const products: Product[
     isDraft: true,
     destination: "external",
     externalUrl: "https://www.amazon.com/Amazon-Ember-Artline-55-inches-with-Fire-TV/dp/B0G4XJ6TQ3?th=1",
+    brand: "amazon",
   },
   {
     id: 154,
@@ -2999,6 +3086,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Brand": "Amazon", "Model": "Kindle Scribe (newest model)", "Digital storage capacity": "64 GB", "Display size": "11 inches", "Device thickness": "5.4 mm", "Device weight": "400 g", "Included stylus": "Premium Pen, no charging required" },
+    brand: "amazon",
   },
   {
     id: 155,
@@ -3020,6 +3108,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Brand": "Amazon", "Model year": "2025 release", "Audio formats": "Dolby Atmos, spatial audio", "Processor": "AZ3 Pro chip", "Multi-device pairing": "Pair up to 5 Echo Studio devices (plus optional Echo Sub)", "Color": "Glacier White", "Included services": "Alexa+ Early Access (US account required)" },
+    brand: "amazon",
   },
   {
     id: 156,
@@ -3041,6 +3130,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Screen Size": "50-inch (Also Available in 55, 65, 75-inch)", "Display Type": "QLED", "Resolution": "4K Ultra HD", "HDR Formats": "Dolby Vision; HDR10+ Adaptive; HDR10; HLG", "HDMI Inputs": "4", "Connectivity": "Wi‑Fi 6; Ethernet" },
+    brand: "amazon",
   },
   {
     id: 157,
@@ -3062,6 +3152,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display Size": "11″", "Storage": "32/64 GB", "Pen Colors & Tools": "10 Colors, 5 Highlighters, and a Shader", "Processor": "Quad-Core" },
+    brand: "amazon",
   },
   {
     id: 158,
@@ -3083,6 +3174,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Processor": "AZ3", "Product Dimensions": "4.27\" W x 4.27\" D x 3.9\" H", "Tweeter Size": "0.8\"", "Woofer Size": "2.5\"" },
+    brand: "amazon",
   },
   {
     id: 159,
@@ -3104,6 +3196,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display Size": "11\"", "Processor": "AZ3 Pro", "Camera": "13 MP with Auto-Framing" },
+    brand: "amazon",
   },
   {
     id: 160,
@@ -3125,6 +3218,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Network Type": "4G LTE", "eSIM": "Included", "Data Subscription": "Required" },
+    brand: "amazon",
   },
   {
     id: 161,
@@ -3146,6 +3240,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Resolution": "300 ppi", "Storage": "16 GB", "Battery Life": "Up to 6 Weeks" },
+    brand: "amazon",
   },
   {
     id: 162,
@@ -3167,6 +3262,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display Size": "7\"", "Dimensions": "5\" L x 7\" W x 0.3\" H", "Weight": "215g" },
+    brand: "amazon",
   },
   {
     id: 163,
@@ -3188,6 +3284,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Length": "37\"", "Speaker Channels": "3.1", "Connectivity": "HDMI, Optical, Bluetooth USB" },
+    brand: "amazon",
   },
   {
     id: 164,
@@ -3209,6 +3306,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Models": "Fire HD 10 Kids, Fire HD 10 Kids Pro", "Display": "10.1\"", "Camera": "5 MP" },
+    brand: "amazon",
   },
   {
     id: 165,
@@ -3231,6 +3329,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Dimensions": "4.5\" W x 4.1\" D x 4.4\" H", "Processor": "MT8519", "Memory": "1GB DRAM + 8GB eMMC" },
     videos: ["https://www.youtube.com/embed/s3-qGPGtE8s"],
+    brand: "amazon",
   },
   {
     id: 166,
@@ -3252,6 +3351,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Weight": "7.7 oz", "Battery Life": "Up to 8 wk" },
+    brand: "amazon",
   },
   {
     id: 167,
@@ -3274,6 +3374,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Colors": "White, Black", "Field of View": "143° Diagonal", "Photo Resolution": "640 x 360" },
     videos: ["https://www.youtube.com/embed/OuNiJBuG9Ug"],
+    brand: "amazon",
   },
   {
     id: 168,
@@ -3295,6 +3396,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Capacity": "2.1 Cu. Ft.", "Lock Type": "Electronic", "Material": "Alloy Steel" },
+    brand: "amazon",
   },
   {
     id: 169,
@@ -3337,6 +3439,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Dimensions": "103.9 x 39.6 x 19.85 mm", "Light Modes": "Solid, Peloton, Night Flash, Day Flash", "Lumens": "Up to 65 lumens (Day Flash)", "Radar Range": "Up to 140 meters (153 yards)", "Power Source": "eBike powered (6–12V, 0.6W minimum, 1.5W max)", "Connectivity": "ANT+ and Bluetooth Low Energy" },
+    brand: "garmin",
   },
   {
     id: 171,
@@ -3379,6 +3482,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Colors": "Tungsten, Metallic Jade", "Special Feature": "Upgraded Premium Pen", "Display Size": "10.2\"", "Resolution": "300 ppi" },
+    brand: "amazon",
   },
   {
     id: 173,
@@ -3400,6 +3504,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Colors": "Black, Jade, Raspberry", "Display": "7\"", "Resolution": "300 ppi", "Storage": "16 GB" },
+    brand: "amazon",
   },
   {
     id: 174,
@@ -3421,6 +3526,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Support": "Wi-Fi 6, Zibgee", "Coverage": "1500 sq. ft.", "Max. Speed": "900 Mbps.", "Devices": "75+" },
+    brand: "amazon",
   },
   {
     id: 175,
@@ -3442,6 +3548,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Max. Battery Life": "15 Hrs", "Compatibility": "iOS, Android", "Voice Control": "Alexa, Siri, Google Assistant", "Colors": "Black, Glacier White" },
+    brand: "amazon",
   },
   {
     id: 176,
@@ -3463,6 +3570,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Voice Control": "Yes", "Touch Control": "Yes", "Shape": "Half-sphere" },
+    brand: "amazon",
   },
   {
     id: 177,
@@ -3484,6 +3592,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Colors": "Charcoal, Glacier White", "Speakers": "1 x 1.7\"", "Screen": "5.5\"" },
+    brand: "amazon",
   },
   {
     id: 178,
@@ -3505,6 +3614,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "CPU": "Quad-Core 2.0 GHz", "RAM": "2 GB", "Sensors": "Accelerometer" },
+    brand: "amazon",
   },
   {
     id: 179,
@@ -3527,6 +3637,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Ages": "3–12", "Child Profiles": "4", "Styles": "Owl, Dragon" },
     videos: ["https://www.youtube.com/embed/DrdN8UWD_mk"],
+    brand: "amazon",
   },
   {
     id: 180,
@@ -3548,6 +3659,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Cube Dimensions": "2.99\" H x 3.38\" D x 3.38\" W", "Ports": "HDMI Input, HDMI Output, Power, IR Extender, Ethernet, USB-A", "Weight": "509.6 g" },
+    brand: "amazon",
   },
   {
     id: 181,
@@ -3569,6 +3681,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Sizes": "43\", 50\", 55\"", "ResolutinoN": "3840 x 2160", "Display Resolution": "4K UHD", "High Dynamic Range (HDR) format": "HDR 10, HLG", "Backlight type": "Direct LED", "Refresh Fate": "60 Hz", "HDMI ports": "3 HDMI 2.0, 1 HDMI 2.1 with eARC" },
+    brand: "amazon",
   },
   {
     id: 182,
@@ -3590,6 +3703,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Audio": "2 Way", "Battery Life": "2 Yrs", "Design": "Wireless" },
+    brand: "amazon",
   },
   {
     id: 183,
@@ -3611,6 +3725,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Wi-Fi": "6", "Ethernet Ports": "2 Gigabit", "Max. Speeds": "Gigabit", "Coverage": "1500 ft²", "RAM": "512 MB", "Storage": "4 GB" },
+    brand: "amazon",
   },
   {
     id: 184,
@@ -3632,6 +3747,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Weight": "11.88 oz", "CPU & RAM": "Hexa-Core 2.0 GHz, 3/4 GB RAM", "Wi-Fi Connectivity": "Dual-Band" },
+    brand: "amazon",
   },
   {
     id: 185,
@@ -3653,6 +3769,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "8” HD Touchscreen", "Kid-Proof Case": "Yes", "Resolution": "1280 x 800 (189 ppi)" },
+    brand: "amazon",
   },
   {
     id: 186,
@@ -3674,6 +3791,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Weight": "6.9 oz.", "Dimensions": "3.9” x 3.3” x 3.6”", "Colors": "Lavender Bloom, Charcoal, Glacier White, Midnight Teal" },
+    brand: "amazon",
   },
   {
     id: 187,
@@ -3696,6 +3814,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Screen": "5.5\"", "Speakers": "1", "Camera": "2 MP", "Dimensions": "5.8\" W x 3.6 \" D x 3.2\" H", "Weight": "16.1 oz", "Colors": "Charcoal, Cloud Blue, Glacier White" },
     videos: ["https://www.youtube.com/embed/oywZoHJ3rF4"],
+    brand: "amazon",
   },
   {
     id: 188,
@@ -3717,6 +3836,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Voice Assistant": "Amazon Alexa", "Calls": "Open-Ear Audio", "Water Resistance": "IPX4", "Pairing": "Multi-Point", "Style": "Cruiser, Sprinter", "Hinges": "German-Engineered" },
+    brand: "amazon",
   },
   {
     id: 189,
@@ -3738,6 +3858,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Processor": "Quad-Core 1.7GHz", "Bluetooth": "Bluetooth 5.2 + BLE", "Wi-Fi": "Wi-Fi 6 Dual Band", "Ports": "HDMI 2.1, Micro USB" },
+    brand: "amazon",
   },
   {
     id: 190,
@@ -3759,6 +3880,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Dimensions": "24\" L x 3.5\" W x 2.5\" H", "Weight": "3.97 lbs.", "Speaker Channels": "2.0", "EQ Modes": "Movies, Music, Dialogue", "Supported Surround Audio": "DTS Virtual:X, Dolby Digital", "Ports": "HDMI, Optical, AC, USB-A" },
+    brand: "amazon",
   },
   {
     id: 191,
@@ -3781,6 +3903,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Wi-Fi Technology": "Wi-Fi 7", "Wireless Speeds": "4.3 Gbps", "Wired Speeds": "9.4 Gbps", "Coverage 1-Pack": "2500 Sq. Ft" },
     videos: ["https://www.youtube.com/embed/8HpI5wYuBVY"],
+    brand: "amazon",
   },
   {
     id: 192,
@@ -3802,6 +3925,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Installation": "Wall Mounted", "Frame Styles": "Wood, Metallic, Paintable White", "Accessory": "Counter Stand" },
+    brand: "amazon",
   },
   {
     id: 193,
@@ -3823,6 +3947,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Continuous Media Playback": "6 Hrs", "Styles": "Square, Round, Cat Eye, Rectangle, Modern Rectangle", "Water & Sweat Resistance": "IPX4" },
+    brand: "amazon",
   },
   {
     id: 194,
@@ -3844,6 +3969,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Designs": "Marvel's Avengers, Disney Princess", "Service": "Amazon Kids+", "Features": "Morning Routines, Sleep Sounds" },
+    brand: "amazon",
   },
   {
     id: 195,
@@ -3865,6 +3991,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "11\" Touchscreen", "Resolution": "2000 x 1200", "CPU": "Octa-Core", "RAM": "4 GB", "Battery Life": "14 Hrs", "Charging Time": "4.2 Hrs" },
+    brand: "amazon",
   },
   {
     id: 196,
@@ -3887,6 +4014,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Night-Vision LEDs": "2 Red", "Sensors": "Navigation, Obstacle", "Speaker System": "2.1", "Dimensions": "16.7\" L x 9.8\"W x 17.3\" H", "Weight": "20.6 lbs", "Charging Time": "45 Mins" },
     videos: ["https://www.youtube.com/embed/AFvUl1Mn5mQ", "https://www.youtube.com/embed/mM1K7QRhpVY", "https://www.youtube.com/embed/N--JRcNIhP0"],
+    brand: "amazon",
   },
   {
     id: 197,
@@ -3908,6 +4036,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Dimensions": "5.8\" W x 3.6\" D x 3.2\" H", "Screen": "5.5\"", "Speakers": "1.75\"", "Camera": "2 MP", "Privacy Controls": "Built-in Camera Shutter, Mic/Camera Off Button", "Ages": "3+" },
+    brand: "amazon",
   },
   {
     id: 198,
@@ -3929,6 +4058,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Hands-Free Voice Assistant": "Alexa", "Battery Life": "Up to 5 Hrs.", "Total Hrs. w/ Charging Case": "Up to 20 Hrs.", "Quick Charge": "Up to 2 Hrs. w/ 15-Min. Charge", "Tap Control": "Customizable", "Tap-to-Access Asssistants": "Alexa, Google Assistant, Siri" },
+    brand: "amazon",
   },
   {
     id: 199,
@@ -3951,6 +4081,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Ports": "2 10 GbE, 8 2.5 GbE", "Dimensions": "9.8\" W x 5.3\" D x 1.8\" H", "Power": "USB-C" },
     videos: ["https://www.youtube.com/embed/DxN9epLlj9U", "https://www.youtube.com/embed/h5Feu7lE6vA"],
+    brand: "amazon",
   },
   {
     id: 200,
@@ -3972,6 +4103,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Audio": "2 Way", "View": "360º", "Colors": "Black, White" },
+    brand: "amazon",
   },
   {
     id: 201,
@@ -3994,6 +4126,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Wi-Fi Standards": "Wi-Fi 6", "Radios": "2 Dual-Band", "MIMO": "2x2/2x2 MU/SU-MIMO", "Spatial Streams": "4", "Channel Width": "20, 40, 80, 160 MHz", "Weight": "473g" },
     videos: ["https://www.youtube.com/embed/EsNRWSnc3-c"],
+    brand: "amazon",
   },
   {
     id: 202,
@@ -4015,6 +4148,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Field of View": "143° Diagonal", "Camera Resolution": "1080p HD Video", "Max. Camera Frame Rate": "30 fps", "Dimensions": "178 x 173 x 198 mm", "Color": "White" },
+    brand: "amazon",
   },
   {
     id: 203,
@@ -4036,6 +4170,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Size": "65\", 75\"", "Display Type": "QLED", "Resolution": "4K Ultra High Definition", "HDR Format": "HDR10, HLG, Dolby Vision IQ, HDR10+ Adaptive, HDR10+ Gaming" },
+    brand: "amazon",
   },
   {
     id: 204,
@@ -4057,6 +4192,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Batteries": "2 AAA", "Compatibility": "Most Fire TV Streaming Media Players, Amazon Fire TV Smart TVs, Smart TVs w/ Fire TV Built-In", "Color": "Black" },
+    brand: "amazon",
   },
   {
     id: 205,
@@ -4078,6 +4214,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Microphones": "5", "Mounting": "Adhesive", "Color": "Black" },
+    brand: "amazon",
   },
   {
     id: 206,
@@ -4099,6 +4236,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "Dot Matrix", "Processor": "AZ2 Neural Edge", "Colors": "Cloud Blue, Glacier White" },
+    brand: "amazon",
   },
   {
     id: 207,
@@ -4120,6 +4258,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Audio Processing": "Spatial", "Sound Technology": "3D", "New Color": "White" },
+    brand: "amazon",
   },
   {
     id: 208,
@@ -4142,6 +4281,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Operation": "Contactless", "Sensors": "Temperature, Humidity, Light", "Color": "White" },
     videos: ["https://www.youtube.com/embed/lHPWkhN60Lo"],
+    brand: "amazon",
   },
   {
     id: 209,
@@ -4164,6 +4304,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Screen": "10.2\" E-Ink", "Resolution": "300 dpi", "Markup": "Word, PDF", "Thickness": "5.8 mm", "Weight": "430g" },
     videos: ["https://www.youtube.com/embed/QSl721wVaqI"],
+    brand: "amazon",
   },
   {
     id: 210,
@@ -4185,6 +4326,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Storage": "32 GB, 64 GB", "Battery Life": "13 Hrs", "RAM": "2 GB", "Colors": "Black, Denim, Rose" },
+    brand: "amazon",
   },
   {
     id: 211,
@@ -4206,6 +4348,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Ages": "3–12", "Display": "300 ppi High-Resolution Glare-Free", "Battery Life": "6 Weeks", "Charging": "USB-C", "Colors": "Ocean Explorer, Space Whale, Unicorn Valley" },
+    brand: "amazon",
   },
   {
     id: 212,
@@ -4227,6 +4370,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Front Light": "4 LEDs", "Resolution": "300 ppi", "Storage": "16 GB", "Display": "6\" Glare-Free", "Charging": "USB-C", "Battery Life": "6 Weeks", "Colors": "Black, Denim" },
+    brand: "amazon",
   },
   {
     id: 213,
@@ -4248,6 +4392,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Colors": "Blue, Purple, Red", "Dimensions": "6.4\" L x 7.9\" W x 1.1\" H", "Weight": "15.1 oz", "CPU": "Quad-Core 2.0 GHz", "RAM": "2 GB", "Storage": "16 GB" },
+    brand: "amazon",
   },
   {
     id: 214,
@@ -4269,6 +4414,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "7\"", "Resolution": "1024 x 600", "Battery Life": "10 Hrs", "Storage": "16 GB, 32 GB", "RAM": "2 GB", "Dimensions": "7.11” x 4.63” x 0.38”", "Colors": "Black, Denim, Rose" },
+    brand: "amazon",
   },
   {
     id: 215,
@@ -4290,6 +4436,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Connected Devices": "100+", "Coverage": "2000 ft²", "Max. Network Speed": "2.3 Gbps", "Smart Hub": "Built In", "Compatibility": "Alexa", "Band": "6 GHz" },
+    brand: "amazon",
   },
   {
     id: 216,
@@ -4311,6 +4458,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Products": "3-Way Dimmer, 3-Way Switch, Single Pole Dimmer, Single Pole Switch", "Features": "Set Schedules and Routines", "Voice Control": "Alexa", "Use": "Indoor" },
+    brand: "amazon",
   },
   {
     id: 217,
@@ -4332,6 +4480,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Included": "Smart Air Quality Monitor, Micro-USB Cable, Power Adapter, Quick Start Guide", "Monitors": "Particular Matter, Volatile Organic Compounds, Carbon Monoxide, Humidity, Temperature", "Compatibility": "Alexa, Echo Family Devices", "LED Indicator": "Yes", "Connectivity": "2.4 GHz", "Weight": "120 g", "Dimensions": "65 mm W x 65 mm L x 45 mm H" },
+    brand: "amazon",
   },
   {
     id: 218,
@@ -4353,6 +4502,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Camera Weight": "48 g", "Camera Dimensions": "71 x 71 x 31 mm", "Camera Frame Rate": "Up to 30 fps", "FoV": "110º Diagonal", "Brightness": "700 Lumens", "Live View": "1080p hD", "Colors": "White, Black" },
+    brand: "amazon",
   },
   {
     id: 219,
@@ -4374,6 +4524,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Audio": "2 Way", "Compatibility": "Alexa", "FoV": "110° Diagonal", "Video Resolution": "1080 p HD", "Photo Resolution": "640 x 360", "Camera Frame Rate": "Up to 30 fps", "Color": "Black" },
+    brand: "amazon",
   },
   {
     id: 220,
@@ -4395,6 +4546,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Included": "Video Doorbell, Mounting Kit", "Resolution": "1080 p", "Audio": "2 Way", "Compatibility": "Alexa", "Chime App Alerts": "Yes", "Batteries": "2 AA", "Colors": "Black, White" },
+    brand: "amazon",
   },
   {
     id: 221,
@@ -4417,6 +4569,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Battery Life": "7 Days", "Water Resistance": "50 m", "Band Material": "High-Performance TPU", "Bluetooth": "5.0", "Sizes": "Small/Medium, Medium/LARGE", "Colors": "Active Black, Lavender Dream, Sage Green" },
     videos: ["https://www.youtube.com/embed/Eg32LEwyArg"],
+    brand: "amazon",
   },
   {
     id: 222,
@@ -4438,6 +4591,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Parental Controls": "Yes", "Feature": "Projects Images", "White Mat Size": "19\"" },
+    brand: "amazon",
   },
   {
     id: 223,
@@ -4459,6 +4613,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Smart Features": "Alexa Routines, Presence Detection", "Compatibility": "Alexa, Most 24V HVAC systems", "Schedule Temperatures": "Yes", "Display": "Temperature, Arrows" },
+    brand: "amazon",
   },
   {
     id: 224,
@@ -4480,6 +4635,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "6.8\"", "Storage": "8 GB", "Battery Life": "10 Weeks", "Charging Time": "2.5 Hours", "Weight": "7.23 oz", "Dimensions": "4.9” x 6.9” x .32”", "Color": "Black" },
+    brand: "amazon",
   },
   {
     id: 225,
@@ -4501,6 +4657,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Screen Size": "65\"", "Resolution": "3840 x 2160", "Display": "4K UHD", "Backlight Type": "Direct LED", "Refresh Rate": "60 Hz", "OS": "Fire TV OS", "Front Finish": "Gray Metal" },
+    brand: "amazon",
   },
   {
     id: 226,
@@ -4522,6 +4679,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Dimensions": "3.66\" L x 6.10\" W x 3.97\" H", "Capacity": "12 oz.", "Automatic": "Yes", "Soap Type": "Liquid", "Battery": "Rechargeable", "Material": "Plastic", "Compatibility": "Alexa", "Timer": "20 Secs" },
+    brand: "amazon",
   },
   {
     id: 227,
@@ -4543,6 +4701,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Compatibility": "Wi-Fi, Bluetooth, Apple AirPlay 2, Spotify Connect", "Weight": "7 lbs", "Colors": "Bose Black", "Power Cord": "5'", "Materials": "Plastics, Metal" },
+    brand: "amazon",
   },
   {
     id: 228,
@@ -4564,6 +4723,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Processor": "MediaTek MT 8163", "Microphones": "2", "Speaker": "1.65”", "Camera": "2 MP", "Dimensions": "5.8” x 3.4” x 2.9”", "Weight": "14.5 oz." },
+    brand: "amazon",
   },
   {
     id: 229,
@@ -4585,6 +4745,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "8\" HD Touchscreen", "Camera": "13 MP", "Mics": "4", "Dimensions": "7.9\" x 5.4\" x 3.9\"", "Weight": "36.6 oz.", "Colors": "Charcoal, Glacier White" },
+    brand: "amazon",
   },
   {
     id: 230,
@@ -4606,6 +4767,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Dimensions": "5.8” x 3.4” x 2.9”", "Weight": "14.5 oz.", "Display": "5.5” Touchscreen", "Camera": "2 MP", "Audio": "Full Range 1.65” Built-In Speaker", "Processor": "MediaTek MT 8163", "Colors": "Charcoal, Deep Sea Blue, Charcoal" },
+    brand: "amazon",
   },
   {
     id: 231,
@@ -4627,6 +4789,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "10.1\" 1080p Full HD", "Storage": "32 GB", "CPU": "Octa-Core 2.0 GHz", "Battery Life": "12 Hrs", "Ports": "USB-C 2.0", "Front-Facing Camera": "2 MP", "Rear-Facing Camera": "5 MP" },
+    brand: "amazon",
   },
   {
     id: 232,
@@ -4648,6 +4811,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "10.1\" 1080p Full HD", "Storage": "32 GB, 64 GB", "RAM": "3 GB", "Battery Life": "12 Hrs", "CPU": "Octa-Core 2.0 GHz", "Colors": "Black, Denim, Lavender, Olive" },
+    brand: "amazon",
   },
   {
     id: 233,
@@ -4669,6 +4833,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Connectivity": "Bluetooth 4.2", "Battery": "2 AAA", "Material": "Tempered Glass", "Voice Command": "Amazon Alexa", "Weight": "14.1 oz." },
+    brand: "amazon",
   },
   {
     id: 234,
@@ -4690,6 +4855,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Voice Assistant": "Amazon Alexa", "Display": "LED", "Pairing Mode": "Yes", "Speaker": "1 W", "Dimensions": "7.3\" W x 15.7\" H" },
+    brand: "amazon",
   },
   {
     id: 235,
@@ -4711,6 +4877,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Voice Control": "Amazon Alexa", "Required": "2.4 GHz Wi-Fi", "Included": "1 Yellow Sticky Roll" },
+    brand: "amazon",
   },
   {
     id: 236,
@@ -4732,6 +4899,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Smartphone Compatibility": "Android 9.0+, iOS 13.6+", "Connectivity": "Bluetooth 5.0", "Microphones": "2", "Speakers": "4", "Battery Life": "14 Hrs", "Audio": "Open Ear", "Colors": "Classic Black, Horizon Blue, Modern Tortoise" },
+    brand: "amazon",
   },
   {
     id: 237,
@@ -4754,6 +4922,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Display Size": "10\"", "Tweeters": "2", "Voice Assistant": "Amazon Alexa", "App Support": "Netflix, Zoom, Chime", "Compatibility": "Alexa Guard" },
     videos: ["https://www.youtube.com/embed/9u-C7W1seNc"],
+    brand: "amazon",
   },
   {
     id: 238,
@@ -4775,6 +4944,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Streaming Quality": "Full HD", "Voice Control": "Amazon Alexa", "Movies & TV Episodes": "500000+" },
+    brand: "amazon",
   },
   {
     id: 239,
@@ -4796,6 +4966,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Channels": "10000+", "Movies & TV Episodes": "500000+", "Free Movies & TV Episodes": "20000+", "Streaming": "Amazon Music, Spotify, Pandora, More", "Audio": "Dolby Audio" },
+    brand: "amazon",
   },
   {
     id: 240,
@@ -4817,6 +4988,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "8\" HD", "Resolution": "1280 x 800", "CPU": "Quad-Core 2.0 GHz", "RAM": "3 GB", "Battery Life": "12 Hrs", "Charging Time": "4 Hrs" },
+    brand: "amazon",
   },
   {
     id: 241,
@@ -4838,6 +5010,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Storage": "8 GB, 32 GB", "Display": "300 ppi", "Battery Life": "Weeks", "Colors": "Black, Twilight Blue, Sage, Plum" },
+    brand: "amazon",
   },
   {
     id: 242,
@@ -4859,6 +5032,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Screen Size": "8\"", "Display": "HD", "Privacy Shutter": "Yes" },
+    brand: "amazon",
   },
   {
     id: 243,
@@ -4880,6 +5054,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "8\" HD", "GB": "16, 32", "Processor": "1.3 GHz Quad Core", "Colors": "Black, Canary Yellow, Marine Blue, Punch Red" },
+    brand: "amazon",
   },
   {
     id: 244,
@@ -4901,6 +5076,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Requires": "Fire TV Streaming Service & Echo Smart Speaker/Display", "Dimensions": "2.2\" x 1.5\"", "Weight": "111 g" },
+    brand: "amazon",
   },
   {
     id: 245,
@@ -4922,6 +5098,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Internal Storage": "32 GB", "Battery Life": "12 Hrs", "Colors": "Blue, Purple, Pink" },
+    brand: "amazon",
   },
   {
     id: 246,
@@ -4943,6 +5120,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "10.1\" 1080 p Full HD", "Internal Storage": "32, 64 GB", "RAM": "2 GB" },
+    brand: "amazon",
   },
   {
     id: 247,
@@ -4964,6 +5142,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Add Ons": "Motion Sensor, Night Light", "USB Port": "Built In", "Buttons": "2" },
+    brand: "amazon",
   },
   {
     id: 248,
@@ -4985,6 +5164,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Functions": "Convection, Air Fryer, Food Warmer", "Includes": "Echo Dot", "Features": "Scan to Cook, Prepackaged Automation, Whole Foods Integration" },
+    brand: "amazon",
   },
   {
     id: 249,
@@ -5007,6 +5187,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Case Battery Life": "15 Hrs", "Battery Life": "5 Hrs", "Alexa-Enabled": "Yes" },
     videos: ["https://www.youtube.com/embed/MDN2RRaY1po"],
+    brand: "amazon",
   },
   {
     id: 250,
@@ -5029,6 +5210,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Mid-Range Speakers": "3", "Bass Driver": "5.25\"", "Atmos-Enabled Tracks": "100s" },
     videos: ["https://www.youtube.com/embed/HkMMDWR66sY"],
+    brand: "amazon",
   },
   {
     id: 251,
@@ -5050,6 +5232,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display": "LED", "Visual": "Clock, Timers, Alarms, Temperature", "Snooze": "9 Min" },
+    brand: "amazon",
   },
   {
     id: 252,
@@ -5071,6 +5254,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Picture Quality": "4K Ultra HD", "Storage": "16 GB", "Audio": "Dolby Atmos" },
+    brand: "amazon",
   },
   {
     id: 253,
@@ -5092,6 +5276,7 @@ export const products: Product[
     isFeatured: false,
     isTrending: false,
     specs: { "Display Size": "15.6”", "Video Quality": "1080p", "Processor": "Octa-Core SoC with AZ2", "Smart Home Hub": "Zigbee, Matter, Thread Border Router" },
+    brand: "amazon",
   },
   {
     id: 254,
@@ -5183,6 +5368,7 @@ export const products: Product[
     destination: "external",
     externalUrl: "https://eero.com/shop/eero-pro-7",
     videos: ["https://www.youtube.com/embed/jJDIR95WuJc"],
+    brand: "amazon",
   },
   {
     id: 258,
@@ -5230,6 +5416,7 @@ export const products: Product[
     specs: { "Product Categories": "Apparel, Beauty, Household, Bed and Bath, Organic Materials, Recycled Materials", "Criteria Met": "Climate Pledge Friendly Program, Carbon Neutral", "Clothes Gender": "Male, Female" },
     destination: "external",
     externalUrl: "https://thegadgetflow.com/product/amazon-aware-collection-includes-carbon-neutral-apparel-beauty-products-and-more/",
+    brand: "amazon",
   },
   {
     id: 260,
@@ -5253,6 +5440,7 @@ export const products: Product[
     specs: { "Driver": "1.6\"", "Microphones": "4", "Aux": "3.5 mm", "Connectivity": "Bluetooth", "Compatibility": "AirPlay", "Colors": "Charcoal, Glacier White, Twilight Blue" },
     destination: "external",
     externalUrl: "https://thegadgetflow.com/product/amazon-echo-dot-4th-generation-speaker/",
+    brand: "amazon",
   },
   {
     id: 261,
@@ -5276,6 +5464,7 @@ export const products: Product[
     specs: { "Millisecond Reductions": "17–30", "Connectivity": "Cloud Servers", "Color": "Black/Purple" },
     destination: "external",
     externalUrl: "https://thegadgetflow.com/product/amazon-luna-controller/",
+    brand: "amazon",
   },
   {
     id: 262,
@@ -5299,6 +5488,7 @@ export const products: Product[
     specs: { "Ethernet Ports": "2", "USB-C Ports": "1", "Wi-Fi Compatibility": "6", "Coverage": "2000 sq. ft.", "Connected Devices": "75+" },
     destination: "external",
     externalUrl: "https://thegadgetflow.com/product/amazon-eero-pro-6-router/",
+    brand: "amazon",
   },
   {
     id: 263,
@@ -5322,6 +5512,7 @@ export const products: Product[
     specs: { "Module": "AZ1 Neural Edge", "Processing": "Local", "Colors": "Charcoal, Glacier White, Twilight Blue" },
     destination: "external",
     externalUrl: "https://thegadgetflow.com/product/new-amazon-echo-4th-generation/",
+    brand: "amazon",
   },
   {
     id: 264,
@@ -5345,6 +5536,7 @@ export const products: Product[
     specs: { "Designs": "Panda, Tiger", "Monthly Subscription": "$2.99", "Voice Assistant": "Alexa", "Speaker": "Front 1.6\"", "Materials": "50% Recycled Plastic", "Warranty": "2 Yrs" },
     destination: "external",
     externalUrl: "https://thegadgetflow.com/product/amazon-echo-dot-kids-edition-speaker/",
+    brand: "amazon",
   },
   {
     id: 265,
@@ -5368,6 +5560,7 @@ export const products: Product[
     specs: { "Waterproof": "50 m", "Battery Life": "7 Days", "Connectivity": "Bluetooth" },
     destination: "external",
     externalUrl: "https://thegadgetflow.com/product/amazon-halo/",
+    brand: "amazon",
   },
   {
     id: 266,
@@ -5391,6 +5584,7 @@ export const products: Product[
     specs: { "Power": "Batteries, Wall Plug", "Sizes": "7 x 7”, 12 x 10\", 18 x 13\"", "Connectivity": "Wi-Fi" },
     destination: "external",
     externalUrl: "https://thegadgetflow.com/product/amazon-dash-smart-shelf/",
+    brand: "amazon",
   },
   {
     id: 267,
@@ -5438,6 +5632,7 @@ export const products: Product[
     destination: "external",
     externalUrl: "https://thegadgetflow.com/product/amazon-echo-frames/",
     videos: ["https://www.youtube.com/embed/hCKstxDONWI"],
+    brand: "amazon",
   },
   {
     id: 269,
@@ -5462,6 +5657,7 @@ export const products: Product[
     destination: "external",
     externalUrl: "https://thegadgetflow.com/product/amazon-echo-loop/",
     videos: ["https://www.youtube.com/embed/-9PIcwUZvBU"],
+    brand: "amazon",
   },
   {
     id: 270,
@@ -5485,6 +5681,7 @@ export const products: Product[
     specs: { "Shape": "Cylinder", "Exterior Material": "Fabric", "Colors": "Blue, Black, Pink, Gray" },
     destination: "external",
     externalUrl: "https://thegadgetflow.com/product/all-new-amazon-echo/",
+    brand: "amazon",
   },
   {
     id: 271,
@@ -5838,6 +6035,7 @@ export const products: Product[
     isTrending: false,
     specs: {},
     isDraft: true,
+    brand: "apple",
   },
   {
     id: 286,
@@ -5975,6 +6173,7 @@ export const products: Product[
     isTrending: false,
     specs: {},
     isDraft: true,
+    brand: "jackery",
   },
   {
     id: 292,
@@ -5997,6 +6196,7 @@ export const products: Product[
     isTrending: false,
     specs: {},
     isDraft: true,
+    brand: "lg",
   },
   {
     id: 293,
@@ -6019,6 +6219,7 @@ export const products: Product[
     isTrending: false,
     specs: {},
     isDraft: true,
+    brand: "lg",
   },
   {
     id: 294,
@@ -6041,6 +6242,7 @@ export const products: Product[
     isTrending: false,
     specs: {},
     isDraft: true,
+    brand: "moccamaster",
   },
   {
     id: 295,
@@ -6063,6 +6265,7 @@ export const products: Product[
     isTrending: false,
     specs: {},
     isDraft: true,
+    brand: "bulova",
   },
   {
     id: 297,
@@ -6085,6 +6288,7 @@ export const products: Product[
     isTrending: false,
     specs: {},
     isDraft: true,
+    brand: "best-choice-products",
   },
   {
     id: 298,
@@ -6107,6 +6311,7 @@ export const products: Product[
     isTrending: false,
     specs: {},
     isDraft: true,
+    brand: "novium",
   },
   {
     id: 299,
@@ -6129,6 +6334,7 @@ export const products: Product[
     isTrending: false,
     specs: {},
     isDraft: true,
+    brand: "all-clad",
   },
   {
     id: 300,
@@ -6151,6 +6357,7 @@ export const products: Product[
     isTrending: false,
     specs: {},
     isDraft: true,
+    brand: "fizz-creations",
   },
 ];
 
@@ -6325,4 +6532,23 @@ export function getCategoryBySlug(slug: string): Category | undefined {
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find(p => p.slug === slug);
+}
+
+/**
+ * Return all live products belonging to the given brand slug. Filters out
+ * drafts, matching the same visibility contract as getProductsByCategory.
+ * The Brand metadata itself lives in `client/src/lib/brands.ts`.
+ */
+export function getProductsByBrandSlug(brandSlug: string): Product[] {
+  const slug = brandSlug.toLowerCase();
+  return products.filter(p => p.brand === slug && isLive(p));
+}
+
+/**
+ * Return the count of live products with the given brand slug. Used by the
+ * brands index page to show "X products" per brand card without requiring
+ * the full product list.
+ */
+export function getBrandProductCount(brandSlug: string): number {
+  return getProductsByBrandSlug(brandSlug).length;
 }

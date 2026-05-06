@@ -1,0 +1,34 @@
+{
+  "_source": "Chrome MCP scrape of amazon.com on 2026-05-05",
+  "_note": "Most product images are unchanged from what's in data.ts. The entries below identify only products where Amazon's current hi-res image differs from the mirrored copy, OR where the title/variant in data.ts no longer matches the live ASIN. These suggest a manual catalog refresh.",
+  "title_or_variant_drift": {
+    "275": {
+      "data_ts_title": "OXWALLEN Packs Stretchy Bands",
+      "amazon_title": "OXWALLEN XL Stretch Solo Loop Band Compatible with Apple Watch Series 11/10/9/8/7/6/5/4 SE 3/2/1 42mm 41mm 40mm 38mm, Adjustable Elastic Nylon Braided Sport Strap for iWatch Women Men, Orange",
+      "image_hash_match": true,
+      "action": "Update title and slug in data.ts; current title is generic and misleading."
+    },
+    "282": {
+      "data_ts_title": "Aulumu A16 ... Touch Translucent Gray",
+      "amazon_redirect": "B0BXH3CK3G -> B08CR97FGW (White variant)",
+      "amazon_image": "https://m.media-amazon.com/images/I/61UWh9j5YfL._AC_SX679_.jpg",
+      "data_ts_image": "/images/mirrored/61OH4vCnSHL._AC_SL1500_.jpg",
+      "action": "Verify the Gray variant ASIN is still live, or switch the product to the White variant if Gray is delisted."
+    },
+    "290": {
+      "data_ts_title": "Twelve South HiRise 2 for iPhone/iPad, Black",
+      "amazon_title": "Twelve South HiRise 2 Deluxe for iPhone/iPad, Black | Adjustable Charging Stand with Lightning + Micro-USB Cables",
+      "amazon_redirect": "B01LD85JIK -> B01LD85ORQ (Deluxe variant with cables)",
+      "amazon_image": "https://m.media-amazon.com/images/I/71OV45f1maL._AC_SX679_.jpg",
+      "data_ts_image": "/images/mirrored/51xmUnX9MSL._AC_SL1000_.jpg",
+      "action": "Update to Deluxe variant ASIN B01LD85ORQ, refresh title and image."
+    }
+  },
+  "image_refresh_only": {
+    "276": {
+      "data_ts_image": "/images/mirrored/IMG_5287.jpeg",
+      "amazon_image": "https://m.media-amazon.com/images/I/61vvZ8fFm0L._AC_SX679_.jpg",
+      "note": "Current image is a custom upload. Amazon hi-res image available; consider mirroring."
+    }
+  }
+}

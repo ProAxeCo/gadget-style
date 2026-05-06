@@ -1,0 +1,40 @@
+{
+  "account": "@gadgetstyleaustralia",
+  "task": "Mass-delete legacy posts before autonomous posting cron starts",
+  "method": "Chrome MCP web UI deletion (Meta Graph IG content_publish blocked pending business verification)",
+  "startedAt": "2026-05-06T00:00:00Z",
+  "completedAt": "2026-05-06T00:55:00Z",
+  "initialPostCount": 59,
+  "finalPostCount": 0,
+  "deletedCount": 59,
+  "failureCount": 0,
+  "rateLimitWarnings": [],
+  "notes": [
+    "All 59 deletions executed via the same UI flow: click first post tile -> click kebab (top-right of modal) -> click Delete -> confirm Delete in modal.",
+    "Layout coordinates shifted twice during the run as the post grid shrank. Initial layout: tile (316,585), kebab (1313,47). Below ~12 posts: tile (386,710), kebab (1297,47). Confirm-dialog Delete button stayed at (777,283) regardless.",
+    "No 'we've limited your activity', 'try again later', or action-blocked warnings appeared at any point. Account remained healthy throughout.",
+    "Header post-count is cached on the profile page and only updates after a fresh navigation. Verified counts via: 59 -> 11 -> 10 -> 5 -> 1 -> 0 by hard-refreshing.",
+    "Post URLs were captured from the discovery scan and during deletions; the full per-post log is not exhaustive (logging every shortcode mid-loop would have doubled run time). The deletion-count delta is the source of truth: 59 -> 0.",
+    "Sampled deletions logged below for traceability."
+  ],
+  "sampledDeletions": [
+    { "n": 1, "shortcode": "Byr5kWklJEh", "title": "Gadget Style Desks (June 2019, oldest post in early grid)" },
+    { "n": 2, "shortcode": "Bx_BHsRnpSo" },
+    { "n": 3, "shortcode": "BxpKv33HxXB" },
+    { "n": 4, "shortcode": "BxpIEo4nrst" },
+    { "n": 49, "shortcode": "BxJOD04gX_b", "title": "Genuine leather iPhone cases, 5 colours (May 7, 2019)" },
+    { "n": 50, "shortcode": "BxJNnThAr5W" },
+    { "n": 59, "shortcode": "BhK6BxAAaS6", "title": "Final post (oldest in account, deleted last)" }
+  ],
+  "verification": {
+    "finalProfileScreenshot": "https://www.instagram.com/gadgetstyleaustralia/ shows '0 posts', 'Share Photos' empty-state, 'Share your first photo' link",
+    "headerCount": "0 posts",
+    "domLinkCount": 0,
+    "warningScan": "ok"
+  },
+  "recommendations": {
+    "whenToStartPosting": "Wait 24h before resuming autonomous posting. IG sometimes flags accounts that go from 0 -> high-frequency posting immediately after a mass delete. Soft start: 1-2 manual-quality posts within 24h, then let cron resume daily 10am AEST.",
+    "rateLimitObserved": "None during deletion. If cron's first post fails with action_blocked, pause 48h before retry.",
+    "businessVerification": "Still pending; once cleared (~2026-05-07/08), instagram_content_publish unblocks API posting. Direct-API posts are less likely to trigger flags than browser automation."
+  }
+}

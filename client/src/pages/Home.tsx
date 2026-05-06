@@ -7,7 +7,7 @@
 import { useState, useRef } from "react";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, TrendingUp, Star, ChevronLeft, ChevronRight, Clock, Tag, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, TrendingUp, Star, Clock, Tag, Mail, Sparkles } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import {
   categories,
@@ -65,12 +65,6 @@ export default function Home() {
   /* Pick of the Day — rotate through featured products */
   const [pickIndex, setPickIndex] = useState(0);
   const pick = featured[pickIndex] || featured[0];
-
-  /* Category carousel */
-  const catScrollRef = useRef<HTMLDivElement>(null);
-  const scrollCat = (dir: number) => {
-    catScrollRef.current?.scrollBy({ left: dir * 320, behavior: "smooth" });
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -159,7 +153,9 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════════
-          SECTION 2 — EXPLORE CATEGORIES (Light Cards)
+          SECTION 2 — EXPLORE CATEGORIES (6-Across Grid, GF-style)
+          All 6 categories visible at once on desktop. 2 cols on mobile,
+          3 cols on tablet, 6 cols on desktop.
           ════════════════════════════════════════════ */}
       <section className="py-12 lg:py-16 border-t border-border/50 bg-secondary/30">
         <div className="container">
@@ -168,52 +164,46 @@ export default function Home() {
               <span className="text-primary font-mono text-xs tracking-widest uppercase block mb-2">Browse</span>
               <h2 className="text-3xl lg:text-4xl font-display text-foreground">Explore Categories</h2>
             </div>
-            <div className="hidden sm:flex gap-2">
-              <button
-                onClick={() => scrollCat(-1)}
-                className="p-2 rounded-lg border border-border/50 text-muted-foreground hover:text-primary hover:border-primary/30 transition-colors"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={() => scrollCat(1)}
-                className="p-2 rounded-lg border border-border/50 text-muted-foreground hover:text-primary hover:border-primary/30 transition-colors"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
+            <Link
+              href="/brands"
+              className="hidden sm:inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+            >
+              Browse all brands <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          <div
-            ref={catScrollRef}
-            className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
-            style={{ scrollbarWidth: "none" }}
-          >
-            {categories.map((cat) => (
-              <Link key={cat.slug} href={`/category/${cat.slug}`}>
-                <div className="group snap-start flex-shrink-0 w-[280px] lg:w-[300px] rounded-2xl overflow-hidden relative bg-card border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all">
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={cat.image}
-                      alt={cat.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 lg:gap-5">
+            {categories.map((cat, i) => (
+              <motion.div
+                key={cat.slug}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.04 }}
+              >
+                <Link href={`/category/${cat.slug}`}>
+                  <div className="group rounded-2xl overflow-hidden relative bg-card border border-border/60 hover:border-primary/40 hover:shadow-xl hover:-translate-y-0.5 transition-all cursor-pointer h-full">
+                    <div className="aspect-square overflow-hidden">
+                      <img
+                        src={cat.image}
+                        alt={cat.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-90" />
+                    </div>
+                    <div className="absolute inset-0 flex flex-col justify-end p-3 lg:p-4">
+                      <h3 className="text-sm lg:text-base font-display text-white drop-shadow-md leading-tight mb-1">
+                        {cat.name}
+                      </h3>
+                      <p className="text-white/80 text-xs font-mono tracking-wide">
+                        {cat.productCount} products
+                      </p>
+                    </div>
                   </div>
-                  <div className="p-4">
-                    <h3 className="text-lg font-display text-foreground mb-0.5 group-hover:text-primary transition-colors">{cat.name}</h3>
-                    <p className="text-muted-foreground text-sm">{cat.productCount} products</p>
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              </motion.div>
             ))}
-            <Link href="/category/smart-home">
-              <div className="snap-start flex-shrink-0 w-[280px] lg:w-[300px] rounded-2xl overflow-hidden bg-primary/5 border border-primary/20 flex items-center justify-center aspect-[4/3] hover:bg-primary/10 transition-colors cursor-pointer">
-                <div className="text-center p-6">
-                  <ArrowRight className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <span className="text-primary font-medium">View All</span>
-                </div>
-              </div>
-            </Link>
           </div>
         </div>
       </section>
