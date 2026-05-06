@@ -99,7 +99,7 @@ export default function CategoryPage() {
 
       {/* Products Grid */}
       <section className="py-12 lg:py-16">
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
           {/* Toolbar */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-border">
             <p className="text-sm text-muted-foreground">

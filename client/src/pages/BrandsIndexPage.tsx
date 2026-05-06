@@ -56,18 +56,26 @@ export default function BrandsIndexPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero — clean dark typographic banner (no busy collage) */}
+      {/* Hero — full-bleed tech imagery with dark overlay (GF parity) */}
       <section className="relative w-full overflow-hidden rounded-3xl mx-4 sm:mx-6 lg:mx-8 mt-24 lg:mt-28 mb-12 lg:mb-16 bg-zinc-950">
-        {/* Subtle radial highlight + grid pattern for depth */}
+        {/* Lifestyle backdrop — Pexels-sourced tech imagery */}
+        <img
+          src="/images/brands/heroes/_index.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Dark gradient for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/55 to-black/75" />
+        {/* Subtle blue/purple radial glow + grid pattern for depth */}
         <div
-          className="absolute inset-0 opacity-50"
+          className="absolute inset-0 opacity-40 mix-blend-overlay"
           style={{
             background:
-              "radial-gradient(ellipse at center top, rgba(59,130,246,0.18), transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(168,85,247,0.12), transparent 50%)",
+              "radial-gradient(ellipse at center top, rgba(59,130,246,0.35), transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(168,85,247,0.25), transparent 50%)",
           }}
         />
         <div
-          className="absolute inset-0 opacity-[0.07]"
+          className="absolute inset-0 opacity-[0.05]"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
@@ -96,9 +104,10 @@ export default function BrandsIndexPage() {
         </div>
       </section>
 
-      {/* Brand grid — clean colour tiles, large logos, NO product photos */}
-      <section className="container pb-16 lg:pb-24">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 lg:gap-5">
+      {/* Brand grid — same column rhythm as product grids so the cards
+          line up visually with the products elsewhere on the site */}
+      <section className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10 pb-16 lg:pb-24">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 lg:gap-6">
           {sorted.map((brand, i) => {
             const tone = pickLogoTone(brand.accentColor);
             const accent = brand.accentColor || "#1f2937";
@@ -108,10 +117,11 @@ export default function BrandsIndexPage() {
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.03 }}
+                className="group"
               >
                 <Link href={`/brand/${brand.slug}`}>
-                  <div className="group relative rounded-2xl overflow-hidden cursor-pointer aspect-square shadow-md hover:shadow-2xl transition-all duration-300">
-                    {/* Hero photo backdrop (Pexels-sourced lifestyle imagery) */}
+                  {/* Square image area — matches ProductCard's aspect-square */}
+                  <div className="relative rounded-2xl overflow-hidden aspect-square shadow-md group-hover:shadow-2xl transition-all duration-300 mb-3">
                     {brand.heroImageUrl ? (
                       <img
                         src={brand.heroImageUrl}
@@ -127,21 +137,15 @@ export default function BrandsIndexPage() {
                         }}
                       />
                     )}
-
-                    {/* Brand-color tint overlay — keeps the photo readable AND
-                        ties the card to the brand's identity */}
+                    {/* Brand-color tint overlay */}
                     <div
                       className="absolute inset-0 mix-blend-multiply"
                       style={{
                         background: `linear-gradient(135deg, ${accent}cc 0%, ${accent}80 50%, ${accent}66 100%)`,
                       }}
                     />
-                    {/* Subtle dark vignette for legibility of bottom info */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-
-                    {/* Circular logo bubble — GF parity (white circle with
-                        the logo centered inside, sits in the middle of the card) */}
-                    <div className="absolute inset-0 flex items-center justify-center pb-10">
+                    {/* Circular logo bubble — centered, GF parity */}
+                    <div className="absolute inset-0 flex items-center justify-center">
                       <div
                         className={`rounded-full backdrop-blur-sm shadow-2xl flex items-center justify-center aspect-square w-24 h-24 lg:w-28 lg:h-28 p-5 lg:p-6 ${
                           tone === "dark"
@@ -163,26 +167,20 @@ export default function BrandsIndexPage() {
                         />
                       </div>
                     </div>
-
-                    {/* Bottom info strip */}
-                    <div className="absolute inset-x-0 bottom-0">
-                      <div className="bg-gradient-to-t from-black/70 via-black/40 to-transparent p-4 lg:p-5">
-                        <div className="flex items-center justify-between text-white">
-                          <div>
-                            <h3 className="font-display text-base lg:text-lg leading-tight drop-shadow-md">
-                              {brand.name}
-                            </h3>
-                            <p className="text-xs text-white/85 font-mono inline-flex items-center gap-1.5 mt-0.5">
-                              <Package className="w-3 h-3" />
-                              {brand.count}{" "}
-                              {brand.count === 1 ? "product" : "products"}
-                            </p>
-                          </div>
-                          <ArrowRight className="w-5 h-5 text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
-                        </div>
-                      </div>
-                    </div>
                   </div>
+
+                  {/* Info area BELOW the image — mirrors ProductCard's
+                      price/tags/title rhythm so brand cards are the same
+                      total height as product cards in the same grid */}
+                  <div className="flex items-center flex-wrap gap-2 mb-1.5">
+                    <span className="text-[15px] lg:text-base font-bold font-mono inline-flex items-center gap-1.5" style={{ color: accent }}>
+                      <Package className="w-3.5 h-3.5" />
+                      {brand.count} {brand.count === 1 ? "product" : "products"}
+                    </span>
+                  </div>
+                  <h3 className="font-medium text-base lg:text-[17px] line-clamp-2 group-hover:text-primary transition-colors leading-snug text-foreground/90">
+                    {brand.name}
+                  </h3>
                 </Link>
               </motion.div>
             );
