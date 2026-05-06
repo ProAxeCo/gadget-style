@@ -84,7 +84,7 @@ export default function SearchPage() {
 
   return (
     <div className="pt-28 lg:pt-32 pb-16">
-      <div className="container">
+      <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
         {/* Header area */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

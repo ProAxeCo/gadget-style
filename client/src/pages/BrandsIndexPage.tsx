@@ -139,27 +139,29 @@ export default function BrandsIndexPage() {
                         }}
                       />
                     )}
-                    {/* Soft radial darkening behind the centered logo so it
-                        reads on busy/light photos — image otherwise clear */}
+                    {/* Soft radial light-bloom behind the centered logo so
+                        the brand-colored mark reads on busy backgrounds —
+                        image otherwise clear */}
                     <div
                       className="absolute inset-0 pointer-events-none"
                       style={{
                         background:
-                          "radial-gradient(circle at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 30%, transparent 60%)",
+                          "radial-gradient(circle at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.5) 18%, rgba(255,255,255,0.18) 40%, transparent 65%)",
                       }}
                     />
                     {/* Logo placed directly on the photo — NO white pill.
-                        Brightness-0 invert turns dark logos white so they
-                        read on the lifestyle photo backdrop. */}
+                        Renders in the BRAND'S NATIVE COLOR (Samsung blue
+                        stays blue, Razer green stays green, etc.). Subtle
+                        drop shadow for definition. */}
                     <div className="absolute inset-0 flex items-center justify-center p-6 lg:p-8">
                       <img
                         src={brand.logoUrl}
                         alt={`${brand.name} logo`}
-                        className="max-h-[55%] max-w-[80%] object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] [filter:brightness(0)_invert(1)_drop-shadow(0_2px_8px_rgba(0,0,0,0.6))]"
+                        className="max-h-[55%] max-w-[80%] object-contain [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.25))]"
                         loading="lazy"
                         onError={(e) => {
                           const t = e.currentTarget as HTMLImageElement;
-                          t.outerHTML = `<span class="font-display text-2xl lg:text-3xl text-white drop-shadow-lg">${brand.name}</span>`;
+                          t.outerHTML = `<span class="font-display text-2xl lg:text-3xl drop-shadow-lg" style="color:${accent}">${brand.name}</span>`;
                         }}
                       />
                     </div>

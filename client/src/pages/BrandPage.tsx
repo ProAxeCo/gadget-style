@@ -147,23 +147,40 @@ export default function BrandPage() {
           </Link>
 
           {/* Logo placed directly on the lifestyle photo — NO white pill.
-              Brightness-0 invert turns dark logos white so they read on
-              the photo backdrop, with a soft drop shadow for depth. */}
+              Renders in the BRAND'S NATIVE COLOR with a soft white glow
+              behind it (added via the radial spotlight below) so it reads
+              on any background. */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8 flex items-center justify-center h-20 lg:h-28"
+            className="relative mb-8 flex items-center justify-center h-20 lg:h-28"
           >
+            {/* Soft white spotlight behind the logo */}
+            <div
+              aria-hidden
+              className="absolute inset-0 -z-0 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.5) 35%, rgba(255,255,255,0.15) 60%, transparent 80%)",
+                width: "140%",
+                height: "180%",
+                left: "-20%",
+                top: "-40%",
+              }}
+            />
             {logoBroken ? (
-              <span className="text-4xl lg:text-6xl font-display text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
+              <span
+                className="relative text-4xl lg:text-6xl font-display drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+                style={{ color: accent }}
+              >
                 {brand.name}
               </span>
             ) : (
               <img
                 src={brand.logoUrl}
                 alt={`${brand.name} logo`}
-                className="h-full w-auto max-w-[280px] lg:max-w-[360px] object-contain [filter:brightness(0)_invert(1)_drop-shadow(0_4px_12px_rgba(0,0,0,0.6))]"
+                className="relative h-full w-auto max-w-[280px] lg:max-w-[360px] object-contain [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.2))]"
                 onError={() => setLogoBroken(true)}
               />
             )}
@@ -229,8 +246,11 @@ export default function BrandPage() {
         </div>
       </section>
 
-      {/* Products grid */}
-      <section className="container pb-16 lg:pb-24">
+      {/* Products grid — uses the SAME wide custom container as
+          CategoryPage (max-w-[1880px]) so brand product cards are
+          identically sized to category/search product cards on every
+          breakpoint, not capped by the standard `container` at 1400px */}
+      <section className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10 pb-16 lg:pb-24">
         <div className="flex items-end justify-between mb-8 lg:mb-10">
           <div>
             <span className="text-primary font-mono text-xs tracking-widest uppercase block mb-2">
