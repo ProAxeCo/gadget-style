@@ -325,8 +325,8 @@ export default function Home() {
         <div className="container">
           <SectionHeading label="Fresh" title="New Arrivals" action="See All" href="/category/smart-home" />
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
-            {newArrivals.slice(0, 8).map((product, i) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 lg:gap-6">
+            {newArrivals.slice(0, 10).map((product, i) => (
               <FadeSection key={product.id} delay={i * 0.05}>
                 <ProductCard product={product} />
               </FadeSection>

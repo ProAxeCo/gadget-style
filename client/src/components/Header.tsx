@@ -29,6 +29,7 @@ import {
   ChevronRight,
   ArrowRight,
   MoreHorizontal,
+  Tag,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -45,13 +46,14 @@ const CATEGORY_COLORS = [
   "bg-primary/90",
 ];
 
-/* Primary nav items with icons — pill-shaped like GF */
+/* Primary nav items with icons — pill-shaped like GF.
+ * Order mirrors GF: Discover | Brands | Trending | Magazine. About + Contact
+ * have moved into the More mega-menu to keep the top row tight. */
 const primaryNav = [
   { label: "Discover", href: "/", icon: Compass },
+  { label: "Brands", href: "/brands", icon: Tag },
   { label: "Trending", href: "/category/smart-home", icon: TrendingUp },
-  { label: "Blog", href: "/blog", icon: BookOpen },
-  { label: "About", href: "/about", icon: Info },
-  { label: "Contact", href: "/contact", icon: Mail },
+  { label: "Magazine", href: "/blog", icon: BookOpen },
 ];
 
 export default function Header() {
@@ -330,9 +332,7 @@ export default function Header() {
                               Explore More
                             </h4>
                             <ul className="space-y-2 text-sm">
-                              <li><Link href="/brands" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Brands</Link></li>
                               <li><Link href="/category/smart-home" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Categories</Link></li>
-                              <li><Link href="/blog" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Magazine</Link></li>
                               <li><Link href="/wishlist" onClick={() => setMoreOpen(false)} className="text-muted-foreground hover:text-primary transition-colors">Wishlist</Link></li>
                               <li><a href="https://www.pinterest.com/con_tsekouras/" target="_blank" rel="noopener" className="text-muted-foreground hover:text-primary transition-colors">Pinterest ↗</a></li>
                               <li><a href="https://www.instagram.com/gadgetstyleaustralia/" target="_blank" rel="noopener" className="text-muted-foreground hover:text-primary transition-colors">Instagram ↗</a></li>

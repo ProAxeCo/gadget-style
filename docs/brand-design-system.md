@@ -60,11 +60,19 @@ Use the brand's primary identity color (the one on their press kit / logo). Stay
 
 ## When to override with `heroImageUrl`
 
-Default to **no** override. Only add a hero image when:
-- The brand has supplied us with their official lifestyle/marketing photography (press kit, partner program asset)
-- We've licensed proper editorial photography for it (Unsplash with the photographer credited, or paid stock)
+Default to **no** override. Only add a hero image when one of these legitimately copyright-clear sources is available:
+
+- The brand has supplied us with their official lifestyle/marketing photography (press kit, partner program asset, partnership pack).
+- We've sourced from a properly licensed royalty-free library and credited per the licence (Pexels, Wikimedia Commons under matching CC, paid stock with proof of licence).
+- We've taken the photo ourselves.
+
+**Hard rule — copyright:** Never scrape brand banners or hero imagery from Gadget Flow, competitor affiliate sites, or any third-party publisher. They paid for / licensed those assets and we have no rights to redistribute them. Don't even download "to use as reference" — keep them out of the repo entirely.
 
 Never use a product listing photo (white-background Amazon shot) as `heroImageUrl`. The auditor doesn't block this but it looks cheap.
+
+## Brands with no products yet
+
+A brand can ship in `brands.ts` before its products are sourced. The `/brand/<slug>` page renders an "In the pipeline" state — branded with the accent color, explaining the shortlist is being curated, with a CTA back to `/brands` and an outbound link to the brand's official site. This is fine for short stretches (Belkin currently). Source real products via Amazon AU once Associates is approved, or via `pnpm gf:sync` (which preserves attribution via `gadgetFlowUrl`), or via direct-brand affiliate networks.
 
 ## Auditor: `pnpm brands:audit`
 

@@ -266,15 +266,54 @@ export default function BrandPage() {
         </div>
 
         {products.length === 0 ? (
-          <div className="rounded-2xl border border-border/50 bg-card p-10 text-center">
-            <ImageOff className="w-10 h-10 text-muted-foreground/30 mx-auto mb-3" />
-            <p className="text-muted-foreground">
-              No live products from {brand.name} yet — check back soon.
+          <div
+            className="relative rounded-3xl overflow-hidden p-10 lg:p-16 text-center"
+            style={{
+              background: `linear-gradient(135deg, ${accent}1a 0%, ${accent}0d 50%, transparent 100%)`,
+              border: `1px solid ${accent}33`,
+            }}
+          >
+            <div
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono tracking-widest uppercase mb-5"
+              style={{
+                color: accent,
+                backgroundColor: `${accent}15`,
+                border: `1px solid ${accent}33`,
+              }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: accent }} />
+              In the pipeline
+            </div>
+            <h3 className="text-2xl lg:text-3xl font-display text-foreground mb-3">
+              {brand.name} is being curated.
+            </h3>
+            <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
+              We're hand-picking the {brand.name} products that earn a place on this site —
+              the ones that actually shift the category, not just the ones that ship the most units.
+              Check back soon, or explore other brands while we finish the shortlist.
             </p>
+            <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
+              <Link
+                href="/brands"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-foreground text-background font-semibold text-sm hover:opacity-90 transition-opacity"
+              >
+                Browse all brands <ArrowLeft className="w-4 h-4 rotate-180" />
+              </Link>
+              {brand.website && (
+                <a
+                  href={brand.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-sm font-semibold hover:border-foreground/40 transition-colors"
+                >
+                  Visit {brand.name} <ExternalLink className="w-4 h-4" />
+                </a>
+              )}
+            </div>
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 lg:gap-5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 lg:gap-6">
               {displayProducts.map((p, i) => (
                 <ProductCard key={p.id} product={p} index={i} />
               ))}
