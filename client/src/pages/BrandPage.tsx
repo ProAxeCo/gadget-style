@@ -64,6 +64,13 @@ export default function BrandPage() {
       }
     : {};
 
+  // Pick a representative product image for the hero backdrop when the brand
+  // doesn't supply its own heroImageUrl. Mirrors the GF brand-page rhythm —
+  // the products themselves carry the brand's visual identity.
+  const heroBackdrop =
+    brand.heroImageUrl ??
+    (products.length > 0 ? products[0].image : undefined);
+
   // Schema.org JSON-LD for SEO. Brand + ItemList of products.
   const jsonLd = {
     "@context": "https://schema.org",
@@ -104,17 +111,17 @@ export default function BrandPage() {
         className="relative w-full mt-24 lg:mt-28 mb-12 lg:mb-16 mx-4 sm:mx-6 lg:mx-8 rounded-3xl overflow-hidden"
         style={heroStyle}
       >
-        {brand.heroImageUrl && (
+        {heroBackdrop && (
           <>
             <img
-              src={brand.heroImageUrl}
+              src={heroBackdrop}
               alt=""
-              className="absolute inset-0 w-full h-full object-cover opacity-50"
+              className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/65 to-black/75" />
           </>
         )}
-        {!brand.heroImageUrl && !brand.accentColor && (
+        {!heroBackdrop && !brand.accentColor && (
           <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black" />
         )}
 
@@ -127,15 +134,15 @@ export default function BrandPage() {
             <ArrowLeft className="w-4 h-4" /> All brands
           </Link>
 
-          {/* Logo */}
+          {/* Compact logo pill — top of hero (smaller than before, GF-style) */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="w-32 h-32 lg:w-40 lg:h-40 rounded-2xl bg-white/95 flex items-center justify-center shadow-2xl mb-6 p-5"
+            className="w-20 h-20 lg:w-24 lg:h-24 rounded-2xl bg-white/95 flex items-center justify-center shadow-xl mb-6 p-3"
           >
             {logoBroken ? (
-              <span className="text-3xl lg:text-4xl font-display text-zinc-800">{brand.name}</span>
+              <span className="text-xl lg:text-2xl font-display text-zinc-800">{brand.name}</span>
             ) : (
               <img
                 src={brand.logoUrl}
@@ -146,30 +153,37 @@ export default function BrandPage() {
             )}
           </motion.div>
 
-          {/* Name + tagline */}
+          {/* "Products we love from <Brand>" — GF-style accent underline */}
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl lg:text-6xl font-display text-white mb-3"
+            className="text-4xl lg:text-6xl font-display text-white mb-2 leading-tight"
           >
-            {brand.name}
+            Products we love from{" "}
+            <span
+              className="relative inline-block pb-1"
+              style={{
+                color: brand.accentColor || "#FFCC00",
+              }}
+            >
+              {brand.name}
+              <span
+                aria-hidden
+                className="absolute left-0 right-0 -bottom-0.5 h-1.5 rounded"
+                style={{
+                  backgroundColor: brand.accentColor || "#FFCC00",
+                  opacity: 0.85,
+                }}
+              />
+            </span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.18 }}
-            className="text-lg lg:text-xl text-white/85 font-mono tracking-wide max-w-2xl"
-          >
-            {brand.tagline}
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="text-sm lg:text-base text-white/70 max-w-2xl mt-5 leading-relaxed"
+            transition={{ duration: 0.5, delay: 0.22 }}
+            className="text-base lg:text-lg text-white/85 max-w-2xl mt-5 leading-relaxed"
           >
             {brand.description}
           </motion.p>
@@ -182,14 +196,14 @@ export default function BrandPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.32 }}
-              className="mt-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-zinc-900 font-semibold hover:bg-white/90 transition-colors text-sm"
+              className="mt-7 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-zinc-900 font-semibold hover:bg-white/90 transition-colors text-sm"
             >
               Visit official site <ExternalLink className="w-4 h-4" />
             </motion.a>
           )}
 
           {/* Stat strip */}
-          <div className="mt-10 flex items-center gap-6 text-white/80 text-xs font-mono tracking-widest uppercase">
+          <div className="mt-8 flex items-center gap-6 text-white/80 text-xs font-mono tracking-widest uppercase">
             <span className="flex items-center gap-2">
               <Package className="w-3.5 h-3.5" /> {products.length} products
             </span>
@@ -209,8 +223,8 @@ export default function BrandPage() {
             <span className="text-primary font-mono text-xs tracking-widest uppercase block mb-2">
               Curated
             </span>
-            <h2 className="text-3xl lg:text-4xl font-display text-foreground">
-              Products we love from {brand.name}
+            <h2 className="text-2xl lg:text-3xl font-display text-foreground">
+              The {brand.name} shortlist
             </h2>
           </div>
           <span className="hidden sm:inline text-sm text-muted-foreground">
@@ -227,7 +241,7 @@ export default function BrandPage() {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 lg:gap-5">
               {displayProducts.map((p, i) => (
                 <ProductCard key={p.id} product={p} index={i} />
               ))}

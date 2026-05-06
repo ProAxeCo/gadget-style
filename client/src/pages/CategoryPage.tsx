@@ -10,7 +10,7 @@ import { getCategoryBySlug, getProductsByCategory } from "@/lib/data";
 import { ArrowLeft, SlidersHorizontal, ChevronDown, Grid3X3, LayoutList } from "lucide-react";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
-const PRODUCTS_PER_PAGE = 15;
+const PRODUCTS_PER_PAGE = 18;
 
 type SortOption = "newest" | "price-low" | "price-high" | "rating" | "popular";
 
@@ -153,7 +153,7 @@ export default function CategoryPage() {
           <div
             className={
               viewMode === "grid"
-                ? "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 lg:gap-6"
+                ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 lg:gap-5"
                 : "space-y-4"
             }
           >
