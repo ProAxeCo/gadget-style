@@ -64,22 +64,16 @@ export default function BrandsIndexPage() {
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />
-        {/* Dark gradient for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/55 to-black/75" />
-        {/* Subtle blue/purple radial glow + grid pattern for depth */}
+        {/* Light dark scrim — only enough to keep the white headline
+            readable, the vibrant photo shows through everywhere else */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-black/45" />
+        {/* Subtle blue/purple bloom for editorial polish (no longer
+            blanket-dark — image carries the vibrancy) */}
         <div
-          className="absolute inset-0 opacity-40 mix-blend-overlay"
+          className="absolute inset-0 opacity-30 mix-blend-overlay"
           style={{
             background:
-              "radial-gradient(ellipse at center top, rgba(59,130,246,0.35), transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(168,85,247,0.25), transparent 50%)",
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-[0.05]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
+              "radial-gradient(ellipse at center top, rgba(59,130,246,0.25), transparent 65%), radial-gradient(ellipse at 20% 80%, rgba(168,85,247,0.18), transparent 55%)",
           }}
         />
 

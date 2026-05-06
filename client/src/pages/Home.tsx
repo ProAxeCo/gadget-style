@@ -153,12 +153,14 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════════
-          SECTION 2 — EXPLORE CATEGORIES (6-Across Grid, GF-style)
-          All 6 categories visible at once on desktop. 2 cols on mobile,
-          3 cols on tablet, 6 cols on desktop.
+          SECTION 2 — EXPLORE CATEGORIES
+          Same grid breakpoints, same wide container, and same card
+          rhythm (square image + info-below) as the product grids on
+          /category, /brand, /search — so category cards line up
+          pixel-identical with product cards across the site.
           ════════════════════════════════════════════ */}
       <section className="py-12 lg:py-16 border-t border-border/50 bg-secondary/30">
-        <div className="container">
+        <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
           <div className="flex items-end justify-between mb-8 lg:mb-10">
             <div>
               <span className="text-primary font-mono text-xs tracking-widest uppercase block mb-2">Browse</span>
@@ -172,7 +174,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 lg:gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 lg:gap-6">
             {categories.map((cat, i) => (
               <motion.div
                 key={cat.slug}
@@ -180,27 +182,29 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.04 }}
+                className="group"
               >
                 <Link href={`/category/${cat.slug}`}>
-                  <div className="group rounded-2xl overflow-hidden relative bg-card border border-border/60 hover:border-primary/40 hover:shadow-xl hover:-translate-y-0.5 transition-all cursor-pointer h-full">
-                    <div className="aspect-square overflow-hidden">
-                      <img
-                        src={cat.image}
-                        alt={cat.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-90" />
-                    </div>
-                    <div className="absolute inset-0 flex flex-col justify-end p-3 lg:p-4">
-                      <h3 className="text-sm lg:text-base font-display text-white drop-shadow-md leading-tight mb-1">
-                        {cat.name}
-                      </h3>
-                      <p className="text-white/80 text-xs font-mono tracking-wide">
-                        {cat.productCount} products
-                      </p>
-                    </div>
+                  {/* Square image area — matches ProductCard's aspect-square */}
+                  <div className="relative rounded-2xl overflow-hidden aspect-square shadow-md group-hover:shadow-2xl transition-all duration-300 mb-3 bg-secondary">
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                   </div>
+
+                  {/* Info area BELOW the image — mirrors ProductCard rhythm */}
+                  <div className="flex items-center flex-wrap gap-2 mb-1.5">
+                    <span className="text-[15px] lg:text-base font-bold font-mono text-primary inline-flex items-center gap-1.5">
+                      {cat.productCount} products
+                    </span>
+                  </div>
+                  <h3 className="font-medium text-base lg:text-[17px] line-clamp-2 group-hover:text-primary transition-colors leading-snug text-foreground/90">
+                    {cat.name}
+                  </h3>
                 </Link>
               </motion.div>
             ))}
@@ -215,8 +219,8 @@ export default function Home() {
         <div className="container">
           <SectionHeading label="Trending" title="Now Trending" action="View All" href="/category/smart-home" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {trending.slice(0, 5).map((product, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+            {trending.slice(0, 12).map((product, i) => (
               <FadeSection key={product.id} delay={i * 0.08}>
                 <Link href={`/product/${product.slug}`}>
                   <div className="group relative flex lg:flex-col items-center lg:items-start gap-4 p-4 rounded-xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all">
