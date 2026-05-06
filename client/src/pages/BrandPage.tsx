@@ -120,38 +120,40 @@ export default function BrandPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero — brand-color marketing surface (no busy product backdrop) */}
+      {/* Hero — full-bleed brand-themed lifestyle photo with accent tint */}
       <section
         className="relative w-full mt-24 lg:mt-28 mb-12 lg:mb-16 mx-4 sm:mx-6 lg:mx-8 rounded-3xl overflow-hidden"
-        style={heroStyle}
+        style={heroOverlay ? undefined : heroStyle}
       >
-        {/* Subtle radial highlight from top-left for depth */}
+        {/* Lifestyle backdrop (Pexels-sourced when heroImageUrl is set) */}
+        {heroOverlay && (
+          <img
+            src={heroOverlay}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
+
+        {/* Brand-color tint overlay — multiply blend ties the photo to the
+            brand's identity while keeping the image readable */}
         <div
-          className="absolute inset-0 opacity-50"
+          className="absolute inset-0 mix-blend-multiply"
+          style={{
+            background: heroOverlay
+              ? `linear-gradient(135deg, ${accent}b3 0%, ${accent}80 55%, ${accent}66 100%)`
+              : "transparent",
+          }}
+        />
+        {/* Soft top-left highlight for depth */}
+        <div
+          className="absolute inset-0 opacity-40"
           style={{
             background:
-              "radial-gradient(ellipse at 25% 0%, rgba(255,255,255,0.25), transparent 55%)",
+              "radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.25), transparent 60%)",
           }}
         />
-        {/* Diagonal stripe texture, very subtle */}
-        <div
-          className="absolute inset-0 opacity-[0.06] mix-blend-overlay"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(45deg, rgba(255,255,255,0.6) 0 1px, transparent 1px 18px)",
-          }}
-        />
-        {/* Optional press-kit hero image as a subtle overlay (only when brand explicitly supplies one) */}
-        {heroOverlay && (
-          <>
-            <img
-              src={heroOverlay}
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-overlay"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/15 to-black/40" />
-          </>
-        )}
+        {/* Bottom vignette for content legibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/15 to-black/45" />
 
         <div className="relative z-10 container py-20 lg:py-28 flex flex-col items-center text-center">
           {/* Back link */}

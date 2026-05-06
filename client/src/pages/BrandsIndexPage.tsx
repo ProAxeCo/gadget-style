@@ -111,38 +111,40 @@ export default function BrandsIndexPage() {
               >
                 <Link href={`/brand/${brand.slug}`}>
                   <div className="group relative rounded-2xl overflow-hidden cursor-pointer aspect-square shadow-md hover:shadow-2xl transition-all duration-300">
-                    {/* Solid brand-color backdrop */}
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background: `linear-gradient(135deg, ${accent} 0%, ${accent}dd 60%, ${accent}aa 100%)`,
-                      }}
-                    />
-                    {/* Subtle radial highlight from top-left for depth */}
-                    <div
-                      className="absolute inset-0 opacity-50"
-                      style={{
-                        background:
-                          tone === "dark"
-                            ? "radial-gradient(circle at 30% 20%, rgba(255,255,255,0.6), transparent 55%)"
-                            : "radial-gradient(circle at 30% 20%, rgba(255,255,255,0.25), transparent 55%)",
-                      }}
-                    />
-                    {/* Diagonal stripe texture, very subtle */}
-                    <div
-                      className="absolute inset-0 opacity-[0.06] mix-blend-overlay"
-                      style={{
-                        backgroundImage:
-                          "repeating-linear-gradient(45deg, rgba(255,255,255,0.5) 0 1px, transparent 1px 14px)",
-                      }}
-                    />
-
-                    {/* Logo — centered, large, bg-card pill so even thin/dark logos read on any accent */}
-                    <div className="absolute inset-0 flex items-center justify-center px-4">
+                    {/* Hero photo backdrop (Pexels-sourced lifestyle imagery) */}
+                    {brand.heroImageUrl ? (
+                      <img
+                        src={brand.heroImageUrl}
+                        alt=""
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                    ) : (
                       <div
-                        className={`rounded-2xl px-5 py-4 lg:px-6 lg:py-5 backdrop-blur-sm shadow-lg flex items-center justify-center w-full max-w-[180px] h-20 lg:h-24 ${
+                        className="absolute inset-0"
+                        style={{
+                          background: `linear-gradient(135deg, ${accent} 0%, ${accent}dd 60%, ${accent}aa 100%)`,
+                        }}
+                      />
+                    )}
+
+                    {/* Brand-color tint overlay — keeps the photo readable AND
+                        ties the card to the brand's identity */}
+                    <div
+                      className="absolute inset-0 mix-blend-multiply"
+                      style={{
+                        background: `linear-gradient(135deg, ${accent}cc 0%, ${accent}80 50%, ${accent}66 100%)`,
+                      }}
+                    />
+                    {/* Subtle dark vignette for legibility of bottom info */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+
+                    {/* Logo pill — auto-toned to the accent so it always reads */}
+                    <div className="absolute inset-0 flex items-center justify-center px-4 pb-12">
+                      <div
+                        className={`rounded-2xl px-5 py-4 lg:px-6 lg:py-5 backdrop-blur-sm shadow-2xl flex items-center justify-center w-full max-w-[180px] h-20 lg:h-24 ${
                           tone === "dark"
-                            ? "bg-zinc-900/85"
+                            ? "bg-zinc-900/90"
                             : "bg-white/95"
                         }`}
                       >

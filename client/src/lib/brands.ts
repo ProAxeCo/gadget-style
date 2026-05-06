@@ -53,6 +53,7 @@ export const brands: Brand[] = [
     description:
       "No matter what devices you own, Belkin has something to make them better. From MagSafe-ready chargers to USB-C hubs and Thunderbolt docks, the brand has been quietly engineering the accessories that turn good gear into great workflows for over four decades.",
     logoUrl: "/images/brands/belkin.svg",
+    heroImageUrl: "/images/brands/heroes/belkin.jpg",
     website: "https://www.belkin.com",
     accentColor: "#0070C0",
   },
@@ -63,6 +64,7 @@ export const brands: Brand[] = [
     description:
       "From the original Echo to the Kindle and Fire TV, Amazon's first-party hardware quietly defines what mass-market smart home and entertainment look like. We pick the devices that actually earn their place on a shelf or wall.",
     logoUrl: "/images/brands/amazon.svg",
+    heroImageUrl: "/images/brands/heroes/amazon.jpg",
     website: "https://www.amazon.com",
     accentColor: "#FF9900",
   },
@@ -73,6 +75,7 @@ export const brands: Brand[] = [
     description:
       "Apple's hardware sets the bar for design-led consumer electronics — and the accessory ecosystem around it has its own gravity. Our picks span Cupertino's own products and the third-party gear engineered specifically for them.",
     logoUrl: "/images/brands/apple.svg",
+    heroImageUrl: "/images/brands/heroes/apple.jpg",
     website: "https://www.apple.com",
     accentColor: "#1d1d1f",
   },
@@ -83,8 +86,9 @@ export const brands: Brand[] = [
     description:
       "Sony's reach across audio, imaging, and gaming makes it one of the few brands you can build an entire home around. We curate the products where Sony's engineering still genuinely leads its category.",
     logoUrl: "/images/brands/sony.svg",
+    heroImageUrl: "/images/brands/heroes/sony.jpg",
     website: "https://www.sony.com",
-    accentColor: "#000000",
+    accentColor: "#0e0e10",
   },
   {
     slug: "samsung",
@@ -93,6 +97,7 @@ export const brands: Brand[] = [
     description:
       "Samsung makes everything from flagship phones to fridges, and the products that earn a place here are the ones where vertical integration shows — Galaxy ecosystem hardware, OLED panels, and SmartThings-grade home tech.",
     logoUrl: "/images/brands/samsung.svg",
+    heroImageUrl: "/images/brands/heroes/samsung.jpg",
     website: "https://www.samsung.com",
     accentColor: "#1428a0",
   },
@@ -103,8 +108,9 @@ export const brands: Brand[] = [
     description:
       "Garmin builds for athletes, pilots, and outdoor obsessives — wearables and navigation tools that prioritise battery life, ruggedness, and metrics that matter over flashy software.",
     logoUrl: "/images/brands/garmin.svg",
+    heroImageUrl: "/images/brands/heroes/garmin.jpg",
     website: "https://www.garmin.com",
-    accentColor: "#000000",
+    accentColor: "#0e0e10",
   },
   {
     slug: "anker",
@@ -113,6 +119,7 @@ export const brands: Brand[] = [
     description:
       "Anker turned charging into a category. The brand's portable batteries, GaN bricks, and Soundcore audio line consistently punch above their price — practical hardware engineered for everyday use.",
     logoUrl: "/images/brands/anker.svg",
+    heroImageUrl: "/images/brands/heroes/anker.jpg",
     website: "https://www.anker.com",
     accentColor: "#00bcd4",
   },
@@ -123,6 +130,7 @@ export const brands: Brand[] = [
     description:
       "Razer designs for the gaming desk — keyboards, mice, headsets, laptops, and the streaming gear that surrounds them. Aggressive industrial design backed by genuine performance hardware.",
     logoUrl: "/images/brands/razer.svg",
+    heroImageUrl: "/images/brands/heroes/razer.jpg",
     website: "https://www.razer.com",
     accentColor: "#44d62c",
   },
@@ -133,8 +141,9 @@ export const brands: Brand[] = [
     description:
       "Asus and its ROG sub-brand cover the full PC stack — motherboards, GPUs, gaming laptops, ultra-thin notebooks. Reliable engineering with a consistent appetite for high-end performance.",
     logoUrl: "/images/brands/asus.svg",
+    heroImageUrl: "/images/brands/heroes/asus.jpg",
     website: "https://www.asus.com",
-    accentColor: "#000000",
+    accentColor: "#0e0e10",
   },
   {
     slug: "dji",
@@ -143,8 +152,9 @@ export const brands: Brand[] = [
     description:
       "DJI dominates consumer drones and gimbals because the engineering is genuinely ahead. Stabilisation, flight dynamics, and image pipelines that competitors are still trying to match.",
     logoUrl: "/images/brands/dji.svg",
+    heroImageUrl: "/images/brands/heroes/dji.jpg",
     website: "https://www.dji.com",
-    accentColor: "#000000",
+    accentColor: "#0e0e10",
   },
 ];
 
