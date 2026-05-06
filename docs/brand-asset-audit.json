@@ -1,0 +1,70 @@
+{
+  "timestamp": "2026-05-06T03:20:03.078Z",
+  "summary": {
+    "brands": 10,
+    "errors": 0,
+    "warnings": 0
+  },
+  "findings": [
+    {
+      "brand": "belkin",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "amazon",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "apple",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "sony",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "samsung",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "garmin",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "anker",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "razer",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "asus",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "dji",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    }
+  ]
+}

@@ -147,8 +147,8 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
       className="group"
     >
       {/* Clickable image area — GF style: image fills card, rounded corners, NO TEXT */}
-      <Link href={`/product/${product.slug}`} className="block relative rounded-2xl overflow-hidden bg-secondary mb-2.5">
-        <div className="aspect-[1.15/1] relative">
+      <Link href={`/product/${product.slug}`} className="block relative rounded-2xl overflow-hidden bg-secondary mb-3">
+        <div className="aspect-square relative">
           {imgError ? (
             <ImagePlaceholder />
           ) : (
@@ -212,12 +212,12 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
       </Link>
 
       {/* Below image: Price + Tags row — GF exact style */}
-      <div className="flex items-center flex-wrap gap-1.5 mb-1">
-        <span className="text-[15px] font-bold font-mono text-green-600">${product.price.toFixed(2)}</span>
+      <div className="flex items-center flex-wrap gap-1.5 mb-1.5">
+        <span className="text-base lg:text-[17px] font-bold font-mono text-green-600">${product.price.toFixed(2)}</span>
         {product.tags.slice(0, 3).map((tag: string) => (
           <span
             key={tag}
-            className={`px-2 py-0.5 text-[10px] font-semibold rounded-full ${getTagColor(tag)}`}
+            className={`px-2 py-0.5 text-[11px] font-semibold rounded-full ${getTagColor(tag)}`}
           >
             {tag}
           </span>
@@ -226,7 +226,7 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
 
       {/* Product title — GF style: regular weight, no description */}
       <Link href={`/product/${product.slug}`}>
-        <h3 className="font-medium text-[14px] line-clamp-2 group-hover:text-primary transition-colors leading-snug text-foreground/90">
+        <h3 className="font-medium text-[15px] lg:text-base line-clamp-2 group-hover:text-primary transition-colors leading-snug text-foreground/90">
           {product.title}
         </h3>
       </Link>

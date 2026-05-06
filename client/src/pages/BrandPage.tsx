@@ -57,19 +57,33 @@ export default function BrandPage() {
   const displayProducts = products.slice(0, visibleCount);
   const hasMore = visibleCount < products.length;
 
-  // Hero background — uses accentColor when set, otherwise a neutral dark gradient.
-  const heroStyle: React.CSSProperties = brand.accentColor
-    ? {
-        background: `linear-gradient(135deg, ${brand.accentColor}33 0%, #0b1220 60%, #050810 100%)`,
-      }
-    : {};
+  // Brand-color hero — clean marketing-surface treatment, NOT a busy product
+  // photo backdrop. Uses the brand's accent color as a deep gradient with a
+  // subtle radial highlight, just like Apple/Razer/Belkin's own brand pages.
+  const accent = brand.accentColor || "#1f2937";
 
-  // Pick a representative product image for the hero backdrop when the brand
-  // doesn't supply its own heroImageUrl. Mirrors the GF brand-page rhythm —
-  // the products themselves carry the brand's visual identity.
-  const heroBackdrop =
-    brand.heroImageUrl ??
-    (products.length > 0 ? products[0].image : undefined);
+  // Auto-pick logo pill tone based on accent luminance (light accent → dark
+  // pill, dark accent → white pill) so logos stay legible.
+  const accentLum = (() => {
+    const m = accent.match(/^#?([0-9a-fA-F]{6})$/);
+    if (!m) return 0;
+    const n = parseInt(m[1], 16);
+    return (
+      (0.2126 * ((n >> 16) & 0xff) +
+        0.7152 * ((n >> 8) & 0xff) +
+        0.0722 * (n & 0xff)) /
+      255
+    );
+  })();
+  const pillTone: "light" | "dark" = accentLum > 0.6 ? "dark" : "light";
+
+  const heroStyle: React.CSSProperties = {
+    background: `linear-gradient(135deg, ${accent} 0%, ${accent}cc 45%, #0b1220 100%)`,
+  };
+
+  // Optional override — if a brand has dedicated press-kit hero imagery, it
+  // overlays the gradient at low opacity rather than replacing it.
+  const heroOverlay = brand.heroImageUrl;
 
   // Schema.org JSON-LD for SEO. Brand + ItemList of products.
   const jsonLd = {
@@ -106,43 +120,65 @@ export default function BrandPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero */}
+      {/* Hero — brand-color marketing surface (no busy product backdrop) */}
       <section
         className="relative w-full mt-24 lg:mt-28 mb-12 lg:mb-16 mx-4 sm:mx-6 lg:mx-8 rounded-3xl overflow-hidden"
         style={heroStyle}
       >
-        {heroBackdrop && (
+        {/* Subtle radial highlight from top-left for depth */}
+        <div
+          className="absolute inset-0 opacity-50"
+          style={{
+            background:
+              "radial-gradient(ellipse at 25% 0%, rgba(255,255,255,0.25), transparent 55%)",
+          }}
+        />
+        {/* Diagonal stripe texture, very subtle */}
+        <div
+          className="absolute inset-0 opacity-[0.06] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(45deg, rgba(255,255,255,0.6) 0 1px, transparent 1px 18px)",
+          }}
+        />
+        {/* Optional press-kit hero image as a subtle overlay (only when brand explicitly supplies one) */}
+        {heroOverlay && (
           <>
             <img
-              src={heroBackdrop}
+              src={heroOverlay}
               alt=""
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-overlay"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/65 to-black/75" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/15 to-black/40" />
           </>
         )}
-        {!heroBackdrop && !brand.accentColor && (
-          <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black" />
-        )}
 
-        <div className="relative z-10 container py-16 lg:py-24 flex flex-col items-center text-center">
+        <div className="relative z-10 container py-20 lg:py-28 flex flex-col items-center text-center">
           {/* Back link */}
           <Link
             href="/brands"
-            className="absolute top-6 left-6 lg:top-8 lg:left-8 inline-flex items-center gap-1.5 text-xs lg:text-sm text-white/70 hover:text-white transition-colors"
+            className="absolute top-6 left-6 lg:top-8 lg:left-8 inline-flex items-center gap-1.5 text-xs lg:text-sm text-white/80 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-4 h-4" /> All brands
           </Link>
 
-          {/* Compact logo pill — top of hero (smaller than before, GF-style) */}
+          {/* Logo pill — auto-toned to the accent so it always reads */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="w-20 h-20 lg:w-24 lg:h-24 rounded-2xl bg-white/95 flex items-center justify-center shadow-xl mb-6 p-3"
+            className={`w-24 h-24 lg:w-28 lg:h-28 rounded-2xl flex items-center justify-center shadow-2xl mb-7 p-4 ${
+              pillTone === "dark" ? "bg-zinc-900/85 backdrop-blur" : "bg-white/95 backdrop-blur"
+            }`}
           >
             {logoBroken ? (
-              <span className="text-xl lg:text-2xl font-display text-zinc-800">{brand.name}</span>
+              <span
+                className={`text-xl lg:text-2xl font-display ${
+                  pillTone === "dark" ? "text-white" : "text-zinc-800"
+                }`}
+              >
+                {brand.name}
+              </span>
             ) : (
               <img
                 src={brand.logoUrl}
@@ -153,7 +189,8 @@ export default function BrandPage() {
             )}
           </motion.div>
 
-          {/* "Products we love from <Brand>" — GF-style accent underline */}
+          {/* "Products we love from <Brand>" — GF-style accent underline.
+              Underline tone auto-flips so it stays readable on any accent. */}
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -161,19 +198,15 @@ export default function BrandPage() {
             className="text-4xl lg:text-6xl font-display text-white mb-2 leading-tight"
           >
             Products we love from{" "}
-            <span
-              className="relative inline-block pb-1"
-              style={{
-                color: brand.accentColor || "#FFCC00",
-              }}
-            >
+            <span className="relative inline-block pb-1 text-white">
               {brand.name}
               <span
                 aria-hidden
                 className="absolute left-0 right-0 -bottom-0.5 h-1.5 rounded"
                 style={{
-                  backgroundColor: brand.accentColor || "#FFCC00",
-                  opacity: 0.85,
+                  backgroundColor:
+                    pillTone === "dark" ? "#ffffff" : "#FFCC00",
+                  opacity: 0.95,
                 }}
               />
             </span>

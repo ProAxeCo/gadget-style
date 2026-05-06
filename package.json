@@ -25,6 +25,7 @@
     "gf:refine": "tsx scripts/refine-products.ts",
     "amazon:discover": "tsx scripts/amazon-discover.ts",
     "tnt:sync": "tsx scripts/tnt-sync.ts",
+    "brands:audit": "tsx scripts/audit-brand-assets.ts",
     "social:oauth": "tsx scripts/social-oauth-setup.ts",
     "social:post": "tsx scripts/post-product.ts",
     "social:queue": "tsx scripts/social-queue.ts",

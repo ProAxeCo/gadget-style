@@ -189,6 +189,14 @@
     }
   }
 
+  @media (min-width: 1536px) {
+    .container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+      max-width: 1600px;
+    }
+  }
+
   /* Editorial glass card — light mode optimised */
   .glass-card {
     background: oklch(1 0 0 / 80%);
