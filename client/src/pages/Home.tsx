@@ -7,7 +7,7 @@
 import { useState, useRef } from "react";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, TrendingUp, Star, Clock, Tag, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, Star, Clock, Mail, Sparkles } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import {
   categories,
@@ -61,6 +61,10 @@ export default function Home() {
   const featured = getFeaturedProducts();
   const trending = getTrendingProducts();
   const newArrivals = getNewProducts(12);
+  // "New Discoveries" — show the newest 24 curated products (4 rows of 6
+  // on 2xl). User wanted "as many that will fit page" → 24 is the sweet
+  // spot before page weight gets excessive.
+  const newDiscoveries = getNewProducts(24);
 
   /* Pick of the Day — rotate through featured products */
   const [pickIndex, setPickIndex] = useState(0);
@@ -234,62 +238,38 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════════
-          SECTION 4 — EDITOR'S PICKS (Alternating Editorial Feed)
+          SECTION 4 — FEATURED THIS WEEK
+          Replaces the old "Editor's Picks" alternating editorial feed.
+          Same canonical 6-across product card grid as everything else
+          on the site, so cards line up pixel-identical.
           ════════════════════════════════════════════ */}
       <section className="py-12 lg:py-16 bg-secondary/20">
-        <div className="container">
-          <SectionHeading label="Curated" title="Editor's Picks" />
+        <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
+          <SectionHeading label="Curated" title="Featured this Week" action="See All" href="/category/smart-home" />
 
-          <div className="space-y-12 lg:space-y-16">
-            {featured.slice(0, 6).map((product, i) => (
-              <FadeSection key={product.id}>
-                <Link href={`/product/${product.slug}`}>
-                  <article
-                    className={`group grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center ${
-                      i % 2 === 1 ? "lg:direction-rtl" : ""
-                    }`}
-                  >
-                    {/* Image side */}
-                    <div className={`relative overflow-hidden rounded-2xl aspect-[4/3] bg-secondary/30 ${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                      <img
-                        src={product.images[0] || product.image}
-                        alt={product.title}
-                        className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                      />
-                    </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 lg:gap-6">
+            {featured.slice(0, 12).map((product, i) => (
+              <FadeSection key={product.id} delay={i * 0.04}>
+                <ProductCard product={product} index={i} />
+              </FadeSection>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                    {/* Text side */}
-                    <div className={`py-2 ${i % 2 === 1 ? "lg:order-1 lg:text-right" : ""}`} style={{ direction: "ltr" }}>
-                      <div className={`flex items-center gap-2 mb-3 ${i % 2 === 1 ? "lg:justify-end" : ""}`}>
-                        <Tag className="w-3.5 h-3.5 text-primary" />
-                        <span className="text-xs font-mono text-primary tracking-wider uppercase">{product.category}</span>
-                      </div>
+      {/* ════════════════════════════════════════════
+          SECTION 4b — NEW DISCOVERIES
+          Newly curated products — the latest catalog additions, deeper
+          than "New Arrivals". Same canonical grid + container.
+          ════════════════════════════════════════════ */}
+      <section className="py-12 lg:py-16 bg-background">
+        <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
+          <SectionHeading label="Just In" title="New Discoveries" action="See All" href="/category/smart-home" />
 
-                      <h3 className="text-2xl lg:text-3xl font-display text-foreground mb-3 group-hover:text-primary transition-colors">
-                        {product.title}
-                      </h3>
-
-                      <p className="text-muted-foreground leading-relaxed mb-4 line-clamp-3">
-                        {product.description}
-                      </p>
-
-                      <div className={`flex items-center gap-4 mb-5 ${i % 2 === 1 ? "lg:justify-end" : ""}`}>
-                        <span className="font-mono text-xl text-primary font-semibold">${product.price}</span>
-                        <span className="flex items-center gap-1 text-sm text-muted-foreground">
-                          <Star className="w-4 h-4 fill-yellow-500 text-yellow-500" />
-                          {product.rating}
-                        </span>
-                      </div>
-
-                      <span className={`inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all`}>
-                        View Product <ArrowRight className="w-4 h-4" />
-                      </span>
-                    </div>
-                  </article>
-                </Link>
-
-                {/* Editorial divider */}
-                {i < 5 && <div className="editorial-divider mt-12 lg:mt-16" />}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 lg:gap-6">
+            {newDiscoveries.map((product, i) => (
+              <FadeSection key={product.id} delay={Math.min(i * 0.03, 0.4)}>
+                <ProductCard product={product} index={i} />
               </FadeSection>
             ))}
           </div>
@@ -322,8 +302,8 @@ export default function Home() {
         <div className="container">
           <SectionHeading label="Read" title="From the Blog" action="All Articles" href="/blog" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {blogPosts.slice(0, 3).map((post, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {blogPosts.slice(0, 4).map((post, i) => (
               <FadeSection key={post.id} delay={i * 0.1}>
                 <Link href={`/blog/${post.slug}`}>
                   <article className="group rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-primary/30 hover:shadow-md transition-all">
