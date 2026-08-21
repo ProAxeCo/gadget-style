@@ -1,3 +1,6 @@
+
+import { ASIN_STRICT_RE, slugify, mapConcurrent, decodeEntities } from "./common.js";
+export { ASIN_STRICT_RE, slugify, mapConcurrent };
 /**
  * Gadget Flow scraping library — the pure, reusable logic.
  * CLIs (`scrape-gadgetflow.ts`, `gf-sync.ts`) import from here.
@@ -6,7 +9,6 @@
  */
 
 export const ASIN_RE = /\/(?:dp|gp\/product|exec\/obidos\/asin)\/([A-Z0-9]{10})/i;
-export const ASIN_STRICT_RE = /^B0[A-Z0-9]{8}$/;
 
 export interface ScrapeResult {
   gadgetFlowUrl: string;
@@ -110,35 +112,6 @@ async function resolveAmazonUrl(url: string): Promise<string> {
 }
 
 // --- parsers ---
-
-function decodeEntities(s: string): string {
-  return (
-    s
-      // Named entities (handle these first)
-      .replace(/&amp;/g, "&")
-      .replace(/&lt;/g, "<")
-      .replace(/&gt;/g, ">")
-      .replace(/&quot;/g, '"')
-      .replace(/&apos;/g, "'")
-      .replace(/&nbsp;/g, " ")
-      // Decimal numeric entities: &#160; / &#038; / &#8217; etc.
-      .replace(/&#(\d+);/g, (_, n) => {
-        try {
-          return String.fromCodePoint(parseInt(n, 10));
-        } catch {
-          return "";
-        }
-      })
-      // Hex numeric entities: &#x27; / &#xA9; etc.
-      .replace(/&#x([0-9a-f]+);/gi, (_, h) => {
-        try {
-          return String.fromCodePoint(parseInt(h, 16));
-        } catch {
-          return "";
-        }
-      })
-  );
-}
 
 function extractMetaContent(html: string, property: string): string | null {
   const re = new RegExp(
@@ -450,36 +423,3 @@ export async function discoverGfProductUrls(): Promise<string[]> {
   return [...found];
 }
 
-/** Run a mapper with bounded concurrency. */
-export async function mapConcurrent<T, U>(
-  items: T[],
-  concurrency: number,
-  fn: (item: T, index: number) => Promise<U>,
-  onProgress?: (done: number, total: number) => void,
-): Promise<U[]> {
-  const results = new Array<U>(items.length);
-  let cursor = 0;
-  let done = 0;
-  async function worker() {
-    while (cursor < items.length) {
-      const i = cursor++;
-      results[i] = await fn(items[i], i);
-      done++;
-      onProgress?.(done, items.length);
-    }
-  }
-  await Promise.all(
-    Array.from({ length: Math.min(concurrency, items.length) }, () => worker()),
-  );
-  return results;
-}
-
-/** Slugify a title into a URL-safe slug. Matches the validator's SLUG_RE. */
-export function slugify(s: string): string {
-  return s
-    .toLowerCase()
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 80);
-}

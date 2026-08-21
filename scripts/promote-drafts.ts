@@ -19,13 +19,13 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { products, type Product } from "../client/src/lib/data.js";
+import { AFFILIATE_TAG } from "../shared/const.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_PATH = join(__dirname, "..", "client", "src", "lib", "data.ts");
 
 const ASIN_RE = /^B0[A-Z0-9]{8}$/;
 const SLUG_RE = /^[a-z0-9-]+$/;
-const AFFILIATE_TAG = "gadgetstyle01-20";
 
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
@@ -57,6 +57,15 @@ function evaluate(p: Product): Decision {
   } else if (dest === "external") {
     if (!p.externalUrl) reasons.push("destination=external but no externalUrl");
   }
+  // Images must be site-local before going live. This is the last gate
+  // against the ephemeral-hotlink bug class: if mirror:images failed (or
+  // was skipped) during ingestion, a draft can still carry source-site
+  // URLs that will 404 later. Promotion refuses them regardless of how
+  // the mirror step went.
+  const allImages = [p.image, ...(p.images ?? [])].filter(Boolean);
+  const nonLocal = allImages.filter((u) => !u.startsWith("/images/"));
+  if (nonLocal.length > 0)
+    reasons.push(`unmirrored image(s): ${nonLocal[0].slice(0, 60)}…`);
   return { id: p.id, title: p.title, promote: reasons.length === 0, reasons };
 }
 

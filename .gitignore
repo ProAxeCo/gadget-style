@@ -114,3 +114,11 @@ temp/
 # Manus version file (auto-generated, not part of source)
 client/public/__manus__/version.json
 .claude/settings.local.json
+
+# machine-generated pipeline reports — regenerated on every run, don't track
+docs/gf-scrape-*.json
+docs/gf-sync-*.json
+docs/tnt-sync-*.json
+docs/amazon-discover-*.json
+docs/social-cleanup-log/.tmp/
+audit-report.txt

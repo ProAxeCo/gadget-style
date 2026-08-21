@@ -1,21 +1,15 @@
 /*
  * GADGET STYLE — Brands Index Page
  *
- * Routed as `/brands`. Each brand is presented as a CLEAN BRAND-COLOR TILE —
- * the design pattern used by Apple/Razer/Belkin marketing surfaces and by
- * directory pages like B&H's "Shop by Brand". No product photography in the
- * card chrome (product photography is busy and inconsistent across brands —
- * lifestyle/marketing surfaces are not).
- *
- * Card anatomy:
- *   • Solid brand-accent gradient backdrop (or neutral if no accent set)
- *   • Subtle radial highlight + diagonal stripe pattern for depth
- *   • Large white logo centered (or dark if accent is light)
- *   • Brand name + product count on a darker bottom strip
- *
- * Hero:
- *   • Tall, dark, minimal — typography-led like a category banner
- *   • No product collage. Title + subtitle + brand-count strip.
+ * Routed as `/brands`. Card design (see docs/brand-design-system.md):
+ *   • Square image area matching ProductCard — the brand's Pexels
+ *     lifestyle photo shown CLEAR, soft radial darkening behind the
+ *     centered logo only
+ *   • Official wordmark in NATIVE brand color directly on the photo
+ *     (no pill, no invert filter), white spotlight bloom for legibility
+ *   • Name + product count BELOW the image, mirroring ProductCard so
+ *     brand cards line up pixel-identical with product cards
+ * Hero: full-bleed vibrant tech photo + light scrim + typographic title.
  */
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -23,26 +17,6 @@ import { Package, ArrowRight } from "lucide-react";
 import { brands } from "@/lib/brands";
 import { getBrandProductCount } from "@/lib/data";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
-
-/**
- * Decide whether to render the logo in white or dark, based on the brand's
- * accent colour. Light accents (e.g. Anker cyan, Razer green, Amazon orange)
- * keep their dark logo so it stays legible. Dark accents (Apple, Sony,
- * Samsung) flip to white.
- */
-function pickLogoTone(accent?: string): "light" | "dark" {
-  if (!accent) return "light";
-  // Parse #RRGGBB. Treat short forms or named colors as dark by default.
-  const m = accent.match(/^#?([0-9a-fA-F]{6})$/);
-  if (!m) return "light";
-  const n = parseInt(m[1], 16);
-  const r = (n >> 16) & 0xff;
-  const g = (n >> 8) & 0xff;
-  const b = n & 0xff;
-  // Perceived luminance (Rec. 709)
-  const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
-  return lum > 0.6 ? "dark" : "light";
-}
 
 export default function BrandsIndexPage() {
   useDocumentTitle(
@@ -103,7 +77,6 @@ export default function BrandsIndexPage() {
       <section className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10 pb-16 lg:pb-24">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 lg:gap-6">
           {sorted.map((brand, i) => {
-            const tone = pickLogoTone(brand.accentColor);
             const accent = brand.accentColor || "#1f2937";
             return (
               <motion.div

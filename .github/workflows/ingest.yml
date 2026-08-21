@@ -1,0 +1,76 @@
+name: Catalog ingest (weekly)
+
+# Runs the two draft-gated ingestion pipelines (Gadget Flow + Tools and
+# Toys) and opens a PR with whatever new drafts they found. Safe by
+# construction: everything ingests as isDraft:true (invisible on the live
+# site), the validator runs inside both pipelines, and the PR gives the
+# owner a review point before anything merges. No secrets required.
+#
+# Owner workflow: review the PR's drafts, price + promote the keepers
+# (pnpm drafts:list / drafts:promote), merge.
+
+on:
+  schedule:
+    # Sundays 21:00 UTC = Monday 07:00 AEST — fresh drafts to start the week
+    - cron: "0 21 * * 0"
+  workflow_dispatch:
+    inputs:
+      gf_limit:
+        description: "Max products from Gadget Flow"
+        default: "20"
+      tnt_limit:
+        description: "Max products from Tools and Toys"
+        default: "20"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: catalog-ingest
+  cancel-in-progress: true
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Ingest from Gadget Flow
+        continue-on-error: true # one source failing shouldn't kill the other
+        run: pnpm gf:sync --limit ${{ inputs.gf_limit || '20' }}
+
+      - name: Ingest from Tools and Toys
+        continue-on-error: true
+        run: pnpm tnt:sync --limit ${{ inputs.tnt_limit || '20' }} --augment-amazon
+
+      - name: Validate result
+        run: pnpm check:data
+
+      - name: Open PR with new drafts
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: auto/catalog-ingest
+          title: "chore(catalog): weekly draft ingest"
+          commit-message: "chore(catalog): weekly draft ingest from GF + T&T"
+          body: |
+            Automated weekly ingestion. Everything in this PR is `isDraft: true`
+            — invisible on the live site until promoted.
+
+            Review each draft in `client/src/lib/data.ts`, then price + promote
+            the keepers (`pnpm drafts:list`, `pnpm drafts:promote`) and delete
+            the rest (`pnpm product:remove <id>`).
+          delete-branch: true

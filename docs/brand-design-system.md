@@ -4,9 +4,9 @@ This is how brand pages and brand cards stay consistent and on-quality as we add
 
 ## The principle
 
-**Brand surfaces use brand-color tiles, not product photography.**
+**Brand surfaces use CURATED lifestyle photography with the brand's own wordmark rendered in native color on top.**
 
-Product photos vary wildly in quality, lighting, and background. Stitching them into brand cards or brand-page heroes makes the directory look like a marketplace search result — busy, inconsistent, low-trust. Real brand directories (Apple's reseller pages, Razer's brand surface on Newegg, Belkin's affiliate kit) all use brand-color tiles with the logo as the hero element. We do the same.
+Two failed iterations taught us the boundaries: derived product photos (first-catalog-image backdrops) look like marketplace search results, and flat brand-color tiles look clinical. The shipped design uses a hand-picked Pexels lifestyle photo per brand (thematically matched to what the brand makes), shown CLEAR — no full-card tint — with the official wordmark placed directly on the photo. Legibility comes from a soft white radial bloom behind the logo, not from a pill or an invert filter.
 
 ## The asset kit per brand
 
@@ -17,7 +17,7 @@ Required:
 - **Description (≥ 60 chars, target 100+)** — 1–3 sentences shown beneath the hero.
 
 Optional:
-- **`heroImageUrl`** — only when the brand has supplied real press-kit imagery. Rendered as a low-opacity overlay (mix-blend-overlay) on the brand-color gradient, never as a replacement. Drop product/lifestyle photos in `client/public/images/brands/heroes/<slug>.jpg`.
+- **`heroImageUrl`** — the Pexels lifestyle photo, sourced via `pnpm brands:imagery` into `client/public/images/brands/heroes/<slug>.jpg` (1600×900). Practically required — every current brand has one; without it the surfaces fall back to a color-gradient tile.
 - **`website`** — official site URL. When set, a "Visit official site" CTA renders.
 
 ## Visual rules (already wired in code)
@@ -26,16 +26,15 @@ The components in `BrandsIndexPage.tsx` and `BrandPage.tsx` enforce these automa
 
 | Surface | Treatment |
 |---|---|
-| `/brands` card backdrop | `linear-gradient(135deg, accent 0%, accent+dd 60%, accent+aa 100%)` + radial highlight from top-left + 1px diagonal stripe at 6% opacity |
-| `/brand/:slug` hero backdrop | Same gradient family + softer radial highlight + optional press-kit overlay at 25% opacity |
-| Logo pill tone | Auto-flips: light accent (luminance > 0.6) → dark `bg-zinc-900/85` pill, dark accent → white `bg-white/95` pill. Logo always reads. |
-| Logo size on /brands card | 80×100px content area inside a 180px max-width pill |
-| Logo size on /brand hero | 96–112px square pill |
-| H1 underline | Brand-name span gets a 6px accent underline (white when accent is dark, gold `#FFCC00` fallback) |
+| `/brands` card | Square image area (matches ProductCard) with the hero photo CLEAR + soft radial darkening behind the centered logo only. Info (name + product count) sits BELOW the image, mirroring ProductCard so brand cards line up pixel-identical with product cards. |
+| `/brand/:slug` hero | Full-bleed hero photo shown CLEAR; only a soft bottom gradient (10/20/55% black) for headline legibility. No mix-blend tints. |
+| Logo rendering | NATIVE brand color everywhere — **never `brightness-0 invert`** (it strips Samsung blue / Razer green / Anker cyan). White radial spotlight bloom behind for legibility. No white pill, no circle. |
+| Logo size | ~55% of card height on /brands cards; up to 360px wide on the /brand hero. |
+| H1 underline | Brand-name span gets an accent underline — white when the accent is dark (luminance ≤ 0.6), gold `#FFCC00` otherwise. This luminance check is the ONLY remaining use of the accent-tone logic. |
 
 ## Accent color guidance
 
-Use the brand's primary identity color (the one on their press kit / logo). Stay away from pure black (`#000000`) — bump to `#0e0e0f` so the radial highlight has somewhere to go. Belkin blue, Anker cyan, Razer green, Amazon orange all work. Apple, Sony, Asus, DJI use deep dark accents — the auto pill-tone flip keeps logos readable.
+Use the brand's primary identity color (the one on their press kit / logo). Stay away from pure black (`#000000`) — bump to `#0e0e0f` so the radial highlight has somewhere to go. Belkin blue, Anker cyan, Razer green, Amazon orange all work. Apple, Sony, Asus, DJI use deep dark accents — the H1-underline tone flip keeps the hero headline readable.
 
 ## Adding a new brand — checklist
 

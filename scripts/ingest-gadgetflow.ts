@@ -27,11 +27,11 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { products, categories } from "../client/src/lib/data.js";
 import { spawnSync } from "node:child_process";
+import { AFFILIATE_TAG } from "../shared/const.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, "..");
 const DATA_PATH = join(REPO_ROOT, "client", "src", "lib", "data.ts");
-const AFFILIATE_TAG = "gadgetstyle01-20";
 
 interface ScrapeResult {
   gadgetFlowUrl: string;

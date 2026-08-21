@@ -1,3 +1,6 @@
+
+import { ASIN_STRICT_RE, slugify, mapConcurrent, decodeEntities } from "./common.js";
+export { ASIN_STRICT_RE, slugify, mapConcurrent };
 /**
  * Tools and Toys (toolsandtoys.net) scraping library.
  * Pure logic; CLIs import from here.
@@ -18,7 +21,6 @@
  */
 
 export const ASIN_RE = /\/(?:dp|gp\/product)\/([A-Z0-9]{10})/i;
-export const ASIN_STRICT_RE = /^B0[A-Z0-9]{8}$/;
 
 const UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
@@ -49,39 +51,6 @@ async function fetchHtml(url: string, timeoutMs = 15000): Promise<string> {
 }
 
 // ---- Entities ----
-
-function decodeEntities(s: string): string {
-  return s
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'")
-    .replace(/&#39;/g, "'")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&mdash;/g, "—")
-    .replace(/&ndash;/g, "–")
-    .replace(/&raquo;/g, "»")
-    .replace(/&rsquo;/g, "’")
-    .replace(/&lsquo;/g, "‘")
-    .replace(/&rdquo;/g, "”")
-    .replace(/&ldquo;/g, "“")
-    .replace(/&hellip;/g, "…")
-    .replace(/&#(\d+);/g, (_, n) => {
-      try {
-        return String.fromCodePoint(parseInt(n, 10));
-      } catch {
-        return "";
-      }
-    })
-    .replace(/&#x([0-9a-f]+);/gi, (_, h) => {
-      try {
-        return String.fromCodePoint(parseInt(h, 16));
-      } catch {
-        return "";
-      }
-    });
-}
 
 // ---- Discovery ----
 
@@ -238,37 +207,6 @@ export async function scrapeToolsAndToysArticle(
 }
 
 // ---- Concurrency ----
-
-export async function mapConcurrent<T, U>(
-  items: readonly T[],
-  concurrency: number,
-  fn: (item: T, index: number) => Promise<U>,
-  onProgress?: (done: number, total: number) => void,
-): Promise<U[]> {
-  const results: U[] = new Array(items.length);
-  let cursor = 0;
-  let done = 0;
-  const workers = Array.from({ length: Math.max(1, concurrency) }, async () => {
-    while (true) {
-      const i = cursor++;
-      if (i >= items.length) return;
-      results[i] = await fn(items[i], i);
-      done++;
-      onProgress?.(done, items.length);
-    }
-  });
-  await Promise.all(workers);
-  return results;
-}
-
-export function slugify(s: string): string {
-  return s
-    .toLowerCase()
-    .replace(/['’]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 80);
-}
 
 /**
  * Rough category inference based on title keywords. Maps to our 6 category slugs.

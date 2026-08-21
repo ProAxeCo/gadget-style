@@ -22,6 +22,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import { products, categories } from "../client/src/lib/data.js";
+import { AFFILIATE_TAG } from "../shared/const.js";
 import {
   type ScrapeResult,
   ASIN_STRICT_RE,
@@ -35,7 +36,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, "..");
 const DATA_PATH = join(REPO_ROOT, "client", "src", "lib", "data.ts");
 const DOCS_DIR = join(REPO_ROOT, "docs");
-const AFFILIATE_TAG = "gadgetstyle01-20";
 const CONCURRENCY = Number(process.env.GF_CONCURRENCY ?? "8");
 
 // --- CLI args ---
@@ -334,6 +334,14 @@ async function main(): Promise<void> {
   // 5. Mirror new images
   console.log(`\n■ mirroring new images...`);
   const mirror = runPnpm("mirror:images");
+  if (!mirror.ok) {
+    // A dead mirror step means drafts keep hotlinked source images — the
+    // exact ephemeral-image bug class the mirror exists to prevent. Fail
+    // loudly instead of recording 0/0 and exiting green.
+    console.error("✗ mirror:images crashed — sync failed");
+    console.error(mirror.output.slice(-2000));
+    process.exit(1);
+  }
   const okMatch = mirror.output.match(/ok=(\d+)/);
   const failMatch = mirror.output.match(/fail=(\d+)/);
   report.images.mirrored = okMatch ? parseInt(okMatch[1], 10) : 0;
@@ -341,7 +349,11 @@ async function main(): Promise<void> {
   console.log(`  mirrored: ${report.images.mirrored}, failed: ${report.images.failed}`);
 
   // 6. Fix category counts (no-op for drafts, safety net)
-  runPnpm("fix:counts");
+  const counts = runPnpm("fix:counts");
+  if (!counts.ok) {
+    console.error("✗ fix:counts crashed — sync failed");
+    process.exit(1);
+  }
 
   // 7. Validate
   console.log(`\n■ validating data.ts...`);

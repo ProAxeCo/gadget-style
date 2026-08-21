@@ -58,6 +58,13 @@ on:
         type: boolean
         default: true
 
+# The log-commit step pushes docs/social-log back to main. The repo's default
+# GITHUB_TOKEN permission is read-only, so without this block that push 403s —
+# posts would go out but the dedup log would never persist, causing DUPLICATE
+# posts the next day. Do not remove.
+permissions:
+  contents: write
+
 jobs:
   post:
     runs-on: ubuntu-latest
@@ -158,7 +165,9 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git status --porcelain docs/social-log | grep -q .; then
             git add docs/social-log
-            git commit -m "chore(social): log daily post results"
+            # [skip ci] so the docs-only log commit doesn't burn a CI run;
+            # vercel.json's ignoreCommand also skips the pointless redeploy.
+            git commit -m "chore(social): log daily post results [skip ci]"
             git push
           else
             echo "no new log entries"

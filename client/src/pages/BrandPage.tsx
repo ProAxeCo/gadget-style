@@ -62,8 +62,9 @@ export default function BrandPage() {
   // subtle radial highlight, just like Apple/Razer/Belkin's own brand pages.
   const accent = brand.accentColor || "#1f2937";
 
-  // Auto-pick logo pill tone based on accent luminance (light accent → dark
-  // pill, dark accent → white pill) so logos stay legible.
+  // Accent luminance drives ONLY the H1 underline tone now (white underline
+  // on dark accents, gold on light) — the logo itself renders in native
+  // brand color with a white spotlight bloom, per docs/brand-design-system.md.
   const accentLum = (() => {
     const m = accent.match(/^#?([0-9a-fA-F]{6})$/);
     if (!m) return 0;
@@ -81,8 +82,8 @@ export default function BrandPage() {
     background: `linear-gradient(135deg, ${accent} 0%, ${accent}cc 45%, #0b1220 100%)`,
   };
 
-  // Optional override — if a brand has dedicated press-kit hero imagery, it
-  // overlays the gradient at low opacity rather than replacing it.
+  // The brand's Pexels lifestyle photo — full-bleed, shown clear. Falls
+  // back to the accent-gradient tile when unset.
   const heroOverlay = brand.heroImageUrl;
 
   // Schema.org JSON-LD for SEO. Brand + ItemList of products.

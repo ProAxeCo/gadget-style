@@ -18,16 +18,32 @@ if (ids.length === 0) {
 let src = readFileSync(DATA_PATH, "utf8");
 let removed = 0;
 for (const id of ids) {
-  // Match the product block plus trailing comma and newline.
-  const re = new RegExp(`\\n?  \\{\\s*\\n\\s*id:\\s*${id},[\\s\\S]*?\\n  \\},(?=\\s*\\n)`, "m");
-  const before = src;
-  src = src.replace(re, "");
-  if (src !== before) {
-    console.log(`  removed #${id}`);
-    removed++;
-  } else {
+  // Anchor on the `id: N,` LINE, then expand to the enclosing `  {` … `  },`
+  // by index scanning. A pure block regex (`\{\s*\n\s*id:`) breaks whenever
+  // an object carries leading comment lines between `{` and `id:` — which
+  // several hand-annotated products do.
+  const idLine = new RegExp(`^    id: ${id},$`, "m");
+  const m = idLine.exec(src);
+  if (!m) {
     console.log(`  skip #${id} (not found)`);
+    continue;
   }
+  const blockStart = src.lastIndexOf("\n  {", m.index);
+  const blockEnd = src.indexOf("\n  },", m.index);
+  if (blockStart === -1 || blockEnd === -1) {
+    console.log(`  skip #${id} (could not resolve block bounds)`);
+    continue;
+  }
+  const block = src.slice(blockStart, blockEnd + "\n  },".length);
+  // Safety: exactly one product id inside the resolved bounds.
+  const idCount = (block.match(/^    id: \d+,$/gm) || []).length;
+  if (idCount !== 1) {
+    console.log(`  skip #${id} (unsafe bounds: ${idCount} ids in block)`);
+    continue;
+  }
+  src = src.slice(0, blockStart) + src.slice(blockEnd + "\n  },".length);
+  console.log(`  removed #${id}`);
+  removed++;
 }
 writeFileSync(DATA_PATH, src);
 console.log(`\nremoved ${removed} product${removed === 1 ? "" : "s"}`);

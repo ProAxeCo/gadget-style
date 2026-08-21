@@ -1,4 +1,5 @@
-/**
+
+import { AFFILIATE_TAG } from "../shared/const.js";/**
  * Data integrity validator for client/src/lib/data.ts.
  *
  * Enforces the invariants that Manus kept re-breaking:
@@ -21,7 +22,6 @@ import {
   type BlogPost,
 } from "../client/src/lib/data.js";
 
-const AFFILIATE_TAG = "gadgetstyle01-20";
 const ASIN_RE = /^B0[A-Z0-9]{8}$/;
 const SLUG_RE = /^[a-z0-9-]+$/;
 const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;

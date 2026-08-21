@@ -70,7 +70,7 @@ In `social-content.ts`:
 
 ### "Generate descriptions for the new draft batch"
 ```bash
-cd "C:/Users/User/Desktop/Gadget Style Website/gadget-style"
+cd "C:/Users/User/Desktop/Gadget Style/gadget-style"
 set -a && source .env.local && set +a   # the dotenv loader inside the script is unreliable; force-source first
 pnpm write:descriptions --include-drafts --since 271 --force
 # Wait ~3 min for ~30 products at concurrency 4. Cost ~$1.

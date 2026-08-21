@@ -88,8 +88,22 @@ Warnings do not fail the build. Errors do.
 - `pnpm tsx scripts/patch-external-urls.ts` — re-scrape drafts whose
   externalUrl still falls back to the GF article page, replacing them with
   the real brand-direct URL (e.g. samsung.com, dyson.com).
-- `pnpm tsx scripts/remove-products.ts <id> [id ...]` — delete products by id
-  from data.ts. Followed by `pnpm fix:counts` to refresh category counts.
+- `pnpm product:remove <id> [id ...]` — delete products by id from data.ts.
+  Followed by `pnpm fix:counts` to refresh category counts.
+- `pnpm drafts:list` — list all current drafts with their blockers.
+- `pnpm drafts:prices` — scrape current prices for drafts (writes
+  `scripts/draft-prices.auto.json`; spot-check before applying).
+- `pnpm drafts:promote [--dry-run] [--ids 1,2]` — promote eligible drafts
+  to live. Enforces price > 0, real ASIN, affiliate tag, AND site-local
+  images (unmirrored hotlinks are refused — last gate against the
+  ephemeral-image bug class).
+- `pnpm links:check [-- --limit N | --ids 1,2]` — verify every live
+  Amazon URL still resolves to a real listing. DEAD (404/410/dog-page)
+  fails the run; bot-walled results are INCONCLUSIVE and never fail.
+  Also runs weekly via `.github/workflows/link-check.yml`.
+- `pnpm prerender` — snapshot every route to static HTML in dist/public
+  (runs automatically at the end of `pnpm build`; see scripts/prerender.ts
+  for the how and the Vercel-specific gotchas).
 - `pnpm report:placeholders` — write `docs/placeholder-products.md` listing
   every product with a fabricated ASIN, zero price, or duplicate ASIN.
 - `pnpm tsx scripts/flag-drafts.ts` — mark every product currently matching
@@ -124,13 +138,36 @@ Three independent gates ensure broken data never reaches production:
 
 1. **Build gate (primary):** `pnpm build` depends on `pnpm check`. Vercel's
    configured build command is `pnpm build`, so failing data = failed deploy.
-2. **CI (secondary):** `.github/workflows/ci.yml` runs `pnpm check && pnpm build`
-   on every push to `main` and every PR. Catches regressions even if someone
-   bypasses the build locally.
+2. **CI (secondary):** `.github/workflows/ci.yml` runs the full build
+   (including prerender) on every push to `main` and every PR. Catches
+   regressions even if someone bypasses the build locally.
 3. **Local pre-commit (tertiary):** `.husky/pre-commit` runs `pnpm check:data`.
-   Not auto-installed; enable once per clone with
-   `git config core.hooksPath .husky` (or install husky). Optional because the
-   first two gates are authoritative.
+   Self-enables on every `pnpm install` via the package.json `prepare`
+   script — no manual setup needed per clone.
+
+### GitHub Actions inventory
+
+- `ci.yml` — full build gate on every push/PR (caches puppeteer's Chrome).
+- `social-cron.yml` — daily social posting. Schedule currently DISABLED
+  pending secrets; partial-pass gating derives which platforms run from
+  which secret sets exist. Needs `permissions: contents: write` (present —
+  do not remove; without it the dedup-log push 403s and posts duplicate).
+  META_PAGE_ACCESS_TOKEN has a ~60-day TTL — refresh via
+  `pnpm social:oauth` and update the secret.
+- `link-check.yml` — weekly affiliate link checker (Mondays 22:00 UTC).
+  A failed run = at least one definitively dead ASIN; fix or remove those
+  products. Commits `docs/link-check-report.json`.
+- `ingest.yml` — weekly draft ingestion (GF + T&T) that opens a review PR
+  on branch `auto/catalog-ingest`. Everything arrives as isDraft:true.
+
+### Social publishing
+
+Three commands back the social pipeline: `pnpm social:oauth` (token
+setup/refresh), `pnpm social:post` (single product), `pnpm social:queue`
+(daily batch with per-day dedup via docs/social-log/). Content generation:
+`pnpm tsx scripts/generate-social.ts`. Playbook:
+`docs/social-posting-playbook.md`. Platform state and tokens are tracked in
+the memory notes (`reference_meta_tokens_status`).
 
 ## Drafts
 
@@ -273,15 +310,17 @@ External products set `destination: "external"` and provide `externalUrl`
 (brand site, Kickstarter, etc.) — no affiliate revenue yet, but the product
 is still discoverable in the catalog. Direct-brand affiliate programs
 (Impact, ShareASale, CJ, Awin, Rakuten) are a post-deploy priority — see
-`docs/placeholder-products.md` or the memory notes for the strategy.
+`docs/direct-brand-affiliates.md` for the strategy and
+`docs/affiliate-signup-checklist.md` for the signup list.
 
 ## Placeholder products
 
 Manus's legacy catalog contained products with fabricated ASINs (pattern:
 sequential `B0D...` codes reused across unrelated products), zero prices, and
-duplicate ASINs. 22 of these were auto-flagged via `scripts/flag-drafts.ts`
-and are now `isDraft: true` — hidden from the live site, exempt from strict
-validation. See `docs/placeholder-products.md` for the list.
+duplicate ASINs. Those were flagged via `scripts/flag-drafts.ts` and became
+`isDraft: true` — hidden from the live site, exempt from strict validation.
+Run `pnpm report:placeholders` for the current list (don't trust hardcoded
+counts in docs; the draft set changes with every triage pass).
 
 For each draft, triage by editing data.ts:
 
@@ -349,10 +388,10 @@ wouter doesn't do this natively; don't remove it.
 - Umami analytics `<script>` in `index.html` — referenced env vars that don't
   exist; add back a proper analytics solution (Vercel Analytics / Plausible)
   if/when you want one.
-- **Not cut yet, but flagged:** `client/src/components/Map.tsx` references
-  `VITE_FRONTEND_FORGE_API_KEY`. If Maps isn't actually used on the site
-  (grep says it's imported nowhere except its own file), delete it. If it is
-  used, replace with a user-owned Google Maps key.
+- `Map.tsx`, 42 unused shadcn ui components, and ~33 unused dependencies —
+  removed in the 2026-08 cleanup (commit a2a4fb6). Only the 11 ui components
+  the app actually imports remain; run the audit pattern again before adding
+  bulk boilerplate back.
 
 ## Lessons from the Manus handover (so they don't happen again)
 

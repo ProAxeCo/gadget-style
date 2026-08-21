@@ -3,6 +3,7 @@
   "buildCommand": "pnpm build",
   "outputDirectory": "dist/public",
   "installCommand": "bash scripts/vercel-install.sh",
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- ':(exclude)docs' ':(exclude)*.md'",
   "framework": null,
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }

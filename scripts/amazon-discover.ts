@@ -36,6 +36,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import { products, categories } from "../client/src/lib/data.js";
+import { AFFILIATE_TAG } from "../shared/const.js";
 import {
   ASIN_STRICT_RE,
   BESTSELLER_SOURCES,
@@ -52,7 +53,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, "..");
 const DATA_PATH = join(REPO_ROOT, "client", "src", "lib", "data.ts");
 const DOCS_DIR = join(REPO_ROOT, "docs");
-const AFFILIATE_TAG = "gadgetstyle01-20";
 const CONCURRENCY = Number(process.env.AMZ_CONCURRENCY ?? "3");
 
 // --- CLI args ---

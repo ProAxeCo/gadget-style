@@ -14,10 +14,10 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { AFFILIATE_TAG } from "../shared/const.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_PATH = join(__dirname, "..", "client", "src", "lib", "data.ts");
-const AFFILIATE_TAG = "gadgetstyle01-20";
 const ASIN_RE = /^B0[A-Z0-9]{8}$/;
 
 const src = readFileSync(DATA_PATH, "utf8");

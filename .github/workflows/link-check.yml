@@ -1,0 +1,59 @@
+name: Affiliate link check (weekly)
+
+# Fetches every live product's Amazon URL and fails the run if any listing
+# is definitively gone (HTTP 404/410 or Amazon's dog page). A failed run
+# emails the owner — that's the alert channel; no secrets needed.
+#
+# Amazon aggressively bot-walls datacenter IPs, so most results may come
+# back INCONCLUSIVE rather than ALIVE. That's fine: the checker only acts
+# on definitive negatives, so a fully bot-walled run simply passes. When
+# that happens routinely, run `pnpm links:check` from a residential
+# connection instead for a truthier read.
+
+on:
+  schedule:
+    # Mondays 22:00 UTC = Tuesday 08:00 AEST
+    - cron: "0 22 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: link-check
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Check links
+        run: pnpm links:check
+
+      - name: Commit report
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git status --porcelain docs/link-check-report.json | grep -q .; then
+            git add docs/link-check-report.json
+            git commit -m "chore(links): weekly affiliate link check report [skip ci]"
+            git push
+          else
+            echo "report unchanged"
+          fi

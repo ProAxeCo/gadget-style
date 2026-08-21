@@ -1,3 +1,6 @@
+
+import { ASIN_STRICT_RE, slugify, mapConcurrent, decodeEntities } from "./common.js";
+export { ASIN_STRICT_RE, slugify, mapConcurrent };
 /**
  * Amazon scraping library — best-sellers, movers & shakers, and product detail.
  * Pure logic; CLIs (`amazon-discover.ts`) import from here.
@@ -12,7 +15,6 @@
  *     (concurrency 3, 1500ms jitter between spawns).
  */
 
-export const ASIN_STRICT_RE = /^B0[A-Z0-9]{8}$/;
 
 // Desktop Chrome UA + sec-ch-ua headers. Matches a real browser closely enough
 // that Amazon doesn't flag us. Updated quarterly to track Chrome releases.
@@ -235,31 +237,6 @@ export interface ProductDetail {
   error?: string;
 }
 
-function decodeEntities(s: string): string {
-  return s
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'")
-    .replace(/&#39;/g, "'")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&#(\d+);/g, (_, n) => {
-      try {
-        return String.fromCodePoint(parseInt(n, 10));
-      } catch {
-        return "";
-      }
-    })
-    .replace(/&#x([0-9a-f]+);/gi, (_, h) => {
-      try {
-        return String.fromCodePoint(parseInt(h, 16));
-      } catch {
-        return "";
-      }
-    });
-}
-
 function extractTitle(html: string): string | null {
   const m = html.match(/<span[^>]+id="productTitle"[^>]*>([^<]+)</);
   return m ? decodeEntities(m[1].trim()) : null;
@@ -367,38 +344,7 @@ export async function fetchProductDetail(asin: string): Promise<ProductDetail> {
 
 // ---- Concurrency helper (mirrors gf.ts pattern) ----
 
-export async function mapConcurrent<T, U>(
-  items: readonly T[],
-  concurrency: number,
-  fn: (item: T, index: number) => Promise<U>,
-  onProgress?: (done: number, total: number) => void,
-): Promise<U[]> {
-  const results: U[] = new Array(items.length);
-  let cursor = 0;
-  let done = 0;
-  const workers = Array.from({ length: Math.max(1, concurrency) }, async () => {
-    while (true) {
-      const i = cursor++;
-      if (i >= items.length) return;
-      results[i] = await fn(items[i], i);
-      done++;
-      onProgress?.(done, items.length);
-    }
-  });
-  await Promise.all(workers);
-  return results;
-}
-
 // ---- Slug helper (consistent with gf.ts) ----
-
-export function slugify(s: string): string {
-  return s
-    .toLowerCase()
-    .replace(/['’]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 80);
-}
 
 // ---- Category mapping ----
 

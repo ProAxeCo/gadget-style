@@ -6,9 +6,16 @@ on:
   pull_request:
     branches: [main]
 
+# Superseded runs on the same ref are cancelled — a rapid push series only
+# builds the latest state.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
 
@@ -24,8 +31,17 @@ jobs:
       - name: Install deps
         run: pnpm install --frozen-lockfile
 
-      - name: Typecheck + data validation
-        run: pnpm check
+      # Chrome for the prerender step lives in node_modules/.cache/puppeteer
+      # (installed on demand by scripts/prerender.ts). Cache it so CI doesn't
+      # re-download ~170MB every run.
+      - name: Cache puppeteer Chrome
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.cache/puppeteer
+          key: puppeteer-chrome-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
 
-      - name: Build
+      # `pnpm build` already runs `pnpm check` as its first step — one
+      # invocation exercises the whole gate (typecheck, data validation,
+      # sitemap, vite build, prerender).
+      - name: Build (includes check + prerender)
         run: pnpm build

@@ -31,7 +31,7 @@ The main session can spawn multiple in parallel when their work is independent �
 
 ## Memory model
 
-All agents read from `~/.claude/projects/C--Users-User-Desktop-Gadget-Style-Website/memory/MEMORY.md` and the linked notes. Each agent's frontmatter lists which memory files are most relevant. Don't duplicate facts in the agent spec — point to the memory note.
+All agents read from `~/.claude/projects/C--Users-User-Desktop-Gadget-Style/memory/MEMORY.md` and the linked notes. Each agent's frontmatter lists which memory files are most relevant. Don't duplicate facts in the agent spec — point to the memory note.
 
 ## Tool surface per agent
 
