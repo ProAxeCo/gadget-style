@@ -5,6 +5,14 @@
   "installCommand": "bash scripts/vercel-install.sh",
   "ignoreCommand": "git diff --quiet HEAD^ HEAD -- ':(exclude)docs' ':(exclude)*.md'",
   "framework": null,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "gadget-style.vercel.app" }],
+      "destination": "https://www.gadgetstyle.com.au/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
