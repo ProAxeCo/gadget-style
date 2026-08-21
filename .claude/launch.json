@@ -4,8 +4,9 @@
     {
       "name": "dev",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["dev"],
-      "port": 3000
+      "runtimeArgs": ["-C", "gadget-style", "dev"],
+      "port": 3000,
+      "autoPort": true
     }
   ]
 }

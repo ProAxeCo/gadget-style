@@ -9,6 +9,9 @@
 
 @import "tailwindcss";
 @import "tw-animate-css";
+/* Typography plugin — powers the `prose` classes on BlogPostPage. Was
+   installed but never loaded (Tailwind 4 loads plugins via @plugin). */
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
