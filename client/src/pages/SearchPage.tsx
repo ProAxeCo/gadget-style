@@ -10,6 +10,7 @@ import { Search, ArrowLeft, SlidersHorizontal, X, Grid3X3, LayoutList } from "lu
 import { searchProducts, categories } from "@/lib/data";
 import type { Product } from "@/lib/data";
 import ProductCard from "@/components/ProductCard";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const RESULTS_PER_PAGE = 20;
 
@@ -20,6 +21,7 @@ export default function SearchPage() {
   const [, setLocation] = useLocation();
   const params = new URLSearchParams(searchString);
   const query = params.get("q") || "";
+  useDocumentTitle(query ? `Search: ${query}` : "Search");
   const [visibleCount, setVisibleCount] = useState(RESULTS_PER_PAGE);
   const [inlineQuery, setInlineQuery] = useState(query);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);

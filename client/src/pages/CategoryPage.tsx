@@ -63,8 +63,28 @@ export default function CategoryPage() {
     );
   }
 
+  // Schema.org ItemList of the category's products, mirroring the BrandPage
+  // pattern. Pays off fully once prerendering ships; harmless before then.
+  const origin = "https://www.gadgetstyle.com.au";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${category.name} — Gadget Style`,
+    numberOfItems: allProducts.length,
+    itemListElement: allProducts.slice(0, 50).map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${origin}/product/${p.slug}`,
+      name: p.title,
+    })),
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Category Hero — GF-style full-bleed image with centered overlay text */}
       <section className="relative w-full h-[400px] lg:h-[500px] flex items-center justify-center overflow-hidden rounded-3xl mx-4 sm:mx-6 lg:mx-8 mt-24 lg:mt-28 mb-12 lg:mb-16">
         {/* Full-bleed background image */}

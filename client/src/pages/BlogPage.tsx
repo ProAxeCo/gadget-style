@@ -6,8 +6,13 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { blogPosts } from "@/lib/data";
 import { Clock, ArrowRight } from "lucide-react";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 export default function BlogPage() {
+  useDocumentTitle(
+    "Magazine",
+    "Gadget guides, in-depth reviews, and buying advice from the Gadget Style editorial team."
+  );
   const [hero, ...rest] = blogPosts;
 
   return (

@@ -1,8 +1,10 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 export default function NotFound() {
+  useDocumentTitle("Page Not Found");
   return (
     <div className="pt-24 pb-16">
       <div className="container">

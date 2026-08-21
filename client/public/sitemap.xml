@@ -10,12 +10,16 @@
   <url><loc>https://www.gadgetstyle.com.au/category/wearables</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/category/outdoor-tech</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/category/everyday-carry</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/category/office-productivity</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/category/travel-tech</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/category/charging-power</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/category/photography</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/category/home-living</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/category/health-wellness</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadgetstyle.com.au/brands</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadgetstyle.com.au/brand/amazon</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadgetstyle.com.au/brand/apple</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadgetstyle.com.au/brand/sony</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadgetstyle.com.au/brand/samsung</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadgetstyle.com.au/brand/garmin</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadgetstyle.com.au/brand/anker</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadgetstyle.com.au/brand/razer</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadgetstyle.com.au/brand/asus</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadgetstyle.com.au/brand/dji</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/product/amazon-echo-dot-5th-gen-smart-speaker-with-alexa</loc><lastmod>2025-01-01</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/product/google-nest-hub-2nd-gen-smart-display</loc><lastmod>2025-02-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/product/ring-video-doorbell-4-with-enhanced-wi-fi</loc><lastmod>2025-03-03</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
@@ -132,7 +136,6 @@
   <url><loc>https://www.gadgetstyle.com.au/product/samsung-galaxy-a57-5g-smartphone</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/product/samsung-galaxy-a37-5g-smartphone</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/product/8bitdo-retro-68-keyboard-ap50th-limited-edition</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/product/corsair-3200d-rs-argb-mid-tower-pc-case</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/product/ultimal-rugged-case-with-band-for-apple-watch-ultra</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/product/msi-herald-be9400</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/product/nuphy-air-65-v3</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
@@ -252,18 +255,6 @@
   <url><loc>https://www.gadgetstyle.com.au/product/corsair-mm-anti-fray-cloth-gaming-mouse-pad</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/product/amazon-eero-pro-7-tri-band-mesh-wi-fi-7-router-with-support-for-internet-plans-u</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/product/outdoor-7-ip66-rated-access-point-for-your-wi-fi-network-by-eero-on-gadget-flow</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/product/amazon-aware-collection-includes-carbon-neutral-apparel-beauty-products-and-more</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/product/amazon-echo-dot-4th-generation-smart-speaker-is-smaller-and-rounder</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/product/amazon-luna-controller-connects-to-games-in-the-cloud</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/product/amazon-eero-pro-6-mesh-wi-fi-6-router-connects-more-than-75-devices-at-once</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/product/new-amazon-echo-4th-generation-smart-speaker-comes-in-a-spherical-shape</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/product/amazon-echo-dot-kids-edition-4th-generation-smart-speaker-has-an-animal-themed-d</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/product/amazon-halo-health-and-wellness-band-analyzes-your-health-data</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/product/amazon-dash-smart-shelf-inventory-sensing-scale-automatically-detects-low-stock</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/product/amazonbasics-vintage-retro-inspired-bluetooth-speaker-mixes-funky-style-with-mod</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/product/amazon-echo-frames-alexa-enabled-eyeglasses-give-you-hands-free-access-to-your-f</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/product/amazon-echo-loop-alexa-enabled-ring-gives-you-quick-access-to-everything</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gadgetstyle.com.au/product/all-new-amazon-echo-fabric-smart-speaker-has-the-hardware-you-love-from-the-echo</loc><lastmod>2026-04-21</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/blog/best-smart-home-gadgets-2025</loc><lastmod>2025-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/blog/ultimate-audio-buying-guide</loc><lastmod>2025-03-10</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.gadgetstyle.com.au/blog/gaming-setup-essentials-2025</loc><lastmod>2025-03-05</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>

@@ -148,8 +148,52 @@ export default function ProductPage() {
       : product.affiliateUrl;
   const buyLabel = isAmazon ? "Get it on Amazon" : "Visit Store";
 
+  // Schema.org Product + BreadcrumbList for SEO rich results. Deliberately
+  // NO aggregateRating — the rating/reviewCount fields are sourced from
+  // Amazon, and Google's review-snippet policy requires first-party reviews;
+  // marking up borrowed ratings risks a structured-data manual action.
+  const origin = "https://www.gadgetstyle.com.au";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        name: product.title,
+        image: (product.images?.length ? product.images : [product.image]).map(
+          (u) => (u.startsWith("http") ? u : `${origin}${u}`)
+        ),
+        description: product.description.slice(0, 500),
+        sku: product.asin,
+        offers: {
+          "@type": "Offer",
+          price: product.price,
+          priceCurrency: "USD",
+          url: buyUrl,
+          availability: "https://schema.org/InStock",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${origin}/` },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: product.category,
+            item: `${origin}/category/${product.categorySlug}`,
+          },
+          { "@type": "ListItem", position: 3, name: product.title },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="pt-20 lg:pt-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="container pb-16">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6 flex-wrap">
@@ -313,7 +357,7 @@ export default function ProductPage() {
             <a
               href={buyUrl}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="sponsored noopener noreferrer"
               className={`flex items-center gap-3 px-5 py-3.5 rounded-xl font-semibold text-base transition-colors mb-4 shadow-lg ${
                 isAmazon
                   ? "bg-[#FFD814] hover:bg-[#F7CA00] text-[#0F1111] shadow-amber-500/15"
@@ -480,7 +524,7 @@ export default function ProductPage() {
                   <a
                     href={buyUrl}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="sponsored noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-[#1a8a4a] hover:bg-[#157a3f] text-white rounded-lg font-semibold transition-colors"
                   >
                     {isAmazon && <img src={AMAZON_LOGO_URL} alt="Amazon" className="h-5 w-auto" />}
@@ -509,7 +553,7 @@ export default function ProductPage() {
                 View all {product.category}
               </Link>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-6">
               {related.map((p: Product, i: number) => (
                 <ProductCard key={p.id} product={p} index={i} />
               ))}

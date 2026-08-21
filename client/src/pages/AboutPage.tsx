@@ -5,11 +5,16 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Target, Eye, Zap, Shield } from "lucide-react";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 /* Blue GS logo — concentric ring G with flowing S */
 const GS_ICON = "/images/mirrored/logo_blue_v2-ZhrJEA2VoZxipLuGZMBdr4.png";
 
 export default function AboutPage() {
+  useDocumentTitle(
+    "About Us",
+    "Who we are, how we curate, and why Gadget Style Australia exists — editorial standards and affiliate disclosure."
+  );
   const values = [
     {
       icon: Eye,

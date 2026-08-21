@@ -23,5 +23,16 @@ export function useDocumentTitle(title: string, description?: string): void {
     if (ogTitle) ogTitle.content = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
     const ogDesc = document.querySelector<HTMLMetaElement>('meta[property="og:description"]');
     if (ogDesc) ogDesc.content = description ?? DEFAULT_DESCRIPTION;
+
+    // Self-referential canonical — Google honors JS-injected canonicals, and
+    // the future prerender pass bakes this into static HTML for free.
+    const href = `https://www.gadgetstyle.com.au${window.location.pathname}`;
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.href = href;
   }, [title, description]);
 }

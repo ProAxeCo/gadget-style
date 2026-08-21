@@ -6,8 +6,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { Mail, MessageSquare, Send } from "lucide-react";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 export default function ContactPage() {
+  useDocumentTitle(
+    "Contact",
+    "Get in touch with Gadget Style Australia — product listings, brand partnerships, and press inquiries."
+  );
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {

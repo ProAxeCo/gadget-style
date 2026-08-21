@@ -9,6 +9,7 @@ import { writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { products, categories, blogPosts } from "../client/src/lib/data.js";
+import { brands } from "../client/src/lib/brands.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE = "https://www.gadgetstyle.com.au";
@@ -23,7 +24,22 @@ entries.push({ loc: `${SITE}/about`, changefreq: "monthly", priority: "0.5" });
 entries.push({ loc: `${SITE}/contact`, changefreq: "monthly", priority: "0.5" });
 
 for (const c of categories) {
+  // Skip empty "in the pipeline" categories — submitting thin/empty pages
+  // at high priority invites soft-404 classification. They re-enter the
+  // sitemap automatically once products are backfilled (the validator
+  // guarantees productCount matches live products).
+  if (c.productCount === 0) continue;
   entries.push({ loc: `${SITE}/category/${c.slug}`, changefreq: "daily", priority: "0.8" });
+}
+
+// Brand directory + per-brand landing pages. Brand pages with zero live
+// products still render a real curated empty state, but only include the
+// stocked ones in the sitemap for the same thin-content reason as above.
+entries.push({ loc: `${SITE}/brands`, changefreq: "weekly", priority: "0.7" });
+for (const b of brands) {
+  const count = products.filter((p) => !p.isDraft && p.brand === b.slug).length;
+  if (count === 0) continue;
+  entries.push({ loc: `${SITE}/brand/${b.slug}`, changefreq: "weekly", priority: "0.7" });
 }
 
 for (const p of products) {

@@ -8,14 +8,20 @@ import { Heart, ShoppingBag } from "lucide-react";
 import { useWishlist } from "@/contexts/WishlistContext";
 import { products } from "@/lib/data";
 import ProductCard from "@/components/ProductCard";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 export default function WishlistPage() {
+  useDocumentTitle("My Wishlist");
   const { wishlist } = useWishlist();
-  const savedProducts = products.filter((p) => wishlist.includes(p.id));
+  // Exclude drafts — a product demoted to draft after being wishlisted
+  // would otherwise render with placeholder data.
+  const savedProducts = products.filter(
+    (p) => !p.isDraft && wishlist.includes(p.id)
+  );
 
   return (
     <div className="pt-24 pb-16">
-      <div className="container">
+      <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -33,7 +39,7 @@ export default function WishlistPage() {
         </motion.div>
 
         {savedProducts.length > 0 ? (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 lg:gap-6">
             {savedProducts.map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
             ))}
