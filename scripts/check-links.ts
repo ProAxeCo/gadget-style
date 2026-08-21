@@ -76,11 +76,18 @@ async function classify(url: string): Promise<{ verdict: Verdict; detail: string
     if (/Dogs of Amazon|couldn't find that page/i.test(body)) {
       return { verdict: "DEAD", detail: "dog page at HTTP " + res.status };
     }
-    if (/Currently unavailable/i.test(body)) {
-      return { verdict: "UNAVAILABLE", detail: "listing live but unbuyable" };
+    // ALIVE check must run BEFORE the unavailable check: Amazon's page
+    // boilerplate contains the literal string "Currently unavailable" in
+    // template fragments even on fully buyable listings (first sweep
+    // misclassified 92 in-stock products as UNAVAILABLE because of this).
+    if (/id="add-to-cart-button"|name="submit\.add-to-cart"/i.test(body)) {
+      return { verdict: "ALIVE", detail: "buy box present" };
     }
-    if (/id="productTitle"|"add-to-cart"|Add to Cart/i.test(body)) {
-      return { verdict: "ALIVE", detail: "product page renders" };
+    if (/Currently unavailable/i.test(body)) {
+      return { verdict: "UNAVAILABLE", detail: "no buy box, unavailable marker" };
+    }
+    if (/id="productTitle"/i.test(body)) {
+      return { verdict: "ALIVE", detail: "product page renders (no buy box detected)" };
     }
     return { verdict: "INCONCLUSIVE", detail: `HTTP ${res.status}, unrecognized body` };
   } catch (e) {
