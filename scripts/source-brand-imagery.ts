@@ -57,6 +57,11 @@ const QUERIES: Record<string, string> = {
   garmin: "fitness watch",
   razer: "mechanical keyboard rgb",
   asus: "gaming laptop",
+  sonos: "home speaker living room",
+  bose: "wireless earbuds",
+  insta360: "action camera adventure",
+  roborock: "robot vacuum floor",
+  google: "smart display kitchen",
 };
 
 const args = process.argv.slice(2);

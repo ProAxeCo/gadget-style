@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-05-06T04:14:40.104Z",
+  "timestamp": "2026-08-21T06:06:55.946Z",
   "summary": {
-    "brands": 10,
+    "brands": 15,
     "errors": 0,
     "warnings": 0
   },
@@ -62,6 +62,36 @@
     },
     {
       "brand": "dji",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "sonos",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "bose",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "insta360",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "roborock",
+      "level": "ok",
+      "rule": "logo",
+      "message": "SVG logo present"
+    },
+    {
+      "brand": "google",
       "level": "ok",
       "rule": "logo",
       "message": "SVG logo present"

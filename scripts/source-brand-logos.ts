@@ -54,6 +54,16 @@ const LOGOS: Record<string, string> = {
     "https://upload.wikimedia.org/wikipedia/commons/3/35/Razer_snake_logo.svg",
   asus:
     "https://upload.wikimedia.org/wikipedia/commons/2/2c/AsusTek-black-logo.svg",
+  sonos:
+    "https://upload.wikimedia.org/wikipedia/commons/2/28/Sonos_%28Unternehmen%29_logo.svg",
+  bose:
+    "https://upload.wikimedia.org/wikipedia/commons/0/0c/Bose_logo.svg",
+  insta360:
+    "https://upload.wikimedia.org/wikipedia/commons/1/1b/Insta360_logo_%28transparent%29.svg",
+  roborock:
+    "https://upload.wikimedia.org/wikipedia/commons/4/41/Roborock_logo.svg",
+  google:
+    "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
 };
 
 function curlDownload(url: string, destPath: string): number {

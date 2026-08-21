@@ -156,6 +156,61 @@ export const brands: Brand[] = [
     website: "https://www.dji.com",
     accentColor: "#0e0e10",
   },
+  {
+    slug: "sonos",
+    name: "Sonos",
+    tagline: "Products we love from Sonos",
+    description:
+      "Sonos made multi-room audio a category before voice assistants existed, and its speakers still set the bar for whole-home sound that just works. Our picks cover the soundbars and speakers that anchor a serious living-room setup.",
+    logoUrl: "/images/brands/sonos.svg",
+    heroImageUrl: "/images/brands/heroes/sonos.jpg",
+    website: "https://www.sonos.com",
+    accentColor: "#0e0e10",
+  },
+  {
+    slug: "bose",
+    name: "Bose",
+    tagline: "Products we love from Bose",
+    description:
+      "Bose built its name on noise cancellation and hasn't let go of the crown without a fight. From QuietComfort headphones to home theatre, we shortlist the products where Bose's acoustic engineering still earns the premium.",
+    logoUrl: "/images/brands/bose.svg",
+    heroImageUrl: "/images/brands/heroes/bose.jpg",
+    website: "https://www.bose.com",
+    accentColor: "#0e0e10",
+  },
+  {
+    slug: "insta360",
+    name: "Insta360",
+    tagline: "Products we love from Insta360",
+    description:
+      "Insta360 turned 360° capture from novelty into a serious creative tool, and its action cameras now trade blows with GoPro at the top of the category. We pick the cameras and accessories that make impossible shots routine.",
+    logoUrl: "/images/brands/insta360.svg",
+    heroImageUrl: "/images/brands/heroes/insta360.jpg",
+    website: "https://www.insta360.com",
+    accentColor: "#ffd200",
+  },
+  {
+    slug: "roborock",
+    name: "Roborock",
+    tagline: "Products we love from Roborock",
+    description:
+      "Roborock's robot and wet-dry vacuums consistently top the category on navigation smarts and self-maintenance. We shortlist the models that genuinely hand cleaning back to the robots.",
+    logoUrl: "/images/brands/roborock.svg",
+    heroImageUrl: "/images/brands/heroes/roborock.jpg",
+    website: "https://roborock.com",
+    accentColor: "#d43f31",
+  },
+  {
+    slug: "google",
+    name: "Google",
+    tagline: "Products we love from Google",
+    description:
+      "Google's Nest and Pixel hardware puts the company's software smarts into the home — displays, thermostats, cameras and doorbells that quietly get better over time. We curate the devices where the ecosystem advantage is real.",
+    logoUrl: "/images/brands/google.svg",
+    heroImageUrl: "/images/brands/heroes/google.jpg",
+    website: "https://store.google.com",
+    accentColor: "#4285F4",
+  },
 ];
 
 /** Get a brand by its slug (case-insensitive). */
