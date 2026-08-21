@@ -32,8 +32,11 @@ const OUT = join(__dirname, "..", "docs", "external-products.md");
 // Hosts whose products are near-certainly also sold on Amazon (Amazon-
 // native brands, Amazon hardware, accessory brands with Amazon storefronts).
 const LIKELY_ON_AMAZON = /eero\.com|tessan\.com|corsair\.com|8bitdo\.com|keychron\.com|denon\.com|soundboks\.com|dji\.com|anker|belkin/i;
-// URL shapes that are not buyable pages.
-const NOT_BUYABLE = /\/news\/|\/blog\/|news\.|\/press|\/announc|#|\?utm_|clickref=/i;
+// URL shapes that are not buyable pages. (Our own utm_source=gadgetstyle
+// tags are expected on every externalUrl — GF does the same — so UTM
+// presence must NOT trip this; only foreign tracking params like
+// Partnerize clickrefs do.)
+const NOT_BUYABLE = /\/news\/|\/blog\/|news\.|\/press|\/announc|clickref=|partnerize/i;
 
 const externals = products.filter(
   (p) => !p.isDraft && (p.destination ?? "amazon") === "external"

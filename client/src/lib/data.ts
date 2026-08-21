@@ -2525,7 +2525,7 @@ export const products: Product[
     specs: { "Sensor": "1-inch, 50MP", "Maximum video": "8K60 (MISSION 1 PRO)", "Open-gate capture": "8K30 and 4K120", "High frame rates": "4K240 and 1080p960", "Processor": "GP3", "Lens compatibility": "Micro Four Thirds (PRO ILS model)", "Accessories": "Wireless mic system, Point-and-shoot/powered grips, Enduro 2 battery, I/O expansion module" },
     isDraft: true,
     destination: "external",
-    externalUrl: "https://gopro.com/en/us/news/gopro-announces-three-cameras-mission-1-2026",
+    externalUrl: "https://gopro.com/en/us/news/gopro-announces-three-cameras-mission-1-2026?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
     brand: "gopro",
   },
   {
@@ -2616,7 +2616,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Network": "5G", "Storage Options": "128GB, 256GB", "Operating System": "Android with Samsung One UI", "Color": "Awesome Navy" },
     destination: "external",
-    externalUrl: "https://www.samsung.com/us/smartphones/galaxy-a57-5g/buy/galaxy-a57-5g-128gb-unlocked-sku-sm-a576udbaxaa/",
+    externalUrl: "https://www.samsung.com/us/smartphones/galaxy-a57-5g/buy/galaxy-a57-5g-128gb-unlocked-sku-sm-a576udbaxaa/?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
     brand: "samsung",
   },
   {
@@ -2641,7 +2641,7 @@ export const products: Product[
     specs: { "Form Factor": "Wide-screen foldable", "RAM Options": "12GB, 16GB", "Storage Options": "256GB, 512GB, 1TB", "Color Options": "Phantom Night Black, Zero Degree White, Interstellar Blue, Olive Gold, Vibrant Orange", "Launch Date": "April 20, 2026", "Pre-Order Deposit": "1,000 yuan (via VMall)" },
     isDraft: true,
     destination: "external",
-    externalUrl: "https://www.huaweicentral.com/huawei-pura-x-max-foldable-enters-pre-order-mode/#google_vignette",
+    externalUrl: "https://www.huaweicentral.com/huawei-pura-x-max-foldable-enters-pre-order-mode/#google_vignette?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
   },
   {
     id: 133,
@@ -2664,7 +2664,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Display": "6.7-inch FHD+ Super AMOLED", "Processor": "Exynos 1480 Octa-core", "Rear Cameras": "50 MP Wide (OIS) + 8 MP Ultra Wide + 5 MP Macro", "Front Camera": "12 MP with Super HDR video support", "Battery": "5,000 mAh (typical); up to 60% charge in 30 min via 45W Super Fast Charging 2.0", "Storage & RAM Options": "128 GB / 6 GB RAM or 256 GB / 8 GB RAM", "Water Resistance": "IP68 (up to 1.5 m freshwater for 30 minutes)" },
     destination: "external",
-    externalUrl: "https://www.samsung.com/us/smartphones/galaxy-a37-5g/",
+    externalUrl: "https://www.samsung.com/us/smartphones/galaxy-a37-5g/?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
     brand: "samsung",
   },
   {
@@ -2688,7 +2688,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Layout": "68-Key Compact (65%)", "Edition Type": "Limited, AP50th Anniversary", "Connectivity": "Wireless 2.4G, Bluetooth Low Energy, Wired USB" },
     destination: "external",
-    externalUrl: "https://shop.8bitdo.com/products/8bitdo-retro-68-keyboard-ap50th",
+    externalUrl: "https://shop.8bitdo.com/products/8bitdo-retro-68-keyboard-ap50th?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
   },
 
   {
@@ -2735,7 +2735,7 @@ export const products: Product[
     isTrending: false,
     specs: { "WiFi Standard": "Wi-Fi 7 (802.11be)", "Frequency Bands": "2.4 GHz, 5 GHz, 6 GHz (Tri-Band)", "Max Speed": "5,764 Mbps (6 GHz) + 2,882 Mbps (5 GHz) + 688 Mbps (2.4 GHz)", "Max Channel Width": "320 MHz (6 GHz band)", "Bluetooth Version": "Bluetooth 5.4", "Security": "WPA3", "Interface": "PCIe" },
     destination: "external",
-    externalUrl: "https://www.msi.com/Networking/HERALD-BE9400-WiFi-7-PCIe-Card",
+    externalUrl: "https://www.msi.com/Networking/HERALD-BE9400-WiFi-7-PCIe-Card?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
   },
   {
     id: 141,
@@ -2758,7 +2758,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Layout": "65% ANSI (68 Keys)", "Connectivity": "2.4 GHz (1,000 Hz), Bluetooth 5.0 (125 Hz), USB-C Wired (1,000 Hz)", "Battery Capacity": "2,500 mAh, Up to 1,000 hrs (RGB Off)", "Dimensions": "12.5\" L x 4.29\" W x 0.52\" H", "Weight": "1.4 lb", "Keycaps": "Double-Shot PBT, North-Facing RGB LED, 20 Backlight Modes" },
     destination: "external",
-    externalUrl: "https://nuphy.com/products/nuphy-air65-v3",
+    externalUrl: "https://nuphy.com/products/nuphy-air65-v3?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
   },
   {
     id: 142,
@@ -2781,7 +2781,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Assist Type": "Hip and Knee (4x4), Hip-Only (Dual-Motor)", "Range": "Up to 20 mi (Dual-Motor Model)", "Models Available": "Vastnaut One 4x4, 4x4 Explorer Combo, Dual-Motor", "Expected Ship Date": "July 2026", "Free Shipping Regions": "United States, Canada, Australia, Japan, Singapore, Taiwan, Hong Kong" },
     destination: "external",
-    externalUrl: "https://store.vastnaut.com/products/vastnaut-one-deposit",
+    externalUrl: "https://store.vastnaut.com/products/vastnaut-one-deposit?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
   },
   {
     id: 143,
@@ -2804,7 +2804,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Processor": "Snapdragon 685 4G Mobile Platform", "Display": "6.75-inch LCD, 120Hz refresh rate, 1125 nits peak brightness", "Rear Camera": "50MP main camera", "Battery Capacity": "6500mAh (typical) / 6335mAh (rated)", "Reverse Charging": "5V/1A (max) via USB-OTG with C-to-C cable", "Water and Dust Resistance": "IP64 rated", "Fluency Certification": "48-month fluency tested (128GB ROM or more)" },
     destination: "external",
-    externalUrl: "https://www.oppo.com/en/smartphones/series-a/a6k/",
+    externalUrl: "https://www.oppo.com/en/smartphones/series-a/a6k/?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
   },
   {
     id: 144,
@@ -2829,7 +2829,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Internal Display": "8.1-inch 2K LTPO", "External Display": "6.6-inch", "Rear Camera": "Triple 50MP Array, Sony LYTIA Sensor, Dolby Vision Recording, Stabilization", "Processor": "MediaTek Dimensity 7400X, 4nm Octa-Core", "Memory (RAM)": "8 GB LPDDR4X", "Storage": "256 GB UFS 2.2", "Operating System": "Android 15" },
     destination: "external",
-    externalUrl: "https://motorolanews.com/new-motorola-fifa-world-cup-26-editions/",
+    externalUrl: "https://motorolanews.com/new-motorola-fifa-world-cup-26-editions/?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
   },
   {
     id: 145,
@@ -2852,7 +2852,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Processor": "Intel Core Ultra 5 335 vPro, 8 cores, Up to 4.60 GHz, 47 TOPS", "Operating System": "Windows 11 Pro, Copilot+ PC", "Memory": "16 GB, 1 x 16 GB, DDR5, Up to 5600 MT/s, non-ECC", "Storage": "256 GB SSD, TLC", "Wireless": "Intel Wi-Fi 7 BE211, 2x2, 802.11be, Bluetooth, Internal Antenna", "Power Supply": "90 W AC Adapter", "Security": "Discrete TPM (Trusted Platform Module) Enabled" },
     destination: "external",
-    externalUrl: "https://www.dell.com/en-us/shop/desktop-computers/dell-pro-5-micro-desktop/spd/dell-pro-p5m1260-micro/xcto_p5m1260_usr?redirectTo=SOC",
+    externalUrl: "https://www.dell.com/en-us/shop/desktop-computers/dell-pro-5-micro-desktop/spd/dell-pro-p5m1260-micro/xcto_p5m1260_usr?redirectTo=SOC&utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
   },
   {
     id: 146,
@@ -2875,7 +2875,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Weight": "44g / 0.10 lbs", "Sensor": "PixArt 3950", "DPI Range": "100 - 30,000 DPI", "Polling Rate": "125 Hz to 8,000 Hz (2.4 GHz / Wired); 125 Hz (Bluetooth)", "Connectivity": "2.4 GHz Wireless, Bluetooth 5.3, Wired USB", "Battery Life": "Up to 37 hrs at 8K Hz (2.4 GHz), up to 160 hrs at 125 Hz (Bluetooth)", "Lift-Off Distance": "0.7 mm / 1.0 mm / 2.0 mm" },
     destination: "external",
-    externalUrl: "https://www.keychron.com/products/keychron-g3-ultra-light-wireless-mouse",
+    externalUrl: "https://www.keychron.com/products/keychron-g3-ultra-light-wireless-mouse?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
   },
   {
     id: 147,
@@ -2920,7 +2920,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Model": "ASUS Zenbook A14 (UX3407)", "Weight": "2.18 lbs", "Display size": "14-inch", "Processor": "Snapdragon X2 Elite, 18-core", "NPU": "80 TOPS", "Battery": "70 Wh, over 33 hours video playback", "Chassis": "ASUS Ceraluminum" },
     destination: "external",
-    externalUrl: "https://www.asus.com/us/laptops/for-home/zenbook/asus-zenbook-a14-ux3407/",
+    externalUrl: "https://www.asus.com/us/laptops/for-home/zenbook/asus-zenbook-a14-ux3407/?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
     brand: "asus",
   },
   {
@@ -2944,7 +2944,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Model": "HT-B500", "Channel Configuration": "3.1ch", "Audio Formats Supported": "Dolby Atmos, DTS:X", "Surround Technologies": "S-Force PRO Front Surround, Vertical Surround Engine", "Subwoofer": "Wireless", "Connectivity": "HDMI, Bluetooth", "Control": "BRAVIA Connect App (smartphone)" },
     destination: "external",
-    externalUrl: "https://electronics.sony.com/audio/soundbars/all-soundbars/p/htb500",
+    externalUrl: "https://electronics.sony.com/audio/soundbars/all-soundbars/p/htb500?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
     videos: ["https://youtu.be/r36EWgMEKrk"],
     brand: "sony",
   },
@@ -2969,7 +2969,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Max Output Power": "205W", "USB-C1/C2 Max Power": "140W PD 3.1", "Dimensions": "100mm*55mm*56mm", "Weight": "314g ± 10g", "Material": "Flame-retardant polycarbonate (94V0 rating)" },
     destination: "external",
-    externalUrl: "https://tessan.com/products/voyager-205",
+    externalUrl: "https://tessan.com/products/voyager-205?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
     videos: ["https://www.youtube.com/embed/sKmPWZasVj8?si=o-zyQfywWnemjMVh"],
   },
   {
@@ -2993,7 +2993,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Model": "TESSAN PD 65W USB C Charging Station CS07", "Total power output": "Up to 65W", "Technology": "GaN (Gallium Nitride) charging chip", "USB C ports": "2 ports for laptops, tablets, and phones", "USB A ports": "2 ports for accessories like headphones and readers", "Cord length": "5 ft (non removable) power cord" },
     destination: "external",
-    externalUrl: "https://tessan.com/products/cute-cat-pd-65w-usb-c-charging-station-cs07",
+    externalUrl: "https://tessan.com/products/cute-cat-pd-65w-usb-c-charging-station-cs07?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
   },
   {
     id: 152,
@@ -5294,7 +5294,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Max Volume": "121 dB", "Frequency Range": "40 Hz to 20 kHz", "Battery Life": "Up to 40 hrs at Mid Volume, 8 hrs at Full Volume", "Weight": "21.4 lb", "Wireless connectivity": "Bluetooth 4.2, SKAA TeamUP for Up to 5 Speakers" },
     destination: "external",
-    externalUrl: "https://soundboks.com/products/soundboks-mix",
+    externalUrl: "https://soundboks.com/products/soundboks-mix?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
   },
   {
     id: 256,
@@ -5317,7 +5317,7 @@ export const products: Product[
     isTrending: false,
     specs: { "Mat size": "12.6 x 11.8 x 0.08 in (320 x 300 x 2 mm)", "Surface material": "Micro-woven cloth", "Base material": "Natural rubber", "Edge stitching": "Anti-fray stitched edges", "Weight": "0.31 lb (0.14 kg)", "Color": "Black", "Warranty": "2 years" },
     destination: "external",
-    externalUrl: "https://www.corsair.com/us/en/p/mousepads/ch-941d0a0-ww/mm-anti-fray-cloth-gaming-mouse-pad-medium-black-ch-941d0a0-ww",
+    externalUrl: "https://www.corsair.com/us/en/p/mousepads/ch-941d0a0-ww/mm-anti-fray-cloth-gaming-mouse-pad-medium-black-ch-941d0a0-ww?utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle",
   },
   {
     id: 257,

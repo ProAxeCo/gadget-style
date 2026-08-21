@@ -10,7 +10,7 @@
  */
 import { useState } from "react";
 import { Link } from "wouter";
-import { Heart, Bell, ImageOff } from "lucide-react";
+import { Heart, Bell, ImageOff, ShoppingCart } from "lucide-react";
 import { useWishlist } from "@/contexts/WishlistContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -41,6 +41,17 @@ function AmazonBadge() {
           fill="white"
         />
       </svg>
+    </div>
+  );
+}
+
+/* Store/cart badge for destination:"external" products — GF's card language:
+ * Amazon "a" = Amazon affiliate link, cart = buy at the brand's own store.
+ * Same black rounded square so the two read as one system. */
+function StoreBadge() {
+  return (
+    <div className="absolute top-2.5 left-2.5 w-7 h-7 bg-black rounded-lg flex items-center justify-center shadow-md z-10">
+      <ShoppingCart className="w-4 h-4 text-white" />
     </div>
   );
 }
@@ -148,6 +159,8 @@ export default function ProductCard({ product, index = 0, variant = "default" }:
     >
       {/* Clickable image area — GF style: image fills card, rounded corners, NO TEXT */}
       <Link href={`/product/${product.slug}`} className="block relative rounded-2xl overflow-hidden bg-secondary mb-3">
+        {/* Source badge — GF parity: "a" = Amazon link, cart = brand store */}
+        {isAmazon ? <AmazonBadge /> : <StoreBadge />}
         <div className="aspect-square relative">
           {imgError ? (
             <ImagePlaceholder />

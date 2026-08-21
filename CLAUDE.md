@@ -327,6 +327,23 @@ review queue, not a resting state. `pnpm report:externals` buckets them:
 3. **BROKEN** — the "buy" URL isn't a buyable page (news article,
    tracking junk). Fix the URL or demote to draft.
 
+**Never grey out available products.** An external product IS buyable —
+at the brand's store — and its page carries SEO equity. Verified GF
+pattern (2026-08, live page inspection): their non-Amazon products get a
+fully-active "available" buy CTA linking to the brand site with
+`utm_source=GadgetFlow` tags — no affiliate revenue for them either; the
+tagged traffic is the door-opener for paid listings and affiliate deals.
+We mirror it: every externalUrl carries
+`utm_source=gadgetstyle&utm_medium=referral&utm_campaign=gadgetstyle`,
+cards show the cart badge (vs the Amazon "a"), and the ProductPage CTA
+reads "Visit Store". Truly unbuyable = demote to draft, never a grey
+corpse page.
+
+**Recheck cadence:** quarterly, re-run the CONVERT? pass on ALL
+externals — products routinely arrive on Amazon after launch (eero
+Outdoor 7 and eero Pro 7 both did). A "verified not on Amazon" verdict
+expires.
+
 Lesson (2026-08): the big six-dimension audit classified externals as
 working-as-designed and a ~9-product conversion opportunity went unseen
 until a manual question caught it. Defect-calibrated reviews miss
