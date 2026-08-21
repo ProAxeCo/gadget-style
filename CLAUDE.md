@@ -313,6 +313,26 @@ is still discoverable in the catalog. Direct-brand affiliate programs
 `docs/direct-brand-affiliates.md` for the strategy and
 `docs/affiliate-signup-checklist.md` for the signup list.
 
+**External product review loop** (run monthly, or whenever externals grow):
+every live `destination: "external"` product earns $0 — that's a standing
+review queue, not a resting state. `pnpm report:externals` buckets them:
+
+1. **CONVERT?** — likely sold on Amazon. Verify in a real browser (search
+   amazon.com, confirm title matches, copy the /dp/ ASIN — never guess
+   ASINs), then set `asin`, delete `destination`/`externalUrl`, run
+   `pnpm fix:urls`.
+2. **AFFILIATE** — genuinely Amazon-absent. Feed the host into the
+   direct-brand affiliate signups; once a program is live, swap
+   `externalUrl` for the tracked link.
+3. **BROKEN** — the "buy" URL isn't a buyable page (news article,
+   tracking junk). Fix the URL or demote to draft.
+
+Lesson (2026-08): the big six-dimension audit classified externals as
+working-as-designed and a ~9-product conversion opportunity went unseen
+until a manual question caught it. Defect-calibrated reviews miss
+opportunity-shaped revenue — this loop makes the queue impossible to
+not-see.
+
 ## Placeholder products
 
 Manus's legacy catalog contained products with fabricated ASINs (pattern:

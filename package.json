@@ -18,6 +18,7 @@
     "check:data": "tsx scripts/validate-data.ts",
     "check:data:report": "tsx scripts/validate-data.ts > audit-report.txt 2>&1 || true",
     "report:placeholders": "tsx scripts/report-placeholders.ts",
+    "report:externals": "tsx scripts/report-externals.ts",
     "fix:urls": "tsx scripts/fix-affiliate-urls.ts",
     "mirror:images": "tsx scripts/mirror-images.ts --apply",
     "fix:counts": "tsx scripts/fix-category-counts.ts",
