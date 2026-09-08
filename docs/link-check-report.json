@@ -1,16 +1,149 @@
 {
-  "checkedAt": "2026-09-01T01:07:12.130Z",
+  "checkedAt": "2026-09-08T00:10:36.896Z",
   "totals": {
-    "ALIVE": 21,
+    "ALIVE": 91,
     "DEAD": 2,
-    "UNAVAILABLE": 5,
-    "INCONCLUSIVE": 185
+    "UNAVAILABLE": 27,
+    "INCONCLUSIVE": 93
   },
   "actionable": [
+    {
+      "id": 2,
+      "asin": "B0CLBN88HN",
+      "url": "https://www.amazon.com/dp/B0CLBN88HN?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
     {
       "id": 23,
       "asin": "B0D5DLF39S",
       "url": "https://www.amazon.com/dp/B0D5DLF39S?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 33,
+      "asin": "B0CWW1Y5R6",
+      "url": "https://www.amazon.com/dp/B0CWW1Y5R6?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 34,
+      "asin": "B09V1KJ3J4",
+      "url": "https://www.amazon.com/dp/B09V1KJ3J4?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 36,
+      "asin": "B09NMM4FY6",
+      "url": "https://www.amazon.com/dp/B09NMM4FY6?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 39,
+      "asin": "B0DGHQ2QH6",
+      "url": "https://www.amazon.com/dp/B0DGHQ2QH6?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 45,
+      "asin": "B0BWSF6H4Q",
+      "url": "https://www.amazon.com/dp/B0BWSF6H4Q?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 47,
+      "asin": "B0BV2SM914",
+      "url": "https://www.amazon.com/dp/B0BV2SM914?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 48,
+      "asin": "B0CSTGJVKF",
+      "url": "https://www.amazon.com/dp/B0CSTGJVKF?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 50,
+      "asin": "B0CGXYNWBH",
+      "url": "https://www.amazon.com/dp/B0CGXYNWBH?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 52,
+      "asin": "B0DCM34GXX",
+      "url": "https://www.amazon.com/dp/B0DCM34GXX?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 54,
+      "asin": "B09PSKG7C3",
+      "url": "https://www.amazon.com/dp/B09PSKG7C3?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 55,
+      "asin": "B0C37CWBKZ",
+      "url": "https://www.amazon.com/dp/B0C37CWBKZ?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 59,
+      "asin": "B0BT38ZXGM",
+      "url": "https://www.amazon.com/dp/B0BT38ZXGM?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 62,
+      "asin": "B0FPPH4FZ2",
+      "url": "https://www.amazon.com/dp/B0FPPH4FZ2?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 69,
+      "asin": "B07ZTPS1L7",
+      "url": "https://www.amazon.com/dp/B07ZTPS1L7?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 74,
+      "asin": "B0BKWM3NMK",
+      "url": "https://www.amazon.com/dp/B0BKWM3NMK?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 80,
+      "asin": "B0FJPYSFRH",
+      "url": "https://www.amazon.com/dp/B0FJPYSFRH?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 97,
+      "asin": "B0D2NKXP7L",
+      "url": "https://www.amazon.com/dp/B0D2NKXP7L?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 109,
+      "asin": "B0GQ9M1LRM",
+      "url": "https://www.amazon.com/dp/B0GQ9M1LRM?tag=gadgetstyle01-20",
       "verdict": "UNAVAILABLE",
       "detail": "no buy box, unavailable marker"
     },
@@ -22,39 +155,60 @@
       "detail": "HTTP 404"
     },
     {
-      "id": 167,
-      "asin": "B0BWWZXWPL",
-      "url": "https://www.amazon.com/dp/B0BWWZXWPL?tag=gadgetstyle01-20",
-      "verdict": "UNAVAILABLE",
-      "detail": "no buy box, unavailable marker"
-    },
-    {
-      "id": 207,
-      "asin": "B09M67KSSF",
-      "url": "https://www.amazon.com/dp/B09M67KSSF?tag=gadgetstyle01-20",
-      "verdict": "UNAVAILABLE",
-      "detail": "no buy box, unavailable marker"
-    },
-    {
-      "id": 214,
-      "asin": "B096WKKK2K",
-      "url": "https://www.amazon.com/dp/B096WKKK2K?tag=gadgetstyle01-20",
-      "verdict": "UNAVAILABLE",
-      "detail": "no buy box, unavailable marker"
-    },
-    {
-      "id": 228,
-      "asin": "B08LMSC4WZ",
-      "url": "https://www.amazon.com/dp/B08LMSC4WZ?tag=gadgetstyle01-20",
-      "verdict": "UNAVAILABLE",
-      "detail": "no buy box, unavailable marker"
-    },
-    {
-      "id": 248,
-      "asin": "B07PB21SRV",
-      "url": "https://www.amazon.com/dp/B07PB21SRV?tag=gadgetstyle01-20",
+      "id": 126,
+      "asin": "B0CX4Z3RLT",
+      "url": "https://www.amazon.com/dp/B0CX4Z3RLT?tag=gadgetstyle01-20",
       "verdict": "DEAD",
       "detail": "HTTP 404"
+    },
+    {
+      "id": 195,
+      "asin": "B0B1VQ1ZQY",
+      "url": "https://www.amazon.com/dp/B0B1VQ1ZQY?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 211,
+      "asin": "B0B4GD5YJJ",
+      "url": "https://www.amazon.com/dp/B0B4GD5YJJ?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 230,
+      "asin": "B08J8FFJ8H",
+      "url": "https://www.amazon.com/dp/B08J8FFJ8H?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 238,
+      "asin": "B07ZZVX1F2",
+      "url": "https://www.amazon.com/dp/B07ZZVX1F2?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 239,
+      "asin": "B07YNLBS7R",
+      "url": "https://www.amazon.com/dp/B07YNLBS7R?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 240,
+      "asin": "B0839NDRB2",
+      "url": "https://www.amazon.com/dp/B0839NDRB2?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
+    },
+    {
+      "id": 247,
+      "asin": "B07MLY3JKV",
+      "url": "https://www.amazon.com/dp/B07MLY3JKV?tag=gadgetstyle01-20",
+      "verdict": "UNAVAILABLE",
+      "detail": "no buy box, unavailable marker"
     }
   ]
 }
