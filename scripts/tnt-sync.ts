@@ -370,6 +370,15 @@ async function main(): Promise<void> {
     const title = d.canonicalTitle ?? p.title;
     const slug = slugify(title);
     if (existingSlugs.has(slug) || usedSlugs.has(slug)) continue;
+    // Skip image-less products: a draft with no image can never be promoted
+    // (validator errors on images.empty even for drafts) and would fail the
+    // whole ingest workflow's validate step before a PR could open. Mirror
+    // formatBlock's image resolution exactly.
+    const bestImage = (d.amazonImages?.length ? d.amazonImages[0] : undefined) ?? d.src.articleImage;
+    if (!bestImage) {
+      console.log(`  skip (no image): ${p.asin} — ${title.slice(0, 50)}`);
+      continue;
+    }
     usedSlugs.add(slug);
     blocks.push(formatBlock(d, id));
     report.drafts.push({
