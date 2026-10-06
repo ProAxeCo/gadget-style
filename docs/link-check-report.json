@@ -1,44 +1,16 @@
 {
-  "checkedAt": "2026-09-29T01:36:39.100Z",
+  "checkedAt": "2026-10-06T02:11:24.021Z",
   "totals": {
-    "ALIVE": 15,
+    "ALIVE": 9,
     "DEAD": 0,
-    "UNAVAILABLE": 8,
-    "INCONCLUSIVE": 189
+    "UNAVAILABLE": 2,
+    "INCONCLUSIVE": 201
   },
   "actionable": [
     {
-      "id": 23,
-      "asin": "B0D5DLF39S",
-      "url": "https://www.amazon.com/dp/B0D5DLF39S?tag=gadgetstyle01-20",
-      "verdict": "UNAVAILABLE",
-      "detail": "no buy box, unavailable marker"
-    },
-    {
-      "id": 74,
-      "asin": "B0BKWM3NMK",
-      "url": "https://www.amazon.com/dp/B0BKWM3NMK?tag=gadgetstyle01-20",
-      "verdict": "UNAVAILABLE",
-      "detail": "no buy box, unavailable marker"
-    },
-    {
-      "id": 181,
-      "asin": "B08SVZ775L",
-      "url": "https://www.amazon.com/dp/B08SVZ775L?tag=gadgetstyle01-20",
-      "verdict": "UNAVAILABLE",
-      "detail": "no buy box, unavailable marker"
-    },
-    {
-      "id": 195,
-      "asin": "B0B1VQ1ZQY",
-      "url": "https://www.amazon.com/dp/B0B1VQ1ZQY?tag=gadgetstyle01-20",
-      "verdict": "UNAVAILABLE",
-      "detail": "no buy box, unavailable marker"
-    },
-    {
-      "id": 206,
-      "asin": "B09B8W5FW7",
-      "url": "https://www.amazon.com/dp/B09B8W5FW7?tag=gadgetstyle01-20",
+      "id": 212,
+      "asin": "B09SWW583J",
+      "url": "https://www.amazon.com/dp/B09SWW583J?tag=gadgetstyle01-20",
       "verdict": "UNAVAILABLE",
       "detail": "no buy box, unavailable marker"
     },
@@ -46,20 +18,6 @@
       "id": 235,
       "asin": "B08SZ26WF9",
       "url": "https://www.amazon.com/dp/B08SZ26WF9?tag=gadgetstyle01-20",
-      "verdict": "UNAVAILABLE",
-      "detail": "no buy box, unavailable marker"
-    },
-    {
-      "id": 236,
-      "asin": "B083C5FC7S",
-      "url": "https://www.amazon.com/dp/B083C5FC7S?tag=gadgetstyle01-20",
-      "verdict": "UNAVAILABLE",
-      "detail": "no buy box, unavailable marker"
-    },
-    {
-      "id": 239,
-      "asin": "B07YNLBS7R",
-      "url": "https://www.amazon.com/dp/B07YNLBS7R?tag=gadgetstyle01-20",
       "verdict": "UNAVAILABLE",
       "detail": "no buy box, unavailable marker"
     }
