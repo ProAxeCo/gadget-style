@@ -2,6 +2,8 @@
 
 **Prepared:** 2026-09-11 · **Owner:** Con Tsekouras (sole trader, Gadget Style Australia, ABN 75185709936) · **Site:** https://www.gadgetstyle.com.au
 
+> **Correction (2026-10-25):** the original 2026-09-11 text said "~236 live products" and "15 external". The correct figures are **230 live + 19 drafts = 249 products** in `data.ts` (the 6 blog posts had been miscounted as products) and **18 live external products**, so 212 of 230 live products (~92%) earn commission, not ~93%. `data.ts` has not changed since 2026-09-11 (its last commit was that day at 15:40), so the corrected figures describe the brief's own date.
+
 ---
 
 ## 0. How to use this brief (read first)
@@ -21,7 +23,7 @@ You (ChatGPT) are being brought in as a **strategic advisor and co-planner** for
 
 ## 1. Executive summary
 
-Gadget Style is a curated Amazon-affiliate + direct-brand tech-product site for the Australian market, styled after [thegadgetflow.com](https://thegadgetflow.com). It is **live, technically healthy, and structurally sound**: static React site, all data in one file, prerendered to real HTML, deployed on Vercel from GitHub with a three-gate validation chain that makes it effectively impossible to ship broken data to production. Roughly **236 live products, 12 categories, 15 brand pages, 82 commits** of engineering.
+Gadget Style is a curated Amazon-affiliate + direct-brand tech-product site for the Australian market, styled after [thegadgetflow.com](https://thegadgetflow.com). It is **live, technically healthy, and structurally sound**: static React site, all data in one file, prerendered to real HTML, deployed on Vercel from GitHub with a three-gate validation chain that makes it effectively impossible to ship broken data to production. Roughly **230 live products, 12 categories, 15 brand pages, 82 commits** of engineering.
 
 **The stated goal is A$5,000/week (~A$260,000/year) in affiliate commission, fully automated.** This brief must be blunt about that number up front (full math in §3): it is achievable only in the **top few percent of affiliate sites**, over a **3–5 year horizon**, and **not by automation alone** — in fact, in the 2026 environment, over-automation is now the single biggest *risk* to the goal, not the lever for it. The credible path is a **human-edited editorial core + aggressive monetization diversification + non-Google traffic**, with automation as leverage underneath. There is a material (>50%) chance the site plateaus at A$500–1,500/week even with excellent execution. That is not a reason not to pursue it — it is the reason to sequence correctly and diversify early.
 
@@ -66,7 +68,7 @@ Gadget Style is a curated Amazon-affiliate + direct-brand tech-product site for 
 - **B — Amazon AU + direct-brand networks** (Impact/CJ/Awin/Rakuten/ShareASale at 5–15% on higher AOV): lifts blended RPM to ~A$25–40 → ~540k–870k sessions/mo. Top-tier but conceivable over 3–5 years.
 - **C — Amazon AU + direct-brand + display + owned email/Pinterest:** RPM ~A$40–60 → ~360k–620k sessions/mo. **This is the realistic route.**
 
-**Honest verdict:** central estimate **3–5 years** of excellent, compounding execution with Google/social cooperation; **>50% chance of plateauing at A$500–1,500/week.** The catalog today (~236 products) is roughly **1–3% of the ~hundreds-to-1,000+ ranking pages** a ~500k-session site typically needs. The goal is a **multi-year traffic-and-conversion build, not a procurement decision.** No tool on any list below produces the number by itself.
+**Honest verdict:** central estimate **3–5 years** of excellent, compounding execution with Google/social cooperation; **>50% chance of plateauing at A$500–1,500/week.** The catalog today (230 live products) is roughly **1–3% of the ~hundreds-to-1,000+ ranking pages** a ~500k-session site typically needs. The goal is a **multi-year traffic-and-conversion build, not a procurement decision.** No tool on any list below produces the number by itself.
 
 **Highest-ROI order of operations (this is the spine of the roadmap):**
 1. Fix the AU tag leak + geo-routing (**free, ~1–2 hrs, ~3–5× Amazon revenue from existing traffic**).
@@ -98,7 +100,7 @@ Gadget Style is a curated Amazon-affiliate + direct-brand tech-product site for 
 ## 5. What has been built / completed
 
 **Catalog & data integrity**
-- ~236 live products, 19 drafts, 12 categories, 15 brand pages. Validator holds 0 errors.
+- 230 live products (212 Amazon-linked, 18 external), 19 drafts, 12 categories, 15 brand pages. Validator holds 0 errors.
 - Fabricated-ASIN legacy ("Manus") bugs purged; validator now blocks ASIN drift, ephemeral image hosts, fake ASINs, stale category counts, bad slugs.
 - All product images mirrored locally (no hotlinks). Affiliate URLs canonicalized and tag-enforced.
 
@@ -128,9 +130,9 @@ Gadget Style is a curated Amazon-affiliate + direct-brand tech-product site for 
 
 | Metric | Value |
 |---|---|
-| Live products / drafts | ~236 / 19 |
+| Live products / drafts | 230 / 19 |
 | Categories / brands | 12 / 15 |
-| Live products earning commission | ~93% (Amazon links); ~15 external (earn $0 pending direct-brand programs) |
+| Live products earning commission | ~92% (212 of 230, Amazon links); 18 external (earn $0 pending direct-brand programs) |
 | Dead affiliate links | 0 (as of last sweep) |
 | Analytics instrumented | **None** |
 | Social posting | Built, **dormant** |
@@ -145,7 +147,7 @@ These unlock the revenue engine and are **prerequisites**, not optional polish. 
 
 1. **Amazon AU Associates application** — the single biggest unlock. Stops the US/AU leak (~3–5× Amazon revenue from existing traffic) and is the gateway to authoritative product data. *Note (verified 2026): the old PA-API 5.0 is being retired; its successor, the **Amazon Creators API**, is free but gated behind **10 qualifying sales in a trailing 30 days** — so a paid data bridge (Keepa/Rainforest) is needed in the interim.*
 2. **Meta re-auth + 4 GitHub secrets** — Instagram/FB posting is built and ready; May's token expired (~60-day TTL). ~10 minutes to mint a fresh token + set `META_APP_ID/SECRET/PAGE_ACCESS_TOKEN/FB_PAGE_ID`. IG publishing may still be gated by Meta business verification.
-3. **Direct-brand affiliate signups** (Sony, Dell, ASUS, Samsung, Belkin, Anker, DJI, Garmin, Bose, Sonos…) — 15 named external products are queued waiting on these programs; direct rates (5–20%) dwarf Amazon's 1–3% and are the core of Scenario B/C.
+3. **Direct-brand affiliate signups** (Sony, Dell, ASUS, Samsung, Belkin, Anker, DJI, Garmin, Bose, Sonos…) — 18 live external products are queued waiting on these programs; direct rates (5–20%) dwarf Amazon's 1–3% and are the core of Scenario B/C.
 
 ---
 
@@ -154,7 +156,7 @@ These unlock the revenue engine and are **prerequisites**, not optional polish. 
 **Gaps to close (in priority order):**
 1. **No analytics** — flying blind; cannot prioritise, prove ROI, or detect a penalty. *Fix first, costs ~A$0.*
 2. **AU tag leak** — the ongoing revenue haemorrhage. *Fix second, costs ~A$0.*
-3. **Thin catalog vs. traffic need** — 236 pages is ~1–3% of the footprint required; but the answer is *differentiated* pages, not *more* thin ones (see risk below).
+3. **Thin catalog vs. traffic need** — 230 pages is ~1–3% of the footprint required; but the answer is *differentiated* pages, not *more* thin ones (see risk below).
 4. **Prices hardcoded in data.ts** — both an Amazon Operating-Agreement violation (prices must be API-sourced + timestamped) and an ACCC misleading-price exposure. *Either drop numeric prices ("Check price on Amazon") or wire a price API with an "as of" timestamp.*
 5. **No affiliate disclosure on-page** — Amazon mandates the exact phrase *"As an Amazon Associate, I earn from qualifying purchases"* near the links (footer-only is non-compliant); ACCC + FTC require clear disclosure.
 
